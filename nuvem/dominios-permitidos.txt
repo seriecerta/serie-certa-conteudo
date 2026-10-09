@@ -5,3 +5,5 @@ api.instagram.com
 www.googleapis.com
 oauth2.googleapis.com
 youtube.googleapis.com
+cdn.playwright.dev
+playwright.download.prss.microsoft.com

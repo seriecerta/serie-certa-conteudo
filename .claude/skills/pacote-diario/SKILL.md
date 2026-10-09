@@ -15,12 +15,12 @@ Fora da nuvem: se `saida/<data>/revisao.json` já existir, pule para o passo 9.
 
 ## Passos
 1. **Pauta** — subagente `estrategista` → `saida/<data>/00-pauta.md` (peças de hoje + rascunho de amanhã).
-2. **Roteiros** — subagente `roteirista` para cada peça de vídeo.
-3. **Narração** — `python scripts/narrar.py saida/<data>` (MIA por padrão; `-ela`/`-ele` usam as vozes do casal).
-4. **Vídeos** — para cada pasta com narração: `python scripts/montar_video.py saida/<data>/<nn>-<slug> --formato 9x16` (longo do YouTube: `--formato 16x9`).
-5. **Desdobramento** — subagente `desdobrador` (gera `publicar.json`, `carrossel.json`, `stories.json`).
-6. **Cards e Stories** — para cada pasta com `carrossel.json` ou `stories.json`: `python scripts/renderizar_cards.py saida/<data>/<nn>-<slug>`.
-7. **Revisão** — subagente `revisor` (gera `revisao.json`). Se ele mudou narração, rode o passo 3 e o 4 de novo só para aquela peça.
+2. **Roteiros (fase 1)** — subagente `roteirista`: `roteiro.md` + `narracao.txt` de cada peça de vídeo.
+3. **Narração** — `python scripts/narrar.py saida/<data>` (MIA, eleven_v3; `-ela`/`-ele` usam as vozes do casal). Gera `.mp3` + `.json` com o tempo de cada palavra.
+4. **Cenas (fase 2)** — subagente `roteirista`: `cena.html` de cada peça no motor de vídeo (`motor/COMPONENTES.md`), sincronizada com a fala, conferida com prévias.
+5. **Vídeos** — para cada pasta com `cena.html` e narração: `python scripts/renderizar.py saida/<data>/<nn>-<slug>` (vídeo longo do YouTube: `--formato 16x9`). Sai `video.mp4` + `capa.jpg`.
+6. **Desdobramento** — subagente `desdobrador`: legendas, `publicar.json` e as artes de carrossel/Stories (`cena.html` com `section.quadro`, renderizadas com `--imagens`).
+7. **Revisão** — subagente `revisor` (olha os quadros dos vídeos e as imagens, gera `revisao.json`). Se ele mudou narração ou cena, rode de novo os passos 3–5 só para aquela peça.
 8. **Histórico** — acrescente em `historico/publicados.md` uma linha por peça aprovada: data | formato | humor | séries | gancho.
 9. **Publicação** — `python scripts/publicar.py --data <data>`. Sobe e agenda os vídeos do YouTube e publica no Instagram o que já estiver no horário; o resto do Instagram sai pela rotina de hora em hora.
 10. **Guardar** —
@@ -30,6 +30,8 @@ Fora da nuvem: se `saida/<data>/revisao.json` já existir, pule para o passo 9.
 
 ## Se algo falhar
 - Sem acesso à ElevenLabs: siga sem áudio/vídeo; peças sem vídeo ficam fora de `aprovadas`.
+- `renderizar.py` acusa "palavra não encontrada na narração": troque o `@palavra` da cena pela grafia que está em `narracao.json`.
+- Chromium ausente (erro do Playwright): rode `python -m playwright install --with-deps chromium` uma vez e tente de novo.
 - Erro de crédito na ElevenLabs ou de API das redes: não repita em loop; registre em `99-revisao.md`.
 - Nunca chame `publicar.py` sem `revisao.json` escrito pelo revisor.
 - Na nuvem, se um domínio for bloqueado (`403 host_not_allowed`), registre qual foi em `99-revisao.md` — o Bruno precisa liberar no ambiente.

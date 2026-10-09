@@ -14,6 +14,12 @@ A estratégia vive em `estrategia/`. Nada é criado fora dela.
 - @estrategia/06-voz-mia.md — personalidade e regras de escrita da MIA
 - @estrategia/07-pilares-e-formatos.md — pilares de conteúdo e regras de cada formato
 - @estrategia/08-cronograma.md — grade semanal e horários
+- @estrategia/09-identidade-visual-e-formatos.md — o visual e os formatos que já estão no ar (Relógio, Tradutor, Selvagens do Sofá, Qual é você?)
+
+Vídeos, carrosséis e Stories são feitos **só pelo motor** (`motor/` + `scripts/renderizar.py`), no padrão visual dos posts.
+Guia de componentes: `motor/COMPONENTES.md`; exemplos fiéis aos posts: `motor/exemplos/`.
+**Referências reais** (os 5 posts que definem o padrão — vídeos, folhas de quadros e fichas): `referencias/README.md`.
+Todo vídeo novo tem que parecer da mesma família deles: abra a folha de quadros do formato mais próximo antes de criar.
 
 Histórico do que já saiu: `historico/publicados.md` (nunca repita série + humor + gancho em menos de 30 dias).
 
@@ -30,7 +36,7 @@ Histórico do que já saiu: `historico/publicados.md` (nunca repita série + hum
 | Vídeos virais do casal — ela | Ela – Casal Série Certa | `1AxHVMpXJZxq6ECdF4Kn` |
 | Vídeos virais do casal — ele | Ele – Casal Série Certa | `oeBFFQkxcUHweNreD1nw` |
 
-Gere áudio sempre com `python scripts/narrar.py` (nunca invente outro voice_id).
+Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita tags como `[rindo baixinho]`; nunca invente outro voice_id).
 
 ## Regras invioláveis
 1. **Narração da MIA: escolha uma versão e siga.** Não entregue variações para o Bruno escolher.

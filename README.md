@@ -25,8 +25,8 @@ estrategia/                    TAM-SAM-SOM, ICP, JTBD, posicionamento, proposta 
 .claude/agents/                estrategista, roteirista, desdobrador, revisor
 .claude/skills/                /pacote-diario, /publicar, /estrategia
 scripts/narrar.py              ElevenLabs (MIA, Ela, Ele)
-scripts/montar_video.py        vídeo 9:16 / 16:9 com trilha Sala Escura
-scripts/renderizar_cards.py    carrossel e Stories em JPEG
+motor/                         sistema visual dos posts (CSS, motor de tempo, efeitos, exemplos)
+scripts/renderizar.py          cena.html → vídeo 9:16/16:9 e carrossel/Stories em JPEG
 scripts/publicar.py            Instagram + YouTube
 scripts/configurar_instagram.py / autorizar_youtube.py   configuração única das contas
 .credenciais/                  tokens (fora do Git)

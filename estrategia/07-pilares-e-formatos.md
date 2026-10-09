@@ -30,7 +30,7 @@ Vale até ~jan/2027 (ver `05-go-to-market.md`).
 
 ### Carrossel Instagram (1080×1350)
 - 7–10 cards. Card 1 = gancho; último = CTA salvar.
-- Entregar: texto de cada card + direção visual + legenda. Se houver template em `assets/templates/`, renderizar PNGs.
+- Entregar: `cena.html` com um `section.quadro` por card (motor, `--imagens --formato 4x5`) + legenda.
 
 ### Stories (1080×1920)
 - Sequência de 3–5: pergunta/enquete → indicação → link de humor → caixinha "MIA acertou?".
