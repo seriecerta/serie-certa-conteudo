@@ -9,6 +9,15 @@
 | 4. MIA acertou? / prova | 15% | Ansiedade | Demo do app, reações |
 | 5. Bastidor do produto | 10% | Atração | "Ensinei a MIA a entender domingo à noite" |
 
+> Percentuais dos pilares **mantidos**: sem métricas em `historico/metricas.md`, não há base para redistribuir.
+
+## Ênfase dos 90 dias (meta: audiência)
+Vale até ~jan/2027 (ver `05-go-to-market.md`).
+- Reels, Shorts e vídeos do casal fecham com o CTA de Descoberta ("Manda pra quem precisa"), inclusive nos pilares 4 e 5.
+- Gancho pensado para **envio**: a pessoa tem que lembrar de alguém específico nos 2 primeiros segundos ("a amiga que acabou de terminar", "o namorado que nunca decide"). Envios pesam no alcance para não seguidores (Mosseri, jan/2025, [Social Media Today](https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/)).
+- Retenção é o outro sinal: série que combina vem logo depois do gancho; nada de introdução.
+- Conversão ("Testa grátis no link") fica nos Stories, como já está na grade.
+
 ## Especificações por formato
 ### Reels / Shorts (9:16, 1080×1920)
 - 20–40 s. Gancho falado + texto na tela nos **primeiros 2 s**.
@@ -29,3 +38,6 @@
 
 ### Feed estático
 - Só para anúncio de produto/novidade. Texto curto + legenda.
+
+## Changelog
+- 2026-10-09 — Adicionada seção "Ênfase dos 90 dias": Reels/Shorts/casal com CTA de Descoberta em todos os pilares, gancho pensado para envio e retenção; percentuais dos pilares e especificações de formato mantidos — por quê: meta dos 90 dias virou audiência (seguidores/alcance); sem métricas, não há base para mexer nos pesos.
