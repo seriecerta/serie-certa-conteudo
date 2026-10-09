@@ -23,7 +23,8 @@ import textwrap
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 FORMATOS = {"9x16": (1080, 1920), "16x9": (1920, 1080), "4x5": (1080, 1350)}
-COR_FUNDO = "0x14101F"  # roxo escuro; troque pela cor do design system
+COR_FUNDO = "0x0B1410"  # --noite-900 do sistema visual "Sala Escura"
+COR_TEXTO = "0xF1E8D6"  # --papel
 FONTE = RAIZ / "assets" / "fontes" / "marca.ttf"
 
 
@@ -53,7 +54,7 @@ def slides_de_texto(telas, tmp, w, h):
         fonte = f":fontfile='{FONTE}'" if FONTE.exists() else ""
         img = tmp / f"s{i:02d}.png"
         sh(["ffmpeg", "-y", "-f", "lavfi", "-i", f"color=c={COR_FUNDO}:s={w}x{h}", "-frames:v", "1", "-vf",
-            f"drawtext=textfile='{arq_txt}'{fonte}:fontcolor=white:fontsize={int(w/14)}:line_spacing=18:"
+            f"drawtext=textfile='{arq_txt}'{fonte}:fontcolor={COR_TEXTO}:fontsize={int(w/14)}:line_spacing=18:"
             f"x=(w-text_w)/2:y=(h-text_h)/2", str(img)])
         imgs.append(img)
     return imgs
