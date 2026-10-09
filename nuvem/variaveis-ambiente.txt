@@ -1,0 +1,14 @@
+# Cole no campo "Environment variables" do ambiente de nuvem (não vai segredo aqui).
+SUPABASE_URL=https://idbwkhutuomakeptnyia.supabase.co
+SUPABASE_BUCKET=conteudo-redes
+PUBLICACAO_AUTOMATICA=false
+MAX_ATRASO_HORAS=4
+MARCAR_CONTEUDO_IA=true
+
+# Segredos — preferência: cadastre como "API credentials" (planos Pro/Max), que o Claude não consegue ler:
+#   ElevenLabs: host api.elevenlabs.io      | header xi-api-key  | sem prefixo | valor = sua chave
+#   Supabase:   host idbwkhutuomakeptnyia.supabase.co | header Authorization | prefixo Bearer | valor = service role key
+#               + segunda linha de header: apikey | sem prefixo | mesma chave
+# Se o seu plano não tiver "API credentials", descomente e preencha aqui:
+# ELEVENLABS_API_KEY=
+# SUPABASE_SERVICE_ROLE_KEY=

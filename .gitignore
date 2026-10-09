@@ -1,0 +1,11 @@
+.env
+.credenciais/
+saida/**/*.mp3
+saida/**/*.mp4
+saida/**/*.jpg
+saida/**/*.png
+saida/**/estado-publicacao.json
+saida/**/publicacao.log.md
+saida/**/PAUSAR
+assets/posters/
+__pycache__/

@@ -1,0 +1,7 @@
+api.elevenlabs.io
+idbwkhutuomakeptnyia.supabase.co
+graph.instagram.com
+api.instagram.com
+www.googleapis.com
+oauth2.googleapis.com
+youtube.googleapis.com

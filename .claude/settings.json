@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write(saida/**)",
+      "Edit(saida/**)",
+      "Edit(estrategia/**)",
+      "Edit(historico/**)",
+      "WebSearch",
+      "WebFetch",
+      "Bash(python scripts/narrar.py:*)",
+      "Bash(python3 scripts/narrar.py:*)",
+      "Bash(python scripts/montar_video.py:*)",
+      "Bash(python3 scripts/montar_video.py:*)",
+      "Bash(python scripts/renderizar_cards.py:*)",
+      "Bash(python3 scripts/renderizar_cards.py:*)",
+      "Bash(python scripts/publicar.py:*)",
+      "Bash(python3 scripts/publicar.py:*)",
+      "Bash(ffprobe:*)",
+      "Bash(date:*)",
+      "Bash(TZ=America/Sao_Paulo date:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.credenciais/**)",
+      "Edit(scripts/**)",
+      "Write(scripts/**)"
+    ]
+  }
+}
