@@ -1,0 +1,37 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-reel",
+      "plataforma": "instagram",
+      "tipo": "REELS",
+      "arquivos": [
+        "video.mp4"
+      ],
+      "capa": "capa.jpg",
+      "legenda": "Pro namorado que vê terror com a mão na cara.\n\nEla quer terror porque é outubro. Ele só topa se der pra rir. Hotel Assombrado e Wandinha, as duas na Netflix, resolvem: mais clima do que susto.\n\nPra quem não é: quem quer susto de pular do sofá.\n\nManda pra quem precisa. 🎃\n\n#seriecerta #seriesnetflix #dicadeserie #terrorcomedia #casal",
+      "quando": "2026-10-09T20:00:00-03:00"
+    },
+    {
+      "id": "yt-short",
+      "plataforma": "youtube",
+      "tipo": "short",
+      "arquivos": [
+        "video.mp4"
+      ],
+      "titulo": "Ele tem medo, ela quer terror: as séries pros dois",
+      "descricao": "Pro namorado que vê terror com a mão na cara. Hotel Assombrado e Wandinha, na Netflix: terror que dá pra rir. Pra quem não é: quem quer susto de pular do sofá.\n\nManda pra quem precisa.\n\nSérie Certa: https://seriecerta.online/?utm_source=youtube&utm_medium=organico&utm_campaign=2026-10-09-casal-terror-ou-risada\n\n#Shorts #seriecerta #seriesnetflix",
+      "tags": [
+        "seriecerta",
+        "series netflix",
+        "serie de terror",
+        "terror comedia",
+        "hotel assombrado",
+        "wandinha",
+        "serie para casal",
+        "o que assistir",
+        "dica de serie"
+      ],
+      "quando": "2026-10-09T20:30:00-03:00"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-stories",
+      "plataforma": "instagram",
+      "tipo": "STORIES",
+      "arquivos": ["stories/01.jpg", "stories/02.jpg", "stories/03.jpg", "stories/04.jpg"],
+      "legenda": "",
+      "quando": "2026-10-09T19:45:00-03:00"
+    }
+  ]
+}
