@@ -21,6 +21,12 @@ if len(sys.argv) != 2:
     sys.exit(__doc__)
 token = sys.argv[1].strip()
 
+# Trava: não manda para a Meta algo que claramente é outra chave.
+if token.startswith(("sk_", "sb_", "eyJ")):
+    origem = "ElevenLabs" if token.startswith("sk_") else "Supabase"
+    sys.exit(f"Isso parece uma chave da {origem}, não um token do Instagram — nada foi enviado. "
+             "O token do Instagram sai do painel da Meta (Gerar token) e costuma começar com IG.")
+
 r = requests.get("https://graph.instagram.com/me", params={"fields": "user_id,username,account_type",
                                                            "access_token": token}, timeout=30)
 if not r.ok:

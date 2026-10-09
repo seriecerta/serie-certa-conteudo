@@ -138,7 +138,12 @@ class Hospedagem:
         if not self.url:
             raise RuntimeError("Defina SUPABASE_URL no .env")
         # Sem chave no ambiente: confia na "API credential" da nuvem, que anexa o cabeçalho pelo proxy.
-        self.h = {"Authorization": f"Bearer {self.chave}", "apikey": self.chave} if self.chave else {}
+        if not self.chave:
+            self.h = {}
+        elif self.chave.startswith("sb_"):  # chave nova do Supabase: só no apikey
+            self.h = {"apikey": self.chave}
+        else:  # chave legada (JWT)
+            self.h = {"Authorization": f"Bearer {self.chave}", "apikey": self.chave}
         self.enviados = []
 
     def subir(self, arquivo: pathlib.Path) -> str:

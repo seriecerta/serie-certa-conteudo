@@ -52,11 +52,18 @@ def base():
     return f"{url}/storage/v1"
 
 
+def cabecalhos_supabase(chave: str) -> dict:
+    """Chave nova (sb_secret_...) vai só no apikey; a legada (JWT eyJ...) vai nos dois cabeçalhos."""
+    if chave.startswith("sb_"):
+        return {"apikey": chave}
+    return {"Authorization": f"Bearer {chave}", "apikey": chave}
+
+
 def cabecalhos(extra=None):
     h = dict(extra or {})
     chave = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
     if chave:
-        h |= {"Authorization": f"Bearer {chave}", "apikey": chave}
+        h |= cabecalhos_supabase(chave)
     return h
 
 
