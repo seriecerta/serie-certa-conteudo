@@ -15,7 +15,7 @@ Os Stories não têm sticker de link, então a tela final manda para o link da b
 Não usei `descobrir?humor=...` porque não está confirmado que exista um humor "casal" nem um deep link do modo casal. Se existir, o Bruno troca a bio pelo deep link (com os mesmos UTM). Depois do dia, volte a bio ao padrão.
 
 ## Pendências e avisos
-- Os JPGs de `02-stories-dilema-casal/stories/01.jpg` a `04.jpg` ainda não existem: o renderizador precisa gerá-los a partir do `stories.json` antes das 19h45.
+- Stories renderizados (`stories/01.jpg` a `04.jpg`); a tela 4 foi reescrita e renderizada de novo pelo revisor.
 - Fatos: só "na Netflix" para Hotel Assombrado e Wandinha. Sem "nova temporada", "estreia hoje", número de temporadas, episódios ou duração (estreia da T2 de Hotel Assombrado não confirmada). O revisor deve confirmar o catálogo no app da Netflix Brasil.
 - Regra de corte da pauta: sem aprovação do revisor da peça 01 até 19h50, Reels vai para 21h e Short para 21h30. Sem aprovação até 21h20, não publica hoje.
 - Nada foi criado para 10/10.
