@@ -7,6 +7,8 @@ description: Gera o painel de conteúdo do Série Certa (backlog, o que saiu, re
 1. Rode `python painel/painel.py --metricas`.
    - Na nuvem, o script baixa do Supabase os textos de todos os dias (pauta, revisão, estado das publicações) e as métricas guardadas, e devolve as métricas atualizadas para `pacotes-redes/painel/metricas.json`.
    - Sem internet ou sem credenciais, rode sem `--metricas`. O painel sai só com backlog e status.
+   - A coleta varre a **conta inteira** (Instagram: feed, Reels e os Stories no ar; YouTube: todos os vídeos do canal, inclusive agendados), não só o que saiu pelo `publicar.py`. Na primeira vez, puxa até 2 anos de histórico; depois, atualiza os últimos 30 dias (`--dias`).
+   - Publicações do pacote são ligadas às mídias pelo id do `estado-publicacao.json`. Sem id, o painel tenta pela primeira linha da legenda/título e pelo horário e marca como "conciliado". O que está na conta e não veio de nenhum pacote aparece como "fora do pacote".
 2. Abra `painel/index.html` (arquivo único, funciona offline). Se o Bruno quiser um link, publique esse arquivo como artefato.
 3. Responda em até 5 linhas: publicadas no período, o que está na fila, o que precisa de atenção (bloqueado, erro, perdido, sem registro) e o destaque de envios/alcance.
 
