@@ -89,3 +89,15 @@ Fatos rechecados com WebSearch em 13/10. O WebFetch segue bloqueado, então nada
   - True Blood T1 está no Prime Video desde 05/10 ([Oficina da Net](https://www.oficinadanet.com.br/amazon-prime-video/73210-lancamentos-prime-video-outubro-2026), [Fast Company Brasil](https://fastcompanybrasil.com/tech/prime-video-chega-catalogo-outubro-2026/)).
 - **Técnico:** chamei `validar()` direto (sem rodar `publicar.py`), e voltou `[]`. A legenda tem 713 caracteres e é igual à de `legenda.txt`. O `quando` é 13:30 −03:00, e com `MAX_ATRASO_HORAS=4` a janela fecha às **17h30**. Depois disso a peça vira "perdido". O `estado-publicacao.json` ainda diz "invalido" (falta de `series`), o que não trava, porque o publicador revalida.
 - **Veredito:** 01 **segue aprovado**.
+
+## Correção das 19h: pôster oficial
+
+- **03-stories-mia-acertou:** confirmei no `cena.html` que nenhuma das 4 telas indica série. Elas só perguntam "a última série que a MIA te indicou... acertou?", então `"series": []` está correto. `validar()` voltou `[]`. **Segue aprovada.**
+- **04-reels-selvagens-ep02-orfa-the-office:**
+  - **Pôster:** `imagens/posters.json` aponta para o TVmaze 84611, "The Paper", com estreia em 04/09/2025. É o spin-off de The Office (Domhnall Gleeson, Oscar Nuñez), ou seja, a série do roteiro, não uma homônima. É o pôster oficial com as cores originais.
+  - **Encaixe:** extraí os quadros de 26 s a 31,5 s. O pôster aparece inteiro dentro da "TV", à esquerda de "THE PAPER", sem corte e sem sobreposição. O chip "T2 · quinta, 15/10" sobrepõe o "T1 no catálogo" só durante a animação de carimbo (menos de 0,3 s) e depois assenta lado a lado. Não precisa corrigir.
+  - **Marca no pôster:** o "peacock ORIGINAL" impresso no pôster fica ilegível no tamanho da cena (cerca de 250 px). Aceitei pela regra do pôster oficial (CLAUDE.md, regra 3).
+  - **Vídeo e capa:** `video.mp4` tem 1080×1920, 39,98 s, com áudio. A `capa.jpg` é o quadro "ÓRFÃO DE ESCRITÓRIO", sem mudança e dentro da identidade.
+  - **Validação:** `"series": ["The Paper (2025)"]` cobre a única série indicada. `validar()` voltou `[]`.
+  - **Decisão:** **segue aprovada.**
+- Não rodei `publicar.py` nem `nuvem.py`. Fatos, voz e legenda não foram rechecados porque não mudaram desde a revisão da manhã.
