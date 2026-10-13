@@ -18,9 +18,10 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Como resolver:** `scripts/posters.py <pasta> "Série (ano)" ...`, colocar `<div class="capa"><img src="imagens/...">` na cena, renderizar, preencher `"series"` e passar pelo revisor. Ver também "Branch de trabalho atrás do main".
 
 ### 2026-10-13 — Instagram responde `API access blocked` (OAuthException, code 200)
-- **Sintoma:** `Instagram 400: {"error":{"message":"API access blocked.","type":"OAuthException","code":200}}` ao publicar o carrossel.
-- **Causa:** bloqueio do lado da Meta (app/token), não do pacote. Diagnóstico pendente com o Bruno no painel de desenvolvedores da Meta.
-- **Como evitar:** não insistir: cada peça do Instagram tem só 2 tentativas no `publicar.py`.
+- **Sintoma:** `Instagram 400: {"error":{"message":"API access blocked.","type":"OAuthException","code":200}}` na 1ª tentativa do carrossel (~16h); a mesma peça publicou ~50 min depois sem mudar nada.
+- **Causa:** bloqueio passageiro do lado da Meta. Não era token (válido), convite de testador (aceito em 9/10), app em Desenvolvimento, marcação de IA nem a URL do Supabase — tudo isso foi testado e funcionou.
+- **Como diagnosticar sem gastar tentativa:** `GET graph.instagram.com/v25.0/me` (lê a conta) e `POST /<ig_user_id>/media` com uma `image_url` pública (cria rascunho que não vai ao ar e expira em 24 h). Se ambos dão 200, só tente de novo.
+- **Atenção:** cada peça do Instagram tem só 2 tentativas no `publicar.py`; não gaste a segunda antes desse teste.
 
 ## Git e branches
 
