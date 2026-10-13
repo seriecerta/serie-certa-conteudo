@@ -613,6 +613,8 @@ def gerar_html(inv, metricas):
     destino.write_text('<!doctype html>\n<html lang="pt-BR"><head><meta charset="utf-8">'
                        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
                        f"</head><body>\n{corpo}\n</body></html>\n", encoding="utf-8")
+    # mesma página sem o esqueleto <html>/<head>, no formato que a publicação como artefato do claude.ai espera
+    (PAINEL / "artefato.html").write_text(corpo + "\n", encoding="utf-8")
     return destino
 
 

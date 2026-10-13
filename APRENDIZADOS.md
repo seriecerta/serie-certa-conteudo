@@ -6,6 +6,12 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 
 ## Painel e ferramentas
 
+### 2026-10-13 — Texto de rotina só muda de dentro da própria sessão
+- **Sintoma:** `update_trigger: a routine's instructions (its prompt) can be changed only from the conversation or thread the routine posts into`.
+- **Causa:** o prompt de uma rotina presa a uma sessão fixa (`persistent_session_id`) só pode ser editado por essa sessão. Nome, horário e liga/desliga podem ser mudados de qualquer sessão.
+- **Como evitar:** escreva o prompt das rotinas como "siga o skill X" e ponha os passos no `SKILL.md`, que muda por commit. Para mudar o texto da rotina, peça na sessão dela (ex.: "Série Certa · painel (métricas)").
+- **Onde mexer:** `.claude/skills/<skill>/SKILL.md`.
+
 ### 2026-10-13 — Script novo não pode ir para `scripts/`
 - **Sintoma:** `Write` em `scripts/painel.py` falhou com "File is in a directory that is denied by your permission settings".
 - **Causa:** `.claude/settings.json` nega `Edit(scripts/**)` e `Write(scripts/**)` de propósito, para proteger as travas do publicador.
