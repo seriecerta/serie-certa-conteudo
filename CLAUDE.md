@@ -14,6 +14,7 @@ A estratégia vive em `estrategia/`. Nada é criado fora dela.
 - @estrategia/06-voz-mia.md — personalidade e regras de escrita da MIA
 - @estrategia/07-pilares-e-formatos.md — pilares de conteúdo e regras de cada formato
 - @estrategia/08-cronograma.md — grade diária e horários
+- @estrategia/10-experimentos.md — ciclo de melhoria contínua: período de base, revisão semanal, testes A/B e o que os agentes mudam sozinhos
 - @estrategia/09-identidade-visual-e-formatos.md — o visual e os formatos que já estão no ar (Relógio, Tradutor, Selvagens do Sofá, Qual é você?)
 
 Vídeos, carrosséis e Stories são feitos **só pelo motor** (`motor/` + `scripts/renderizar.py`), no padrão visual dos posts.
@@ -62,6 +63,7 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 - Formato diário **Lista da MIA** (YouTube 12h00): ver `estrategia/07-pilares-e-formatos.md`
 - `/publicar` — publica no Instagram o que chegou no horário (tarefa agendada de hora em hora)
 - `/estrategia` — cria ou revisa TAM/SAM/SOM, ICP, JTBD, posicionamento, proposta de valor e GTM
+- `/revisao-semanal` — relatório da semana, testes A/B e propostas de melhoria (rotina de quarta, 18h17; a 1ª em 21/10)
 - `/painel` — gera `painel/index.html`: backlog, publicados, redes, formatos, desdobramentos, engajamento e cliques (só leitura)
 
 ## Fechamento de sessão (retroalimentação)

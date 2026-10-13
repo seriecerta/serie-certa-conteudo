@@ -28,7 +28,9 @@
       "Bash(python scripts/configurar_instagram.py:*)",
       "Bash(python3 scripts/configurar_instagram.py:*)",
       "Bash(python painel/painel.py:*)",
-      "Bash(python3 painel/painel.py:*)"
+      "Bash(python3 painel/painel.py:*)",
+      "Bash(python painel/relatorio.py:*)",
+      "Bash(python3 painel/relatorio.py:*)"
     ],
     "deny": [
       "Read(.env)",

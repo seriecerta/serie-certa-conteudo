@@ -30,6 +30,7 @@ Stories: a API publica **sem stickers** (sem enquete, link ou caixinha). O CTA v
 }
 ```
 - **Campo `"series"` obrigatório em toda publicação**: lista com o nome de cada série indicada na peça, igual ao usado no `scripts/posters.py` (ex.: `"series": ["The Paper", "Carrie, a Estranha (2026)"]`; `[]` se a peça não indica nenhuma). O publicador **recusa** a publicação se faltar o campo, se alguma série não tiver pôster em `imagens/` ou se o pôster não aparecer na `cena.html`.
+- **Peça de teste A/B** (a pauta diz `Teste: <id> · variante <X>`): acrescente na publicação `"experimento": {"id": "<id>", "variante": "<X>"}`. O publicador ignora esse campo; o painel e o relatório semanal leem.
 - Tipos Instagram: `REELS`, `CAROUSEL` (arquivos `quadros/01.jpg`…), `STORIES` (arquivos `quadros/01.jpg`…), `IMAGE`.
 - **Stories das 10h00 (grade de `08-cronograma.md`):** os cards do carrossel do dia refeitos em 9:16 (`--imagens`, 1080×1920), 3–5 telas + 1 tela de CTA, como publicação `STORIES` com `"quando": "<data>T10:00:00-03:00"`. Na mesma pasta do carrossel (`id` `ig-stories`, quadros em `stories/`) ou numa pasta própria com `"peca_mae"`. `"series"` igual ao do carrossel se as telas mostram as séries.
 - Tipos YouTube: `short` (o mesmo `video.mp4` do Reels) ou `longo` (`video-16x9.mp4`, com `thumbnail` se existir).

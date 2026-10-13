@@ -494,6 +494,7 @@ const COLS = [
   ['shares', 'Envios', null, true], ['saved', 'Salvos', null, true], ['profile_visits', 'Visitas perfil', null, true], ['follows', 'Seguiu', null, true],
   ['ig_reels_avg_watch_time', 'Assist. média', (p) => p.met?.ig_reels_avg_watch_time ? `${fmt(p.met.ig_reels_avg_watch_time / 1000)} s` : '—', true],
   ['eng', 'Engaj.', (p) => pct(p._eng), true], ['cliques', 'Cliques UTM', null, true],
+  ['experimento', 'Teste A/B', (p) => esc(p.experimento || '—')],
 ];
 let ordem = { k: 'quando', dir: -1 };
 function engajamento(sel) {
@@ -502,7 +503,7 @@ function engajamento(sel) {
     const inter = ['likes', 'comments', 'shares', 'saved'].reduce((s, k) => s + (m[k] || 0), 0);
     return { ...p, _eng: r ? inter / r : null, _cl: cliquesPorCampanha[p.campanha] ?? null };
   });
-  const val = (p, k) => k === 'eng' ? p._eng : k === 'cliques' ? p._cl : ['quando', 'titulo', 'plataforma', 'formato', 'status'].includes(k) ? p[k] : p.met?.[k];
+  const val = (p, k) => k === 'eng' ? p._eng : k === 'cliques' ? p._cl : ['quando', 'titulo', 'plataforma', 'formato', 'status', 'experimento'].includes(k) ? p[k] : p.met?.[k];
   linhasT.sort((a, b) => { const x = val(a, ordem.k), y = val(b, ordem.k); if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * ordem.dir; });
   const tEng = $('#tEng');
   tEng.innerHTML = `<thead><tr>${COLS.map(([k, n, , num]) => `<th class="${num ? 'n' : ''}" aria-sort="${ordem.k === k ? (ordem.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-k="${k}">${n}${ordem.k === k ? (ordem.dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`).join('')}</tr></thead>
