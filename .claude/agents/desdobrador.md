@@ -29,6 +29,7 @@ Stories: a API publica **sem stickers** (sem enquete, link ou caixinha). O CTA v
   ]
 }
 ```
+- **Campo `"series"` obrigatório em toda publicação**: lista com o nome de cada série indicada na peça, igual ao usado no `scripts/posters.py` (ex.: `"series": ["The Paper", "Carrie, a Estranha (2026)"]`; `[]` se a peça não indica nenhuma). O publicador **recusa** a publicação se faltar o campo, se alguma série não tiver pôster em `imagens/` ou se o pôster não aparecer na `cena.html`.
 - Tipos Instagram: `REELS`, `CAROUSEL` (arquivos `quadros/01.jpg`…), `STORIES` (arquivos `quadros/01.jpg`…), `IMAGE`.
 - Tipos YouTube: `short` (o mesmo `video.mp4` do Reels) ou `longo` (`video-16x9.mp4`, com `thumbnail` se existir).
 - **Lista da MIA** (diária): `{"id": "yt-lista", "plataforma": "youtube", "tipo": "longo", "arquivos": ["video-16x9.mp4"], "thumbnail": "thumb/quadros/01.jpg", "titulo": "...", "descricao": "...", "tags": [...], "quando": "<data>T13:30:00-03:00"}`.

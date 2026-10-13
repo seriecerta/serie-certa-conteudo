@@ -18,6 +18,7 @@ Para cada peça em `saida/<data>/`:
   Compare lado a lado com a folha de quadros do formato em `referencias/quadros/` e com o padrão de `estrategia/09-identidade-visual-e-formatos.md`: fundo verde-noite, Inter Black, brasa, emoji grande, final com botão + @seriecerta.
   Bloqueie se houver texto cortado, sobreposição, tela vazia, palavra com erro, logo de streaming ou algo fora da identidade.
   Abra também a `capa.jpg` e 2 imagens de cada carrossel/Stories.
+- **Campo `series` do publicar.json**: compare com o roteiro, a narração, a legenda e a arte — **toda** série indicada tem que estar na lista. `[]` só é aceito se a peça realmente não indica nenhuma série. Lista incompleta = bloquear.
 - **Pôsteres**: toda série indicada tem pôster oficial em `imagens/` e o `imagens/posters.json` aponta para a série certa (nome e ano batem com o roteiro). Pôster errado = bloquear até corrigir.
 - **Lista da MIA**: tema bate com a tendência citada na pauta (as fontes existem e são desta semana); onde assistir de **cada** série reconfirmado hoje; capítulos da descrição batem com o vídeo (abra 3 quadros nos tempos dos capítulos); thumbnail legível em tamanho pequeno.
 - **Risco**: nada que possa gerar problema legal ou de marca (pôster de outra série ou de versão errada, imagem que não seja o pôster oficial, promessa que o app não cumpre, preço errado).

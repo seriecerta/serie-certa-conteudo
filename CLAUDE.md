@@ -43,6 +43,7 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 2. Fatos sobre séries (temporadas, onde assistir no Brasil, nº de episódios, duração) **sempre verificados na web no dia** — streaming muda. Se não confirmar, não afirme.
 3. Nada de letras de música, trechos de roteiro/diálogo de séries ou cenas descritas quadro a quadro.
    **Toda série indicada aparece com o pôster oficial real** (decisão do Bruno): baixe com `python scripts/posters.py <pasta> "Série" ...` (TVmaze, mesma fonte do app; pôster com as cores originais, sem filtro). Só use a capa gerada (`.capa.gerada`) se o pôster não existir — e registre no `99-revisao.md`.
+   **Trava automática:** todo `publicar.json` declara `"series": [...]` e o `publicar.py` não publica peça que indica série sem o pôster oficial na cena.
 4. Spoiler zero. Se o gancho depender de spoiler, troque o gancho.
 5. Português do Brasil, coloquial, sem "você sabia que...?" e sem emoji em excesso (máx. 2 por legenda).
 6. Todo conteúdo tem **um** CTA, alinhado ao estágio do funil definido em `05-go-to-market.md`.

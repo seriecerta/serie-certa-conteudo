@@ -33,6 +33,7 @@ import json
 import mimetypes
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import time
@@ -126,6 +127,36 @@ def validar(pub, pasta) -> list:
             erros.append("YouTube não aceita < ou > no título/descrição")
     else:
         erros.append(f"plataforma desconhecida: {pub['plataforma']}")
+    erros += validar_posters(pub, pasta)
+    return erros
+
+
+def _slug(t: str) -> str:
+    import unicodedata
+    t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", re.sub(r"\s*\(\d{4}\)\s*$", "", t).lower()).strip("-")
+
+
+def validar_posters(pub, pasta) -> list:
+    """Regra do Bruno: toda série indicada sai com o pôster oficial.
+    Cada publicação declara "series": [...] (lista vazia se a peça não indica série).
+    Para cada série exige: pôster baixado por scripts/posters.py (imagens/posters.json) e usado na cena."""
+    if "series" not in pub:
+        return ['falta o campo "series" no publicar.json (lista das séries indicadas; [] se nenhuma)']
+    series = pub.get("series") or []
+    if not series:
+        return []
+    registro = ler_json(pasta / "imagens" / "posters.json", {})
+    cena = (pasta / "cena.html").read_text(encoding="utf-8") if (pasta / "cena.html").exists() else ""
+    erros = []
+    for nome in series:
+        alvo = _slug(nome)
+        arq = next((k for k, v in registro.items()
+                    if alvo and alvo in {_slug(v.get("pedido", "")), _slug(v.get("encontrado", "")), _slug(k[:-4])}), None)
+        if not arq or not (pasta / "imagens" / arq).exists():
+            erros.append(f"sem pôster oficial de '{nome}' (rode scripts/posters.py)")
+        elif f"imagens/{arq}" not in cena:
+            erros.append(f"pôster de '{nome}' não aparece na cena (use <div class=\"capa\"><img src=\"imagens/{arq}\"></div>)")
     return erros
 
 
@@ -333,8 +364,9 @@ def processar_dia(data: str, simular: bool):
         for pub in plano.get("publicacoes", []):
             chave = pub["id"]
             atual = estado.get(chave, {})
-            if atual.get("status") in ("publicado", "agendado", "perdido", "invalido"):
+            if atual.get("status") in ("publicado", "agendado", "perdido"):
                 continue
+            # "invalido" não é definitivo: se a peça for corrigida (ex.: pôster colocado), ela volta a valer
             if atual.get("tentativas", 0) >= (1 if pub["plataforma"] == "youtube" else 2):
                 continue  # não insiste: evita post duplicado
             q = quando(pub)
@@ -355,7 +387,7 @@ def processar_dia(data: str, simular: bool):
                 msg = f"✗ {pasta.name}/{chave}: {'; '.join(erros)}"
                 if simular:
                     print(f"[simulação] {msg}")
-                else:
+                elif atual.get("erros") != erros:  # registra só quando o problema muda (sem repetir de hora em hora)
                     estado[chave] = {"status": "invalido", "erros": erros}
                     log(pasta_dia, msg)
                     salvar_json(estado_arq, estado)

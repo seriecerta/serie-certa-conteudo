@@ -31,6 +31,7 @@ Fora da nuvem: se `saida/<data>/revisao.json` já existir, pule para o passo 9.
 ## Se algo falhar
 - Sem acesso à ElevenLabs: siga sem áudio/vídeo; peças sem vídeo ficam fora de `aprovadas`.
 - `renderizar.py` acusa "palavra não encontrada na narração": troque o `@palavra` da cena pela grafia que está em `narracao.json`.
+- `publicar.py` acusa "sem pôster oficial" ou "pôster não aparece na cena": baixe com `scripts/posters.py`, coloque na cena com `.capa > img`, renderize de novo e rode o revisor. A peça volta a valer sozinha na próxima rodada.
 - `posters.py` sem acesso (403 ou erro de rede): o domínio `api.tvmaze.com`/`static.tvmaze.com` precisa estar liberado no ambiente; registre em `99-revisao.md`. Sem pôster, a peça de lista não sai.
 - Chromium ausente (erro do Playwright): rode `python -m playwright install --with-deps chromium` uma vez e tente de novo.
 - Erro de crédito na ElevenLabs ou de API das redes: não repita em loop; registre em `99-revisao.md`.
