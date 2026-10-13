@@ -31,6 +31,8 @@ Stories: a API publica **sem stickers** (sem enquete, link ou caixinha). O CTA v
 ```
 - Tipos Instagram: `REELS`, `CAROUSEL` (arquivos `quadros/01.jpg`…), `STORIES` (arquivos `quadros/01.jpg`…), `IMAGE`.
 - Tipos YouTube: `short` (o mesmo `video.mp4` do Reels) ou `longo` (`video-16x9.mp4`, com `thumbnail` se existir).
+- **Lista da MIA** (diária): `{"id": "yt-lista", "plataforma": "youtube", "tipo": "longo", "arquivos": ["video-16x9.mp4"], "thumbnail": "thumb/quadros/01.jpg", "titulo": "...", "descricao": "...", "tags": [...], "quando": "<data>T13:30:00-03:00"}`.
+  Descrição: 2 linhas de gancho, link `https://seriecerta.online/?utm_source=youtube&utm_medium=organico&utm_campaign=<data>-lista`, capítulos com o tempo de entrada de cada série (pegue de `narracao.json`, formato `00:00 Abertura`, `00:14 nº 5 — Série`…; o primeiro precisa ser 00:00), e uma linha "Onde assistir" por série. Tags: nomes das séries, do ator/atriz/tema da tendência, "séries", "o que assistir". Comentário fixado em `comentario-fixado.txt` com o link do app.
 - `quando` com fuso `-03:00`, horário do cronograma. Datas de amanhã vão na pasta de amanhã.
 - Legenda no estilo dos posts (ver ficha "Quarta, 21h" em `09-…`): 2–3 linhas curtas, um CTA, 4–6 hashtags, máx. 2 emojis, ≤ 2.200 caracteres. Título YouTube sem `<` ou `>`.
 - Comentário fixado sugerido em `comentario-fixado.txt` (não é publicado automaticamente).

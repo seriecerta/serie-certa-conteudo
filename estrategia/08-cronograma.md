@@ -13,6 +13,10 @@
 | Sáb | Carrossel 11h + Reels 19h | "O que você vai ver hoje?" | Short 11h | Série pro seu humor |
 | Dom | Reels 20h (domingo à noite) | Caixinha + link | Short 17h | Prova / domingo |
 
+## Todos os dias — YouTube "Lista da MIA" às 13h30
+Vídeo 16:9 com uma lista de séries indicadas pela MIA (3 a 7 séries, 2–6 min). O **tema muda todo dia** e é escolhido pelo `estrategista` com base no que está bombando nas redes e nos streamings: pode ser por humor, gênero, ator, atriz, criador, plataforma, lançamento ou momento ("acabou X, vê essas"). Regras em `07-pilares-e-formatos.md` → Lista da MIA.
+Na quinta, a Lista da MIA das 13h30 convive com o vídeo longo semanal das 19h (temas diferentes).
+
 ## Desdobramento do vídeo longo (peça-mãe semanal)
 - Vídeo longo (qui) → 7 Shorts/Reels (1 por série) espalhados na semana seguinte
 - → 1 carrossel "as 7 séries pra quando você tá [humor]"

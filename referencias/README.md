@@ -13,6 +13,7 @@ Os vídeos aqui são cópias leves (540×960) só para consulta. Telas em alta: 
 - **Uma ideia por tela**; algo muda a cada frase da MIA (2–3 s no máximo parado).
 - Emoji grande como "personagem" da tela (😎 😩 💀 🫂 👀 😴 🙌).
 - Interfaces genéricas desenhadas (celular, catálogo, chat, notificação, barra de progresso) — **nunca logo de streaming**.
+- Quando uma série é indicada, ela aparece com o **pôster oficial real** (`scripts/posters.py`, componente `.capa > img`).
 - Contadores e placares para o absurdo ("TRAILERS 3 × EPISÓDIOS 0", "rolagens: 5", "série assistida: 0 min").
 - Carimbos tortos em brasa para as viradas ("JÁ VI", "9 TEMPORADAS?!", "BLOQUEADA", "MUITO.").
 - Fecho: pergunta para comentar (com 👇) + promessa de parte 2 + botão brasa ("SEGUE PRA VER A PARTE 2" / "SEGUE PRA NÃO PERDER") + `@seriecerta`.

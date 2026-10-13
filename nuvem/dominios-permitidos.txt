@@ -7,3 +7,5 @@ oauth2.googleapis.com
 youtube.googleapis.com
 cdn.playwright.dev
 playwright.download.prss.microsoft.com
+api.tvmaze.com
+static.tvmaze.com

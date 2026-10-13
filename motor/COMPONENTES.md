@@ -62,6 +62,18 @@ No `<body>`:
 
 Pode criar estilos próprios num `<style>` dentro do `cena.html` quando a ideia pedir (o renderizador inclui).
 
+## Pôster oficial (obrigatório quando a peça indica uma série)
+`python scripts/posters.py <pasta> "Ted Lasso" "The Office (2005)"` baixa o pôster oficial (TVmaze) para `imagens/<slug>.jpg`
+e registra a origem em `imagens/posters.json`. Na cena: `<div class="capa"><img src="imagens/ted-lasso.jpg"></div>`
+(funciona em 9:16 e 16:9; cores originais, sem filtro). `.capa.gerada` com `<span>` só quando a série não tem pôster.
+
+## Paisagem 16:9 — Lista da MIA (YouTube)
+`<body class="paisagem" style="--mood:var(--sono)">` + `--formato 16x9`. Exemplos: `motor/exemplos/lista-da-mia-16x9.html` e `lista-da-mia-thumb.html`.
+- `.lista-abre` (`.num` gigante na cor do humor + `.txt` com `<em>`)
+- `.serie-card` = `.capa > img` + bloco com `.pos` ("nº 2 de 5"), `h2` (nome), `.metas` (`span.onde` = onde assistir em brasa + temporadas, duração), `.porque` (`<b>` em destaque), `.nao-e`
+- `.progresso` (um `<i>` por série; `.on` nas já mostradas) · `.demo > .tela > img|video` (demo do app) · `.thumb` (`.num` + `.txt`)
+- Nas telas de série use `data-legenda="off"` (o texto já está no card); a legenda grande fica para abertura e fecho.
+
 ## Regras de ouro (tiradas dos posts que funcionaram)
 - Uma ideia por tela. Cada frase da MIA troca ou acrescenta algo visual — nada fica parado mais de ~2,5 s.
 - Topo seguro: nada importante acima de 130 px nem abaixo de 1650 px (interface do Instagram).

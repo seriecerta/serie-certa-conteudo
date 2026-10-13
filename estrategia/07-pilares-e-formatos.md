@@ -28,6 +28,14 @@ Vale até ~jan/2027 (ver `05-go-to-market.md`).
 - Estrutura fixa: 0–20 s dor + promessa → contagem de séries (por que combina, onde assistir, tempo total, pra quem não é) → 15 s de demo do app no meio → fim com link fixado + tela final para o próximo humor.
 - Entregar: roteiro completo, narração por bloco, título (3 opções ranqueadas, escolher a 1ª), descrição com capítulos e UTMs, tags, texto da thumb, comentário fixado.
 
+### Lista da MIA — YouTube, todos os dias às 13h30 (16:9, 1920×1080)
+- **Tema do dia escolhido pelo `estrategista` a partir do que está em alta** (ver `.claude/agents/estrategista.md` → Lista da MIA). Eixos possíveis: humor, gênero, ator, atriz, criador/diretor, plataforma, lançamento da semana, "acabou X? vê essas", data/evento.
+- 3 a 7 séries, 2–6 min. Ordem de contagem regressiva (nº 1 por último).
+- Estrutura: 0–15 s gancho ligado à tendência + promessa ("5 séries com a atriz de X") → cada série: **pôster oficial**, nome, onde assistir no Brasil, temporadas/duração, por que combina, pra quem não é → (opcional) 10–15 s de demo do app se houver gravação em `assets/demo/` → fim: pergunta pros comentários + link fixado.
+- Visual: motor em paisagem (`motor/exemplos/lista-da-mia-16x9.html`), `--mood` na cor do humor/gênero do dia; thumbnail `motor/exemplos/lista-da-mia-thumb.html` (número gigante + 3–5 palavras + emoji).
+- Entregar: `roteiro.md` (com fonte da tendência e fonte de "onde assistir" de cada série), `narracao.txt`, `cena.html`, `video-16x9.mp4`, `thumb/quadros/01.jpg`, título (≤ 70 caracteres, com o nome que está em alta), descrição com capítulos (00:00 …) e UTM, tags, comentário fixado.
+- **Pôster real de todas as séries** (`scripts/posters.py`). Sem pôster → troque a série por outra que tenha.
+
 ### Carrossel Instagram (1080×1350)
 - 7–10 cards. Card 1 = gancho; último = CTA salvar.
 - Entregar: `cena.html` com um `section.quadro` por card (motor, `--imagens --formato 4x5`) + legenda.

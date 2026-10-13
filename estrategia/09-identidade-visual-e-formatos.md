@@ -7,7 +7,8 @@ Referência obrigatória para o `roteirista`. A execução técnica está em `mo
 - Fonte **Inter Display Black** (títulos, legendas) — já embutida no motor. Serifa itálica (Instrument) só para frases de efeito ("A natureza é cruel.").
 - Emojis grandes (estilo Noto) como "personagens" de cada tela.
 - 8 cores de humor do app (sono, ansioso, romântico, triste, animado, estressado, curioso, feliz).
-- Sem logos/nomes de streaming na arte. Celulares, catálogos e ícones são genéricos.
+- Sem logos de streaming na arte (o nome do streaming pode aparecer em texto, no selo "onde assistir"). Celulares, catálogos e ícones são genéricos.
+- **Séries indicadas sempre com o pôster oficial real**, cores originais (baixado por `scripts/posters.py`). Capa gerada só quando não existe pôster.
 
 ## Áudio
 - Voz: **MIA – Série Certa** (`4guCIgdAFz4tp4vfnsk0`), modelo **eleven_v3**. Pode usar tags de emoção do v3 no texto: `[rindo baixinho]`, `[suspira]`, `[sussurrando]`, `[animada]`.
@@ -21,6 +22,7 @@ Referência obrigatória para o `roteirista`. A execução técnica está em `mo
 | **Selvagens do Sofá** (documentário) | narração de documentário de natureza sobre o "brasileiro adulto" no sofá; binóculo, registro de campo, legenda grande sincronizada | "Selvagens do Sofá · Ep. 01" |
 | **Qual é você?** | 4 tipos numerados com cor, cada um com "superpoder"; tela final com os 4 cards e "comenta o número" | "Os 4 tipos de pessoa escolhendo série" |
 | **Recibo / placar** | cupom ou placar resumindo o fracasso ("série assistida: 0 min") | fecho do "Horário de almoço" |
+| **Lista da MIA** (YouTube diário 13h30, 16:9) | tema do dia pela tendência; contagem regressiva de séries com pôster oficial, onde assistir, por que combina e pra quem não é | `motor/exemplos/lista-da-mia-16x9.html` |
 | **Respondendo seu humor** (parte 2) | MIA lê comentários e indica 1 série por humor | prometido nos finais "segue pra ver a parte 2" |
 
 Formato identificação + humor, **sem venda**. O app aparece no fim como solução natural ("amanhã eu respondo com a série certa pro seu humor") ou em demo de 15 s nos vídeos longos.

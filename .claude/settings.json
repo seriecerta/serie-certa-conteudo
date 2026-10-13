@@ -18,7 +18,9 @@
       "Bash(date:*)",
       "Bash(TZ=America/Sao_Paulo date:*)",
       "Bash(mkdir:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(python scripts/posters.py:*)",
+      "Bash(python3 scripts/posters.py:*)"
     ],
     "deny": [
       "Read(.env)",

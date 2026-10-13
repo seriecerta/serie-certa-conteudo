@@ -203,3 +203,60 @@ body.preto { background: radial-gradient(120% 70% at 50% 40%, #0E1613 0%, #000 7
 
 /* confete */
 .confete i { position: absolute; width: 18px; height: 34px; border-radius: 4px; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAISAGEM 16:9 (1920×1080) — vídeo diário "Lista da MIA" no YouTube
+   Use <body class="paisagem"> e renderize com --formato 16x9.
+   ═══════════════════════════════════════════════════════════════════════════ */
+body.paisagem {
+  background:
+    radial-gradient(60% 75% at 30% 35%, rgba(46, 78, 68, .55) 0%, rgba(20, 38, 32, .35) 45%, transparent 75%),
+    radial-gradient(90% 90% at 80% 110%, #050A08 0%, transparent 60%),
+    linear-gradient(160deg, #13211C 0%, #0D1814 55%, #070D0A 100%);
+}
+.paisagem .cena { padding: 0 140px; }
+.paisagem .topo { top: 64px; left: 90px; right: 90px; }
+.paisagem .legenda { top: auto; bottom: 70px; font-size: 56px; left: 200px; right: 200px; }
+.paisagem .titulo   { font-size: 110px; }
+.paisagem .titulo-g { font-size: 170px; }
+
+/* abertura da lista: "7 séries pra quando você tá COM SONO" */
+.lista-abre { display: flex; align-items: center; gap: 90px; }
+.lista-abre .num { font-size: 460px; font-weight: 900; line-height: .8; letter-spacing: -.06em; color: var(--mood); }
+.lista-abre .txt { font-size: 104px; font-weight: 900; line-height: 1.02; letter-spacing: -.03em; }
+.lista-abre .txt em { font-style: normal; color: var(--mood); }
+
+/* card de série: [capa] [número · título · meta · por que combina · pra quem não é] */
+.serie-card { display: grid; grid-template-columns: 460px 1fr; gap: 90px; align-items: center; width: 1640px; margin-top: 30px; }
+.capa { width: 460px; height: 690px; border-radius: 36px; overflow: hidden; position: relative;
+  box-shadow: 0 50px 110px rgba(0,0,0,.6), 0 0 0 3px rgba(241,232,214,.14); }
+.capa img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* sem pôster: capa gerada na cor do humor/gênero, como no app */
+.capa.gerada { background: var(--c, var(--mood)); display: flex; align-items: flex-end; padding: 46px; }
+.capa.gerada::before { content: ''; position: absolute; inset: 0;
+  background: radial-gradient(120% 70% at 80% 10%, rgba(255,255,255,.28), transparent 55%), radial-gradient(90% 60% at 0% 100%, rgba(0,0,0,.25), transparent 60%); }
+.capa.gerada span { position: relative; font-family: 'Instrument', serif; font-style: italic; font-weight: 400; font-size: 92px; line-height: .95; color: var(--ink); }
+.serie-card .pos { font-size: 40px; color: var(--mood); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; }
+.serie-card h2 { font-size: 112px; font-weight: 900; line-height: .98; letter-spacing: -.035em; margin-bottom: 30px; }
+.metas { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+.metas span { background: #1E2D27; border: 3px solid #2F443B; border-radius: 999px; padding: 12px 28px; font-size: 34px; font-weight: 700; }
+.metas span.onde { background: var(--brasa); border-color: var(--brasa); color: var(--ink); }
+.porque { font-size: 48px; font-weight: 700; line-height: 1.28; color: var(--papel); max-width: 1000px; }
+.porque b { color: var(--mood); font-weight: 900; }
+.nao-e { margin-top: 30px; font-size: 36px; font-weight: 600; color: var(--papel-2); display: flex; gap: 14px; align-items: baseline; }
+.nao-e::before { content: 'pra quem não é'; font-size: 26px; text-transform: uppercase; letter-spacing: .08em; color: var(--brasa); font-weight: 800; white-space: nowrap; }
+/* trilho de progresso da lista (1 de 7 …) */
+.progresso { position: absolute; left: 140px; right: 140px; bottom: 54px; display: flex; gap: 12px; }
+.progresso i { flex: 1; height: 8px; border-radius: 8px; background: rgba(241,232,214,.14); }
+.progresso i.on { background: var(--mood); }
+
+/* demo do app (15 s no meio do vídeo): moldura de celular com print/gravação do app */
+.demo { display: flex; align-items: center; gap: 110px; }
+.demo .tela { width: 470px; height: 960px; border-radius: 70px; border: 8px solid #2A3B34; overflow: hidden; background: #0B1310; box-shadow: 0 50px 110px rgba(0,0,0,.6); }
+.demo .tela img, .demo .tela video { width: 100%; height: 100%; object-fit: cover; }
+
+/* thumbnail 16:9 (quadro estático): número gigante + frase curta + emoji */
+.thumb { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 70px; width: 1700px; }
+.thumb .num { font-size: 560px; font-weight: 900; line-height: .78; letter-spacing: -.07em; color: var(--mood); }
+.thumb .txt { font-size: 150px; font-weight: 900; line-height: .95; letter-spacing: -.04em; text-transform: uppercase; }
+.thumb .txt em { font-style: normal; color: var(--mood); }

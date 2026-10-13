@@ -41,7 +41,8 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 ## Regras invioláveis
 1. **Narração da MIA: escolha uma versão e siga.** Não entregue variações para o Bruno escolher.
 2. Fatos sobre séries (temporadas, onde assistir no Brasil, nº de episódios, duração) **sempre verificados na web no dia** — streaming muda. Se não confirmar, não afirme.
-3. Nada de letras de música, trechos de roteiro/diálogo de séries ou cenas descritas quadro a quadro. Pôsteres oficiais só se o Bruno colocar em `assets/posters/`.
+3. Nada de letras de música, trechos de roteiro/diálogo de séries ou cenas descritas quadro a quadro.
+   **Toda série indicada aparece com o pôster oficial real** (decisão do Bruno): baixe com `python scripts/posters.py <pasta> "Série" ...` (TVmaze, mesma fonte do app; pôster com as cores originais, sem filtro). Só use a capa gerada (`.capa.gerada`) se o pôster não existir — e registre no `99-revisao.md`.
 4. Spoiler zero. Se o gancho depender de spoiler, troque o gancho.
 5. Português do Brasil, coloquial, sem "você sabia que...?" e sem emoji em excesso (máx. 2 por legenda).
 6. Todo conteúdo tem **um** CTA, alinhado ao estágio do funil definido em `05-go-to-market.md`.
@@ -56,5 +57,6 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 
 ## Skills
 - `/pacote-diario` — roda o fluxo completo do dia, até agendar o YouTube (tarefa agendada da manhã)
+- Formato diário **Lista da MIA** (YouTube 13h30): ver `estrategia/07-pilares-e-formatos.md`
 - `/publicar` — publica no Instagram o que chegou no horário (tarefa agendada de hora em hora)
 - `/estrategia` — cria ou revisa TAM/SAM/SOM, ICP, JTBD, posicionamento, proposta de valor e GTM
