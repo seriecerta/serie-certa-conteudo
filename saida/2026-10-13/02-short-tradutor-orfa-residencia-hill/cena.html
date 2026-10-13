@@ -1,0 +1,121 @@
+<body data-capa="25.1">
+<style>
+  .tv { width: 880px; height: 470px; background: linear-gradient(160deg, #1B2620, #0B1310); border: 6px solid #2A3B34; border-radius: 36px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; box-shadow: 0 40px 90px rgba(0,0,0,.6); }
+  .tv .nome { font-family: 'Mono', monospace; font-weight: 500; font-size: 78px; letter-spacing: .06em; text-transform: uppercase; text-align: center; line-height: 1.1; }
+  .tv .play { font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: #95A598; }
+  .nao-e { font-size: 66px; }
+</style>
+
+  <!-- gancho: texto já no 1º quadro -->
+  <section class="cena centro" data-in="0" data-out="@tradutor">
+    <div class="emoji" data-in="0" data-anim="nada" data-loop="treme" style="font-size:190px">🏚️</div>
+    <div class="esp-m"></div>
+    <div class="titulo caixa" data-in="0" data-anim="nada" data-som="whoosh" data-som-vol="0.6" style="font-size:84px">pra amiga que<br>compara todo<br>terror com</div>
+    <div class="esp-s"></div>
+    <div class="titulo-g brasa caixa" data-in="@residencia" data-anim="carimbo" data-som="carimbo" style="font-size:130px;rotate:-2deg">residência<br>hill</div>
+  </section>
+
+  <!-- abertura do formato -->
+  <section class="cena centro" data-in="@tradutor" data-out="@um">
+    <div class="titulo-g brasa caixa" data-anim="zoom" data-som="carimbo">tradutor</div>
+    <div class="titulo caixa" data-in="@oficial" data-anim="sobe" style="font-size:110px">oficial</div>
+    <div class="esp-s"></div>
+    <div class="apoio" data-in="@orfa" data-anim="fade" style="font-size:52px">da órfã de terror 🖤</div>
+  </section>
+
+  <!-- cabeçalho fixo -->
+  <section class="cena" data-in="@um" data-out="@a">
+    <div class="abs" style="top:140px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:40px">
+      <div class="rotulo" data-anim="desce"><span class="emoji-p">🗣️</span> tradutor da órfã de terror</div>
+      <div class="par" data-anim="desce"><span>quem diz</span><span class="seta-p">→</span><span class="brasa">a verdade</span></div>
+    </div>
+  </section>
+
+  <!-- 1/4 -->
+  <section class="cena" data-in="@um" data-out="@dois" style="padding-top:420px">
+    <div class="rotulo mono" style="font-size:44px;color:#95A598">1/4</div>
+    <div class="esp-s"></div>
+    <div class="card inclina-d" data-in="@nenhum" data-anim="sobe" data-som="whoosh" data-som-vol="0.6"><div class="rotulo-p">o que ela diz</div>
+      <div class="grande">“nenhum terror<br>me assusta mais”</div></div>
+    <div class="seta" data-in="@traducao" data-anim="desce">↓</div>
+    <div class="card brasa-bg inclina-e" data-in="@nenhum#2" data-anim="pop" data-som="pop"><div class="rotulo-p">tradução</div>
+      <div class="grande" style="font-size:84px">nenhum me fez<br>chorar assim</div></div>
+    <div class="emoji" data-in="@chorar" data-anim="pop" data-loop="treme" style="font-size:170px">😭</div>
+  </section>
+
+  <!-- 2/4 -->
+  <section class="cena" data-in="@dois" data-out="@tres" style="padding-top:420px">
+    <div class="rotulo mono" style="font-size:44px;color:#95A598">2/4</div>
+    <div class="esp-s"></div>
+    <div class="card inclina-d" data-in="@so" data-anim="sobe" data-som="whoosh" data-som-vol="0.6"><div class="rotulo-p">o que ela diz</div>
+      <div class="grande">“só vou ver o<br>primeiro episódio”</div></div>
+    <div class="seta" data-in="@traducao#2" data-anim="desce">↓</div>
+    <div class="card brasa-bg inclina-e" data-in="@ja" data-anim="carimbo" data-som="carimbo"><div class="rotulo-p">tradução</div>
+      <div class="grande" style="font-size:84px">já tá no<br>episódio 3</div></div>
+    <div class="linha" data-in="@terceiro" data-anim="pop" style="margin-top:20px">
+      <span class="emoji" data-loop="flutua" style="font-size:150px">🌙</span>
+      <span class="chip escuro mono" style="font-size:44px">02:47</span>
+    </div>
+  </section>
+
+  <!-- 3/4 -->
+  <section class="cena" data-in="@tres" data-out="@quatro" style="padding-top:420px">
+    <div class="rotulo mono" style="font-size:44px;color:#95A598">3/4</div>
+    <div class="esp-s"></div>
+    <div class="card inclina-d" data-in="@tres+0.5" data-anim="sobe" data-som="whoosh" data-som-vol="0.6"><div class="rotulo-p">o que ela diz</div>
+      <div class="grande">“é bom, mas…”</div></div>
+    <div class="seta" data-in="@traducao#3" data-anim="desce">↓</div>
+    <div class="card brasa-bg inclina-e" data-in="@nao" data-anim="pop" data-som="pop"><div class="rotulo-p">tradução</div>
+      <div class="grande" style="font-size:84px">não é<br>Residência Hill</div></div>
+    <div class="emoji" data-in="@hill#2" data-anim="pop" style="font-size:170px">🙄</div>
+  </section>
+
+  <!-- 4/4 -->
+  <section class="cena" data-in="@quatro" data-out="@a" style="padding-top:420px">
+    <div class="rotulo mono" style="font-size:44px;color:#95A598">4/4</div>
+    <div class="esp-s"></div>
+    <div class="card inclina-d" data-in="@to" data-anim="sobe" data-som="whoosh" data-som-vol="0.6"><div class="rotulo-p">o que ela diz</div>
+      <div class="grande">“tô sem série”</div></div>
+    <div class="seta" data-in="@traducao#4" data-anim="desce">↓</div>
+    <div class="card brasa-bg inclina-e" data-in="@to#2" data-anim="carimbo" data-som="carimbo"><div class="rotulo-p">tradução</div>
+      <div class="grande" style="font-size:96px">tô de luto</div></div>
+    <div class="emoji" data-in="@luto" data-anim="pop" data-loop="pulsa" style="font-size:170px">🖤</div>
+  </section>
+
+  <!-- a herdeira -->
+  <section class="cena centro" data-in="@a" data-out="@quer">
+    <div class="rotulo" data-in="@herdeira" data-anim="desce" style="font-size:48px">a <span class="brasa">herdeira</span> <span class="emoji-p">🕯️</span></div>
+    <div class="esp-m"></div>
+    <div class="tv" data-in="@carrie" data-anim="zoom" data-som="virada">
+      <div class="nome">carrie,<br>a estranha</div>
+      <div class="play">▶ começar a assistir</div>
+    </div>
+    <div class="esp-m"></div>
+    <div class="linha" style="gap:20px">
+      <span class="chip escuro" data-in="@prime" data-anim="pop" data-som="pop" data-som-vol="0.5">8 episódios</span>
+      <span class="chip" data-in="@mike" data-anim="pop" data-som="pop" data-som-vol="0.5">do Mike Flanagan</span>
+    </div>
+  </section>
+
+  <!-- pra quem não é -->
+  <section class="cena centro" data-in="@quer" data-out="@manda">
+    <span class="chip escuro" data-anim="desce" style="font-size:40px">pra quem não é:</span>
+    <div class="esp-m"></div>
+    <div class="titulo" data-anim="sobe" style="font-size:88px">quem quer susto<br>de pular do sofá</div>
+    <div class="esp-m"></div>
+    <div class="emoji" data-in="@sofa" data-anim="pop" data-loop="treme" style="font-size:180px">🛋️</div>
+    <div class="esp-m"></div>
+    <span class="carimbo nao-e" data-in="@nao#2" data-anim="carimbo" data-som="carimbo" style="font-size:96px">não é essa</span>
+  </section>
+
+  <!-- final: um CTA só -->
+  <section class="cena centro" data-in="@manda">
+    <div class="emoji" data-anim="pop" data-loop="pulsa" style="font-size:180px">🫂</div>
+    <div class="esp-s"></div>
+    <div class="titulo" data-anim="sobe" style="font-size:80px">pra amiga da<br><span class="brasa caixa" style="font-size:96px">Residência Hill</span></div>
+    <div class="esp-m"></div>
+    <div class="botao" data-in="@quem" data-anim="pop" data-som="ding">manda pra quem precisa</div>
+    <div class="arroba-final" data-in="@precisa" data-anim="fade">@seriecerta</div>
+  </section>
+</body>

@@ -1,0 +1,139 @@
+<body data-legenda="auto" data-destaque="decima,segunda,escritorio,surpresa,paper,quinta,igualzinho,adapta,ali,fascinante,nova,documentaristas,decadente" data-capa="10.4">
+<style>
+  .tv { width: 860px; height: 460px; background: linear-gradient(160deg, #1B2620, #0B1310); border: 6px solid #2A3B34; border-radius: 36px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; box-shadow: 0 40px 90px rgba(0,0,0,.6); }
+  .tv .nome { font-family: 'Mono', monospace; font-weight: 500; font-size: 92px; letter-spacing: .06em; text-transform: uppercase; text-align: center; line-height: 1.05; }
+  .tv .play { font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: #95A598; }
+  .reprise { font-size: 30px; letter-spacing: .1em; text-transform: uppercase; color: #95A598; text-align: center; }
+  .reprise b { display: block; font-size: 220px; line-height: .95; color: var(--brasa); letter-spacing: -.04em; }
+  .noite { background: radial-gradient(120% 70% at 50% 40%, #0E1613 0%, #000 70%); }
+  .prog { width: 460px; height: 16px; background: #22342D; border-radius: 16px; overflow: hidden; }
+  .prog .enche { height: 100%; width: calc(var(--p, 0) * 100%); background: var(--brasa); }
+</style>
+
+  <!-- cabeçalho fixo (some na tela preta) -->
+  <div class="topo" data-in="0" data-out="@a#4" data-anim="nada"><div class="serie">Selvagens do sofá <span class="ep">· ep. 02</span></div><div class="arroba">@seriecerta</div></div>
+  <div class="topo" data-in="@manda" data-anim="fade"><div class="serie">Selvagens do sofá <span class="ep">· ep. 02</span></div><div class="arroba">@seriecerta</div></div>
+
+  <!-- silêncio -->
+  <section class="cena centro" data-in="0" data-out="@pro" data-legenda="off">
+    <div class="emoji" data-anim="nada" style="font-size:230px">🤫</div>
+    <div class="esp-m"></div>
+    <div class="titulo caixa" data-anim="nada" style="font-size:110px">silêncio.</div>
+  </section>
+
+  <!-- gancho de envio: reprise nº 12 -->
+  <section class="cena" data-in="@pro" data-out="@olha" style="padding-top:300px">
+    <div class="tv" data-anim="zoom" data-som="whoosh" data-som-vol="0.6">
+      <div class="nome">the office</div>
+      <div class="play">▸ continuar assistindo</div>
+    </div>
+    <div class="esp-m"></div>
+    <div class="reprise" data-in="@decima" data-anim="carimbo" data-som="carimbo">reprise nº<b>12</b></div>
+  </section>
+
+  <!-- binóculo + registro de campo -->
+  <section class="cena" data-in="@olha" data-out="@hoje">
+    <div class="binoculo" data-anim="zoom"></div>
+    <div class="abs" style="top:470px;left:0;right:0;text-align:center">
+      <span class="emoji" data-anim="nada" style="font-size:260px">🧔</span>
+      <div style="margin-top:10px"><span class="emoji" data-in="@sofa" data-anim="pop" style="font-size:230px">🛋️</span><span class="emoji" data-in="@serie" data-anim="pop" style="font-size:110px;margin-left:-40px">📱</span></div>
+    </div>
+    <div class="abs" style="top:360px;right:100px"><span class="chip" data-in="@mesma" data-anim="pop" data-som="pop">reprise nº 12</span></div>
+    <div class="abs registro" style="top:1050px;left:80px" data-in="@especie" data-anim="esquerda" data-som="digita"><div class="rotulo-p">registro de campo nº 03</div>
+      <b>ESPÉCIE:</b> <span data-digita data-in="@orfao" data-dur="0.8">órfão de escritório</span></div>
+  </section>
+
+  <!-- tentou a série nova: 5 minutos -->
+  <section class="cena centro" data-in="@hoje" data-out="@e" style="padding-bottom:520px">
+    <div class="celular" style="height:600px"><div class="app">série nova</div>
+      <div class="catalogo">
+        <i style="--c1:#3D6FB6;--c2:#1D3558"></i><i style="--c1:#B98A2E;--c2:#5A4216"></i><i style="--c1:#8A3F86;--c2:#43203F"></i>
+        <i style="--c1:#3E8F6B;--c2:#1E4634"></i><i style="--c1:#C94F43;--c2:#6D2A24"></i><i style="--c1:#5AA7F5;--c2:#24496E"></i></div>
+      <div class="abs" style="top:40px;right:30px"><span class="chip" data-in="@nova" data-anim="pop" data-som="pop" style="font-size:30px">nova ✨</span></div>
+    </div>
+    <div class="esp-m"></div>
+    <div class="linha" data-in="@cinco" data-anim="sobe">
+      <span class="emoji-m" style="font-size:80px">▶️</span>
+      <div class="prog"><div class="enche" data-enche="0>0.08" data-dur="0.8" data-in="@cinco"></div></div>
+      <span class="titulo" style="font-size:64px"><span data-conta="0>5" data-dur="0.8" data-in="@cinco">0</span> min</span>
+    </div>
+  </section>
+
+  <!-- voltou pro mesmo escritório -->
+  <section class="cena" data-in="@e" data-out="@fascinante" style="padding-top:330px">
+    <div class="tv" data-anim="direita" data-som="whoosh">
+      <div class="nome">the office</div>
+      <div class="play">▸ continuar assistindo</div>
+    </div>
+    <div class="esp-m"></div>
+    <div class="registro" data-in="@escritorio#2" data-anim="esquerda" style="width:820px;font-size:36px"><div class="rotulo-p">registro de campo nº 04</div>
+      <b>COMPORTAMENTO:</b> abre a nova, volta pra antiga</div>
+  </section>
+
+  <!-- fascinante -->
+  <section class="cena" data-in="@fascinante" data-out="@mas">
+    <div class="binoculo" data-anim="nada"></div>
+    <div class="abs" style="top:540px;left:0;right:0;text-align:center"><span class="emoji" data-anim="pop" style="font-size:280px">🧐</span></div>
+  </section>
+
+  <!-- virada -->
+  <section class="cena centro noite" data-in="@mas" data-out="@a#2" style="padding-bottom:400px">
+    <div class="emoji" data-in="@surpresa" data-anim="zoom" data-som="virada" data-loop="flutua" style="font-size:280px">👀</div>
+  </section>
+
+  <!-- a mesma equipe, outro escritório -->
+  <section class="cena centro" data-in="@a#2" data-out="@o" style="padding-bottom:480px">
+    <div class="linha" style="gap:60px">
+      <span class="emoji" data-anim="esquerda" style="font-size:220px">🎥</span>
+      <span class="emoji" data-in="@jornal" data-anim="direita" data-som="whoosh" data-som-vol="0.6" style="font-size:220px">🗞️</span>
+    </div>
+    <div class="esp-m"></div>
+    <span class="carimbo" data-in="@equipe" data-anim="carimbo" data-som="carimbo" style="font-size:96px">mesma equipe</span>
+  </section>
+
+  <!-- a herdeira -->
+  <section class="cena" data-in="@o" data-out="@se" style="padding-top:300px">
+    <div class="rotulo" data-anim="desce" style="font-size:44px">a <span class="brasa">herdeira</span></div>
+    <div class="esp-g"></div>
+    <div class="tv" data-in="@paper" data-anim="zoom" data-som="ding" style="position:relative">
+      <div class="nome">the paper</div>
+      <div class="play">▸ começar a assistir</div>
+      <div class="confete" data-in="@paper" data-anim="fade">
+        <i style="left:40px;top:-30px;background:#FF5A36;rotate:20deg"></i><i style="left:160px;top:-50px;background:#FFB92E;rotate:-30deg"></i>
+        <i style="left:330px;top:-20px;background:#5FE0B5;rotate:45deg"></i><i style="left:560px;top:-45px;background:#9C8CFF;rotate:-15deg"></i>
+        <i style="left:760px;top:-25px;background:#FF7FAE;rotate:30deg"></i><i style="left:-20px;top:200px;background:#5AA7F5;rotate:60deg"></i>
+        <i style="left:850px;top:240px;background:#C6EA4E;rotate:-40deg"></i><i style="left:120px;top:460px;background:#FFB92E;rotate:10deg"></i>
+        <i style="left:640px;top:470px;background:#FF5A36;rotate:-25deg"></i></div>
+    </div>
+    <div class="esp-m"></div>
+    <div class="linha" style="gap:20px">
+      <span class="chip escuro" data-in="@ta#2" data-anim="pop" data-som="pop" data-som-vol="0.5">T1 no catálogo</span>
+      <span class="chip" data-in="@quinta" data-anim="carimbo" data-som="carimbo">T2 · quinta, 15/10</span>
+    </div>
+  </section>
+
+  <!-- pra quem não é -->
+  <section class="cena centro" data-in="@se" data-out="@a#4" style="padding-bottom:460px">
+    <span class="chip escuro" data-anim="desce" style="font-size:40px">pra quem não é:</span>
+    <div class="esp-m"></div>
+    <div class="titulo" data-anim="sobe" style="font-size:84px">quem quer<br><span class="brasa">The Office</span><br>igualzinho</div>
+    <div class="esp-m"></div>
+    <span class="carimbo" data-in="@nao" data-anim="carimbo" data-som="carimbo" style="font-size:96px">não é essa</span>
+  </section>
+
+  <!-- vinheta -->
+  <section class="cena centro noite" data-in="@a#4" data-out="@manda" data-legenda="off">
+    <div class="serif" data-anim="fade" data-dur="0.6">A natureza<br>se adapta.</div>
+  </section>
+
+  <!-- final: um CTA só -->
+  <section class="cena centro" data-in="@manda" data-legenda="off">
+    <div class="emoji" data-anim="pop" data-loop="pulsa" style="font-size:180px">🫂</div>
+    <div class="esp-s"></div>
+    <div class="titulo" data-anim="sobe" style="font-size:80px">pro amigo da<br><span class="brasa caixa" style="font-size:96px">reprise nº 12</span></div>
+    <div class="esp-m"></div>
+    <div class="botao" data-in="@quem" data-anim="pop" data-som="ding">manda pra quem precisa</div>
+    <div class="arroba-final" data-in="@precisa" data-anim="fade">@seriecerta</div>
+  </section>
+</body>
