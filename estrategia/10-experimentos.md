@@ -10,13 +10,13 @@
 | 14 a 20/10 | **Período de base.** Grade fixa, sem testes. Serve de referência para tudo que vem depois. |
 | Qua, 21/10, 18h17 | **1ª revisão semanal** (rotina "Série Certa · revisão semanal", skill `/revisao-semanal`): relatório de 14–20/10, propostas e os primeiros testes. |
 | Toda quarta, 18h17 | Revisão da semana anterior (quarta a terça): fecha os testes que atingiram o tamanho, adota vencedores, abre os próximos testes. |
-| Todo dia, 17h47 | Coleta de métricas (rotina do painel). Guarda uma foto diária dos números de cada post. |
+| Todo dia, 9h00 | Coleta de métricas e atualização do link do painel (rotina do painel). Guarda uma foto diária dos números de cada post. |
 
-A revisão roda à noite (depois da coleta das 17h47) para todos os posts da semana já terem números de D+1. As mudanças valem a partir do pacote da manhã seguinte.
+A revisão roda na quarta à noite: a coleta das 9h de quarta já traz o D+1 dos posts de terça, o último dia da semana analisada. As mudanças valem a partir do pacote da manhã seguinte.
 
 ## Como medir
 - **Relatório:** `python painel/relatorio.py --inicio <AAAA-MM-DD> --fim <AAAA-MM-DD>` gera `historico/relatorios/semana-<inicio>.md`.
-- **Base de comparação: D+1.** São os números do post na primeira foto diária com 20 h ou mais de vida. Com isso, um post de 3 dias não é comparado com um de 3 horas.
+- **Base de comparação: D+1.** São os números do post na primeira foto diária com 12 h ou mais de vida, ou seja, na coleta das 9h da manhã seguinte. Com isso, um post de 3 dias não é comparado com um de 3 horas.
 - **Métrica principal por formato** (meta dos 90 dias = audiência, `05-go-to-market.md`):
 
 | Formato | Métrica principal | Secundárias |
@@ -59,4 +59,5 @@ A revisão roda à noite (depois da coleta das 17h47) para todos os posts da sem
 | — | — | — | — | — | — | — | — | — |
 
 ## Changelog
+- 2026-10-13 — Coleta diária passa de 17h47 para 9h00 e o D+1 passa a ser a foto da manhã seguinte (12 h ou mais de vida) — por quê: Bruno quer o painel atualizado de manhã.
 - 2026-10-13 — Arquivo criado: ciclo de 7 dias de base (14–20/10) + revisão semanal às quartas com testes A/B, métrica em D+1 e limites do que os agentes mudam sozinhos — por quê: pedido do Bruno de melhoria contínua com testes A/B depois da primeira semana da grade diária.

@@ -499,8 +499,9 @@ def somar(midias: list) -> dict:
 
 
 def d1(md: dict) -> dict:
-    """Números na primeira foto com 20 h ou mais de vida (≈ dia seguinte). Base justa para comparar posts."""
-    fotos = [f for f in md.get("serie", []) if f.get("h", 0) >= 20]
+    """Números na primeira foto com 12 h ou mais de vida: com a coleta das 9h, é a manhã seguinte para qualquer
+    post do dia anterior (10h → 23 h de vida; 19h → 14 h). Base justa para comparar posts."""
+    fotos = [f for f in md.get("serie", []) if f.get("h", 0) >= 12]
     return min(fotos, key=lambda f: f["h"]) if fotos else {}
 
 

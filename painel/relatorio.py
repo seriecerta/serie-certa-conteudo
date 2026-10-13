@@ -7,7 +7,7 @@ Uso:
 
 Só leitura nas redes. Usa painel/metricas.json (na nuvem, baixado do Supabase) e os pacotes de saida/.
 
-Base de comparação: os números do post em D+1 (primeira foto diária com 20 h ou mais de vida), para
+Base de comparação: os números do post em D+1 (primeira foto diária com 12 h ou mais de vida = coleta das 9h da manhã seguinte), para
 não comparar um post de 3 dias com um de 3 horas. Quando o post ainda não tem D+1, usa o número atual
 e marca com *.
 """
