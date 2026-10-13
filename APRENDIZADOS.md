@@ -16,9 +16,16 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Sintoma:** `BrowserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/...` e o aviso para rodar `playwright install`.
 - **Causa:** a versão do pacote `playwright` instalada pelo pip pede uma revisão do navegador diferente da que vem pré-instalada em `/opt/pw-browsers`.
 - **Como resolver:** não rode `playwright install`. Lance com `chromium.launch(executable_path="/opt/pw-browsers/chromium")`.
+- **Para o `scripts/renderizar.py`:** instale `pip install -q "playwright==1.56.0"` (casa com o Chromium de `/opt/pw-browsers`). Um `pip install playwright` sem versão quebra o renderizador com a mesma mensagem.
 - **Onde mexer:** scripts de captura/teste que você escrever.
 
 ## Publicação
+
+### 2026-10-13 — `publicar.py --simular` não valida post do Instagram antes do horário
+- **Sintoma:** a simulação não acusa nada numa peça que vai ser recusada (ex.: sem o campo `"series"`), e o erro só aparece no log depois do horário marcado.
+- **Causa:** o `processar_dia` pula publicações do Instagram com `quando` no futuro antes de chamar `validar()`.
+- **Como conferir antes:** `python3 -B -c "import sys,json,pathlib; sys.path.insert(0,'scripts'); import publicar; p=pathlib.Path('saida/<data>/<peça>'); [print(x['id'], publicar.validar(x, p) or 'OK') for x in json.loads((p/'publicar.json').read_text())['publicacoes']]"` (o `-B` evita gravar `__pycache__` em `scripts/`).
+- **Onde mexer:** nada no script; use o comando acima ao corrigir uma peça.
 
 ### 2026-10-13 — `publicar.py --simular` sobrescreve o pacote local com o da nuvem
 - **Sintoma:** depois de corrigir `publicar.json` e renderizar `quadros/` de novo, a simulação continuou acusando o erro antigo (`falta o campo "series"`) e as edições locais sumiram.
