@@ -4,9 +4,15 @@
       "id": "ig-stories",
       "plataforma": "instagram",
       "tipo": "STORIES",
-      "arquivos": ["quadros/01.jpg", "quadros/02.jpg", "quadros/03.jpg", "quadros/04.jpg"],
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg"
+      ],
       "legenda": "",
-      "quando": "2026-10-13T19:30:00-03:00"
+      "quando": "2026-10-13T19:30:00-03:00",
+      "series": []
     }
   ]
 }
