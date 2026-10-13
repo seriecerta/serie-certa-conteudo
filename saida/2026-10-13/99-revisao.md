@@ -1,14 +1,14 @@
 # Revisão de 2026-10-13
 
-> **Revisão parcial, feita às ~11h BRT.** Cobre só as peças sem vídeo (01 e 03). As peças 02 e 04 (vídeos) ainda estão em produção e entram numa segunda rodada. Elas ainda **não** constam no `revisao.json`.
+> 1ª rodada (~11h BRT): peças 01 e 03. 2ª rodada (~11h20 BRT): vídeos 02 e 04. As quatro estão aprovadas no `revisao.json` **local**.
 
 ## Resultado
 | Peça | Status | Horário |
 |---|---|---|
 | 01-carrossel-orfa-herdeiras-outubro | **aprovada** (com correções) | 13/10 13h30 |
 | 03-stories-mia-acertou | **aprovada** | 13/10 19h30 |
-| 02-short-tradutor-orfa-residencia-hill | pendente (em produção) | — |
-| 04-reels-selvagens-ep02-orfa-the-office | pendente (em produção) | — |
+| 02-short-tradutor-orfa-residencia-hill | **aprovada** (UTM ajustada) | 13/10 18h (YouTube) |
+| 04-reels-selvagens-ep02-orfa-the-office | **aprovada** (cena corrigida e re-renderizada) | 13/10 20h (Instagram) |
 
 ## 01 — Carrossel "herdeiras de outubro"
 Fatos rechecados com WebSearch em 13/10. O WebFetch segue bloqueado, então nada foi conferido direto nos apps.
@@ -35,3 +35,41 @@ Fatos rechecados com WebSearch em 13/10. O WebFetch segue bloqueado, então nada
 - O Short 02 cita Carrie: use "do Mike Flanagan", não "mesmo criador", e mantenha os 8 episódios no Prime Video.
 - O Reels 04 cita The Paper com T2 na quinta, 15/10, o que está confirmado.
 - O rascunho de amanhã (Short "VisionQuest estreia hoje", 14/10) pode ficar errado se a estreia de fato foi antecipada para 13/10. Reconfirme amanhã.
+
+---
+
+# 2ª rodada: vídeos 02 e 04
+
+## Fatos (WebSearch refeito em 13/10; WebFetch segue bloqueado)
+- **Carrie, a Estranha:** está no Prime Video desde 07/10, com os 8 episódios lançados de uma vez. Mike Flanagan é showrunner, roteirista, produtor executivo e diretor de 4 episódios. Confirmado em [Tecmundo](https://www.tecmundo.com.br/minha-serie/604301-carrie-nova-adaptacao-do-prime-video-ganha-trailer-e-data-de-estreia.htm), [Gazeta SP](https://www.gazetasp.com.br/entretenimento/carrie-a-estranha-ganha-nova-serie-de-terror-no-prime-video-veja-quando-estreia/) e [Omelete](https://www.omelete.com.br/series-tv/carrie-a-estranha-prime-video-mike-flanagan-data-lancamento-outubro). As peças usam "do Mike Flanagan", não "mesmo criador".
+- **The Paper:** a T1 está na HBO Max e a T2 chega em 15/10 (quinta), segundo [Omelete, 17/09/2026, citando o site da HBO Max](https://www.omelete.com.br/series-tv/the-paper-2a-temporada-spin-off-the-office-data-estreia-brasil), [Itatiaia](https://www.itatiaia.com.br/entretenimento/veja-os-lancamentos-de-series-e-filmes-da-hbo-max-para-outubro-de-2026/), [Showmetech](https://www.showmetech.com.br/lancamentos-hbo-max-outubro-2026/) e [GameOverDrive](https://gameoverdrive.com.br/the-paper-2-temporada-estreia-brasil-hbo-max/). As matérias de "adiamento" e "sem data no Brasil" falam da T1, em 2025. Não houve adiamento da T2. O formato de lançamento (semanal ou tudo de uma vez) segue sem confirmação, e a peça não fala disso.
+- *Residência Hill* e *The Office* aparecem só como referência. Nenhuma das peças diz onde assistir a elas.
+
+## 02: Short "Tradutor da órfã de terror" (aprovado)
+- **Mídia:** 1080×1920, 30 fps, 36,2 s, com áudio. `narracao.txt` tem `.mp3` (34,1 s). Fala, tela e roteiro batem.
+- **Visual:** revi os quadros a cada 2 s e os pontos de virada. Está na identidade (verde-noite, Inter Black, cards brasa, emoji grande), e o final tem botão "MANDA PRA QUEM PRECISA" + @seriecerta. Nada cortado, nada sobreposto, nenhum logo. "Prime Video" não aparece na arte. Há meio segundo de tela só com o cabeçalho, em 6,5 s, enquanto entra o card 1/4. É transição, não tela vazia.
+- **Spoiler/diálogo:** nenhum. As frases entre aspas são da fã, inventadas. *Carrie* aparece só com nome, número de episódios e Flanagan.
+- **Voz e CTA:** a peça tem "pra quem não é" (quem quer susto de pular do sofá) e um único CTA, "Manda pra quem precisa", de Descoberta.
+- **Corrigido:** a UTM de `publicar.json` (`utm_campaign=2026-10-13-short-tradutor-orfa`) estava diferente da do roteiro. Agora as duas usam `2026-10-13-short-tradutor-orfa-residencia-hill`, no padrão `<AAAA-MM-DD>-<peça>`.
+- `validar()` dá OK. O título tem menos de 100 caracteres, a descrição não tem `<` nem `>` e traz 5 hashtags. O `tiktok.txt` tem 1 emoji.
+
+## 04: Reels "Selvagens do Sofá · Ep. 02" (aprovado)
+- **Mídia:** 1080×1920, 30 fps, 40,0 s (39,98 s), −14,2 LUFS. `narracao.txt` tem `.mp3` (37,9 s).
+- **Duração:** 40,0 s fica dentro do limite de 20–40 s do 07, no teto. Aceito.
+- **Numeração Ep. 02:** `referencias/README.md` registra só o Ep. 01 no ar, e não existe outro Selvagens em `saida/` nem em `referencias/`. Ep. 02 está correto. **Pendente para o Bruno:** registrar o Ep. 01 e o Ep. 02 em `historico/publicados.md`. O agente não edita `historico/`.
+- **Legenda automática com "HBO MAX": desligada nesse trecho.** Decisão: a regra escrita do 09 e do `motor/COMPONENTES.md` diz "sem logos/nomes de streaming na arte". O "ABRIU: Netflix" do Ep. 01 é um precedente que fere a regra, não um padrão a seguir. O Short 02 de hoje também deixa o nome do streaming só na fala, então os dois ficam coerentes. Como corrigi: dividi a cena da herdeira em 3 (`@o`→`@ta#2` com legenda; `@ta#2`→`@e#3` com `data-legenda="off"`; `@e#3`→`@se` com legenda), deixando card, confete e chip "T1 no catálogo" estáticos para não piscar. Em 26–31 s a tela mostra "THE PAPER." → (sem legenda) → "E A SEGUNDA / TEMPORADA CHEGA QUINTA.". **Re-renderizei** com `renderizar.py`, revi os quadros e a capa (10,4 s, igual). "HBO Max" segue na fala e na legenda do post. A narração não mudou.
+- **Visual:** está no padrão do Ep. 01: cabeçalho fixo, binóculo, registro de campo, legenda grande, vinheta "A natureza se adapta." em serifa itálica, final com botão + @seriecerta. Nada cortado nem sobreposto, e nenhum logo.
+- **Spoiler:** nenhum. De *The Paper* só aparece a premissa oficial.
+- **Voz e CTA:** a peça tem "pra quem não é" (quem quer *The Office* igualzinho), não julga quem revê e tem um único CTA, "Manda pra quem precisa". A legenda tem 1 emoji, 5 hashtags e 202 caracteres. "Segunda temporada chega quinta" vale para hoje (terça). Se o TikTok sair depois de quinta, troque por "Segunda temporada já chegou".
+
+## Checagens técnicas (2ª rodada)
+- `validar()` dá OK em 02/yt-short e 04/ig-reel.
+- **O `publicar.py --simular` em modo nuvem SOBRESCREVE o `revisao.json` local** com a cópia do Supabase. É o `baixar_pacote`, que sempre baixa os textos (.json, .md, .txt). Na 1ª execução ele trouxe de volta a versão só com 01 e 03. Reescrevi o `revisao.json` e simulei localmente (`CLAUDE_CODE_REMOTE=false MODO_NUVEM=false`), com o resultado "publicaria 02/yt-short para 13/10 18:00". O 04 não aparece porque o horário ainda não chegou, e o validar direto deu OK.
+- **O pacote na nuvem (32 arquivos) não tem as pastas 02 e 04 e tem o `revisao.json` antigo.** Antes das 18h é preciso rodar `python scripts/nuvem.py subir-pacote 2026-10-13`. Sem isso, a rotina horária não publica o Reels das 20h. Também não rode `--simular` em modo nuvem antes de subir, porque ele desfaz o `revisao.json` local de novo.
+
+## Fechamento do pacote (2026-10-13, ~11h20)
+- Pacote completo subido para a nuvem (43 arquivos), com `revisao.json` final (4 aprovadas, 0 bloqueadas).
+- `publicar.py --data 2026-10-13` rodou em **simulação**: `PUBLICACAO_AUTOMATICA` não está `true` no `.env`. Nada vai ao ar até o Bruno ligar a trava (o agente não altera). Primeira postagem prevista: carrossel às 13h30.
+- Peças de 09/10 também não foram ao ar (mesma trava).
+- Atenção para o fluxo: em modo nuvem, o `publicar.py` baixa o pacote e sobrescreve `.json/.md/.txt` locais. Sempre rodar `nuvem.py subir-pacote` **antes** do `publicar.py`, senão o `revisao.json` local volta para a cópia antiga da nuvem.
+- Ambiente: o pacote `playwright` do pip precisou ser fixado em 1.56.0 para casar com o Chromium instalado (1194). Vale fixar no `requirements.txt` ou no setup da nuvem.
