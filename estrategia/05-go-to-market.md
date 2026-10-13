@@ -27,15 +27,15 @@
 | Estágio | Peso nos 90 dias | Formato principal | Métrica | CTA |
 |---|---|---|---|---|
 | Descoberta | **Alto** — toda peça de feed/Shorts | Reels, Shorts, vídeos do casal | alcance, retenção 3 s, compartilhamentos, seguidores ganhos | "Manda pra quem precisa" |
-| Consideração | Médio | Carrossel, vídeo longo YouTube | salvamentos, tempo de exibição, seguidores ganhos | "Salva pra hoje à noite" |
+| Consideração | Médio | Carrossel, Lista da MIA (YouTube 16:9) | salvamentos, tempo de exibição, seguidores ganhos | "Salva pra hoje à noite" |
 | Conversão | Baixo — 1 tela de Stories por dia | Stories com link de humor | cliques no link, signup (PostHog, quando liberado) | "Testa grátis no link" |
 | Retenção | Baixo — Stories | Stories "MIA acertou?", card de compartilhamento | respostas, reposts | "Me conta se acertou" |
 
 - Regra 6 do CLAUDE.md continua valendo: **um CTA por peça**, do estágio dela. Não somar "segue a gente" em cima do CTA de compartilhamento.
 
 ## Canais
-- **Instagram @seriecerta**: Reels diários, carrossel 3x/semana, Stories diários.
-- **YouTube**: 1 vídeo longo por semana (um humor, 7 séries, estrutura fixa) + Shorts diários desdobrados.
+- **Instagram @seriecerta**: por dia, 2 Reels (13h30 e 18h30), 1 carrossel (10h) e 1 sequência de Stories (10h, o carrossel em 9:16 + CTA).
+- **YouTube**: por dia, a Lista da MIA (16:9, 12h) e 2 Shorts (13h30 e 19h). O vídeo longo semanal saiu da grade em 14/10.
 - **TikTok**: reaproveita Reels/Shorts (mesmo arquivo, legenda adaptada).
 - **Parcerias**: só collab orgânica/permuta com pequenos criadores do nicho (fora do escopo deste agente; ele só sugere pautas de collab).
 
@@ -45,8 +45,9 @@
 
 ## Ritual de aprendizado
 Toda segunda, o `estrategista` lê `historico/metricas.md` (o Bruno cola os números) e ajusta pilares e horários.
-- Até existirem números, horários e grade de `08-cronograma.md` ficam como hipótese e **não mudam**.
+- Até existirem números, horários e grade de `08-cronograma.md` ficam como hipótese e **só mudam por decisão do Bruno** (a grade diária de 14/10 foi uma dessas decisões).
 - Para medir a meta de audiência, o template de métricas precisa ganhar a coluna **seguidores ganhos** (sugestão para o Bruno; o agente não edita `historico/`).
 
 ## Changelog
+- 2026-10-13 — Canais atualizados para a grade diária do `08-cronograma.md` (2 Reels, carrossel e Stories por dia no Instagram; Lista da MIA e 2 Shorts por dia no YouTube; sem vídeo longo semanal) — por quê: decisão do Bruno, válida a partir de 14/10.
 - 2026-10-09 — Objetivo dos 90 dias trocado de "cadastros + primeiros pagantes" para **audiência (seguidores/alcance)**; orçamento zero explicitado (parcerias só collab/permuta orgânica); criada tabela de métricas-guia de Descoberta com alvos `[definir com o Bruno]`; funil ganhou coluna de peso, CTAs mantidos; nota de que a grade não muda sem dado — por quê: respostas do Bruno na revisão `/estrategia` e SOM mostrando que o gargalo é alcance.
