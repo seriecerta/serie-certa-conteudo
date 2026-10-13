@@ -26,7 +26,9 @@
       "Bash(python scripts/autorizar_youtube.py:*)",
       "Bash(python3 scripts/autorizar_youtube.py:*)",
       "Bash(python scripts/configurar_instagram.py:*)",
-      "Bash(python3 scripts/configurar_instagram.py:*)"
+      "Bash(python3 scripts/configurar_instagram.py:*)",
+      "Bash(python painel/painel.py:*)",
+      "Bash(python3 painel/painel.py:*)"
     ],
     "deny": [
       "Read(.env)",

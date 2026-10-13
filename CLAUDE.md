@@ -22,6 +22,7 @@ Guia de componentes: `motor/COMPONENTES.md`; exemplos fiéis aos posts: `motor/e
 Todo vídeo novo tem que parecer da mesma família deles: abra a folha de quadros do formato mais próximo antes de criar.
 
 Histórico do que já saiu: `historico/publicados.md` (nunca repita série + humor + gancho em menos de 30 dias).
+**Aprendizados de sessões anteriores:** `APRENDIZADOS.md` — leia antes de mexer em scripts, motor, publicação ou configuração.
 
 ## Produto (resumo)
 - Série Certa (seriecerta.online): recomendação de séries por **humor/contexto** com IA emocional. A curadora é a **MIA**.
@@ -61,3 +62,14 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 - Formato diário **Lista da MIA** (YouTube 13h30): ver `estrategia/07-pilares-e-formatos.md`
 - `/publicar` — publica no Instagram o que chegou no horário (tarefa agendada de hora em hora)
 - `/estrategia` — cria ou revisa TAM/SAM/SOM, ICP, JTBD, posicionamento, proposta de valor e GTM
+- `/painel` — gera `painel/index.html`: backlog, publicados, redes, formatos, desdobramentos, engajamento e cliques (só leitura)
+
+## Fechamento de sessão (retroalimentação)
+Toda sessão que entrega algo novo — recurso, correção de bug, pacote, ajuste de configuração ou de processo — termina com um fechamento em `APRENDIZADOS.md`, **no mesmo commit/push da entrega**.
+- **O que registrar:** desafios e pontos de fricção que custaram tempo de verdade e podem plausivelmente se repetir — bug não óbvio, mensagem de erro enganosa, problema de configuração/permissão/ambiente, comportamento inesperado de API (ElevenLabs, Instagram, YouTube, TVmaze), armadilha do motor ou do git, passo de processo que faltava.
+- **Formato de cada item:** sintoma (o que apareceu, com a mensagem exata se houver) → causa real → como resolver ou evitar → onde mexer (arquivo/comando). Data no título da entrada.
+- **O que não registrar:** o que já está óbvio no código ou documentado em outro arquivo, coisa que só acontece uma vez, diário do que foi feito (isso é o commit).
+- Se o aprendizado vira regra permanente, leve também para o lugar certo (este arquivo, a skill, o agente ou `motor/COMPONENTES.md`) e deixe no `APRENDIZADOS.md` só o apontamento.
+- Antes de registrar, procure se já existe item parecido: atualize em vez de duplicar.
+- Sessão sem nenhuma fricção: não precisa entrada; diga isso no resumo final ao Bruno.
+

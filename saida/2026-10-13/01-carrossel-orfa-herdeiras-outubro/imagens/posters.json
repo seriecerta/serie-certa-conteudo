@@ -1,0 +1,82 @@
+{
+ "the-office.jpg": {
+  "pedido": "The Office (2005)",
+  "encontrado": "The Office",
+  "estreia": "2005-03-24",
+  "tvmaze_id": 526,
+  "pagina": "https://www.tvmaze.com/shows/526/the-office",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204342.jpg"
+ },
+ "the-paper.jpg": {
+  "pedido": "The Paper (2025)",
+  "encontrado": "The Paper",
+  "estreia": "2025-09-04",
+  "tvmaze_id": 84611,
+  "pagina": "https://www.tvmaze.com/shows/84611/the-paper",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/636/1591367.jpg"
+ },
+ "wandavision.jpg": {
+  "pedido": "WandaVision (2021)",
+  "encontrado": "WandaVision",
+  "estreia": "2021-01-15",
+  "tvmaze_id": 41748,
+  "pagina": "https://www.tvmaze.com/shows/41748/wandavision",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/295/738028.jpg"
+ },
+ "visionquest.jpg": {
+  "pedido": "VisionQuest",
+  "encontrado": "VisionQuest",
+  "estreia": "2026-10-13",
+  "tvmaze_id": 64950,
+  "pagina": "https://www.tvmaze.com/shows/64950/visionquest",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/636/1592334.jpg"
+ },
+ "the-haunting-of-hill-house.jpg": {
+  "pedido": "The Haunting of Hill House (2018)",
+  "encontrado": "The Haunting of Hill House",
+  "estreia": "2018-10-12",
+  "tvmaze_id": 29191,
+  "pagina": "https://www.tvmaze.com/shows/29191/the-haunting-of-hill-house",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246083.jpg"
+ },
+ "carrie.jpg": {
+  "pedido": "Carrie",
+  "encontrado": "Carrie",
+  "estreia": "2026-10-07",
+  "tvmaze_id": 45562,
+  "pagina": "https://www.tvmaze.com/shows/45562/carrie",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611660.jpg"
+ },
+ "wednesday.jpg": {
+  "pedido": "Wednesday (2022)",
+  "encontrado": "Wednesday",
+  "estreia": "2022-11-23",
+  "tvmaze_id": 53647,
+  "pagina": "https://www.tvmaze.com/shows/53647/wednesday",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/586/1466410.jpg"
+ },
+ "coven-academy.jpg": {
+  "pedido": "Coven Academy",
+  "encontrado": "Coven Academy",
+  "estreia": "2026-10-02",
+  "tvmaze_id": 83159,
+  "pagina": "https://www.tvmaze.com/shows/83159/coven-academy",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/643/1609609.jpg"
+ },
+ "the-vampire-diaries.jpg": {
+  "pedido": "The Vampire Diaries (2009)",
+  "encontrado": "The Vampire Diaries",
+  "estreia": "2009-09-10",
+  "tvmaze_id": 63,
+  "pagina": "https://www.tvmaze.com/shows/63/the-vampire-diaries",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/271/677698.jpg"
+ },
+ "true-blood.jpg": {
+  "pedido": "True Blood (2008)",
+  "encontrado": "True Blood",
+  "estreia": "2008-09-07",
+  "tvmaze_id": 22,
+  "pagina": "https://www.tvmaze.com/shows/22/true-blood",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/410/1026956.jpg"
+ }
+}

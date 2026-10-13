@@ -77,6 +77,7 @@ Ligue **Keep computer awake** em Configurações → Desktop app → General. Cl
 
 ## Sua rotina
 - **Diária: nenhuma.** Se quiser, abra `saida/<data>/README.md` (o que vai ao ar) e `publicacao.log.md` (os links do que saiu).
+- **Quando quiser ver os números**: rode `/painel` e abra `painel/index.html` (backlog, publicados, redes, formatos, desdobramentos, engajamento, cliques na bio e nos links).
 - **Segunda**: cole os números em `historico/metricas.md` e rode `/estrategia`.
 - **Até quarta**: coloque os pôsteres do vídeo longo em `assets/posters/`.
 - **Emergência**: crie `saida/<data>/PAUSAR`.

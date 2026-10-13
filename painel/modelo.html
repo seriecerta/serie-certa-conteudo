@@ -1,0 +1,553 @@
+<title>Painel Série Certa</title>
+<style>
+/* Layout: cabeçalho + filtros numa linha, faixa de números, depois quadros em grade de 12 colunas que viram 1 no celular.
+   Identidade Sala Escura: verde-noite + papel creme + brasa. Escuro é o padrão; claro é o "papel". */
+@font-face { font-family: 'InterPainel'; font-weight: 100 900; src: url(data:font/woff2;base64,__FONTE_B64__) format('woff2'); }
+:root {
+  color-scheme: dark;
+  --bg: #0b1814; --surface: #11221d; --surface-2: #172d26; --line: #23403a;
+  --fg: #f3ecdf; --fg-2: #bcc5bb; --muted: #86958d;
+  --brasa: #ff5a36; --brasa-ink: #1a0b06;
+  --s-ig: #3987e5; --s-yt: #d95926; --s-tt: #199e70;
+  --ok: #0ca30c; --warn: #fab219; --serious: #ec835a; --crit: #e0524f; --info: #8fa8ff;
+  --f-body: 'InterPainel', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-num: 'InterPainel', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --r: 10px;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  color-scheme: light;
+  --bg: #efebe1; --surface: #faf8f3; --surface-2: #f1ede3; --line: #d9d3c4;
+  --fg: #10231d; --fg-2: #3d4f48; --muted: #66756e;
+  --brasa: #d9431f; --brasa-ink: #ffffff;
+  --s-ig: #2a78d6; --s-yt: #eb6834; --s-tt: #1baf7a;
+  --crit: #d03b3b; --info: #4256c9;
+} }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #efebe1; --surface: #faf8f3; --surface-2: #f1ede3; --line: #d9d3c4;
+  --fg: #10231d; --fg-2: #3d4f48; --muted: #66756e;
+  --brasa: #d9431f; --brasa-ink: #ffffff;
+  --s-ig: #2a78d6; --s-yt: #eb6834; --s-tt: #1baf7a;
+  --crit: #d03b3b; --info: #4256c9;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 400 14px/1.45 var(--f-body); margin: 0; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px; display: grid; gap: 18px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; }
+h1 b { color: var(--brasa); }
+h2 { font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+.muted { color: var(--muted); }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+a { color: var(--fg); text-underline-offset: 2px; }
+a:hover { color: var(--brasa); }
+:focus-visible { outline: 2px solid var(--brasa); outline-offset: 2px; }
+
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+.fontes { display: flex; flex-wrap: wrap; gap: 6px; }
+.fonte { font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg-2); display: inline-flex; gap: 6px; align-items: center; }
+.fonte i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+.fonte.ok i { background: var(--ok); } .fonte.erro i { background: var(--crit); }
+
+.filtros { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; padding: 10px 0; border-block: 1px solid var(--line); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; background: transparent; color: var(--fg-2); border: 0; padding: 6px 11px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); font-weight: 700; }
+.filtros label { font-size: 12px; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+select { font: inherit; font-size: 13px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; }
+
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+@media (min-width: 640px) { .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .kpis { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.kpi { background: var(--surface); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.kpi .v { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.kpi .v.nd { color: var(--muted); }
+.kpi .d { font-size: 12px; color: var(--muted); }
+.kpi.destaque .v { color: var(--brasa); }
+
+.grade { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
+.quadro { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.quadro header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.c12 { grid-column: span 12; } .c8 { grid-column: span 8; } .c6 { grid-column: span 6; } .c4 { grid-column: span 4; }
+@media (max-width: 980px) { .c8, .c6, .c4 { grid-column: span 12; } }
+
+/* backlog */
+.kanban { display: grid; grid-template-columns: repeat(5, minmax(210px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 4px; }
+.col { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.col > h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--fg-2); display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
+.col.atencao > h3 { border-bottom-color: var(--crit); }
+.card { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px; display: grid; gap: 6px; min-width: 0; }
+.card .t { font-weight: 650; font-size: 13px; line-height: 1.3; overflow-wrap: anywhere; }
+.card .m { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 12px; color: var(--muted); align-items: center; }
+.card .motivo { font-size: 12px; color: var(--fg-2); border-left: 2px solid var(--crit); padding-left: 8px; overflow-wrap: anywhere; }
+.vazio-col { font-size: 12px; color: var(--muted); padding: 8px 0; }
+.mais { font-size: 12px; color: var(--muted); }
+
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg-2); white-space: nowrap; }
+.dot { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+.st { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 650; white-space: nowrap; }
+.st svg { width: 12px; height: 12px; flex: none; }
+.st.ok { color: var(--ok); } .st.warn { color: var(--warn); } .st.serious { color: var(--serious); } .st.crit { color: var(--crit); } .st.info { color: var(--info); } .st.neutro { color: var(--fg-2); }
+
+/* charts */
+.chart { position: relative; width: 100%; overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.chart text { fill: var(--muted); font-size: 11px; font-family: var(--f-body); }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.chart .base { stroke: var(--muted); stroke-width: 1; }
+.legenda { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--fg-2); }
+.legenda span { display: inline-flex; align-items: center; gap: 6px; }
+.tip { position: fixed; z-index: 10; pointer-events: none; background: var(--fg); color: var(--bg); font-size: 12px; padding: 7px 9px; border-radius: 6px; max-width: 260px; box-shadow: 0 4px 16px rgb(0 0 0 / 0.25); }
+.tip b { display: block; margin-bottom: 2px; }
+.vazio { border: 1px dashed var(--line); border-radius: 8px; padding: 18px; color: var(--fg-2); font-size: 13px; display: grid; gap: 6px; }
+.vazio code { font-size: 12px; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; overflow-wrap: anywhere; }
+
+.barras-h { display: grid; gap: 8px; }
+.bh { display: grid; grid-template-columns: minmax(90px, 30%) 1fr auto; gap: 10px; align-items: center; font-size: 13px; }
+.bh .trilho { position: relative; height: 12px; background: var(--surface-2); border-radius: 0 4px 4px 0; }
+.bh .fill { position: absolute; inset: 0 auto 0 0; background: var(--s-ig); border-radius: 0 4px 4px 0; }
+.bh .meta { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--fg); }
+.bh .rot { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--fg-2); }
+.bh .val { font-size: 12px; color: var(--fg-2); min-width: 64px; text-align: right; }
+
+/* desdobramentos */
+.desd { display: grid; gap: 0; }
+.desd .linha { display: grid; grid-template-columns: 86px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); }
+.desd .linha:first-child { border-top: 0; }
+.desd .canais { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.desd .filho { padding-left: 18px; }
+@media (max-width: 640px) { .desd .linha { grid-template-columns: 1fr; gap: 4px; } .desd .canais { justify-content: flex-start; } }
+
+/* tabela */
+.tabela { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td.titulo { white-space: normal; min-width: 220px; max-width: 340px; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 650; background: var(--surface-2); position: sticky; top: 0; }
+th button { all: unset; cursor: pointer; display: inline-flex; gap: 4px; }
+th button:focus-visible { outline: 2px solid var(--brasa); }
+th.n, td.n { text-align: right; font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: var(--surface-2); }
+.ideias { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 13px; color: var(--fg-2); }
+footer { font-size: 12px; color: var(--muted); display: grid; gap: 4px; }
+footer code { background: var(--surface); padding: 1px 5px; border-radius: 4px; }
+@media (prefers-reduced-motion: no-preference) { .bh .fill { transition: width .3s ease; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">@seriecerta · gestão de conteúdo</div>
+      <h1>Painel <b>Série Certa</b></h1>
+      <div class="muted" id="geradoEm"></div>
+    </div>
+    <div class="fontes" id="fontes" aria-label="Fontes de dados"></div>
+  </header>
+
+  <nav class="filtros" aria-label="Filtros">
+    <div class="seg" role="group" aria-label="Período" id="fPeriodo">
+      <button type="button" data-v="7">7 dias</button>
+      <button type="button" data-v="30" aria-pressed="true">30 dias</button>
+      <button type="button" data-v="90">90 dias</button>
+      <button type="button" data-v="0">Tudo</button>
+    </div>
+    <label for="fRede">Rede <select id="fRede"><option value="">Todas</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option></select></label>
+    <label for="fFormato">Formato <select id="fFormato"><option value="">Todos</option></select></label>
+    <label for="fPilar">Pilar <select id="fPilar"><option value="">Todos</option></select></label>
+  </nav>
+
+  <section class="kpis" id="kpis" aria-label="Resumo"></section>
+
+  <div class="grade">
+    <section class="quadro c12" aria-labelledby="hBacklog">
+      <header><h2 id="hBacklog">Backlog</h2><span class="muted" id="backlogResumo"></span></header>
+      <div class="kanban" id="kanban"></div>
+    </section>
+
+    <section class="quadro c8" aria-labelledby="hRitmo">
+      <header><h2 id="hRitmo">Publicações por dia</h2><span class="muted">programadas, por rede</span></header>
+      <div class="legenda" id="legRitmo"></div>
+      <div class="chart" id="chRitmo"></div>
+    </section>
+    <section class="quadro c4" aria-labelledby="hFormato">
+      <header><h2 id="hFormato">Por formato</h2><span class="muted">publicações no período</span></header>
+      <div class="barras-h" id="chFormato"></div>
+    </section>
+
+    <section class="quadro c6" aria-labelledby="hPilar">
+      <header><h2 id="hPilar">Pilares x meta</h2><span class="muted">barra = real · traço = meta da estratégia</span></header>
+      <div class="barras-h" id="chPilar"></div>
+    </section>
+    <section class="quadro c6" aria-labelledby="hFunil">
+      <header><h2 id="hFunil">Funil e formatos recorrentes</h2><span class="muted">peças no período</span></header>
+      <div class="barras-h" id="chFunil"></div>
+      <div class="barras-h" id="chRecorrente"></div>
+    </section>
+
+    <section class="quadro c12" aria-labelledby="hDesd">
+      <header><h2 id="hDesd">Desdobramentos</h2><span class="muted" id="desdResumo"></span></header>
+      <div class="desd" id="desd"></div>
+    </section>
+
+    <section class="quadro c12" aria-labelledby="hEng">
+      <header><h2 id="hEng">Engajamento por publicação</h2><span class="muted" id="engResumo"></span></header>
+      <div id="engVazio"></div>
+      <div class="tabela"><table id="tEng"></table></div>
+    </section>
+
+    <section class="quadro c6" aria-labelledby="hBio">
+      <header><h2 id="hBio">Cliques no link da bio</h2><span class="muted">Instagram, por dia</span></header>
+      <div class="chart" id="chBio"></div>
+    </section>
+    <section class="quadro c6" aria-labelledby="hPerfil">
+      <header><h2 id="hPerfil">Visitas ao perfil</h2><span class="muted">Instagram, por dia</span></header>
+      <div class="chart" id="chPerfil"></div>
+    </section>
+
+    <section class="quadro c6" aria-labelledby="hUtm">
+      <header><h2 id="hUtm">Cliques nos links (UTM)</h2><span class="muted">visitas ao site por origem · PostHog</span></header>
+      <div class="barras-h" id="chUtm"></div>
+    </section>
+    <section class="quadro c6" aria-labelledby="hSeg">
+      <header><h2 id="hSeg">Seguidores</h2><span class="muted">uma foto por coleta</span></header>
+      <div class="legenda" id="legSeg"></div>
+      <div class="chart" id="chSeg"></div>
+    </section>
+  </div>
+
+  <footer>
+    <div>Atualizar: <code>python painel/painel.py --metricas</code> (busca números novos) ou <code>python painel/painel.py</code> (só refaz o painel).</div>
+    <div>Stories só têm insights nas 24 h em que estão no ar. Rode a coleta nesse intervalo e o painel guarda o número.</div>
+  </footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const D = /*__DADOS__*/null;
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = (n) => n == null || Number.isNaN(n) ? '—' : Number(n).toLocaleString('pt-BR', { maximumFractionDigits: 1 });
+const pct = (n) => n == null || !isFinite(n) ? '—' : (n * 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%';
+const dia = (iso) => new Date(iso).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit' });
+const hora = (iso) => new Date(iso).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+const isoDia = (d) => d.toLocaleDateString('sv-SE', { timeZone: 'America/Sao_Paulo' });
+const AGORA = new Date();
+
+const REDES = { instagram: { nome: 'Instagram', cor: 'var(--s-ig)' }, youtube: { nome: 'YouTube', cor: 'var(--s-yt)' }, tiktok: { nome: 'TikTok', cor: 'var(--s-tt)' } };
+const ORDEM_REDES = ['instagram', 'youtube', 'tiktok'];
+const IC = {
+  ok: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/><path d="M3.3 6.2l1.8 1.8 3.6-3.8" stroke="var(--surface)" stroke-width="1.6" fill="none"/></svg>',
+  relogio: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M6 3.2V6l2 1.2" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>',
+  lapis: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 10l.6-2.4L8 2.2 9.8 4 4.4 9.4z" fill="currentColor"/></svg>',
+  olho: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6s2-3.5 5-3.5S11 6 11 6 9 9.5 6 9.5 1 6 1 6z" stroke="currentColor" stroke-width="1.3" fill="none"/><circle cx="6" cy="6" r="1.6" fill="currentColor"/></svg>',
+  alerta: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1l5.2 9.5H.8z" fill="currentColor"/><path d="M6 4.5v3M6 8.6v.4" stroke="var(--surface)" stroke-width="1.3"/></svg>',
+  x: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/><path d="M4 4l4 4M8 4L4 8" stroke="var(--surface)" stroke-width="1.5"/></svg>',
+  mao: '<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="1.5" y="1.5" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>',
+  pausa: '<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.5" y="2" width="2.4" height="8" fill="currentColor"/><rect x="7.1" y="2" width="2.4" height="8" fill="currentColor"/></svg>',
+};
+const STATUS = {
+  ideia: ['Ideia', 'neutro', 'lapis'], rascunho: ['Rascunho', 'neutro', 'lapis'], producao: ['Em produção', 'info', 'lapis'],
+  revisao: ['Em revisão', 'info', 'olho'], fila: ['Na fila', 'warn', 'relogio'], agendado: ['Agendado', 'warn', 'relogio'],
+  publicado: ['Publicado', 'ok', 'ok'], manual: ['Manual (TikTok)', 'neutro', 'mao'], pausado: ['Pausado', 'serious', 'pausa'],
+  'sem-registro': ['Sem registro', 'serious', 'alerta'], bloqueado: ['Bloqueado', 'crit', 'x'], perdido: ['Perdido', 'crit', 'x'],
+  invalido: ['Inválido', 'crit', 'x'], erro: ['Erro', 'crit', 'x'],
+};
+const stHTML = (s) => { const [n, c, i] = STATUS[s] || [s, 'neutro', 'mao']; return `<span class="st ${c}">${IC[i]}${esc(n)}</span>`; };
+const redeChip = (r) => r && REDES[r] ? `<span class="chip"><span class="dot" style="background:${REDES[r].cor}"></span>${REDES[r].nome}</span>` : '';
+
+// ---------------------------------------------------------------- estado dos filtros
+const F = { dias: 30, rede: '', formato: '', pilar: '' };
+try { Object.assign(F, JSON.parse(localStorage.getItem('painel-filtros') || '{}')); } catch (e) {}
+const salvar = () => { try { localStorage.setItem('painel-filtros', JSON.stringify(F)); } catch (e) {} };
+
+const M = D.metricas || {};
+const POSTS = M.posts || {};
+const PUBS = D.publicacoes.map((p) => ({ ...p, met: POSTS[p.chave] || null }));
+const cliquesPorCampanha = {};
+(M.cliques_utm || []).forEach((c) => { if (c.campanha) cliquesPorCampanha[c.campanha] = (cliquesPorCampanha[c.campanha] || 0) + c.cliques; });
+
+function janela() {
+  if (!F.dias) return [new Date('2000-01-01'), new Date('2100-01-01')];
+  const ini = new Date(AGORA); ini.setDate(ini.getDate() - F.dias + 1); ini.setHours(0, 0, 0, 0);
+  return [ini, AGORA];
+}
+const passa = (p) => (!F.rede || p.plataforma === F.rede) && (!F.formato || p.formato === F.formato) && (!F.pilar || p.pilar === F.pilar);
+const noPeriodo = (p) => { const [a, b] = janela(); const q = new Date(p.quando); return q >= a && q <= b; };
+
+// ---------------------------------------------------------------- tooltip
+const tip = $('#tip');
+function mostrarTip(ev, html) { tip.innerHTML = html; tip.hidden = false; const r = tip.getBoundingClientRect(); let x = ev.clientX + 14, y = ev.clientY + 14; if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - 14; if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - 14; tip.style.left = x + 'px'; tip.style.top = y + 'px'; }
+const esconderTip = () => { tip.hidden = true; };
+
+// ---------------------------------------------------------------- gráficos
+function vazio(el, titulo, comando) {
+  el.innerHTML = `<div class="vazio"><div>${titulo}</div>${comando ? `<div><code>${esc(comando)}</code></div>` : ''}</div>`;
+}
+function escalaMax(v) { if (v <= 4) return 4; const p = Math.pow(10, Math.floor(Math.log10(v))); const n = v / p; return (n <= 2 ? 2 : n <= 5 ? 5 : 10) * p; }
+
+function barrasEmpilhadas(el, dias, series, rotulo) {
+  const W = 640, H = 200, L = 30, R = 8, T = 8, B = 24;
+  const tot = dias.map((d) => series.reduce((s, k) => s + (d.v[k] || 0), 0));
+  const max = escalaMax(Math.max(1, ...tot));
+  const bw = (W - L - R) / dias.length, gap = Math.min(6, bw * 0.3), y = (v) => T + (H - T - B) * (1 - v / max);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rotulo)}"><g class="grid">`;
+  for (let i = 0; i <= 4; i++) { const v = max * i / 4; svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`; }
+  svg += '</g>';
+  const passo = Math.ceil(dias.length / 10);
+  dias.forEach((d, i) => {
+    const x = L + i * bw + gap / 2, w = bw - gap; let acc = 0;
+    const pedacos = series.filter((k) => d.v[k]);
+    pedacos.forEach((k, j) => {
+      const v = d.v[k], y0 = y(acc), y1 = y(acc + v); acc += v;
+      const topo = j === pedacos.length - 1, h = Math.max(0, y0 - y1 - (j ? 2 : 0)), r = topo ? Math.min(4, w / 2, h) : 0;
+      const yy = y1;
+      svg += r ? `<path d="M${x},${yy + h} V${yy + r} Q${x},${yy} ${x + r},${yy} H${x + w - r} Q${x + w},${yy} ${x + w},${yy + r} V${yy + h} Z" fill="${REDES[k].cor}"/>`
+        : `<rect x="${x}" y="${yy}" width="${w}" height="${h}" fill="${REDES[k].cor}"/>`;
+    });
+    if (i % passo === 0) svg += `<text x="${x + w / 2}" y="${H - 6}" text-anchor="middle">${d.rot}</text>`;
+    svg += `<rect x="${L + i * bw}" y="${T}" width="${bw}" height="${H - T - B}" fill="transparent" data-i="${i}"/>`;
+  });
+  svg += `<line class="base" x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/></svg>`;
+  el.innerHTML = svg;
+  el.querySelectorAll('rect[data-i]').forEach((r) => {
+    const d = dias[+r.dataset.i];
+    r.addEventListener('mousemove', (ev) => mostrarTip(ev, `<b>${d.rotLongo}</b>${series.map((k) => d.v[k] ? `${REDES[k].nome}: ${d.v[k]}` : '').filter(Boolean).join('<br>') || 'nada programado'}${d.extra || ''}`));
+    r.addEventListener('mouseleave', esconderTip);
+  });
+}
+
+function linhas(el, pontos, series, rotulo) {
+  // pontos: [{rot, rotLongo, v:{k:n}}]; series: [{k, nome, cor}]
+  const W = 640, H = 190, L = 40, R = 12, T = 10, B = 24;
+  const vals = pontos.flatMap((p) => series.map((s) => p.v[s.k]).filter((v) => v != null));
+  const max = escalaMax(Math.max(1, ...vals));
+  const x = (i) => L + (pontos.length === 1 ? (W - L - R) / 2 : i * (W - L - R) / (pontos.length - 1)), y = (v) => T + (H - T - B) * (1 - v / max);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(rotulo)}"><g class="grid">`;
+  for (let i = 0; i <= 4; i++) { const v = max * i / 4; svg += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`; }
+  svg += '</g>';
+  const passo = Math.ceil(pontos.length / 8);
+  pontos.forEach((p, i) => { if (i % passo === 0 || i === pontos.length - 1) svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${p.rot}</text>`; });
+  series.forEach((s) => {
+    const pts = pontos.map((p, i) => p.v[s.k] == null ? null : [x(i), y(p.v[s.k])]).filter(Boolean);
+    if (pts.length > 1) svg += `<polyline points="${pts.map((q) => q.join(',')).join(' ')}" fill="none" stroke="${s.cor}" stroke-width="2" stroke-linejoin="round"/>`;
+    if (pts.length) { const u = pts[pts.length - 1]; svg += `<circle cx="${u[0]}" cy="${u[1]}" r="4" fill="${s.cor}" stroke="var(--surface)" stroke-width="2"/>`; }
+  });
+  svg += `<line class="cross" x1="0" x2="0" y1="${T}" y2="${H - B}" stroke="var(--muted)" stroke-dasharray="3 3" visibility="hidden"/>`;
+  svg += `<line class="base" x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/><rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent" class="hit"/></svg>`;
+  el.innerHTML = svg;
+  const svgEl = el.querySelector('svg'), cross = el.querySelector('.cross');
+  el.querySelector('.hit').addEventListener('mousemove', (ev) => {
+    const pt = svgEl.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const loc = pt.matrixTransform(svgEl.getScreenCTM().inverse());
+    const i = Math.max(0, Math.min(pontos.length - 1, Math.round((loc.x - L) / ((W - L - R) / Math.max(1, pontos.length - 1)))));
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('visibility', 'visible');
+    const p = pontos[i];
+    mostrarTip(ev, `<b>${p.rotLongo}</b>${series.map((s) => `${s.nome}: ${fmt(p.v[s.k])}`).join('<br>')}`);
+  });
+  el.querySelector('.hit').addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); esconderTip(); });
+}
+
+function barrasH(el, linhasDados, opts = {}) {
+  if (!linhasDados.length) { vazio(el, opts.vazio || 'Sem dados no período.'); return; }
+  const max = opts.max || Math.max(1, ...linhasDados.map((l) => Math.max(l.v, l.meta || 0)));
+  el.innerHTML = (opts.titulo ? `<div class="eyebrow">${esc(opts.titulo)}</div>` : '') + linhasDados.map((l) => `
+    <div class="bh" title="${esc(l.dica || '')}"><span class="rot">${esc(l.rot)}</span>
+      <span class="trilho"><span class="fill" style="width:${(l.v / max * 100).toFixed(1)}%;${l.cor ? `background:${l.cor}` : ''}"></span>${l.meta != null ? `<span class="meta" style="left:calc(${(l.meta / max * 100).toFixed(1)}% - 1px)"></span>` : ''}</span>
+      <span class="val num">${l.val ?? fmt(l.v)}</span></div>`).join('');
+}
+
+// ---------------------------------------------------------------- seções
+function cabecalho() {
+  const g = new Date(D.gerado_em);
+  $('#geradoEm').textContent = `Gerado em ${hora(D.gerado_em)}` + (M.coletado_em ? ` · métricas de ${hora(M.coletado_em)}` : ' · métricas ainda não coletadas');
+  const erros = M.erros || {};
+  const fonte = (nome, chave, temDado) => {
+    const cls = !M.coletado_em ? '' : erros[chave] ? 'erro' : temDado ? 'ok' : '';
+    const t = erros[chave] ? `${nome}: ${erros[chave]}` : !M.coletado_em ? `${nome}: nunca coletado` : `${nome}: ok`;
+    return `<span class="fonte ${cls}" title="${esc(t)}"><i></i>${nome}</span>`;
+  };
+  $('#fontes').innerHTML = `<span class="fonte ok" title="Pautas, revisões e estado das publicações"><i></i>Pacotes (${new Set(D.publicacoes.map((p) => p.data)).size} dias)</span>`
+    + fonte('Instagram', 'instagram', Object.keys(M.conta_ig || {}).length) + fonte('YouTube', 'youtube', true) + fonte('PostHog', 'posthog', (M.cliques_utm || []).length);
+}
+
+function opcoesFiltros() {
+  const todos = [...D.publicacoes, ...D.rascunhos];
+  const formatos = [...new Set(todos.map((p) => p.formato).filter(Boolean))].sort();
+  $('#fFormato').innerHTML = '<option value="">Todos</option>' + formatos.map((f) => `<option>${esc(f)}</option>`).join('');
+  const pilares = [...new Map(todos.filter((p) => p.pilar).map((p) => [p.pilar, p.pilar_n])).entries()].sort((a, b) => a[1] - b[1]);
+  $('#fPilar').innerHTML = '<option value="">Todos</option>' + pilares.map(([p, n]) => `<option value="${esc(p)}">${n}. ${esc(p)}</option>`).join('');
+  $('#fRede').value = F.rede; $('#fFormato').value = F.formato; $('#fPilar').value = F.pilar;
+  document.querySelectorAll('#fPeriodo button').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.v === F.dias)));
+}
+
+function soma(lista, campo) { let s = 0, tem = false; lista.forEach((p) => { const v = p.met?.[campo]; if (typeof v === 'number') { s += v; tem = true; } }); return tem ? s : null; }
+
+function kpis(sel) {
+  const [a, b] = janela();
+  const publicados = sel.filter((p) => p.status === 'publicado');
+  const fila = PUBS.filter(passa).filter((p) => ['fila', 'agendado', 'revisao', 'producao'].includes(p.status)).length + D.rascunhos.filter(passa).length;
+  const contaDias = Object.entries(M.conta_ig || {}).filter(([d]) => { const x = new Date(d + 'T12:00:00-03:00'); return x >= a && x <= b; });
+  const somaConta = (k) => { const v = contaDias.map(([, o]) => o[k]).filter((n) => typeof n === 'number'); return v.length ? v.reduce((s, n) => s + n, 0) : null; };
+  const utm = (M.cliques_utm || []).filter((c) => { const x = new Date(c.dia + 'T12:00:00-03:00'); return x >= a && x <= b && (!F.rede || c.origem === F.rede); });
+  const cliquesUtm = utm.length ? utm.reduce((s, c) => s + c.cliques, 0) : null;
+  const seg = Object.entries(M.seguidores || {}).sort();
+  const segAtual = (k) => { const v = seg.filter(([, o]) => o[k] != null); return v.length ? v[v.length - 1][1][k] : null; };
+  const segDelta = (k) => { const v = seg.filter(([d, o]) => o[k] != null && new Date(d + 'T12:00:00-03:00') >= a); return v.length > 1 ? v[v.length - 1][1][k] - v[0][1][k] : null; };
+  const alcance = soma(publicados, 'reach'), views = soma(publicados, 'views');
+  const interacoes = ['likes', 'comments', 'shares', 'saved'].map((k) => soma(publicados.filter((p) => p.met?.reach), k) || 0).reduce((s, n) => s + n, 0);
+  const alcComInt = soma(publicados.filter((p) => p.met?.reach), 'reach');
+  const sinal = (n) => n == null ? 'sem histórico ainda' : `${n >= 0 ? '+' : ''}${fmt(n)} no período`;
+  const periodo = F.dias ? `últimos ${F.dias} dias` : 'desde o início';
+  const k = [
+    ['Publicadas', publicados.length, `${periodo} · ${sel.filter((p) => p.status === 'manual').length} no TikTok (manual)`, true],
+    ['No backlog', fila, `${D.ideias.length} ideias guardadas`],
+    ['Views', views, 'Instagram + YouTube'],
+    ['Alcance', alcance, 'contas alcançadas no Instagram'],
+    ['Envios', soma(publicados, 'shares'), 'compartilhamentos (sinal nº 1 de alcance)'],
+    ['Salvamentos', soma(publicados, 'saved'), 'Instagram'],
+    ['Engajamento', alcComInt ? interacoes / alcComInt : null, 'curtidas + coment. + envios + salvos ÷ alcance', false, pct],
+    ['Visitas ao perfil', somaConta('profile_views'), 'Instagram, no período'],
+    ['Cliques na bio', somaConta('website_clicks'), 'link da bio do Instagram'],
+    ['Cliques nos links', cliquesUtm, 'visitas com UTM (PostHog)'],
+    ['Seguidores IG', segAtual('instagram'), sinal(segDelta('instagram'))],
+    ['Inscritos YT', segAtual('youtube'), sinal(segDelta('youtube'))],
+  ];
+  $('#kpis').innerHTML = k.map(([n, v, d, dest, f]) => `<div class="kpi${dest ? ' destaque' : ''}"><div class="eyebrow">${n}</div><div class="v num${v == null ? ' nd' : ''}">${v == null ? '—' : (f || fmt)(v)}</div><div class="d">${esc(v == null && !M.coletado_em && !['Publicadas', 'No backlog'].includes(n) ? 'rode a coleta de métricas' : d)}</div></div>`).join('');
+}
+
+function backlog() {
+  const pub = PUBS.filter(passa), ras = D.rascunhos.filter(passa);
+  const cols = [
+    ['Ideias e rascunhos', [...ras, ...(F.rede || F.formato || F.pilar ? [] : D.ideias.map((i) => ({ status: 'ideia', titulo: i.texto, data: i.origem, ideia: true })))]],
+    ['Produção e revisão', pub.filter((p) => ['producao', 'revisao'].includes(p.status))],
+    ['Na fila', pub.filter((p) => ['fila', 'agendado', 'pausado'].includes(p.status))],
+    ['Publicado', pub.filter((p) => ['publicado', 'manual'].includes(p.status)).sort((a, b) => b.quando.localeCompare(a.quando))],
+    ['Precisa de atenção', pub.filter((p) => ['bloqueado', 'perdido', 'invalido', 'erro', 'sem-registro'].includes(p.status)).sort((a, b) => b.quando.localeCompare(a.quando)), true],
+  ];
+  const LIM = 8;
+  const card = (p) => p.ideia ? `<div class="card"><div class="t" style="font-weight:500">${esc(p.titulo.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*/g, ''))}</div><div class="m">${stHTML('ideia')}<span>guardada em ${dia(p.data + 'T12:00:00-03:00')}</span></div></div>` : `
+    <div class="card"><div class="t">${esc(p.titulo)}</div>
+      <div class="m">${stHTML(p.status)}<span>${hora(p.quando)}</span></div>
+      <div class="m">${redeChip(p.plataforma)}<span class="chip">${esc(p.formato)}</span>${p.pilar_n ? `<span>Pilar ${p.pilar_n}</span>` : ''}</div>
+      ${p.motivo && !['publicado', 'fila'].includes(p.status) ? `<div class="motivo">${esc(p.motivo)}</div>` : ''}
+      ${p.links?.length ? `<div class="m">${p.links.map((l, i) => `<a href="${esc(l)}" target="_blank" rel="noopener">abrir${p.links.length > 1 ? ' ' + (i + 1) : ''} ↗</a>`).join(' ')}</div>` : ''}</div>`;
+  $('#kanban').innerHTML = cols.map(([nome, itens, at]) => `<div class="col${at ? ' atencao' : ''}"><h3><span>${nome}</span><span class="num">${itens.length}</span></h3>
+    ${itens.length ? itens.slice(0, LIM).map(card).join('') + (itens.length > LIM ? `<div class="mais">+ ${itens.length - LIM} na tabela abaixo</div>` : '') : '<div class="vazio-col">Nada aqui.</div>'}${at && itens.some((p) => p.status === 'sem-registro') ? '<div class="mais"><b>Sem registro</b>: aprovada, horário passou, mas não há estado-publicacao.json aqui. Gere o painel na nuvem (ele baixa o estado do Supabase). Se continuar assim, o publicar.py não rodou ou estava em simulação.</div>' : ''}</div>`).join('');
+  const prox = pub.filter((p) => ['fila', 'agendado'].includes(p.status)).sort((a, b) => a.quando.localeCompare(b.quando))[0];
+  $('#backlogResumo').textContent = prox ? `Próxima: ${hora(prox.quando)} · ${REDES[prox.plataforma]?.nome || ''} ${prox.formato}` : 'Nada na fila';
+}
+
+function ritmo(sel) {
+  const [a] = janela();
+  let ini = F.dias ? new Date(a) : new Date(Math.min(...PUBS.map((p) => +new Date(p.quando)), +AGORA));
+  const futuros = PUBS.filter(passa).map((p) => new Date(p.quando)).filter((d) => d > AGORA);
+  const fim = new Date(Math.max(+AGORA, ...futuros, ...D.rascunhos.filter(passa).map((r) => +new Date(r.quando))));
+  const dias = [];
+  for (let d = new Date(ini); d <= fim; d.setDate(d.getDate() + 1)) {
+    const k = isoDia(d);
+    const doDia = [...PUBS, ...D.rascunhos].filter(passa).filter((p) => isoDia(new Date(p.quando)) === k);
+    const v = {}; doDia.forEach((p) => { if (p.plataforma) v[p.plataforma] = (v[p.plataforma] || 0) + 1; });
+    const st = {}; doDia.forEach((p) => { st[p.status] = (st[p.status] || 0) + 1; });
+    dias.push({ rot: d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }), rotLongo: d.toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: '2-digit' }), v,
+      extra: Object.keys(st).length ? '<br><br>' + Object.entries(st).map(([s, n]) => `${STATUS[s]?.[0] || s}: ${n}`).join('<br>') : '' });
+  }
+  const series = ORDEM_REDES.filter((r) => !F.rede || r === F.rede);
+  $('#legRitmo').innerHTML = series.map((r) => `<span><span class="dot" style="background:${REDES[r].cor}"></span>${REDES[r].nome}</span>`).join('');
+  if (!dias.some((d) => Object.keys(d.v).length)) return vazio($('#chRitmo'), 'Nenhuma publicação programada no período.');
+  barrasEmpilhadas($('#chRitmo'), dias, series, 'Publicações programadas por dia e por rede');
+}
+
+function mix(sel) {
+  const cont = (lista, f) => { const m = new Map(); lista.forEach((p) => { const k = f(p); if (k) m.set(k, (m.get(k) || 0) + 1); }); return [...m.entries()].sort((a, b) => b[1] - a[1]); };
+  barrasH($('#chFormato'), cont(sel, (p) => p.formato).map(([rot, v]) => ({ rot, v })));
+  // pilares contam peças (não publicações), como na estratégia
+  const pecas = [...new Map(sel.filter((p) => p.pilar_n).map((p) => [p.data + p.peca, p])).values()];
+  const total = pecas.length;
+  const nomes = {}; [...D.publicacoes, ...D.rascunhos].forEach((p) => { if (p.pilar_n) nomes[p.pilar_n] = p.pilar; });
+  const pil = Object.entries(D.metas_pilar).map(([n, meta]) => { const v = pecas.filter((p) => String(p.pilar_n) === n).length; return { rot: `${n}. ${nomes[n] || ['', 'Série pro seu humor', 'Órfã de série', 'Dilema do casal', 'MIA acertou? / prova', 'Bastidor do produto'][n]}`, v: total ? v / total * 100 : 0, meta, val: `${total ? Math.round(v / total * 100) : 0}% · meta ${meta}%`, dica: `${v} de ${total} peças` }; });
+  barrasH($('#chPilar'), total ? pil : [], { max: Math.max(50, ...pil.map((p) => p.v)), vazio: 'Nenhuma peça com pilar no período.' });
+  barrasH($('#chFunil'), ['Descoberta', 'Consideração', 'Conversão', 'Retenção'].map((f) => ({ rot: f, v: pecas.filter((p) => p.funil === f).length })).filter((l) => l.v), { titulo: 'Estágio do funil (CTA)', vazio: 'Sem CTA identificado.' });
+  barrasH($('#chRecorrente'), cont(pecas, (p) => p.recorrente || 'Avulso').map(([rot, v]) => ({ rot, v, cor: 'var(--s-yt)' })), { titulo: 'Formato recorrente' });
+}
+
+function desdobramentos(sel) {
+  const pecas = new Map();
+  sel.forEach((p) => { const k = p.data + '/' + p.peca; if (!pecas.has(k)) pecas.set(k, { ...p, filhos: [] }); pecas.get(k).filhos.push(p); });
+  const lista = [...pecas.values()].sort((a, b) => b.quando.localeCompare(a.quando));
+  const porMae = {}; lista.forEach((p) => { if (p.mae) (porMae[p.mae] = porMae[p.mae] || []).push(p); });
+  const raiz = lista.filter((p) => !p.mae || !lista.some((m) => m.peca === p.mae));
+  const linha = (p, filho) => `<div class="linha${filho ? ' filho' : ''}"><span class="muted num">${dia(p.quando)}</span>
+    <div style="min-width:0"><div style="font-weight:650;overflow-wrap:anywhere">${filho ? '↳ ' : ''}${esc(p.titulo)}</div><div class="muted" style="font-size:12px">${[p.recorrente, p.humor, p.series].filter(Boolean).map(esc).join(' · ')}</div></div>
+    <div class="canais">${p.filhos.map((f) => `<span class="chip" title="${esc(STATUS[f.status]?.[0] || f.status)}"><span class="dot" style="background:${REDES[f.plataforma]?.cor}"></span>${esc(f.formato)} <span class="st ${STATUS[f.status]?.[1] || 'neutro'}">${IC[STATUS[f.status]?.[2] || 'mao']}</span></span>`).join('')}</div></div>`;
+  $('#desd').innerHTML = raiz.length ? raiz.map((p) => linha(p) + (porMae[p.peca] || []).map((f) => linha(f, true)).join('')).join('') : '<div class="vazio">Nenhuma peça no período.</div>';
+  const multi = lista.filter((p) => p.filhos.length > 1).length;
+  $('#desdResumo').textContent = lista.length ? `${lista.length} peças → ${sel.length} publicações · ${multi} em mais de um canal · média ${(sel.length / lista.length).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} por peça` : '';
+}
+
+const COLS = [
+  ['quando', 'Data', (p) => `<span class="num">${dia(p.quando)}</span>`], ['titulo', 'Publicação', null], ['plataforma', 'Rede', (p) => redeChip(p.plataforma)],
+  ['formato', 'Formato', (p) => esc(p.formato)], ['status', 'Status', (p) => stHTML(p.status)],
+  ['views', 'Views', null, true], ['reach', 'Alcance', null, true], ['likes', 'Curtidas', null, true], ['comments', 'Coment.', null, true],
+  ['shares', 'Envios', null, true], ['saved', 'Salvos', null, true], ['profile_visits', 'Visitas perfil', null, true], ['follows', 'Seguiu', null, true],
+  ['eng', 'Engaj.', (p) => pct(p._eng), true], ['cliques', 'Cliques UTM', null, true],
+];
+let ordem = { k: 'quando', dir: -1 };
+function engajamento(sel) {
+  const linhasT = sel.filter((p) => p.plataforma !== 'tiktok' && !['fila', 'revisao', 'producao'].includes(p.status)).map((p) => {
+    const m = p.met || {}; const r = m.reach;
+    const inter = ['likes', 'comments', 'shares', 'saved'].reduce((s, k) => s + (m[k] || 0), 0);
+    return { ...p, _eng: r ? inter / r : null, _cl: cliquesPorCampanha[p.campanha] ?? null };
+  });
+  const val = (p, k) => k === 'eng' ? p._eng : k === 'cliques' ? p._cl : ['quando', 'titulo', 'plataforma', 'formato', 'status'].includes(k) ? p[k] : p.met?.[k];
+  linhasT.sort((a, b) => { const x = val(a, ordem.k), y = val(b, ordem.k); if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * ordem.dir; });
+  const tEng = $('#tEng');
+  tEng.innerHTML = `<thead><tr>${COLS.map(([k, n, , num]) => `<th class="${num ? 'n' : ''}" aria-sort="${ordem.k === k ? (ordem.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-k="${k}">${n}${ordem.k === k ? (ordem.dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`).join('')}</tr></thead>
+    <tbody>${linhasT.map((p) => `<tr>${COLS.map(([k, , f, num]) => k === 'titulo'
+      ? `<td class="titulo">${p.links?.[0] ? `<a href="${esc(p.links[0])}" target="_blank" rel="noopener">${esc(p.titulo)}</a>` : esc(p.titulo)}<div class="muted" style="font-size:12px">${esc(p.peca)}</div></td>`
+      : `<td class="${num ? 'n' : ''}">${f ? f(p) : fmt(val(p, k))}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${COLS.length}" class="muted">Nenhuma publicação no período.</td></tr>`}</tbody>`;
+  tEng.querySelectorAll('th button').forEach((b) => b.addEventListener('click', () => { ordem = { k: b.dataset.k, dir: ordem.k === b.dataset.k ? -ordem.dir : -1 }; engajamento(sel); }));
+  const comMet = linhasT.filter((p) => p.met).length;
+  $('#engResumo').textContent = `${linhasT.length} publicações · ${comMet} com métricas`;
+  $('#engVazio').innerHTML = comMet ? '' : `<div class="vazio"><div>${M.coletado_em ? 'Nenhuma publicação confirmada (com id do Instagram/YouTube) no período ainda. As métricas aparecem quando o publicar.py registrar o post.' : 'Ainda não há métricas coletadas. Quando houver posts publicados, rode:'}</div>${M.coletado_em ? '' : '<div><code>python painel/painel.py --metricas</code></div>'}</div>`;
+}
+
+function serieDiaria(campo) {
+  const [a] = janela();
+  const dias = Object.keys(M.conta_ig || {}).sort().filter((d) => new Date(d + 'T12:00:00-03:00') >= a);
+  return dias.map((d) => ({ rot: dia(d + 'T12:00:00-03:00'), rotLongo: new Date(d + 'T12:00:00-03:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: '2-digit' }), v: { v: M.conta_ig[d][campo] ?? null } }));
+}
+function cliques() {
+  for (const [el, campo, nome] of [['#chBio', 'website_clicks', 'Cliques na bio'], ['#chPerfil', 'profile_views', 'Visitas ao perfil']]) {
+    const s = serieDiaria(campo);
+    if (!s.some((p) => p.v.v != null)) { vazio($(el), M.erros?.instagram ? `Instagram não respondeu: ${esc(M.erros.instagram)}` : 'Sem dados do Instagram ainda.', 'python painel/painel.py --metricas'); continue; }
+    linhas($(el), s, [{ k: 'v', nome, cor: 'var(--s-ig)' }], nome);
+  }
+  const [a, b] = janela();
+  const utm = (M.cliques_utm || []).filter((c) => { const x = new Date(c.dia + 'T12:00:00-03:00'); return x >= a && x <= b; });
+  if (!utm.length) {
+    vazio($('#chUtm'), M.erros?.posthog ? 'PostHog não configurado. Para medir cliques nos links com UTM, ponha no .env (ou no ambiente de nuvem):' : 'Nenhum clique com UTM no período.', M.erros?.posthog ? 'POSTHOG_API_KEY=…  POSTHOG_PROJECT_ID=…' : '');
+  } else {
+    const m = new Map(); utm.forEach((c) => { const k = `${c.origem || '(sem origem)'} · ${c.meio}`; m.set(k, (m.get(k) || 0) + c.cliques); });
+    barrasH($('#chUtm'), [...m.entries()].sort((x, y) => y[1] - x[1]).map(([rot, v]) => ({ rot, v, cor: rot.startsWith('youtube') ? 'var(--s-yt)' : rot.startsWith('tiktok') ? 'var(--s-tt)' : 'var(--s-ig)' })));
+  }
+  const seg = Object.entries(M.seguidores || {}).sort().filter(([d]) => new Date(d + 'T12:00:00-03:00') >= a);
+  const series = [{ k: 'instagram', nome: 'Instagram', cor: 'var(--s-ig)' }, { k: 'youtube', nome: 'YouTube', cor: 'var(--s-yt)' }];
+  $('#legSeg').innerHTML = seg.length ? series.map((s) => `<span><span class="dot" style="background:${s.cor}"></span>${s.nome}</span>`).join('') : '';
+  if (!seg.length) vazio($('#chSeg'), 'Sem fotos de seguidores ainda. Cada coleta guarda uma; com uma por dia, a linha aparece.', 'python painel/painel.py --metricas');
+  else linhas($('#chSeg'), seg.map(([d, o]) => ({ rot: dia(d + 'T12:00:00-03:00'), rotLongo: d, v: o })), series, 'Seguidores por rede');
+}
+
+function render() {
+  salvar();
+  const sel = PUBS.filter(passa).filter(noPeriodo);
+  kpis(sel); backlog(); ritmo(sel); mix(sel); desdobramentos(sel); engajamento(sel); cliques();
+}
+
+cabecalho(); opcoesFiltros();
+document.querySelectorAll('#fPeriodo button').forEach((b) => b.addEventListener('click', () => { F.dias = +b.dataset.v; opcoesFiltros(); render(); }));
+for (const [id, k] of [['#fRede', 'rede'], ['#fFormato', 'formato'], ['#fPilar', 'pilar']]) $(id).addEventListener('change', (e) => { F[k] = e.target.value; render(); });
+render();
+</script>
