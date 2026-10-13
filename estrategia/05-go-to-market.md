@@ -44,10 +44,11 @@
 - Stories de humor: `https://seriecerta.online/descobrir?humor=<humor>&utm_source=instagram&utm_medium=stories`
 
 ## Ritual de aprendizado
-Toda segunda, o `estrategista` lê `historico/metricas.md` (o Bruno cola os números) e ajusta pilares e horários.
+Toda quarta à noite (a 1ª em 21/10), a rotina `/revisao-semanal` gera o relatório da semana com os números coletados automaticamente (`painel/relatorio.py`), fecha e abre testes A/B e propõe melhorias. As regras estão em `10-experimentos.md`. O `historico/metricas.md` manual deixou de ser necessário.
 - Até existirem números, horários e grade de `08-cronograma.md` ficam como hipótese e **só mudam por decisão do Bruno** (a grade diária de 14/10 foi uma dessas decisões).
 - Para medir a meta de audiência, o template de métricas precisa ganhar a coluna **seguidores ganhos** (sugestão para o Bruno; o agente não edita `historico/`).
 
 ## Changelog
+- 2026-10-13 — Ritual de aprendizado passa a ser a revisão semanal automática com testes A/B (`10-experimentos.md`), no lugar da leitura manual de `historico/metricas.md` às segundas — por quê: pedido do Bruno de melhoria contínua.
 - 2026-10-13 — Canais atualizados para a grade diária do `08-cronograma.md` (2 Reels, carrossel e Stories por dia no Instagram; Lista da MIA e 2 Shorts por dia no YouTube; sem vídeo longo semanal) — por quê: decisão do Bruno, válida a partir de 14/10.
 - 2026-10-09 — Objetivo dos 90 dias trocado de "cadastros + primeiros pagantes" para **audiência (seguidores/alcance)**; orçamento zero explicitado (parcerias só collab/permuta orgânica); criada tabela de métricas-guia de Descoberta com alvos `[definir com o Bruno]`; funil ganhou coluna de peso, CTAs mantidos; nota de que a grade não muda sem dado — por quê: respostas do Bruno na revisão `/estrategia` e SOM mostrando que o gargalo é alcance.

@@ -11,7 +11,8 @@ Ao definir a pauta do dia:
 2. Leia `historico/publicados.md` e evite repetir série + humor + gancho dos últimos 30 dias.
 3. Pesquise na web lançamentos, novas temporadas e o que entrou/saiu dos streamings no Brasil nesta semana; prefira o que é atual.
 4. Escreva `saida/<AAAA-MM-DD>/00-pauta.md` com, para cada peça: formato, pilar, job (de `02-jtbd.md`), humor, séries escolhidas, gancho, CTA e estágio do funil, horário de postagem.
-5. **Toda pauta diária inclui a Lista da MIA** (YouTube 12h00, 16:9) — ver abaixo.
+5. **Testes A/B ativos:** leia o registro de `estrategia/10-experimentos.md`. Para cada teste ativo, aplique a variante do dia no slot indicado e escreva na peça da pauta `Teste: <id> · variante <A|B>`. Antes de 21/10/2026 não há testes (período de base).
+6. **Toda pauta diária inclui a Lista da MIA** (YouTube 12h00, 16:9) — ver abaixo.
 
 ## Lista da MIA — escolher o tema do dia pelo que está bombando
 Pesquise (WebSearch/WebFetch) o que está em alta **hoje ou nesta semana no Brasil**, cruzando pelo menos 3 sinais:

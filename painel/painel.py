@@ -59,6 +59,11 @@ def normalizar(txt: str) -> str:
     return re.sub(r"[^a-z0-9 ]+", "", "".join(c for c in txt if not unicodedata.combining(c))).strip()
 
 
+def exp_rotulo(exp) -> str:
+    """{"id": "gancho-pergunta", "variante": "B"} -> "gancho-pergunta·B" (campo opcional do publicar.json)."""
+    return f"{exp.get('id', '')}·{exp.get('variante', '')}" if isinstance(exp, dict) and exp.get("id") else ""
+
+
 def legivel(slug: str) -> str:
     return re.sub(r"^\d\d-", "", slug).replace("-", " ").capitalize()
 
@@ -224,6 +229,7 @@ def inventario() -> dict:
                     "recorrente": info.get("recorrente", ""), "series": series,
                     "campanha": campanha.group(1) if campanha else f"{data}-{pasta.name[3:]}",
                     "assinatura": normalizar((pub.get("titulo") or pub.get("legenda") or "").split("\n")[0])[:30],
+                    "experimento": exp_rotulo(pub.get("experimento") or plano.get("experimento")),
                     "met": None,
                 })
 
@@ -412,6 +418,16 @@ def coletar_posthog(dias):
             for a, b, c, d, n, u in r.json().get("results", [])]
 
 
+def fotografar(md: dict) -> dict:
+    """Guarda a foto do dia dos números (com a idade do post em horas), para comparar posts na mesma idade."""
+    if not md.get("timestamp"):
+        return md
+    foto = {"d": str(AGORA.date()), "h": round((AGORA - quando_api(md["timestamp"])).total_seconds() / 3600, 1),
+            **{k: md[k] for k in NUMEROS if isinstance(md.get(k), (int, float))}}
+    md["serie"] = [f for f in md.get("serie", []) if f.get("d") != foto["d"]] + [foto]
+    return md
+
+
 def coletar(dias):
     """Varre a conta inteira (não só o que saiu pelo publicar.py) e guarda por id de mídia."""
     m = ler_json(METRICAS, {})
@@ -433,6 +449,8 @@ def coletar(dias):
             if not antigo.get("em") or quando_api(md["timestamp"]) >= recente:
                 info |= ig.metricas(md) | {"em": AGORA.isoformat()}
             m["ig_midias"][md["id"]] = mesclar(antigo, info)
+            if "em" in info:
+                fotografar(m["ig_midias"][md["id"]])
         perfil = ig.conta(min(dias, 90), m["conta_ig"])
         m["seguidores"].setdefault(hoje, {})["instagram"] = perfil.get("followers_count")
     except Exception as e:
@@ -441,7 +459,7 @@ def coletar(dias):
     try:
         canal = ColetorYouTube().canal()
         for vid, dados in canal["videos"].items():
-            m["yt_videos"][vid] = mesclar(m["yt_videos"].get(vid, {}), {**dados, "em": AGORA.isoformat()})
+            m["yt_videos"][vid] = fotografar(mesclar(m["yt_videos"].get(vid, {}), {**dados, "em": AGORA.isoformat()}))
         m["seguidores"].setdefault(hoje, {})["youtube"] = canal["inscritos"]
     except Exception as e:
         erros["youtube"] = str(e)[:300]
@@ -480,6 +498,12 @@ def somar(midias: list) -> dict:
     return out or None
 
 
+def d1(md: dict) -> dict:
+    """Números na primeira foto com 20 h ou mais de vida (≈ dia seguinte). Base justa para comparar posts."""
+    fotos = [f for f in md.get("serie", []) if f.get("h", 0) >= 20]
+    return min(fotos, key=lambda f: f["h"]) if fotos else {}
+
+
 def juntar(inv, m):
     """Liga cada publicação do pacote às mídias da conta e acrescenta o que saiu por fora do publicador.
 
@@ -514,6 +538,8 @@ def juntar(inv, m):
             midias = [fonte[i] for i in ids]
             p["ids"] = ids
             p["met"] = somar(midias)
+            p["met_d1"] = somar([d1(md) for md in midias])
+            p["publicado_em"] = min(quando_api(md["timestamp"]) for md in midias).isoformat()
             p["links"] = p["links"] or list(dict.fromkeys(md.get("permalink") or md.get("link") for md in midias if
                                                           md.get("permalink") or md.get("link")))
             if p["status"] in ("sem-registro", "fila", "erro", "perdido", "invalido", "pausado"):
@@ -551,8 +577,9 @@ def juntar(inv, m):
             "formato": formato, "quando": q.isoformat(), "status": status, "motivo": "",
             "links": [md.get("permalink") or md.get("link") for _, md in itens if md.get("permalink") or md.get("link")][:1],
             "ids": [i for i, _ in itens], "met": somar([md for _, md in itens]), "externa": True,
+            "met_d1": somar([d1(md) for _, md in itens]), "publicado_em": q.isoformat(),
             "pilar": "", "pilar_n": 0, "humor": "", "job": "", "funil": "", "cta": "", "recorrente": "", "series": "",
-            "campanha": "", "assinatura": "",
+            "campanha": "", "assinatura": "", "experimento": "",
         })
     return inv
 

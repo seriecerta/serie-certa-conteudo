@@ -2,6 +2,7 @@
 
 > Vale a partir de **quarta, 14/10/2026** (decisão do Bruno em 13/10). Mesma grade **todos os dias**, inclusive fim de semana.
 > Fuso: America/Sao_Paulo. Horários são o que vai no `quando` do `publicar.json`.
+> **De 14 a 20/10 a grade roda fixa (período de base).** A partir da revisão de 21/10, ela muda só pelo ciclo de `10-experimentos.md`: testes A/B semanais e adoção dos vencedores.
 
 ## Grade diária
 | Horário | Rede | Peça | Pilar |
@@ -40,4 +41,5 @@ Por dia: 1 carrossel + 1 sequência de Stories + 1 Lista da MIA + 2 Shorts + 2 R
 - Instagram: a rotina de publicação roda de hora em hora no minuto :01 e também às 13h31 e 18h31, para os horários "e meia" não atrasarem 30 min.
 
 ## Changelog
+- 2026-10-13 — Período de base de 14 a 20/10 com grade fixa e, depois, revisão semanal com testes A/B (`10-experimentos.md`) — por quê: pedido do Bruno.
 - 2026-10-13 — Grade semanal (horários diferentes por dia, vídeo longo de quinta às 19h) trocada por **grade diária única**: carrossel + Stories 10h, Lista da MIA 12h, Short + Reels 13h30, Reels 18h30, Short 19h. O vídeo longo semanal sai da grade (a Lista da MIA diária ocupa o espaço de vídeo 16:9). Pilares continuam escolhidos pelo agente com os pesos de `07` — por quê: decisão do Bruno, válida a partir de 14/10.
