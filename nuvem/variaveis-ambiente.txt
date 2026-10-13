@@ -12,3 +12,8 @@ MARCAR_CONTEUDO_IA=true
 # Se o seu plano não tiver "API credentials", descomente e preencha aqui:
 # ELEVENLABS_API_KEY=
 # SUPABASE_SERVICE_ROLE_KEY=
+
+# Opcional, para o painel medir cliques nos links com UTM (python painel/painel.py --metricas):
+# POSTHOG_HOST=https://us.posthog.com
+# POSTHOG_PROJECT_ID=
+# POSTHOG_API_KEY=      (chave pessoal do PostHog com permissão query:read)

@@ -36,6 +36,7 @@ Stories: a API publica **sem stickers** (sem enquete, link ou caixinha). O CTA v
   Descrição: 2 linhas de gancho, link `https://seriecerta.online/?utm_source=youtube&utm_medium=organico&utm_campaign=<data>-lista`, capítulos com o tempo de entrada de cada série (pegue de `narracao.json`, formato `00:00 Abertura`, `00:14 nº 5 — Série`…; o primeiro precisa ser 00:00), e uma linha "Onde assistir" por série. Tags: nomes das séries, do ator/atriz/tema da tendência, "séries", "o que assistir". Comentário fixado em `comentario-fixado.txt` com o link do app.
 - `quando` com fuso `-03:00`, horário do cronograma. Datas de amanhã vão na pasta de amanhã.
 - Legenda no estilo dos posts (ver ficha "Quarta, 21h" em `09-…`): 2–3 linhas curtas, um CTA, 4–6 hashtags, máx. 2 emojis, ≤ 2.200 caracteres. Título YouTube sem `<` ou `>`.
+- Peça desdobrada de outra pasta (ex.: Short tirado do vídeo longo de quinta): acrescente no topo do `publicar.json` `"peca_mae": "<pasta da peça-mãe>"`. O publicador ignora esse campo; o painel usa para agrupar os desdobramentos.
 - Comentário fixado sugerido em `comentario-fixado.txt` (não é publicado automaticamente).
 - Mesmo vídeo no TikTok: legenda em `tiktok.txt` (TikTok não está no publicador automático).
 

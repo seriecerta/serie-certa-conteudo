@@ -62,6 +62,7 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 - Formato diário **Lista da MIA** (YouTube 13h30): ver `estrategia/07-pilares-e-formatos.md`
 - `/publicar` — publica no Instagram o que chegou no horário (tarefa agendada de hora em hora)
 - `/estrategia` — cria ou revisa TAM/SAM/SOM, ICP, JTBD, posicionamento, proposta de valor e GTM
+- `/painel` — gera `painel/index.html`: backlog, publicados, redes, formatos, desdobramentos, engajamento e cliques (só leitura)
 
 ## Fechamento de sessão (retroalimentação)
 Toda sessão que entrega algo novo — recurso, correção de bug, pacote, ajuste de configuração ou de processo — termina com um fechamento em `APRENDIZADOS.md`, **no mesmo commit/push da entrega**.

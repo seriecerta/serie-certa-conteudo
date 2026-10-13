@@ -4,6 +4,20 @@ Fricções reais que custaram tempo e podem voltar. Leia antes de mexer em scrip
 Regras de como registrar: seção "Fechamento de sessão" do `CLAUDE.md`.
 Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais recente no topo.
 
+## Painel e ferramentas
+
+### 2026-10-13 — Script novo não pode ir para `scripts/`
+- **Sintoma:** `Write` em `scripts/painel.py` falhou com "File is in a directory that is denied by your permission settings".
+- **Causa:** `.claude/settings.json` nega `Edit(scripts/**)` e `Write(scripts/**)` de propósito, para proteger as travas do publicador.
+- **Como resolver:** ferramenta nova e só de leitura vive na própria pasta (ex.: `painel/painel.py`, que importa `scripts/nuvem.py` sem alterá-lo). Não contorne o bloqueio com `sed`/`cat >` via Bash.
+- **Onde mexer:** `painel/`, permissões em `.claude/settings.json`.
+
+### 2026-10-13 — Playwright do `pip` não acha o Chromium da nuvem
+- **Sintoma:** `BrowserType.launch: Executable doesn't exist at /opt/pw-browsers/chromium_headless_shell-1243/...` e o aviso para rodar `playwright install`.
+- **Causa:** a versão do pacote `playwright` instalada pelo pip pede uma revisão do navegador diferente da que vem pré-instalada em `/opt/pw-browsers`.
+- **Como resolver:** não rode `playwright install`. Lance com `chromium.launch(executable_path="/opt/pw-browsers/chromium")`.
+- **Onde mexer:** scripts de captura/teste que você escrever.
+
 ## Publicação
 
 ### 2026-10-13 — `publicar.py --simular` sobrescreve o pacote local com o da nuvem
