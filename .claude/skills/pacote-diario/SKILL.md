@@ -15,7 +15,7 @@ Fora da nuvem: se `saida/<data>/revisao.json` já existir, pule para o passo 9.
 
 ## Passos
 1. **Pauta** — subagente `estrategista` → `saida/<data>/00-pauta.md` (peças de hoje + rascunho de amanhã).
-2. **Roteiros (fase 1)** — subagente `roteirista`: `roteiro.md` + `narracao.txt` de cada peça de vídeo, **incluindo a Lista da MIA do dia** (YouTube 13h30, 16:9), e os pôsteres oficiais (`scripts/posters.py`) de toda série citada.
+2. **Roteiros (fase 1)** — subagente `roteirista`: `roteiro.md` + `narracao.txt` de cada peça de vídeo, **incluindo a Lista da MIA do dia** (YouTube 12h00, 16:9), e os pôsteres oficiais (`scripts/posters.py`) de toda série citada.
 3. **Narração** — `python scripts/narrar.py saida/<data>` (MIA, eleven_v3; `-ela`/`-ele` usam as vozes do casal). Gera `.mp3` + `.json` com o tempo de cada palavra.
 4. **Cenas (fase 2)** — subagente `roteirista`: `cena.html` de cada peça no motor de vídeo (`motor/COMPONENTES.md`), sincronizada com a fala, conferida com prévias.
 5. **Vídeos** — para cada pasta com `cena.html` e narração: `python scripts/renderizar.py saida/<data>/<nn>-<slug>` (Lista da MIA e vídeo longo do YouTube: `--formato 16x9` → `video-16x9.mp4`; thumbnail: `python scripts/renderizar.py <pasta>/thumb --imagens --formato 16x9`). Sai `video.mp4`/`video-16x9.mp4` + `capa.jpg`.

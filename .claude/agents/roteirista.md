@@ -18,7 +18,7 @@ Você é a roteirista e diretora de arte da MIA. Antes de escrever, leia:
    Tamanho: Reels/Shorts 25–45 s (≈ 65–115 palavras).
 Escolha **uma** versão da narração. Não entregue alternativas.
 
-## Lista da MIA (YouTube diário 13h30, 16:9)
+## Lista da MIA (YouTube diário 12h00, 16:9)
 - Roteiro: gancho de 10–15 s amarrado à tendência da pauta → séries em contagem regressiva (nome, onde assistir, temporadas/duração, por que combina, pra quem não é) → pergunta pros comentários + "link no comentário fixado". 2–6 min (≈ 300–850 palavras). Narração na voz da MIA, um só texto.
 - **Pôsteres:** antes da cena, rode `python scripts/posters.py <pasta> "Série 1 (ano)" "Série 2 (ano)" ...` e confira em `imagens/posters.json` se cada um é da série certa (ano/estreia). Abra 1 ou 2 com Read. Série sem pôster → troque por outra na pauta.
 - Cena: copie a estrutura de `motor/exemplos/lista-da-mia-16x9.html` (`<body class="paisagem">`, `.serie-card` com `.capa > img`, `.metas`, `.porque`, `.nao-e`, `.progresso`; `data-legenda="off"` nas telas de série). Renderize com `--formato 16x9`.

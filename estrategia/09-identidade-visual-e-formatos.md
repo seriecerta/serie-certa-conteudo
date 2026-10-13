@@ -22,7 +22,7 @@ Referência obrigatória para o `roteirista`. A execução técnica está em `mo
 | **Selvagens do Sofá** (documentário) | narração de documentário de natureza sobre o "brasileiro adulto" no sofá; binóculo, registro de campo, legenda grande sincronizada | "Selvagens do Sofá · Ep. 01" |
 | **Qual é você?** | 4 tipos numerados com cor, cada um com "superpoder"; tela final com os 4 cards e "comenta o número" | "Os 4 tipos de pessoa escolhendo série" |
 | **Recibo / placar** | cupom ou placar resumindo o fracasso ("série assistida: 0 min") | fecho do "Horário de almoço" |
-| **Lista da MIA** (YouTube diário 13h30, 16:9) | tema do dia pela tendência; contagem regressiva de séries com pôster oficial, onde assistir, por que combina e pra quem não é | `motor/exemplos/lista-da-mia-16x9.html` |
+| **Lista da MIA** (YouTube diário 12h00, 16:9) | tema do dia pela tendência; contagem regressiva de séries com pôster oficial, onde assistir, por que combina e pra quem não é | `motor/exemplos/lista-da-mia-16x9.html` |
 | **Respondendo seu humor** (parte 2) | MIA lê comentários e indica 1 série por humor | prometido nos finais "segue pra ver a parte 2" |
 
 Formato identificação + humor, **sem venda**. O app aparece no fim como solução natural ("amanhã eu respondo com a série certa pro seu humor") ou em demo de 15 s nos vídeos longos.

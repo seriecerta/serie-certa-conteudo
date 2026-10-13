@@ -25,10 +25,11 @@ Vale até ~jan/2027 (ver `05-go-to-market.md`).
 - Entregar: roteiro com tempos, texto na tela por cena, narração (.txt + .mp3), legenda, hashtags (3–5), sugestão de capa.
 
 ### Vídeo longo YouTube (16:9)
+> Fora da grade desde 14/10/2026 (`08-cronograma.md`): o espaço de vídeo 16:9 é da Lista da MIA diária. Só produza se o Bruno pedir.
 - Estrutura fixa: 0–20 s dor + promessa → contagem de séries (por que combina, onde assistir, tempo total, pra quem não é) → 15 s de demo do app no meio → fim com link fixado + tela final para o próximo humor.
 - Entregar: roteiro completo, narração por bloco, título (3 opções ranqueadas, escolher a 1ª), descrição com capítulos e UTMs, tags, texto da thumb, comentário fixado.
 
-### Lista da MIA — YouTube, todos os dias às 13h30 (16:9, 1920×1080)
+### Lista da MIA — YouTube, todos os dias às 12h00 (16:9, 1920×1080)
 - **Tema do dia escolhido pelo `estrategista` a partir do que está em alta** (ver `.claude/agents/estrategista.md` → Lista da MIA). Eixos possíveis: humor, gênero, ator, atriz, criador/diretor, plataforma, lançamento da semana, "acabou X? vê essas", data/evento.
 - 3 a 7 séries, 2–6 min. Ordem de contagem regressiva (nº 1 por último).
 - Estrutura: 0–15 s gancho ligado à tendência + promessa ("5 séries com a atriz de X") → cada série: **pôster oficial**, nome, onde assistir no Brasil, temporadas/duração, por que combina, pra quem não é → (opcional) 10–15 s de demo do app se houver gravação em `assets/demo/` → fim: pergunta pros comentários + link fixado.
@@ -41,11 +42,13 @@ Vale até ~jan/2027 (ver `05-go-to-market.md`).
 - Entregar: `cena.html` com um `section.quadro` por card (motor, `--imagens --formato 4x5`) + legenda.
 
 ### Stories (1080×1920)
-- Sequência de 3–5: pergunta/enquete → indicação → link de humor → caixinha "MIA acertou?".
+- Desde 14/10/2026: todo dia às 10h00, **o carrossel do dia em 9:16** (3–5 telas) + 1 tela final de CTA (Conversão na maioria dos dias; Retenção "MIA acertou?" em alguns). Ver `08-cronograma.md`.
+- A API publica sem stickers: enquete, link e caixinha viram texto na arte ("toca no link da bio", "responde no direct").
 - Entregar: texto de cada tela + sticker (enquete, link, caixa) + link com UTM.
 
 ### Feed estático
 - Só para anúncio de produto/novidade. Texto curto + legenda.
 
 ## Changelog
+- 2026-10-13 — Lista da MIA passa para 12h00; Stories viram o carrossel do dia em 9:16 às 10h00; vídeo longo semanal sai da grade — por quê: nova grade diária do Bruno (`08-cronograma.md`), válida a partir de 14/10.
 - 2026-10-09 — Adicionada seção "Ênfase dos 90 dias": Reels/Shorts/casal com CTA de Descoberta em todos os pilares, gancho pensado para envio e retenção; percentuais dos pilares e especificações de formato mantidos — por quê: meta dos 90 dias virou audiência (seguidores/alcance); sem métricas, não há base para mexer nos pesos.
