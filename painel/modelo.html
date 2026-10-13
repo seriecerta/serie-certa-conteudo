@@ -156,6 +156,7 @@ footer code { background: var(--surface); padding: 1px 5px; border-radius: 4px; 
     </div>
     <label for="fRede">Rede <select id="fRede"><option value="">Todas</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option></select></label>
     <label for="fFormato">Formato <select id="fFormato"><option value="">Todos</option></select></label>
+    <label for="fOrigem">Origem <select id="fOrigem"><option value="">Tudo da conta</option><option value="pacote">Só pacotes</option><option value="fora">Fora dos pacotes</option></select></label>
     <label for="fPilar">Pilar <select id="fPilar"><option value="">Todos</option></select></label>
   </nav>
 
@@ -253,19 +254,18 @@ const STATUS = {
   revisao: ['Em revisão', 'info', 'olho'], fila: ['Na fila', 'warn', 'relogio'], agendado: ['Agendado', 'warn', 'relogio'],
   publicado: ['Publicado', 'ok', 'ok'], manual: ['Manual (TikTok)', 'neutro', 'mao'], pausado: ['Pausado', 'serious', 'pausa'],
   'sem-registro': ['Sem registro', 'serious', 'alerta'], bloqueado: ['Bloqueado', 'crit', 'x'], perdido: ['Perdido', 'crit', 'x'],
-  invalido: ['Inválido', 'crit', 'x'], erro: ['Erro', 'crit', 'x'],
+  invalido: ['Inválido', 'crit', 'x'], erro: ['Erro', 'crit', 'x'], privado: ['Privado', 'neutro', 'mao'],
 };
 const stHTML = (s) => { const [n, c, i] = STATUS[s] || [s, 'neutro', 'mao']; return `<span class="st ${c}">${IC[i]}${esc(n)}</span>`; };
 const redeChip = (r) => r && REDES[r] ? `<span class="chip"><span class="dot" style="background:${REDES[r].cor}"></span>${REDES[r].nome}</span>` : '';
 
 // ---------------------------------------------------------------- estado dos filtros
-const F = { dias: 30, rede: '', formato: '', pilar: '' };
+const F = { dias: 30, rede: '', formato: '', pilar: '', origem: '' };
 try { Object.assign(F, JSON.parse(localStorage.getItem('painel-filtros') || '{}')); } catch (e) {}
 const salvar = () => { try { localStorage.setItem('painel-filtros', JSON.stringify(F)); } catch (e) {} };
 
 const M = D.metricas || {};
-const POSTS = M.posts || {};
-const PUBS = D.publicacoes.map((p) => ({ ...p, met: POSTS[p.chave] || null }));
+const PUBS = D.publicacoes; // cada publicação já vem com .met (somado das mídias da conta)
 const cliquesPorCampanha = {};
 (M.cliques_utm || []).forEach((c) => { if (c.campanha) cliquesPorCampanha[c.campanha] = (cliquesPorCampanha[c.campanha] || 0) + c.cliques; });
 
@@ -274,7 +274,7 @@ function janela() {
   const ini = new Date(AGORA); ini.setDate(ini.getDate() - F.dias + 1); ini.setHours(0, 0, 0, 0);
   return [ini, AGORA];
 }
-const passa = (p) => (!F.rede || p.plataforma === F.rede) && (!F.formato || p.formato === F.formato) && (!F.pilar || p.pilar === F.pilar);
+const passa = (p) => (!F.origem || (F.origem === 'fora') === !!p.externa) && (!F.rede || p.plataforma === F.rede) && (!F.formato || p.formato === F.formato) && (!F.pilar || p.pilar === F.pilar);
 const noPeriodo = (p) => { const [a, b] = janela(); const q = new Date(p.quando); return q >= a && q <= b; };
 
 // ---------------------------------------------------------------- tooltip
@@ -379,7 +379,7 @@ function opcoesFiltros() {
   $('#fFormato').innerHTML = '<option value="">Todos</option>' + formatos.map((f) => `<option>${esc(f)}</option>`).join('');
   const pilares = [...new Map(todos.filter((p) => p.pilar).map((p) => [p.pilar, p.pilar_n])).entries()].sort((a, b) => a[1] - b[1]);
   $('#fPilar').innerHTML = '<option value="">Todos</option>' + pilares.map(([p, n]) => `<option value="${esc(p)}">${n}. ${esc(p)}</option>`).join('');
-  $('#fRede').value = F.rede; $('#fFormato').value = F.formato; $('#fPilar').value = F.pilar;
+  $('#fRede').value = F.rede; $('#fOrigem').value = F.origem; $('#fFormato').value = F.formato; $('#fPilar').value = F.pilar;
   document.querySelectorAll('#fPeriodo button').forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.v === F.dias)));
 }
 
@@ -421,17 +421,17 @@ function kpis(sel) {
 function backlog() {
   const pub = PUBS.filter(passa), ras = D.rascunhos.filter(passa);
   const cols = [
-    ['Ideias e rascunhos', [...ras, ...(F.rede || F.formato || F.pilar ? [] : D.ideias.map((i) => ({ status: 'ideia', titulo: i.texto, data: i.origem, ideia: true })))]],
+    ['Ideias e rascunhos', [...ras, ...(F.rede || F.formato || F.pilar || F.origem === 'fora' ? [] : D.ideias.map((i) => ({ status: 'ideia', titulo: i.texto, data: i.origem, ideia: true })))]],
     ['Produção e revisão', pub.filter((p) => ['producao', 'revisao'].includes(p.status))],
     ['Na fila', pub.filter((p) => ['fila', 'agendado', 'pausado'].includes(p.status))],
-    ['Publicado', pub.filter((p) => ['publicado', 'manual'].includes(p.status)).sort((a, b) => b.quando.localeCompare(a.quando))],
+    ['Publicado', pub.filter((p) => ['publicado', 'manual', 'privado'].includes(p.status)).sort((a, b) => b.quando.localeCompare(a.quando))],
     ['Precisa de atenção', pub.filter((p) => ['bloqueado', 'perdido', 'invalido', 'erro', 'sem-registro'].includes(p.status)).sort((a, b) => b.quando.localeCompare(a.quando)), true],
   ];
   const LIM = 8;
   const card = (p) => p.ideia ? `<div class="card"><div class="t" style="font-weight:500">${esc(p.titulo.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*/g, ''))}</div><div class="m">${stHTML('ideia')}<span>guardada em ${dia(p.data + 'T12:00:00-03:00')}</span></div></div>` : `
     <div class="card"><div class="t">${esc(p.titulo)}</div>
       <div class="m">${stHTML(p.status)}<span>${hora(p.quando)}</span></div>
-      <div class="m">${redeChip(p.plataforma)}<span class="chip">${esc(p.formato)}</span>${p.pilar_n ? `<span>Pilar ${p.pilar_n}</span>` : ''}</div>
+      <div class="m">${redeChip(p.plataforma)}<span class="chip">${esc(p.formato)}</span>${p.pilar_n ? `<span>Pilar ${p.pilar_n}</span>` : ''}${p.externa ? '<span class="chip" title="Está na conta, mas não saiu de um pacote do saida/">fora do pacote</span>' : ''}${p.conciliado ? '<span class="chip" title="Sem id no estado-publicacao.json; ligado à mídia da conta pela legenda e pelo horário">conciliado</span>' : ''}</div>
       ${p.motivo && !['publicado', 'fila'].includes(p.status) ? `<div class="motivo">${esc(p.motivo)}</div>` : ''}
       ${p.links?.length ? `<div class="m">${p.links.map((l, i) => `<a href="${esc(l)}" target="_blank" rel="noopener">abrir${p.links.length > 1 ? ' ' + (i + 1) : ''} ↗</a>`).join(' ')}</div>` : ''}</div>`;
   $('#kanban').innerHTML = cols.map(([nome, itens, at]) => `<div class="col${at ? ' atencao' : ''}"><h3><span>${nome}</span><span class="num">${itens.length}</span></h3>
@@ -475,7 +475,7 @@ function mix(sel) {
 
 function desdobramentos(sel) {
   const pecas = new Map();
-  sel.forEach((p) => { const k = p.data + '/' + p.peca; if (!pecas.has(k)) pecas.set(k, { ...p, filhos: [] }); pecas.get(k).filhos.push(p); });
+  sel.forEach((p) => { const k = p.peca ? p.data + '/' + p.peca : p.chave; if (!pecas.has(k)) pecas.set(k, { ...p, filhos: [] }); pecas.get(k).filhos.push(p); });
   const lista = [...pecas.values()].sort((a, b) => b.quando.localeCompare(a.quando));
   const porMae = {}; lista.forEach((p) => { if (p.mae) (porMae[p.mae] = porMae[p.mae] || []).push(p); });
   const raiz = lista.filter((p) => !p.mae || !lista.some((m) => m.peca === p.mae));
@@ -492,6 +492,7 @@ const COLS = [
   ['formato', 'Formato', (p) => esc(p.formato)], ['status', 'Status', (p) => stHTML(p.status)],
   ['views', 'Views', null, true], ['reach', 'Alcance', null, true], ['likes', 'Curtidas', null, true], ['comments', 'Coment.', null, true],
   ['shares', 'Envios', null, true], ['saved', 'Salvos', null, true], ['profile_visits', 'Visitas perfil', null, true], ['follows', 'Seguiu', null, true],
+  ['ig_reels_avg_watch_time', 'Assist. média', (p) => p.met?.ig_reels_avg_watch_time ? `${fmt(p.met.ig_reels_avg_watch_time / 1000)} s` : '—', true],
   ['eng', 'Engaj.', (p) => pct(p._eng), true], ['cliques', 'Cliques UTM', null, true],
 ];
 let ordem = { k: 'quando', dir: -1 };
@@ -506,7 +507,7 @@ function engajamento(sel) {
   const tEng = $('#tEng');
   tEng.innerHTML = `<thead><tr>${COLS.map(([k, n, , num]) => `<th class="${num ? 'n' : ''}" aria-sort="${ordem.k === k ? (ordem.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-k="${k}">${n}${ordem.k === k ? (ordem.dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`).join('')}</tr></thead>
     <tbody>${linhasT.map((p) => `<tr>${COLS.map(([k, , f, num]) => k === 'titulo'
-      ? `<td class="titulo">${p.links?.[0] ? `<a href="${esc(p.links[0])}" target="_blank" rel="noopener">${esc(p.titulo)}</a>` : esc(p.titulo)}<div class="muted" style="font-size:12px">${esc(p.peca)}</div></td>`
+      ? `<td class="titulo">${p.links?.[0] ? `<a href="${esc(p.links[0])}" target="_blank" rel="noopener">${esc(p.titulo)}</a>` : esc(p.titulo)}<div class="muted" style="font-size:12px">${esc(p.peca || 'fora do pacote')}</div></td>`
       : `<td class="${num ? 'n' : ''}">${f ? f(p) : fmt(val(p, k))}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${COLS.length}" class="muted">Nenhuma publicação no período.</td></tr>`}</tbody>`;
   tEng.querySelectorAll('th button').forEach((b) => b.addEventListener('click', () => { ordem = { k: b.dataset.k, dir: ordem.k === b.dataset.k ? -ordem.dir : -1 }; engajamento(sel); }));
   const comMet = linhasT.filter((p) => p.met).length;
@@ -548,6 +549,6 @@ function render() {
 
 cabecalho(); opcoesFiltros();
 document.querySelectorAll('#fPeriodo button').forEach((b) => b.addEventListener('click', () => { F.dias = +b.dataset.v; opcoesFiltros(); render(); }));
-for (const [id, k] of [['#fRede', 'rede'], ['#fFormato', 'formato'], ['#fPilar', 'pilar']]) $(id).addEventListener('change', (e) => { F[k] = e.target.value; render(); });
+for (const [id, k] of [['#fOrigem', 'origem'], ['#fRede', 'rede'], ['#fFormato', 'formato'], ['#fPilar', 'pilar']]) $(id).addEventListener('change', (e) => { F[k] = e.target.value; render(); });
 render();
 </script>

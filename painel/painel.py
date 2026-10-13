@@ -13,10 +13,11 @@ De onde vem cada número:
   - Backlog e status: saida/<data>/00-pauta.md (rascunho de amanhã e ideias), revisao.json,
     publicar.json e estado-publicacao.json (escrito pelo publicar.py).
   - Séries: historico/publicados.md (casado por data + gancho).
-  - Instagram (por post): views, alcance, curtidas, comentários, envios, salvamentos, visitas ao perfil, follows.
+  - Instagram (todas as publicações da conta, inclusive as que não saíram pelo publicar.py): views, alcance,
+    curtidas, comentários, envios, salvamentos, visitas ao perfil, follows. Na 1ª coleta, histórico de até 2 anos.
     Stories só têm insight nas 24 h em que estão no ar: rode --metricas nesse intervalo, o painel guarda o número.
   - Instagram (conta, por dia): cliques no link da bio (website_clicks), visitas ao perfil, alcance, seguidores.
-  - YouTube: views, curtidas, comentários por vídeo e inscritos do canal.
+  - YouTube (todos os vídeos do canal, inclusive agendados): views, curtidas, comentários e inscritos.
   - Cliques nos links com UTM: PostHog (opcional; POSTHOG_API_KEY + POSTHOG_PROJECT_ID no .env).
 Na nuvem, baixa do Supabase os textos de todos os dias e guarda as métricas em pacotes-redes/painel/metricas.json.
 """
@@ -222,6 +223,8 @@ def inventario() -> dict:
                     "job": info.get("job", ""), "funil": info.get("funil", ""), "cta": info.get("cta", ""),
                     "recorrente": info.get("recorrente", ""), "series": series,
                     "campanha": campanha.group(1) if campanha else f"{data}-{pasta.name[3:]}",
+                    "assinatura": normalizar((pub.get("titulo") or pub.get("legenda") or "").split("\n")[0])[:30],
+                    "met": None,
                 })
 
     hoje = AGORA.strftime("%Y-%m-%d")
@@ -240,13 +243,26 @@ def inventario() -> dict:
 
 
 # ---------------------------------------------------------------- métricas
-MET_IG = ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
-          "profile_visits", "follows", "replies", "ig_reels_avg_watch_time"]
+# Métricas aceitas por tipo de mídia (Instagram API com login do Instagram). Se alguma for recusada,
+# insights() cai para uma por uma.
+MET_IG = {
+    "REELS": ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
+              "ig_reels_avg_watch_time", "ig_reels_video_view_total_time"],
+    "FEED": ["views", "reach", "likes", "comments", "shares", "saved", "total_interactions",
+             "profile_visits", "follows"],
+    "STORY": ["views", "reach", "replies", "shares", "total_interactions", "profile_visits", "follows"],
+}
+NUMEROS = ("views", "reach", "likes", "comments", "shares", "saved", "total_interactions", "profile_visits",
+           "follows", "replies", "ig_reels_video_view_total_time")
 
 
 def mesclar(antigo: dict, novo: dict) -> dict:
     """Nunca troca número por vazio (o insight dos Stories some depois de 24 h)."""
     return {**antigo, **{k: v for k, v in novo.items() if v is not None}}
+
+
+def quando_api(ts: str) -> dt.datetime:
+    return dt.datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(TZ)
 
 
 class ColetorInstagram:
@@ -255,6 +271,7 @@ class ColetorInstagram:
         if not c:
             raise RuntimeError("sem .credenciais/instagram.json")
         self.c = c
+        self.uid = c["ig_user_id"]
         self.base = f"https://graph.instagram.com/{os.environ.get('INSTAGRAM_API_VERSION', 'v25.0')}"
 
     def get(self, caminho, **params):
@@ -265,7 +282,7 @@ class ColetorInstagram:
         return r.json()
 
     def insights(self, caminho, metricas, **params):
-        """Pede tudo de uma vez; se a API recusar alguma métrica (varia por tipo de mídia), tenta uma por uma."""
+        """Pede tudo de uma vez; se a API recusar alguma métrica, tenta uma por uma."""
         def ler(dados):
             out = {}
             for d in dados.get("data", []):
@@ -285,15 +302,32 @@ class ColetorInstagram:
                     pass
             return out
 
-    def post(self, mid):
-        base = self.get(mid, fields="like_count,comments_count")
-        ins = self.insights(mid, MET_IG)
-        return {**ins, "likes": ins.get("likes", base.get("like_count")),
-                "comments": ins.get("comments", base.get("comments_count"))}
+    def midias(self, desde: dt.datetime) -> list:
+        """Todas as publicações do feed/Reels desde a data + os Stories que estão no ar agora."""
+        campos = "id,caption,media_type,media_product_type,timestamp,permalink,like_count,comments_count"
+        out, apos = [], None
+        while True:
+            d = self.get(f"{self.uid}/media", fields=campos, limit=50, **({"after": apos} if apos else {}))
+            itens = d.get("data", [])
+            out += [i for i in itens if quando_api(i["timestamp"]) >= desde]
+            apos = d.get("paging", {}).get("cursors", {}).get("after")
+            if not itens or "next" not in d.get("paging", {}) or quando_api(itens[-1]["timestamp"]) < desde:
+                break
+        try:
+            out += [{**s, "media_product_type": "STORY"} for s in
+                    self.get(f"{self.uid}/stories", fields=campos).get("data", [])]
+        except RuntimeError:
+            pass  # sem Stories no ar
+        return out
+
+    def metricas(self, midia) -> dict:
+        tipo = midia.get("media_product_type") or "FEED"
+        ins = self.insights(midia["id"], MET_IG.get(tipo, MET_IG["FEED"]))
+        return {**ins, "likes": ins.get("likes", midia.get("like_count")),
+                "comments": ins.get("comments", midia.get("comments_count"))}
 
     def conta(self, dias, cache):
-        uid = self.c["ig_user_id"]
-        perfil = self.get(uid, fields="followers_count,media_count")
+        perfil = self.get(self.uid, fields="followers_count,media_count")
         hoje = AGORA.date()
         for i in range(dias):
             d = hoje - dt.timedelta(days=i)
@@ -302,9 +336,17 @@ class ColetorInstagram:
             ini = dt.datetime.combine(d, dt.time(), TZ)
             fim = min(ini + dt.timedelta(days=1), AGORA)
             cache[str(d)] = mesclar(cache.get(str(d), {}), self.insights(
-                uid, ["website_clicks", "profile_views", "reach", "accounts_engaged", "views"], period="day",
+                self.uid, ["website_clicks", "profile_views", "reach", "accounts_engaged", "views"], period="day",
                 metric_type="total_value", since=int(ini.timestamp()), until=int(fim.timestamp())))
         return perfil
+
+
+def duracao_s(iso: str) -> int:
+    m = re.fullmatch(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
+    if not m:
+        return 0
+    d, h, mi, s = (int(x or 0) for x in m.groups())
+    return ((d * 24 + h) * 60 + mi) * 60 + s
 
 
 class ColetorYouTube:
@@ -321,32 +363,48 @@ class ColetorYouTube:
             token.write_text(cred.to_json(), encoding="utf-8")
         self.yt = build("youtube", "v3", credentials=cred, cache_discovery=False)
 
-    def videos(self, ids):
-        out = {}
+    def canal(self) -> dict:
+        """Inscritos + todos os vídeos enviados (inclui privados e agendados, porque a conta é a dona)."""
+        ch = (self.yt.channels().list(part="contentDetails,statistics", mine=True).execute().get("items") or [{}])[0]
+        uploads = ch.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads")
+        ids, token = [], None
+        while uploads:
+            r = self.yt.playlistItems().list(part="contentDetails", playlistId=uploads, maxResults=50,
+                                             pageToken=token).execute()
+            ids += [i["contentDetails"]["videoId"] for i in r.get("items", [])]
+            token = r.get("nextPageToken")
+            if not token:
+                break
+        videos = {}
         for i in range(0, len(ids), 50):
-            r = self.yt.videos().list(part="statistics", id=",".join(ids[i:i + 50])).execute()
+            r = self.yt.videos().list(part="snippet,statistics,contentDetails,status", id=",".join(ids[i:i + 50])).execute()
             for v in r.get("items", []):
-                s = v.get("statistics", {})
-                out[v["id"]] = {"views": int(s.get("viewCount", 0)), "likes": int(s.get("likeCount", 0)),
-                                "comments": int(s.get("commentCount", 0))}
-        return out
-
-    def inscritos(self):
-        r = self.yt.channels().list(part="statistics", mine=True).execute()
-        return int((r.get("items") or [{}])[0].get("statistics", {}).get("subscriberCount", 0))
+                s, st = v.get("statistics", {}), v.get("status", {})
+                seg = duracao_s(v.get("contentDetails", {}).get("duration"))
+                videos[v["id"]] = {
+                    "titulo": v["snippet"]["title"], "timestamp": st.get("publishAt") or v["snippet"]["publishedAt"],
+                    "privacidade": st.get("privacyStatus"), "agendado": bool(st.get("publishAt")),
+                    "formato": "Short" if 0 < seg <= 180 else "Vídeo longo", "duracao_s": seg,
+                    "link": f"https://youtu.be/{v['id']}",
+                    "views": int(s.get("viewCount", 0)), "likes": int(s.get("likeCount", 0)),
+                    "comments": int(s.get("commentCount", 0)),
+                }
+        return {"inscritos": int(ch.get("statistics", {}).get("subscriberCount", 0)), "videos": videos}
 
 
 def coletar_posthog(dias):
     chave, projeto = os.environ.get("POSTHOG_API_KEY"), os.environ.get("POSTHOG_PROJECT_ID")
-    if not (chave and projeto):
-        raise RuntimeError("POSTHOG_API_KEY e POSTHOG_PROJECT_ID não definidos (opcional)")
+    if not projeto:
+        raise RuntimeError("POSTHOG_PROJECT_ID não definido (opcional)")
     host = os.environ.get("POSTHOG_HOST", "https://us.posthog.com").rstrip("/")
+    # Sem chave no ambiente: confia num "Network secret" do ambiente de nuvem, que anexa o cabeçalho pelo proxy.
+    cab = {"Authorization": f"Bearer {chave}"} if chave else {}
     sql = f"""SELECT properties.utm_source, properties.utm_medium, properties.utm_campaign, toDate(timestamp),
                      count(), count(DISTINCT person_id)
               FROM events WHERE event = '$pageview' AND properties.utm_medium IN ('organico', 'stories')
                 AND timestamp > now() - INTERVAL {int(dias)} DAY
               GROUP BY 1, 2, 3, 4 ORDER BY 4"""
-    r = requests.post(f"{host}/api/projects/{projeto}/query/", headers={"Authorization": f"Bearer {chave}"},
+    r = requests.post(f"{host}/api/projects/{projeto}/query/", headers=cab,
                       json={"query": {"kind": "HogQLQuery", "query": sql}}, timeout=120)
     if not r.ok:
         raise RuntimeError(f"PostHog {r.status_code}: {r.text[:200]}")
@@ -354,49 +412,149 @@ def coletar_posthog(dias):
             for a, b, c, d, n, u in r.json().get("results", [])]
 
 
-def coletar(inv, dias):
+def coletar(dias):
+    """Varre a conta inteira (não só o que saiu pelo publicar.py) e guarda por id de mídia."""
     m = ler_json(METRICAS, {})
-    for k in ("posts", "conta_ig", "seguidores"):
+    for k in ("ig_midias", "yt_videos", "conta_ig", "seguidores"):
         m.setdefault(k, {})
     erros = {}
-    pubs = [p for p in inv["publicacoes"] if p["ids"] and p["status"] == "publicado"]
-    limite = (AGORA - dt.timedelta(days=dias)).isoformat()
     hoje = str(AGORA.date())
+    recente = AGORA - dt.timedelta(days=dias)
 
     try:
         ig = ColetorInstagram()
-        for p in (p for p in pubs if p["plataforma"] == "instagram" and p["quando"] >= limite):
-            soma = {}
-            for mid in p["ids"]:  # Stories têm um id por tela: soma as telas
-                for k, v in ig.post(mid).items():
-                    if isinstance(v, (int, float)):
-                        soma[k] = soma.get(k, 0) + v
-            m["posts"][p["chave"]] = mesclar(m["posts"].get(p["chave"], {}), {**soma, "em": AGORA.isoformat()})
+        # 1ª coleta: histórico inteiro (até 2 anos); depois, só a janela + o que ainda não tem número
+        desde = recente if m["ig_midias"] else AGORA - dt.timedelta(days=730)
+        for md in ig.midias(desde):
+            antigo = m["ig_midias"].get(md["id"], {})
+            info = {"timestamp": md["timestamp"], "tipo": md.get("media_product_type") or "FEED",
+                    "media_type": md.get("media_type"), "permalink": md.get("permalink"),
+                    "legenda": (md.get("caption") or "")[:300]}
+            if not antigo.get("em") or quando_api(md["timestamp"]) >= recente:
+                info |= ig.metricas(md) | {"em": AGORA.isoformat()}
+            m["ig_midias"][md["id"]] = mesclar(antigo, info)
         perfil = ig.conta(min(dias, 90), m["conta_ig"])
         m["seguidores"].setdefault(hoje, {})["instagram"] = perfil.get("followers_count")
     except Exception as e:
         erros["instagram"] = str(e)[:300]
 
     try:
-        yt = ColetorYouTube()
-        ids = {i: p["chave"] for p in pubs if p["plataforma"] == "youtube" for i in p["ids"]}
-        for vid, dados in yt.videos(list(ids)).items():
-            m["posts"][ids[vid]] = mesclar(m["posts"].get(ids[vid], {}), {**dados, "em": AGORA.isoformat()})
-        m["seguidores"].setdefault(hoje, {})["youtube"] = yt.inscritos()
+        canal = ColetorYouTube().canal()
+        for vid, dados in canal["videos"].items():
+            m["yt_videos"][vid] = mesclar(m["yt_videos"].get(vid, {}), {**dados, "em": AGORA.isoformat()})
+        m["seguidores"].setdefault(hoje, {})["youtube"] = canal["inscritos"]
     except Exception as e:
         erros["youtube"] = str(e)[:300]
 
     try:
-        m["cliques_utm"] = coletar_posthog(dias)
+        m["cliques_utm"] = coletar_posthog(max(dias, 90))
     except Exception as e:
         erros["posthog"] = str(e)[:300]
 
+    m.pop("posts", None)  # formato antigo (por publicação); agora tudo é por id de mídia
     m["coletado_em"] = AGORA.isoformat()
     m["erros"] = erros
     METRICAS.write_text(json.dumps(m, ensure_ascii=False, indent=1), encoding="utf-8")
     for fonte, erro in erros.items():
         print(f"! {fonte}: {erro}")
     return m
+
+
+# ---------------------------------------------------------------- juntar pacotes + conta
+FORMATO_IG = {"REELS": "Reels", "STORY": "Stories", ("FEED", "CAROUSEL_ALBUM"): "Carrossel",
+              ("FEED", "IMAGE"): "Feed", ("FEED", "VIDEO"): "Feed (vídeo)"}
+
+
+def formato_ig(md):
+    return FORMATO_IG.get(md.get("tipo")) or FORMATO_IG.get((md.get("tipo"), md.get("media_type")), "Feed")
+
+
+def somar(midias: list) -> dict:
+    out = {}
+    for md in midias:
+        for k in NUMEROS:
+            if isinstance(md.get(k), (int, float)):
+                out[k] = out.get(k, 0) + md[k]
+    if any(isinstance(md.get("ig_reels_avg_watch_time"), (int, float)) for md in midias):
+        out["ig_reels_avg_watch_time"] = max(md.get("ig_reels_avg_watch_time") or 0 for md in midias)
+    return out or None
+
+
+def juntar(inv, m):
+    """Liga cada publicação do pacote às mídias da conta e acrescenta o que saiu por fora do publicador.
+
+    Liga pelo id gravado no estado-publicacao.json; sem id (estado perdido, post manual), tenta pela
+    primeira linha da legenda/título e pelo horário (até 6 h de diferença; Stories até 2 h)."""
+    ig = m.get("ig_midias", {})
+    yt = m.get("yt_videos", {})
+    usados = set()
+    for p in inv["publicacoes"]:
+        if p["plataforma"] not in ("instagram", "youtube"):
+            continue
+        fonte = ig if p["plataforma"] == "instagram" else yt
+        ids = [i for i in p["ids"] if i in fonte]
+        if not ids and p["status"] not in ("bloqueado", "revisao", "producao"):
+            q = dt.datetime.fromisoformat(p["quando"])
+            for i, md in fonte.items():
+                if i in usados:
+                    continue
+                perto = abs(quando_api(md["timestamp"]) - q) <= dt.timedelta(hours=2 if p["formato"] == "Stories" else 6)
+                if p["plataforma"] == "instagram":
+                    mesmo = formato_ig(md) == p["formato"] and (
+                        p["formato"] == "Stories" or (p["assinatura"] and
+                                                      normalizar(md.get("legenda", "")).startswith(p["assinatura"])))
+                else:
+                    mesmo = bool(p["assinatura"]) and normalizar(md.get("titulo", "")).startswith(p["assinatura"])
+                if perto and mesmo:
+                    ids.append(i)
+            if ids:
+                p["conciliado"] = True
+        usados.update(ids)
+        if ids:
+            midias = [fonte[i] for i in ids]
+            p["ids"] = ids
+            p["met"] = somar(midias)
+            p["links"] = p["links"] or list(dict.fromkeys(md.get("permalink") or md.get("link") for md in midias if
+                                                          md.get("permalink") or md.get("link")))
+            if p["status"] in ("sem-registro", "fila", "erro", "perdido", "invalido", "pausado"):
+                agendado = p["plataforma"] == "youtube" and any(md.get("privacidade") == "private" and md.get("agendado")
+                                                                 and quando_api(md["timestamp"]) > AGORA for md in midias)
+                p["status"] = "agendado" if agendado else "publicado"
+
+    # o que está na conta e não veio de nenhum pacote: Stories agrupados por dia, o resto um por um
+    grupos = {}
+    for i, md in ig.items():
+        if i in usados:
+            continue
+        q = quando_api(md["timestamp"])
+        chave = f"ig/stories/{q.date()}" if md.get("tipo") == "STORY" else f"ig/{i}"
+        grupos.setdefault(chave, ("instagram", []))[1].append((i, md))
+    for i, md in yt.items():
+        if i not in usados:
+            grupos[f"yt/{i}"] = ("youtube", [(i, md)])
+    for chave, (plat, itens) in grupos.items():
+        itens.sort(key=lambda x: x[1]["timestamp"])
+        i0, md0 = itens[0]
+        q = quando_api(md0["timestamp"])
+        if plat == "instagram":
+            formato = formato_ig(md0)
+            titulo = (md0.get("legenda") or "").split("\n")[0].strip() or f"{formato} de {q:%d/%m}"
+            if formato == "Stories":
+                titulo = f"Stories de {q:%d/%m} ({len(itens)} {'tela' if len(itens) == 1 else 'telas'})"
+            status = "publicado"
+        else:
+            formato, titulo = md0["formato"], md0.get("titulo", "")
+            status = ("agendado" if md0.get("agendado") and q > AGORA else
+                      "publicado" if md0.get("privacidade") == "public" else "privado")
+        inv["publicacoes"].append({
+            "chave": chave, "data": str(q.date()), "peca": "", "mae": "", "titulo": titulo[:140], "plataforma": plat,
+            "formato": formato, "quando": q.isoformat(), "status": status, "motivo": "",
+            "links": [md.get("permalink") or md.get("link") for _, md in itens if md.get("permalink") or md.get("link")][:1],
+            "ids": [i for i, _ in itens], "met": somar([md for _, md in itens]), "externa": True,
+            "pilar": "", "pilar_n": 0, "humor": "", "job": "", "funil": "", "cta": "", "recorrente": "", "series": "",
+            "campanha": "", "assinatura": "",
+        })
+    return inv
 
 
 # ---------------------------------------------------------------- nuvem
@@ -444,13 +602,15 @@ def main():
         if a.metricas:
             nuvem.baixar_credenciais()
     inv = inventario()
-    metricas = coletar(inv, a.dias) if a.metricas else ler_json(METRICAS, {})
+    metricas = coletar(a.dias) if a.metricas else ler_json(METRICAS, {})
+    inv = juntar(inv, metricas)
     if na_nuvem and a.metricas:
         nuvem.subir(nuvem.B_PACOTE, METRICAS, "painel/metricas.json")
         nuvem.subir_credenciais()  # o token do YouTube pode ter sido renovado
     destino = gerar_html(inv, metricas)
     print(f"✓ {destino.relative_to(RAIZ)}: {len(inv['publicacoes'])} publicações, {len(inv['rascunhos'])} rascunhos, "
-          f"{len(inv['ideias'])} ideias, métricas de {len(metricas.get('posts', {}))} posts")
+          f"{len(inv['ideias'])} ideias, {sum(1 for p in inv['publicacoes'] if p.get('met'))} com métricas "
+          f"({sum(1 for p in inv['publicacoes'] if p.get('externa'))} fora dos pacotes)")
 
 
 if __name__ == "__main__":
