@@ -19,5 +19,5 @@ description: Gera o painel de conteúdo do Série Certa (backlog, o que saiu, re
 Regras:
 - O painel **só lê**. Não mexa em `revisao.json`, `estado-publicacao.json`, `PAUSAR` nem nos scripts de `scripts/`.
 - As fontes que falharem aparecem com bolinha vermelha no topo do painel (passe o mouse para ver o erro). Avise o Bruno se algo estiver faltando: credencial do Instagram ou do YouTube, ou `POSTHOG_API_KEY`/`POSTHOG_PROJECT_ID` para os cliques com UTM.
-- Insights de Stories só existem nas 24 h em que eles estão no ar. Rodar o painel à noite, depois dos Stories, garante que esse número fique guardado.
+- Insights de Stories só existem nas 24 h em que eles estão no ar. A rotina das 9h pega os Stories da véspera (publicados às 10h) com cerca de 23 h de vida, ainda no ar, e guarda o número.
 - Na rotina da nuvem, não faça commit (as métricas ficam no Supabase).
