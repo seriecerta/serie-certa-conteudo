@@ -73,3 +73,19 @@ Fatos rechecados com WebSearch em 13/10. O WebFetch segue bloqueado, então nada
 - Peças de 09/10 também não foram ao ar (mesma trava).
 - Atenção para o fluxo: em modo nuvem, o `publicar.py` baixa o pacote e sobrescreve `.json/.md/.txt` locais. Sempre rodar `nuvem.py subir-pacote` **antes** do `publicar.py`, senão o `revisao.json` local volta para a cópia antiga da nuvem.
 - Ambiente: o pacote `playwright` do pip precisou ser fixado em 1.56.0 para casar com o Chromium instalado (1194). Vale fixar no `requirements.txt` ou no setup da nuvem.
+
+---
+
+# 3ª rodada (13/10, ~15h55): carrossel 01 com pôsteres oficiais
+- **Pôsteres:** os 10 itens de `imagens/posters.json` apontam para a série certa no TVmaze: The Office (2005, #526), The Paper (2025, #84611), WandaVision (2021, #41748), VisionQuest (#64950), The Haunting of Hill House (2018, #29191), Carrie (2026-10-07, #45562, a série do Flanagan com Summer H. Howell), Wednesday (2022, #53647), Coven Academy (2026-10-02, #83159), The Vampire Diaries (2009, #63) e True Blood (2008, #22). Abri os 7 JPGs (1080×1350). Os pôsteres aparecem nos cards 2–6, com a órfã pequena e a herdeira grande de borda brasa. Nada está cortado ou sobreposto, e a capa e o CTA seguem iguais.
+- **Logos impressos nos pôsteres:** Disney+ (WandaVision e VisionQuest), Disney (Coven Academy), "peacock ORIGINAL" (The Paper) e KTLA/CW (TVD). Aceitei com base na regra 3 do CLAUDE.md: pôster oficial real, com cores originais e sem filtro. A regra "sem logo de streaming" do 09 vale para a arte da marca, não para o pôster oficial. **Pendente para o Bruno:** o selo Peacock aparece na mesma peça que diz "HBO Max". É fato (a série é original Peacock), mas, se incomodar, a regra precisa dizer se o pôster pode ser recortado.
+- **Pôster de True Blood:** é key art de temporada posterior (a da lágrima de sangue), e a legenda fala só da T1. É a série certa, então não bloqueei.
+- **Cosmético:** a seta entre os pôsteres saiu fina e cinza, não a seta brasa de 90 px do `<style>`. Alguma classe do motor sobrescreve. Não bloqueia.
+- **Fatos (WebSearch, 13/10):**
+  - VisionQuest estreia no Disney+ Brasil em **14/10** (2 episódios, 22h de Brasília), e "estreia esta semana" está correto ([GameOverDrive](https://gameoverdrive.com.br/visionquest-horario-episodios-o-que-assistir-antes/), [Showmetech](https://www.showmetech.com.br/lancamentos-do-disney-plus-em-outubro-de-2026/)).
+  - The Paper T2 chega à HBO Max em 15/10 ([Omelete](https://www.omelete.com.br/series-tv/the-paper-2a-temporada-spin-off-the-office-data-estreia-brasil), [Itatiaia](https://www.itatiaia.com.br/entretenimento/veja-os-lancamentos-de-series-e-filmes-da-hbo-max-para-outubro-de-2026/)).
+  - Carrie tem 8 episódios, todos no Prime Video desde 07/10 ([GameOverDrive](https://gameoverdrive.com.br/carrie-serie-mike-flanagan-estreia-prime-video-2/)).
+  - Coven Academy está inteira no Disney+ desde 02/10 ([Omelete](https://www.omelete.com.br/series-tv/coven-academy-serie-disney-plus-trailer)).
+  - True Blood T1 está no Prime Video desde 05/10 ([Oficina da Net](https://www.oficinadanet.com.br/amazon-prime-video/73210-lancamentos-prime-video-outubro-2026), [Fast Company Brasil](https://fastcompanybrasil.com/tech/prime-video-chega-catalogo-outubro-2026/)).
+- **Técnico:** chamei `validar()` direto (sem rodar `publicar.py`), e voltou `[]`. A legenda tem 713 caracteres e é igual à de `legenda.txt`. O `quando` é 13:30 −03:00, e com `MAX_ATRASO_HORAS=4` a janela fecha às **17h30**. Depois disso a peça vira "perdido". O `estado-publicacao.json` ainda diz "invalido" (falta de `series`), o que não trava, porque o publicador revalida.
+- **Veredito:** 01 **segue aprovado**.
