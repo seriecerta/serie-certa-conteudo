@@ -20,7 +20,13 @@
       "Bash(mkdir:*)",
       "Bash(ls:*)",
       "Bash(python scripts/posters.py:*)",
-      "Bash(python3 scripts/posters.py:*)"
+      "Bash(python3 scripts/posters.py:*)",
+      "Bash(python scripts/nuvem.py:*)",
+      "Bash(python3 scripts/nuvem.py:*)",
+      "Bash(python scripts/autorizar_youtube.py:*)",
+      "Bash(python3 scripts/autorizar_youtube.py:*)",
+      "Bash(python scripts/configurar_instagram.py:*)",
+      "Bash(python3 scripts/configurar_instagram.py:*)"
     ],
     "deny": [
       "Read(.env)",
