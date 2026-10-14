@@ -62,3 +62,35 @@ O logo foi tirado da arte só com recorte. Nenhum pôster recebeu filtro, tarja 
 2. **Bio do Instagram** trocada para o link acima antes das 18h30 (manual, Bruno). Sem a troca, o link continua levando ao site, só perde a atribuição.
 3. Slug `humor=animado`: confirmar com o Bruno para os próximos Stories.
 4. Peça 04: só com créditos ElevenLabs; refazer a checagem de fatos no dia.
+
+## Revisão da 04 sem narração (14/10, tarde)
+**Resultado: 04-reels-qual-quarta-e-voce aprovada** (Instagram Reels, `quando` 2026-10-14T19:00:00-03:00). A peça saiu **sem narração** pela regra "Sem crédito de voz" do `CLAUDE.md` (ElevenLabs sem créditos). A fala que não foi gravada está em `fala-original-sem-uso.txt`, que não é falha de mídia.
+
+### Fatos (WebSearch em 14/10, à tarde)
+- ***The Paper*:** a 2ª temporada chega à HBO Max Brasil em **15/10/2026**. O post sai em 14/10, então "a 2ª temporada chega amanhã" está certo. O Peacock não existe no Brasil. O formato de lançamento (semanal ou temporada inteira) não foi confirmado e não é citado. Fontes: [Omelete](https://www.omelete.com.br/series-tv/the-paper-2a-temporada-spin-off-the-office-data-estreia-brasil), [GameOverDrive](https://gameoverdrive.com.br/the-paper-2-temporada-estreia-brasil-hbo-max/), [GameOverDrive, HBO Max 12–18/10](https://gameoverdrive.com.br/hbo-max-lancamentos-semana-12-18-outubro-2026/), [Showmetech](https://www.showmetech.com.br/lancamentos-hbo-max-outubro-2026/), [Einerd](https://www.einerd.com/the-paper-spin-off-de-the-office-ganha-data-de-estreia-da-2a-temporada/).
+- ***Habeas Corpus*:** está na Netflix desde 23/09/2026 e é drama jurídico. Fontes: [Netflix About](https://about.netflix.com/pt_br/news/habeas-corpus-sop), [O POVO](https://www.opovo.com.br/vidaearte/2026/09/29/habeas-corpus-justica-e-tema-estrutural-diz-marjorie-estiano.html), [Canaltech](https://canaltech.com.br/entretenimento/habeas-corpus-quem-e-quem-na-nova-serie-juridica-brasileira-da-netflix/).
+- ***Profundezas* (Below):** minissérie da Netflix com 6 episódios, todos no ar desde 08/10/2026. A premissa é uma criatura marinha atacando uma vila pesqueira. Não há 2ª temporada anunciada. Fontes: [GameOverDrive](https://gameoverdrive.com.br/profundezas-episodios-duracao/), [AdoroCinema](https://www.adorocinema.com/noticias/series/noticia-1000217242/), [Omelete](https://www.omelete.com.br/series-tv/profundezas-netflix-josh-hartnett-trailer-completo).
+- ***Coven Academy*:** está no Disney+ Brasil desde 02/10/2026 com a **temporada inteira**. Fontes: [Showmetech](https://www.showmetech.com.br/lancamentos-do-disney-plus-em-outubro-de-2026/), [Gazeta SP](https://www.gazetasp.com.br/entretenimento/nova-serie-da-disney-acompanha-adolescentes-bruxas-em-academia-cercada-por-misterios-e-forcas-sombrias/), [Salada de Cinema](https://saladadecinema.com.br/coven-academy-supera-american-horror-story-no-ranking-do-disney/). O número de episódios não é citado na peça.
+- O texto na tela não precisou de correção.
+
+### Visual (quadros revistos a cada 2 s, comparados com `referencias/quadros/qual-e-voce-4-tipos.jpg`)
+- Segue o padrão do formato: cabeçalho "QUAL QUARTA É VOCÊ?" com 4 tracinhos que acendem, número grande com tipo e superpoder, emoji no canto, gag visual e grade final 2×2. Também segue a identidade: verde-noite, Inter Black, brasa, botão "MANDA PRA QUEM PRECISA" e @seriecerta.
+- O gancho escrito já está no quadro 1 ("pra amiga que é a Nº 3 toda quarta"). Não há texto cortado, sobreposição nem tela vazia, e não encontrei erro de digitação.
+- Tempo de leitura: cada série fica 4,4 s na tela (pôster, onde assistir e chips). A linha "pra quem não é" aparece por 2,4 s, mas tem só 4 ou 5 palavras e é legível. As gags ficam 2,4 a 3 s.
+- **Logos:** conferi em zoom 1:1. *The Paper* começa no título "the paper" e não sobrou nada do "peacock ORIGINAL". *Coven Academy* começa no título e não sobrou nada do logo "Disney". Os rodapés dos 4 pôsteres estão limpos. Os nomes dos streamings aparecem só no selo de texto "onde assistir".
+- **Pôsteres:** os 4 são oficiais do TVmaze e o `posters.json` bate com o roteiro: The Paper #84611 (2025), Habeas Corpus #93677 (2026), Below #93115 (2026, que é *Profundezas*) e Coven Academy #83159 (2026).
+- Capa `capa.jpg` (1080×1920): é a grade final com o nº 3 destacado e o botão. Fica legível em tamanho pequeno.
+
+### Regras e técnico
+- Spoiler zero, porque só aparecem as premissas oficiais. Não há diálogo nem letra de música. Cada série tem seu "pra quem não é".
+- Há 1 CTA ("Manda pra quem precisa", Descoberta). "Achou a sua?" é retórico.
+- A legenda tem 208 caracteres, 1 emoji e 4 hashtags. O `tiktok.txt` também tem 1 emoji. Não há link na peça, então não há UTM a conferir.
+- `series` tem as 4 séries indicadas, o que está completo.
+- `video.mp4` tem 1080×1920 e 40,6 s, com áudio (trilha e efeitos) a −13,9 LUFS, medidos com ebur128. O `publicar.json` é um JSON válido e o `validar()` deu **OK**. Não rodei `publicar.py` nem `nuvem.py`, como foi pedido.
+
+### Correções
+- `roteiro.md`: a nota do topo dizia "capa em 32,8 s". O valor real é `data-capa="38.40"`, a grade final com o botão, e a nota foi corrigida. Não houve re-render.
+
+### Observação (não bloqueia)
+- O horário de 19h00 segue a pauta de hoje, mas a grade de `08-cronograma.md` põe o Reels da noite às 18h30 (19h00 é o horário do Short). Mantive o que a pauta definiu. Se o período de base exigir a grade exata, quem decide trocar para 18h30 é o estrategista ou o Bruno.
+- **Pendência:** subir o pacote para a nuvem (`python scripts/nuvem.py subir-pacote 2026-10-14`) antes das 19h, porque o `revisao.json` mudou.

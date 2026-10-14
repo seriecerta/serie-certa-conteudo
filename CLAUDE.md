@@ -40,6 +40,14 @@ Histórico do que já saiu: `historico/publicados.md` (nunca repita série + hum
 
 Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita tags como `[rindo baixinho]`; nunca invente outro voice_id).
 
+### Sem crédito de voz (decisão do Bruno, 14/10/2026)
+Se a ElevenLabs estiver sem créditos (ou o `narrar.py` falhar por quota), **não bloqueie a peça por falta de áudio: adapte o conteúdo para não depender de narração** e siga o fluxo normal (revisor → `revisao.json` → `publicar.py`).
+- Seja criativo dentro dos formatos que já estão no ar: o texto na tela vira a voz (gancho escrito no quadro 1, uma ideia por tela, tempo de leitura ≥ 3 s por bloco), com gags visuais, contadores, carimbos, trilha "Sala Escura" e efeitos. Bons encaixes: Qual é você?, Tradutor, Recibo/placar, Relógio com texto, Lista em cards.
+- Cena com tempos fixos em segundos e `data-duracao` no `<body>` (sem `@palavra`, sem legenda automática). O `renderizar.py` já monta o vídeo só com trilha e efeitos quando não há `narracao*.mp3`.
+- Guarde a fala que não foi gravada com nome fora do padrão `narracao*.txt` (ex.: `fala-original-sem-uso.txt`), para o `narrar.py` não gerar um áudio que não casa com a cena. Registre no `roteiro.md` e no `99-revisao.md` que a peça saiu sem narração.
+- Use os caracteres que ainda restarem para a peça de maior alcance (ex.: Lista da MIA); as outras saem sem voz. Nada de trocar de voz, de serviço de TTS ou de voice_id.
+- Todas as outras regras continuam iguais (fatos, pôster oficial, 1 CTA, spoiler zero, revisor).
+
 ## Regras invioláveis
 1. **Narração da MIA: escolha uma versão e siga.** Não entregue variações para o Bruno escolher.
 2. Fatos sobre séries (temporadas, onde assistir no Brasil, nº de episódios, duração) **sempre verificados na web no dia** — streaming muda. Se não confirmar, não afirme.

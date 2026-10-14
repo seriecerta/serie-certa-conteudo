@@ -5,9 +5,10 @@
 | 12h00 | YouTube (Short) | Relógio: VisionQuest, hoje à noite | 01-short-relogio-visionquest-hoje-a-noite |
 | 13h30 | YouTube (vídeo longo) | Lista da MIA: Acabou Habeas Corpus? | 02-lista-da-mia-acabou-habeas-corpus |
 | 18h30 | Instagram (Stories, 4 telas) | Animada: VisionQuest | 03-stories-animada-visionquest |
+| 19h00 | Instagram (Reels, **sem narração**) | Qual quarta é você? | 04-reels-qual-quarta-e-voce |
 
-- TikTok (manual): `tiktok.txt` da pasta 01.
-- **Reels das 19h (04, Qual quarta é você?) NÃO vai ao ar**: créditos ElevenLabs esgotados, sem áudio/vídeo e sem `publicar.json`. Só há `legenda-rascunho.txt`.
+- TikTok (manual): `tiktok.txt` das pastas 01 e 04.
+- **Reels das 19h (04, Qual quarta é você?) vai ao ar sem narração**: os créditos da ElevenLabs acabaram, então a peça foi refeita só com texto na tela + trilha + efeitos (regra "Sem crédito de voz" do `CLAUDE.md`) e aprovada pelo revisor à tarde.
 - Comentários fixados sugeridos: `comentario-fixado.txt` nas pastas 01 e 02.
 
 ## Bio

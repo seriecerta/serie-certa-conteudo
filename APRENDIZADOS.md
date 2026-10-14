@@ -27,6 +27,13 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 
 ## Publicação
 
+### 2026-10-14 — Sem crédito na ElevenLabs a peça não precisa ficar bloqueada
+- **Sintoma:** Reels do dia bloqueado no `revisao.json` com "créditos ElevenLabs esgotados: 157 de 254 necessários"; sem `narracao.mp3` o roteirista não tinha como escrever a cena (toda sincronizada com `@palavra`).
+- **Causa:** o fluxo supunha que todo vídeo tem voz. O `renderizar.py`, porém, já monta vídeo só com trilha e efeitos quando não há `narracao*.mp3`, desde que o `<body>` tenha `data-duracao` e a cena use tempos em segundos.
+- **Como resolver:** regra "Sem crédito de voz" do `CLAUDE.md` (decisão do Bruno): refazer a peça com o texto na tela contando tudo e passar pelo revisor normalmente. Exemplo pronto: `saida/2026-10-14/04-reels-qual-quarta-e-voce/` (cena gerada com tempos fixos, 7,4 s por tipo).
+- **Armadilha:** deixar o `narracao.txt` na pasta faz o `narrar.py` gerar um áudio que não casa com a cena quando o crédito voltar. Renomeie para `fala-original-sem-uso.txt`.
+- **Pegar só uma pasta da nuvem:** pôsteres e vídeos não vão para o git. Para trabalhar numa peça sem o `baixar-pacote` sobrescrever o resto do dia, use `nuvem.baixar(nuvem.B_PACOTE, "<data>/<peça>/imagens/x.jpg", pathlib.Path("saida")/...)` e suba de volta só os arquivos mexidos com `nuvem.subir(...)`. O bucket não apaga arquivo renomeado localmente (o `narracao.txt` antigo continua lá).
+
 ### 2026-10-13 — `publicar.py --simular` não valida post do Instagram antes do horário
 - **Sintoma:** a simulação não acusa nada numa peça que vai ser recusada (ex.: sem o campo `"series"`), e o erro só aparece no log depois do horário marcado.
 - **Causa:** o `processar_dia` pula publicações do Instagram com `quando` no futuro antes de chamar `validar()`.

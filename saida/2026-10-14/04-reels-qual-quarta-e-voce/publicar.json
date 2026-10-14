@@ -1,0 +1,21 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-reel",
+      "plataforma": "instagram",
+      "tipo": "REELS",
+      "arquivos": [
+        "video.mp4"
+      ],
+      "capa": "capa.jpg",
+      "legenda": "Pra amiga que é a nº 3 toda quarta 😱\n\n1 The Paper (HBO Max)\n2 Habeas Corpus (Netflix)\n3 Profundezas (Netflix)\n4 Coven Academy (Disney+)\n\nManda pra quem precisa.\n\n#seriecerta #oqueassistir #dicadeserie #quarta",
+      "series": [
+        "The Paper (2025)",
+        "Habeas Corpus",
+        "Profundezas",
+        "Coven Academy"
+      ],
+      "quando": "2026-10-14T19:00:00-03:00"
+    }
+  ]
+}

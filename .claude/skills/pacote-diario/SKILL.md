@@ -29,11 +29,11 @@ Fora da nuvem: se `saida/<data>/revisao.json` já existir, pule para o passo 9.
 11. **Aviso final** — 3 linhas: quantas peças aprovadas/bloqueadas, horário da primeira postagem, pendências do `99-revisao.md`.
 
 ## Se algo falhar
-- Sem acesso à ElevenLabs: siga sem áudio/vídeo; peças sem vídeo ficam fora de `aprovadas`.
+- Sem crédito na ElevenLabs (ou sem acesso): **não bloqueie a peça** — siga "Sem crédito de voz" do `CLAUDE.md`. O roteirista refaz a cena sem narração (texto na tela + trilha + efeitos, tempos fixos e `data-duracao`), renderiza normalmente e a peça passa pelo revisor como qualquer outra. Use o crédito que restar na peça de maior alcance.
 - `renderizar.py` acusa "palavra não encontrada na narração": troque o `@palavra` da cena pela grafia que está em `narracao.json`.
 - `publicar.py` acusa "sem pôster oficial" ou "pôster não aparece na cena": baixe com `scripts/posters.py`, coloque na cena com `.capa > img`, renderize de novo e rode o revisor. A peça volta a valer sozinha na próxima rodada.
 - `posters.py` sem acesso (403 ou erro de rede): o domínio `api.tvmaze.com`/`static.tvmaze.com` precisa estar liberado no ambiente; registre em `99-revisao.md`. Sem pôster, a peça de lista não sai.
 - Chromium ausente (erro do Playwright): rode `python -m playwright install --with-deps chromium` uma vez e tente de novo.
-- Erro de crédito na ElevenLabs ou de API das redes: não repita em loop; registre em `99-revisao.md`.
+- Erro de crédito na ElevenLabs ou de API das redes: não repita em loop; registre em `99-revisao.md` (crédito de voz: siga o plano sem narração acima).
 - Nunca chame `publicar.py` sem `revisao.json` escrito pelo revisor.
 - Na nuvem, se um domínio for bloqueado (`403 host_not_allowed`), registre qual foi em `99-revisao.md` — o Bruno precisa liberar no ambiente.

@@ -1,0 +1,156 @@
+<style>
+  /* versão sem narração (créditos ElevenLabs esgotados em 14/10): o texto na tela conta tudo, com trilha e efeitos */
+  .cab { position: absolute; top: 215px; left: 60px; right: 60px; display: flex; align-items: center; gap: 26px; }
+  .cab .num { font-size: 230px; line-height: .8; font-weight: 900; color: var(--c); letter-spacing: -.05em; }
+  .cab .col { flex: 1; gap: 8px; align-items: flex-start; }
+  .cab .nome-tipo { font-size: 74px; font-weight: 900; text-transform: uppercase; line-height: .95; letter-spacing: -.02em; }
+  .cab .sup { font-size: 34px; color: var(--papel-2); font-weight: 600; line-height: 1.15; }
+  .cab .emo { font-size: 150px; line-height: 1; }
+  .palco { position: absolute; left: 0; right: 0; top: 560px; bottom: 230px; }
+  .centro-col { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .serie-bloco { justify-content: flex-start; top: 530px; }
+  .contador { font-size: 200px; line-height: .9; font-weight: 900; color: var(--c); }
+  .nome-serie { font-size: 88px; font-weight: 900; letter-spacing: -.035em; line-height: 1; text-transform: uppercase; }
+  .selo { display: inline-flex; gap: 16px; align-items: baseline; background: var(--brasa); color: var(--ink); border-radius: 999px; padding: 12px 34px; font-size: 40px; }
+  .selo small { font-size: 26px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+  .serie-bloco .nao-e { justify-content: center; font-size: 40px; }
+  /* pôsteres oficiais, cores originais; só recorte para tirar logos de streaming/estúdio */
+  .serie-bloco .capa { width: 520px; height: 600px; border-radius: 34px; box-shadow: 0 40px 90px rgba(0,0,0,.6); }
+  .serie-bloco .capa img { height: auto; object-fit: initial; position: absolute; left: 50%; translate: -50% 0; }
+  .capa.paper img { width: 520px; top: -76px; }   /* tira o "peacock ORIGINAL" acima do título */
+  .capa.habeas img { width: 520px; top: -130px; }
+  .capa.below img { width: 520px; top: -180px; }  /* mantém o título BELOW no rodapé */
+  .capa.coven img { width: 560px; top: -178px; }  /* tira o logo "Disney" acima do título */
+  .minis { display: flex; gap: 22px; }
+  .mini { width: 200px; height: 260px; border-radius: 30px; background: var(--c); color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .mini span { font-size: 90px; line-height: 1; } .mini b { font-size: 80px; line-height: 1; font-weight: 900; }
+  .tipo .t { font-weight: 900; }
+</style>
+<body style="--mood:var(--estressado)" data-duracao="40.60" data-capa="38.40" data-trilha="0.5">
+
+  <!-- gancho de envio: texto já no quadro 1 -->
+  <section class="cena centro" data-in="0" data-out="3.20">
+    <div class="frase" data-anim="nada">pra amiga que é a</div>
+    <div class="titulo-g brasa caixa" data-anim="nada" style="font-size:230px;line-height:.95">nº 3</div>
+    <div class="frase" data-anim="nada">toda quarta</div>
+    <div class="esp-m"></div>
+    <div class="minis" data-anim="nada" data-som="whoosh"><div class="mini" style="--c:var(--sono)"><span>😴</span><b>1</b></div><div class="mini" style="--c:var(--curioso)"><span>🤔</span><b>2</b></div><div class="mini" style="--c:var(--estressado)" data-loop="treme"><span>😱</span><b>3</b></div><div class="mini" style="--c:var(--animado)"><span>🤩</span><b>4</b></div></div>
+  </section>
+
+  <section class="cena centro" data-in="3.20" data-out="5.60">
+    <div class="minis" data-anim="nada"><div class="mini" style="--c:var(--sono)"><span>😴</span><b>1</b></div><div class="mini" style="--c:var(--curioso)"><span>🤔</span><b>2</b></div><div class="mini" style="--c:var(--estressado)" data-loop="treme"><span>😱</span><b>3</b></div><div class="mini" style="--c:var(--animado)"><span>🤩</span><b>4</b></div></div>
+    <div class="esp-m"></div>
+    <div class="titulo-g caixa" data-anim="sobe" style="font-size:150px;line-height:.95">qual</div>
+    <div class="titulo-g caixa brasa" data-in="3.50" data-anim="carimbo" data-som="carimbo" style="font-size:170px;line-height:.95;rotate:-3deg">quarta</div>
+    <div class="titulo-g caixa" data-in="3.90" data-anim="sobe" style="font-size:150px;line-height:.95">é você?</div>
+  </section>
+
+  <!-- tipo 1 -->
+  <section class="cena" data-in="5.60" data-out="13.00" style="--c:var(--sono)">
+    <div class="topo"><div class="serie sem-ponto">qual quarta é você? <span class="passos"><i class="on" style="background:var(--sono)"></i><i></i><i></i><i></i></span></div><div class="arroba">@seriecerta</div></div>
+    <div class="cab" data-anim="esquerda" data-som="whoosh">
+      <div class="num">1</div>
+      <div class="col"><div class="nome-tipo">a exausta</div><div class="sup">superpoder: dormir no episódio 1</div></div>
+      <div class="emo" data-loop="flutua">😴</div>
+    </div>
+    <div class="palco centro-col" data-out="8.60">
+      <div class="barra" style="--c:var(--sono)" data-in="6.00" data-anim="sobe"><span class="nome">episódio 1</span><span class="trilho"><span class="enche" data-enche="0>0.4" data-dur="1.8"></span></span><span class="valor">40%</span></div>
+       <div class="esp-m"></div><div class="emoji" data-in="7.00" data-anim="desce" data-loop="flutua" data-som="pop">💤</div>
+    </div>
+    <div class="palco centro-col serie-bloco" data-in="8.60">
+      <div class="capa paper" data-anim="esquerda" data-som="virada"><img src="imagens/the-paper.jpg" alt="The Paper"></div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:20px;align-items:center"><span class="nome-serie" data-anim="sobe">The Paper</span><span class="emoji-m" data-in="9.00" data-anim="pop">📰</span></div>
+      <div class="esp-s"></div>
+      <div class="selo" data-in="9.10" data-anim="pop" data-som="pop"><small>onde assistir</small> HBO Max</div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:16px;flex-wrap:wrap;justify-content:center"><span class="chip escuro" style="font-size:38px;padding:12px 32px" data-in="9.60" data-anim="pop">a 2ª temporada chega amanhã</span></div>
+      <div class="nao-e" data-in="10.60" data-anim="fade">quem quer The Office igualzinho</div>
+    </div>
+  </section>
+  <!-- tipo 2 -->
+  <section class="cena" data-in="13.00" data-out="20.40" style="--c:var(--curioso)">
+    <div class="topo"><div class="serie sem-ponto">qual quarta é você? <span class="passos"><i class="on" style="background:var(--sono)"></i><i class="on" style="background:var(--curioso)"></i><i></i><i></i></span></div><div class="arroba">@seriecerta</div></div>
+    <div class="cab" data-anim="esquerda" data-som="whoosh">
+      <div class="num">2</div>
+      <div class="col"><div class="nome-tipo">a curiosa</div><div class="sup">superpoder: “só mais um” às 2h</div></div>
+      <div class="emo" data-loop="flutua">🤔</div>
+    </div>
+    <div class="palco centro-col" data-out="16.00">
+      <div class="relogio" style="position:static" data-in="13.30" data-anim="pop"><div class="dia">quarta → quinta</div><div class="hora alerta" data-hora="1:00>2:00" data-dur="1.6">1:00</div></div>
+       <div class="esp-m"></div><div class="rotulo" data-in="14.00" data-anim="fade">“só mais um”</div>
+       <div class="contador" data-in="14.00" data-conta="1>4" data-dur="1.4" data-som="tick">1</div>
+    </div>
+    <div class="palco centro-col serie-bloco" data-in="16.00">
+      <div class="capa habeas" data-anim="esquerda" data-som="virada"><img src="imagens/habeas-corpus.jpg" alt="Habeas Corpus"></div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:20px;align-items:center"><span class="nome-serie" data-anim="sobe">Habeas Corpus</span><span class="emoji-m" data-in="16.40" data-anim="pop">⚖️</span></div>
+      <div class="esp-s"></div>
+      <div class="selo" data-in="16.50" data-anim="pop" data-som="pop"><small>onde assistir</small> Netflix</div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:16px;flex-wrap:wrap;justify-content:center"><span class="chip escuro" style="font-size:38px;padding:12px 32px" data-in="17.00" data-anim="pop">drama jurídico</span></div>
+      <div class="nao-e" data-in="18.00" data-anim="fade">quem quer algo leve</div>
+    </div>
+  </section>
+  <!-- tipo 3 -->
+  <section class="cena" data-in="20.40" data-out="27.80" style="--c:var(--estressado)">
+    <div class="topo"><div class="serie sem-ponto">qual quarta é você? <span class="passos"><i class="on" style="background:var(--sono)"></i><i class="on" style="background:var(--curioso)"></i><i class="on" style="background:var(--estressado)"></i><i></i></span></div><div class="arroba">@seriecerta</div></div>
+    <div class="cab" data-anim="esquerda" data-som="whoosh">
+      <div class="num">3</div>
+      <div class="col"><div class="nome-tipo">a que quer medo</div><div class="sup">superpoder: terror de luz acesa</div></div>
+      <div class="emo" data-loop="flutua">😱</div>
+    </div>
+    <div class="palco centro-col" data-out="23.40">
+      <div class="emoji" data-in="20.70" data-anim="pop" data-loop="pulsa" data-som="pop">💡</div>
+       <div class="esp-s"></div><span class="chip escuro caixa" style="font-size:46px;padding:16px 44px" data-in="21.30" data-anim="sobe">luzes ligadas:</span>
+       <div class="esp-s"></div><span class="carimbo" style="font-size:110px" data-in="22.00" data-anim="carimbo" data-som="carimbo">todas</span>
+    </div>
+    <div class="palco centro-col serie-bloco" data-in="23.40">
+      <div class="capa below" data-anim="esquerda" data-som="virada"><img src="imagens/profundezas.jpg" alt="Profundezas"></div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:20px;align-items:center"><span class="nome-serie" data-anim="sobe">Profundezas</span><span class="emoji-m" data-in="23.80" data-anim="pop">🌊</span></div>
+      <div class="esp-s"></div>
+      <div class="selo" data-in="23.90" data-anim="pop" data-som="pop"><small>onde assistir</small> Netflix</div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:16px;flex-wrap:wrap;justify-content:center"><span class="chip escuro" style="font-size:38px;padding:12px 32px" data-in="24.40" data-anim="pop">uma criatura no mar</span><span class="chip escuro" style="font-size:38px;padding:12px 32px" data-in="24.80" data-anim="pop">minissérie</span></div>
+      <div class="nao-e" data-in="25.40" data-anim="fade">quem tem medo de mar</div>
+    </div>
+  </section>
+  <!-- tipo 4 -->
+  <section class="cena" data-in="27.80" data-out="35.20" style="--c:var(--animado)">
+    <div class="topo"><div class="serie sem-ponto">qual quarta é você? <span class="passos"><i class="on" style="background:var(--sono)"></i><i class="on" style="background:var(--curioso)"></i><i class="on" style="background:var(--estressado)"></i><i class="on" style="background:var(--animado)"></i></span></div><div class="arroba">@seriecerta</div></div>
+    <div class="cab" data-anim="esquerda" data-som="whoosh">
+      <div class="num">4</div>
+      <div class="col"><div class="nome-tipo">a animada</div><div class="sup">superpoder: começar 3 séries no mesmo dia</div></div>
+      <div class="emo" data-loop="flutua">🤩</div>
+    </div>
+    <div class="palco centro-col" data-out="30.80">
+      <div class="rotulo" data-in="28.10" data-anim="fade">séries começadas hoje</div>
+       <div class="contador" data-in="28.10" data-conta="1>3" data-dur="1.2" data-som="tick">1</div><div class="esp-s"></div>
+       <div class="barra" style="--c:var(--animado);padding:20px 36px" data-in="29.20" data-anim="esquerda"><span class="nome">série A</span><span class="trilho"><span class="enche" style="--p:.05"></span></span><span class="valor">5%</span></div><div class="esp-s"></div>
+       <div class="barra" style="--c:var(--animado);padding:20px 36px" data-in="29.50" data-anim="esquerda"><span class="nome">série B</span><span class="trilho"><span class="enche" style="--p:.05"></span></span><span class="valor">5%</span></div><div class="esp-s"></div>
+       <div class="barra" style="--c:var(--animado);padding:20px 36px" data-in="29.80" data-anim="esquerda" data-som="pop"><span class="nome">série C</span><span class="trilho"><span class="enche" style="--p:.05"></span></span><span class="valor">5%</span></div>
+    </div>
+    <div class="palco centro-col serie-bloco" data-in="30.80">
+      <div class="capa coven" data-anim="esquerda" data-som="virada"><img src="imagens/coven-academy.jpg" alt="Coven Academy"></div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:20px;align-items:center"><span class="nome-serie" data-anim="sobe">Coven Academy</span><span class="emoji-m" data-in="31.20" data-anim="pop">🔮</span></div>
+      <div class="esp-s"></div>
+      <div class="selo" data-in="31.30" data-anim="pop" data-som="pop"><small>onde assistir</small> Disney+</div>
+      <div class="esp-s"></div>
+      <div class="linha" style="gap:16px;flex-wrap:wrap;justify-content:center"><span class="chip escuro" style="font-size:38px;padding:12px 32px" data-in="31.80" data-anim="pop">bruxas adolescentes</span><span class="chip escuro" style="font-size:38px;padding:12px 32px" data-in="32.20" data-anim="pop">temporada inteira</span></div>
+      <div class="nao-e" data-in="32.80" data-anim="fade">quem quer terror pesado</div>
+    </div>
+  </section>
+
+  <!-- fecho -->
+  <section class="cena centro" data-in="35.20">
+    <div class="topo"><div class="serie sem-ponto">qual quarta é você? <span class="passos"><i class="on" style="background:var(--sono)"></i><i class="on" style="background:var(--curioso)"></i><i class="on" style="background:var(--estressado)"></i><i class="on" style="background:var(--animado)"></i></span></div><div class="arroba">@seriecerta</div></div>
+    <div class="titulo caixa" data-anim="sobe">achou a <span class="brasa">sua?</span></div>
+    <div class="esp-m"></div>
+    <div class="tipos"><div class="tipo" style="--c:var(--sono)" data-in="35.50" data-anim="pop" data-som="pop"><div class="linha" style="justify-content:space-between"><span class="n">1</span><span class="emoji-m" style="font-size:80px">😴</span></div><span class="t">a exausta</span></div><div class="tipo" style="--c:var(--curioso)" data-in="35.75" data-anim="pop" data-som="pop"><div class="linha" style="justify-content:space-between"><span class="n">2</span><span class="emoji-m" style="font-size:80px">🤔</span></div><span class="t">a curiosa</span></div><div class="tipo sel" style="--c:var(--estressado)" data-in="36.00" data-anim="pop" data-som="pop" data-loop="treme"><div class="linha" style="justify-content:space-between"><span class="n">3</span><span class="emoji-m" style="font-size:80px">😱</span></div><span class="t">a que quer medo</span></div><div class="tipo" style="--c:var(--animado)" data-in="36.25" data-anim="pop" data-som="pop"><div class="linha" style="justify-content:space-between"><span class="n">4</span><span class="emoji-m" style="font-size:80px">🤩</span></div><span class="t">a animada</span></div></div>
+    <div class="esp-m"></div>
+    <div class="botao" data-in="37.00" data-anim="pop" data-som="ding">manda pra quem precisa</div>
+    <div class="arroba-final" data-in="37.00" data-anim="fade">@seriecerta</div>
+  </section>
+</body>

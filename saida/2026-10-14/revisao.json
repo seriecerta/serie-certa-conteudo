@@ -2,9 +2,8 @@
   "aprovadas": [
     "01-short-relogio-visionquest-hoje-a-noite",
     "02-lista-da-mia-acabou-habeas-corpus",
-    "03-stories-animada-visionquest"
+    "03-stories-animada-visionquest",
+    "04-reels-qual-quarta-e-voce"
   ],
-  "bloqueadas": {
-    "04-reels-qual-quarta-e-voce": "sem narracao.mp3, sem video.mp4 e sem publicar.json (créditos ElevenLabs esgotados: 157 de 254 necessários)"
-  }
+  "bloqueadas": {}
 }

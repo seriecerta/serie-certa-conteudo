@@ -11,3 +11,4 @@ data | formato | humor | séries | gancho
 2026-10-14 | Short (Relógio + Recibo) | animado | VisionQuest | Pra amiga que até hoje fala de WandaVision
 2026-10-14 | Lista da MIA (YouTube 16:9) | órfã de série / justiça | Uma Advogada Extraordinária; Better Call Saul; O Poder e a Lei; Inacreditável; Olhos que Condenam | Acabou Habeas Corpus? 5 séries sobre justiça
 2026-10-14 | Stories | animado | VisionQuest | Como você tá hoje? Hoje à noite já dá pra ver
+2026-10-14 | Reels (Qual é você?, sem narração) | exausta / curiosa / medo / animada | The Paper; Habeas Corpus; Profundezas; Coven Academy | Pra amiga que é a nº 3 toda quarta

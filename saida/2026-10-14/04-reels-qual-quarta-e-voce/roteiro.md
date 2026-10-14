@@ -1,5 +1,18 @@
 # Roteiro: 04-reels-qual-quarta-e-voce
 
+> **Versão no ar: SEM NARRAÇÃO (14/10, ~12h).** Os créditos da ElevenLabs acabaram (157 de 254 caracteres), então a peça foi refeita
+> para funcionar só com texto na tela + trilha "Sala Escura" + efeitos (regra "Sem crédito de voz" do `CLAUDE.md`).
+> A tabela de cenas mais abaixo é a versão falada original, guardada em `fala-original-sem-uso.txt` (nome fora do padrão `narracao*.txt`
+> de propósito, para o `narrar.py` não gerar áudio que não casaria com a cena).
+>
+> **O que mudou:** cena com tempos fixos em segundos (`data-duracao="40.6"`), sem `@palavra` e sem legenda automática.
+> Cada tipo tem 7,4 s: 3 s de cabeçalho + gag visual, 4,4 s de pôster + onde assistir + chips + "pra quem não é" (tempo de leitura).
+> Gancho em texto no quadro 1 ("pra amiga que é a Nº 3 toda quarta" + 4 cards). Fecho: grade 2×2 com o nº 3 destacado + botão
+> "MANDA PRA QUEM PRECISA" (CTA único de Descoberta). Capa em 38,4 s (grade final com o botão, `data-capa="38.40"`).
+> Pôsteres: recorte só por posição (`top` negativo dentro da `.capa`), sem filtro: *The Paper* sem o "peacock ORIGINAL" (corta ~12 px
+> do topo de "th"), *Coven Academy* sem o logo "Disney" acima do título, *Habeas Corpus* e *Below* com o título inteiro.
+> Arquivo: `video.mp4` 40,6 s, 1080×1920, −13,9 LUFS, com trilha. Horário: Reels 19h00 (pauta de hoje).
+
 - **Formato:** Reels 9:16 (1080×1920), narração MIA (eleven_v3). **Formato recorrente: Qual é você?** Base: folha `referencias/quadros/qual-e-voce-4-tipos.jpg` (cabeçalho "QUAL É VOCÊ?" com 4 tracinhos que acendem na cor de cada tipo, número grande + nome do tipo + "superpoder" + emoji no canto, gag visual no meio, legenda grande sincronizada, grade final com os 4 cards). `data-legenda="auto"`. O mesmo arquivo vai para o TikTok.
 - **Plano B da pauta:** `saida/2026-10-14/comentarios.md` não existia às 06h54. Se chegar até 10h, o roteiro muda para "Respondendo seu humor" (não inventar comentário).
 - **Pilar:** 1. Série pro seu humor

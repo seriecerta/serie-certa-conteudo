@@ -27,6 +27,12 @@ Escolha **uma** versão da narração. Não entregue alternativas.
 ## Pôster real em qualquer peça que indique série
 Reels, Shorts, carrossel e Stories que citam uma série mostram o **pôster oficial** dela (`scripts/posters.py` + `.capa > img`), não uma capa inventada.
 
+## Sem crédito de voz (ElevenLabs esgotada)
+Siga "Sem crédito de voz" do `CLAUDE.md`: a peça sai **sem narração**, não fica bloqueada. Reescreva a ideia para o texto na tela contar tudo
+(gancho escrito no quadro 1, uma ideia por tela, ≥ 3 s de leitura por bloco, gags visuais e efeitos), com tempos fixos em segundos e
+`data-duracao` no `<body>`. Não use `@palavra` nem `data-legenda="auto"`. Renomeie a fala não gravada para `fala-original-sem-uso.txt`
+e anote no `roteiro.md`. Exemplo: `saida/2026-10-14/04-reels-qual-quarta-e-voce/`.
+
 ## Fase 2 — cena (depois que `python scripts/narrar.py saida/<data>` gerou `narracao*.mp3/.json`)
 1. Leia `narracao.json` (palavras com tempo) e escreva `cena.html` sincronizando cada entrada com `@palavra`.
 2. Siga a identidade: uma ideia por tela, emoji como personagem, carimbos e contadores para as viradas, `data-som` nos momentos de impacto, final com pergunta + `.botao` + `@seriecerta`. Use `data-legenda="auto"` nos formatos com legenda grande (documentário, "qual é você?").
