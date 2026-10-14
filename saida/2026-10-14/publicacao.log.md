@@ -1,2 +1,0 @@
-- 07:22 ✓ 01-short-relogio-visionquest-hoje-a-noite/yt-short agendado: https://youtu.be/fFl2Vq-PeuM
-- 07:22 ✓ 02-lista-da-mia-acabou-habeas-corpus/yt-lista agendado: https://youtu.be/3wEaTywwPMk

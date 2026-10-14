@@ -1,0 +1,214 @@
+<style>
+  /* coluna da direita do gancho: telas que se trocam ao lado do pôster */
+  .gancho { display: grid; grid-template-columns: 440px 1fr; gap: 90px; align-items: center; width: 1640px; margin-top: 30px; }
+  .gancho .capa { width: 440px; height: 660px; }
+  .lado { position: relative; height: 660px; }
+  .lado > .tela { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+  .lado .grande { font-size: 104px; font-weight: 900; line-height: 1.02; letter-spacing: -.03em; }
+  .lado .grande em, .lado .frase em { font-style: normal; color: var(--mood); }
+  .lado .frase { text-align: left; font-size: 66px; }
+  .lado .apoio { text-align: left; font-size: 46px; }
+  .lado .emoji { font-size: 150px; }
+  .lado .lista-abre .num { font-size: 400px; }
+  .lado .lista-abre .txt { font-size: 96px; }
+  .lado .metas { margin: 10px 0 0; }
+  .lado .metas span { font-size: 40px; }
+
+  /* troca de "por que combina" dentro do card */
+  .troca-p { position: relative; height: 196px; max-width: 1040px; }
+  .troca-p > .porque { position: absolute; top: 0; left: 0; right: 0; }
+  .serie-card h2.longo { font-size: 92px; }
+  .nao-e .extra { display: block; margin-top: 6px; color: var(--papel); font-weight: 700; }
+  .serie-card .chip { font-size: 34px; margin-top: 24px; }
+
+  /* pôsteres com logo de streaming impresso: recorte que mostra título + arte, sem o logo */
+  .serie-card.largo { grid-template-columns: 600px 1fr; gap: 80px; }
+  .capa.recorte img { position: absolute; left: 0; top: var(--y, 0px); width: 100%; height: auto; object-fit: initial; }
+  .capa.unb { width: 600px; height: 485px; --y: -337px; }   /* y 562–1370 de 1481: corta "A NETFLIX LIMITED SERIES" e "SEPT 13 | NETFLIX" */
+  .capa.wtsu { width: 600px; height: 540px; --y: 0px; }     /* y 0–1215 de 2000: corta "NETFLIX | NOW STREAMING" */
+
+  /* fecho: os 5 pôsteres pequenos */
+  .minis { display: flex; gap: 34px; align-items: flex-end; }
+  .mini { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .mini .capa { width: 260px; height: 210px; border-radius: 22px; }
+  .mini .capa img { object-position: var(--pos, 50% 30%); }
+  .mini .capa.unb { --y: -146px; }
+  .mini .capa.wtsu { --y: 0px; }
+  .mini b { font-size: 34px; color: var(--mood); }
+  .regua { width: 1434px; margin-top: 26px; }
+  .regua .trilho { height: 14px; border-radius: 14px; background: linear-gradient(90deg, var(--mood), var(--brasa)); }
+  .regua .pontas { display: flex; justify-content: space-between; font-size: 32px; color: var(--papel-2); margin-top: 12px; text-transform: uppercase; letter-spacing: .06em; }
+
+  .vinheta { background: radial-gradient(80% 80% at 50% 50%, #0E1613 0%, #000 75%); }
+</style>
+<body class="paisagem" data-legenda="auto" data-legenda-palavras="5" data-destaque="spoiler,prometo,tribunal,leve,pesada,folego,salva" data-capa="16.5" style="--mood:var(--curioso)">
+  <div class="topo"><div class="serie">lista da mia <span class="ep">· acabou habeas corpus?</span></div><div class="arroba">@seriecerta</div></div>
+
+  <!-- GANCHO: pôster de Habeas Corpus fixo, texto trocando ao lado -->
+  <section class="cena centro" data-legenda="off" data-in="0" data-out="@sem">
+    <div class="gancho">
+      <div class="capa" data-anim="nada" data-som="whoosh"><img src="imagens/habeas-corpus.jpg" alt="Habeas Corpus"></div>
+      <div class="lado">
+        <div class="tela" data-in="0" data-out="@eu" data-anim="nada">
+          <div class="grande">acabou <em>Habeas<br>Corpus</em>?</div>
+          <div class="apoio" data-in="@aquela" data-anim="fade">e ficou com aquela sensação de que…</div>
+          <div class="linha">
+            <div class="frase" data-in="@justica" data-anim="sobe">a justiça ainda te deve<br><span class="brasa">uma resposta</span></div>
+            <div class="emoji-m" data-in="@resposta" data-anim="pop" data-som="pop">⚖️</div>
+          </div>
+        </div>
+        <div class="tela" data-in="@eu" data-out="@entao">
+          <div class="linha"><div class="grande" data-anim="sobe">eu te entendo.</div><div class="emoji-m" data-in="@entendo" data-anim="pop" data-loop="flutua">🫂</div></div>
+          <div class="frase" data-in="@serie" data-anim="sobe">a série brasileira que<br>liderou o <em>top 10</em>…</div>
+          <div class="linha" data-in="@deixou" data-anim="fade">
+            <div class="frase">deixou um</div>
+            <span class="carimbo" style="font-size:90px" data-in="@vazio" data-anim="carimbo" data-som="carimbo">vazio.</span>
+          </div>
+        </div>
+        <div class="tela" data-in="@entao">
+          <div class="apoio" data-anim="fade">então eu separei</div>
+          <div class="lista-abre">
+            <div class="num" data-in="@cinco" data-anim="carimbo" data-som="carimbo">5</div>
+            <div class="txt" data-in="@series" data-anim="sobe">séries pra<br>você <em>continuar</em></div>
+          </div>
+          <div class="metas" data-in="@todas" data-anim="sobe"><span class="onde">Netflix</span><span>todas as 5</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMESSA -->
+  <section class="cena centro" data-in="@sem" data-out="@numero#4">
+    <span class="carimbo" data-in="@spoiler" data-anim="carimbo" data-som="carimbo" style="font-size:110px">spoiler: 0</span>
+    <div class="esp-s"></div>
+    <div class="serif" data-in="@prometo" data-anim="fade" style="font-size:96px">prometo.</div>
+    <div class="esp-s"></div>
+    <div class="titulo" data-in="@do" data-anim="sobe">do <span class="m">nº 5</span> ao <span class="m">nº 1</span></div>
+    <div class="esp-s"></div>
+    <div class="apoio" data-in="@e#2" data-anim="fade">o nº 1 é a que mais se parece com ela</div>
+  </section>
+
+  <!-- Nº 5 -->
+  <section class="cena centro" data-legenda="off" data-in="@numero#4" data-out="@numero#5">
+    <div class="serie-card">
+      <div class="capa" data-anim="esquerda" data-som="whoosh"><img src="imagens/extraordinary-attorney-woo.jpg" alt="Uma Advogada Extraordinária" style="object-position:50% 30%"></div>
+      <div>
+        <div class="pos" data-anim="fade">nº 5 de 5</div>
+        <h2 class="longo" data-in="@uma#2" data-anim="sobe">Uma Advogada Extraordinária</h2>
+        <div class="metas" data-in="@uma#3" data-anim="fade"><span class="onde">Netflix</span><span>1 temporada</span><span>16 episódios</span></div>
+        <div class="troca-p">
+          <div class="porque" data-in="@um#4" data-out="@da#2" data-anim="sobe">drama coreano: <b>um caso por episódio</b> e muito coração no tribunal.</div>
+          <div class="porque" data-in="@da#2" data-out="@combina" data-anim="sobe">dá pra ver <b>um por noite</b>, sem pressa. <span class="emoji-p">🌙</span></div>
+          <div class="porque" data-in="@combina" data-anim="sobe">combina: é sobre <b>olhar pro caso</b> de um jeito que ninguém olhou.</div>
+        </div>
+        <div class="nao-e" data-in="@pra#3" data-anim="fade"><span>quem quer o tom pesado de Habeas Corpus <span class="extra" data-in="@essa" data-anim="fade">essa é bem mais leve</span></span></div>
+      </div>
+    </div>
+    <div class="progresso"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- Nº 4 -->
+  <section class="cena centro" data-legenda="off" data-in="@numero#5" data-out="@numero#6">
+    <div class="serie-card">
+      <div class="capa" data-anim="esquerda" data-som="whoosh"><img src="imagens/better-call-saul.jpg" alt="Better Call Saul" style="object-position:50% 20%"></div>
+      <div>
+        <div class="pos" data-anim="fade">nº 4 de 5</div>
+        <h2 data-in="@better" data-anim="sobe">Better Call Saul</h2>
+        <div class="metas" data-in="@seis" data-anim="fade"><span class="onde">Netflix</span><span>6 temporadas</span></div>
+        <div class="troca-p">
+          <div class="porque" data-in="@um#8" data-out="@combina#2" data-anim="sobe">um advogado <b>cheio de lábia</b> que conhece o sistema por dentro… e sabe onde ele falha.</div>
+          <div class="porque" data-in="@combina#2" data-anim="sobe">combina: a lei nem sempre é sobre <b>quem tem razão</b>.</div>
+        </div>
+        <div class="nao-e" data-in="@pra#4" data-anim="fade">quem não tem paciência pra começo lento</div>
+        <div class="chip escuro" data-in="@mas" data-anim="pop" data-som="pop">mas quando engata… você não larga <span class="emoji-p">😏</span></div>
+      </div>
+    </div>
+    <div class="progresso"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- Nº 3 -->
+  <section class="cena centro" data-legenda="off" data-in="@numero#6" data-out="@numero#7">
+    <div class="serie-card">
+      <div class="capa" data-anim="esquerda" data-som="whoosh"><img src="imagens/the-lincoln-lawyer.jpg" alt="O Poder e a Lei" style="object-position:50% 30%"></div>
+      <div>
+        <div class="pos" data-anim="fade">nº 3 de 5</div>
+        <h2 data-in="@o#4" data-anim="sobe">O Poder e a Lei</h2>
+        <div class="metas" data-in="@quatro#2" data-anim="fade"><span class="onde">Netflix</span><span>4 temporadas</span><span data-in="@quinta" data-anim="pop" data-som="pop">5ª confirmada</span></div>
+        <div class="troca-p">
+          <div class="porque" data-in="@um#9" data-out="@cada" data-anim="sobe">advogado de defesa que trabalha <b>no banco de trás do carro</b>. <span class="emoji-p">🚗</span></div>
+          <div class="porque" data-in="@cada" data-out="@combina#3" data-anim="sobe">cada temporada, um caso grande, com <b>julgamento de roer as unhas</b>.</div>
+          <div class="porque" data-in="@combina#3" data-anim="sobe">combina: é aquela <b>torcida pela virada</b> no tribunal.</div>
+        </div>
+        <div class="nao-e" data-in="@pra#7" data-anim="fade"><span>quem quer realismo brasileiro <span class="extra" data-in="@aqui" data-anim="fade">aqui é tribunal americano</span></span></div>
+        <div class="chip" data-in="@e#13" data-anim="carimbo" data-som="carimbo">a mais fácil de maratonar da lista</div>
+      </div>
+    </div>
+    <div class="progresso"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+  </section>
+
+  <!-- Nº 2 (tom sóbrio: sem emoji, sem som de impacto) -->
+  <section class="cena centro" data-legenda="off" data-in="@numero#7" data-out="@e#20">
+    <div class="serie-card largo">
+      <div class="capa recorte unb" data-anim="esquerda" data-som="whoosh"><img src="imagens/unbelievable.jpg" alt="Inacreditável"></div>
+      <div>
+        <div class="pos" data-anim="fade">nº 2 de 5</div>
+        <h2 data-in="@inacreditavel" data-anim="sobe">Inacreditável</h2>
+        <div class="metas" data-in="@minisserie" data-anim="fade"><span class="onde">Netflix</span><span>minissérie</span><span>8 episódios</span><span data-in="@fatos" data-anim="fade">fatos reais</span></div>
+        <div class="troca-p">
+          <div class="porque" data-in="@uma#5" data-out="@anos" data-anim="sobe">uma jovem denuncia um crime… <b>e ninguém acredita nela</b>.</div>
+          <div class="porque" data-in="@anos" data-out="@combina#4" data-anim="sobe">anos depois, <b>duas investigadoras</b> resolvem não desistir.</div>
+          <div class="porque" data-in="@combina#4" data-anim="sobe">combina: é sobre <b>insistir na verdade</b> quando o sistema já desistiu.</div>
+        </div>
+        <div class="nao-e" data-in="@pra#8" data-anim="fade"><span>quem tá sensível a temas de violência sexual <span class="extra" data-in="@se#2" data-anim="fade">pula essa sem culpa</span></span></div>
+      </div>
+    </div>
+    <div class="progresso"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+  </section>
+
+  <!-- respiro antes do nº 1 -->
+  <section class="cena centro vinheta" data-legenda="off" data-in="@e#20" data-out="@olhos">
+    <div class="titulo-g m" data-in="@numero#8" data-anim="carimbo" data-som="carimbo" style="font-size:260px">nº 1</div>
+  </section>
+
+  <!-- Nº 1 -->
+  <section class="cena centro" data-legenda="off" data-in="@olhos" data-out="@cinco#4">
+    <div class="serie-card largo">
+      <div class="capa recorte wtsu" data-anim="esquerda" data-som="whoosh"><img src="imagens/when-they-see-us.jpg" alt="Olhos que Condenam"></div>
+      <div>
+        <div class="pos" data-anim="fade">nº 1 de 5</div>
+        <h2 data-anim="carimbo" data-som="carimbo">Olhos que Condenam</h2>
+        <div class="metas" data-in="@minisserie#2" data-anim="fade"><span class="onde">Netflix</span><span>minissérie</span><span>4 episódios</span><span data-in="@ava" data-anim="fade">de Ava DuVernay</span></div>
+        <div class="troca-p">
+          <div class="porque" data-in="@baseada#2" data-out="@e#21" data-anim="sobe">história real: <b>jovens condenados</b> por um crime que não cometeram.</div>
+          <div class="porque" data-in="@e#21" data-out="@prepara" data-anim="sobe">a mais próxima de Habeas Corpus: <b>o peso de um erro judicial</b> numa vida inteira.</div>
+          <div class="porque" data-in="@prepara" data-anim="fade"><span class="serif" style="font-size:80px;text-align:left">prepara o coração.</span></div>
+        </div>
+        <div class="nao-e" data-in="@pra#9" data-anim="fade"><span>quem quer algo leve hoje <span class="extra" data-in="@essa#3" data-anim="fade">essa é pra quando você tem fôlego</span></span></div>
+      </div>
+    </div>
+    <div class="progresso"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+  </section>
+
+  <!-- FECHO: as 5, da mais leve à mais pesada -->
+  <section class="cena centro" data-in="@cinco#4" data-out="@salva">
+    <div class="titulo" data-anim="sobe" style="font-size:84px">5 séries pra você não ficar <span class="m">órfã de tribunal</span></div>
+    <div class="esp-m"></div>
+    <div class="minis">
+      <div class="mini" data-in="@series#2" data-anim="sobe"><div class="capa"><img src="imagens/extraordinary-attorney-woo.jpg" alt="" style="--pos:50% 28%"></div><b>nº 5</b></div>
+      <div class="mini" data-in="@series#2+0.15" data-anim="sobe"><div class="capa"><img src="imagens/better-call-saul.jpg" alt="" style="--pos:50% 18%"></div><b>nº 4</b></div>
+      <div class="mini" data-in="@series#2+0.3" data-anim="sobe"><div class="capa"><img src="imagens/the-lincoln-lawyer.jpg" alt="" style="--pos:50% 40%"></div><b>nº 3</b></div>
+      <div class="mini" data-in="@series#2+0.45" data-anim="sobe"><div class="capa recorte unb"><img src="imagens/unbelievable.jpg" alt=""></div><b>nº 2</b></div>
+      <div class="mini" data-in="@series#2+0.6" data-anim="sobe"><div class="capa recorte wtsu"><img src="imagens/when-they-see-us.jpg" alt=""></div><b>nº 1</b></div>
+    </div>
+    <div class="regua" data-in="@da#5" data-anim="fade"><div class="trilho"></div><div class="pontas"><span>mais leve</span><span>mais pesada</span></div></div>
+  </section>
+
+  <section class="cena centro" data-legenda="off" data-in="@salva">
+    <div class="titulo" data-anim="sobe"><span class="m caixa">salva</span> pra hoje à noite <span class="emoji-p">🔖</span></div>
+    <div class="esp-m"></div>
+    <div class="botao" data-in="@video" data-anim="pop" data-som="ding">salva pra hoje à noite</div>
+    <div class="esp-s"></div>
+    <div class="apoio" data-in="@onde#2" data-anim="fade">onde assistir cada uma: comentário fixado 📌</div>
+    <div class="arroba-final">seriecerta.online</div>
+  </section>
+</body>

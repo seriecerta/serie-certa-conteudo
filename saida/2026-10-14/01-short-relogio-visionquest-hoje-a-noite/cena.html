@@ -1,0 +1,118 @@
+<style>
+  /* pôster do VisionQuest: corta o rodapé (data de estreia + logo do streaming) */
+  .capa.vq { width: 470px; height: 610px; border-radius: 34px; overflow: hidden; box-shadow: 0 40px 90px rgba(0,0,0,.6); }
+  .capa.vq img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; }
+  .nome-serie { font-size: 104px; font-weight: 900; letter-spacing: -.035em; line-height: 1; text-transform: uppercase; }
+  .selo { display: inline-flex; gap: 16px; align-items: baseline; background: var(--brasa); color: var(--ink); border-radius: 999px; padding: 14px 36px; font-size: 40px; }
+  .selo small { font-size: 26px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+  .troca { position: relative; height: 330px; width: 940px; }
+  .troca > * { position: absolute; left: 0; right: 0; top: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .contador { font-size: 150px; line-height: .9; color: var(--mood); }
+  .cupom .item { font-size: 46px; }
+  .cupom .item span { max-width: 520px; line-height: 1.1; }
+</style>
+<body style="--mood:var(--animado)" data-capa="7.8">
+  <div class="relogio"><div class="dia">quarta-feira</div><div class="hora" data-hora="12:00>12:01" data-in="0" data-anima-em="@pela" data-dur="0.8" data-loop="pisca">12:00</div></div>
+
+  <!-- 1. gancho de envio -->
+  <section class="cena centro" data-in="0" data-out="@quarta-feira">
+    <div class="frase" data-anim="nada">pra amiga que<br>até hoje fala de</div>
+    <div class="esp-s"></div>
+    <div class="titulo-g brasa caixa" data-anim="nada" style="font-size:132px">WandaVision</div>
+    <div class="esp-m"></div>
+    <div class="emoji" data-anim="nada" data-loop="pulsa" data-som="whoosh">📺</div>
+  </section>
+
+  <!-- 2. meio-dia -->
+  <section class="cena centro" data-in="@quarta-feira" data-out="@e">
+    <div class="frase cinza" data-anim="fade">eu, ao meio-dia:</div>
+    <div class="esp-m"></div>
+    <div class="emoji" data-in="@meio-dia" data-anim="pop" data-som="pop">🍽️</div>
+  </section>
+
+  <!-- 3. já sei -->
+  <section class="cena centro" data-in="@e" data-out="@pela">
+    <div class="frase cinza" data-anim="fade">eu, ao meio-dia:</div>
+    <div class="esp-s"></div>
+    <div class="titulo" data-anim="sobe">eu</div>
+    <div class="titulo-g brasa caixa" data-in="@ja" data-anim="carimbo" data-som="carimbo" style="font-size:140px;rotate:-3deg">já sei</div>
+    <div class="titulo" data-in="@o" data-anim="sobe">o que vou ver<br>hoje à noite.</div>
+    <div class="esp-s"></div>
+    <div class="emoji" data-in="@noite" data-anim="pop" data-loop="flutua">😎</div>
+  </section>
+
+  <!-- 4. primeira vez -->
+  <section class="cena centro" data-in="@pela" data-out="@visionquest">
+    <div class="titulo" data-anim="sobe">pela <span class="m">primeira vez</span><br>na vida.</div>
+    <div class="esp-m"></div>
+    <div class="emoji" data-in="@vez" data-anim="pop" data-loop="treme" data-som="pop">🤯</div>
+    <div class="esp-s"></div>
+    <div class="apoio" data-in="@vida" data-anim="fade">— eu, chocada</div>
+  </section>
+
+  <!-- 5. a série -->
+  <section class="cena" data-in="@visionquest" data-out="@pra#3" style="padding-top:360px">
+    <div class="capa vq" data-anim="esquerda" data-som="virada"><img src="imagens/visionquest.jpg" alt="VisionQuest"></div>
+    <div class="esp-s"></div>
+    <div class="nome-serie" data-anim="sobe">VisionQuest</div>
+    <div class="esp-s"></div>
+    <div class="selo" data-in="@disney" data-anim="pop" data-som="pop"><small>onde assistir</small> Disney+</div>
+    <div class="esp-m"></div>
+    <div class="troca">
+      <div data-in="@serie" data-out="@os" data-anim="sobe">
+        <span class="chip escuro" style="font-size:44px;padding:16px 40px">a série nova do <span class="m">Visão</span></span>
+        <span class="chip" style="font-size:44px;padding:16px 40px" data-in="@vem" data-anim="pop">spin-off de WandaVision</span>
+      </div>
+      <div data-in="@os" data-out="@e#2" data-anim="pop">
+        <div class="rotulo">episódios de uma vez</div>
+        <div class="contador" data-conta="0>2" data-in="@os" data-anima-em="@primeiros" data-dur="0.9" data-som="tick">0</div>
+      </div>
+      <div data-in="@e#2" data-anim="sobe">
+        <div class="frase">hoje à noite</div>
+        <div class="linha"><span class="titulo brasa caixa" style="font-size:88px" data-in="@ja#2" data-anim="carimbo" data-som="carimbo">já dá pra ver</span><span class="emoji-m" data-in="@ver#2" data-anim="pop">🍿</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. pra quem não é -->
+  <section class="cena centro" data-in="@pra#3" data-out="@series">
+    <span class="chip escuro caixa" data-anim="pop" style="font-size:44px;padding:16px 44px">pra quem não é:</span>
+    <div class="esp-m"></div>
+    <div class="titulo" data-in="@quem#2" data-anim="sobe">quem nunca viu<br>nada da <span class="brasa">Marvel</span></div>
+    <div class="esp-m"></div>
+    <div class="emoji" data-in="@nada" data-anim="pop" data-loop="treme">🤷</div>
+  </section>
+
+  <!-- 7. recibo -->
+  <section class="cena" data-in="@series" data-out="@manda" style="padding-top:400px">
+    <div class="cupom" data-anim="sobe">
+      <div class="rotulo-p" style="color:#5B5F55;text-align:center;font-size:32px">resumo da quarta</div>
+      <hr>
+      <div class="item"><span>séries escolhidas antes das 21h</span><b data-in="@uma" data-anim="pop" data-som="pop">1</b></div>
+      <div class="item"><span>catálogo rolado</span><b data-in="@uma+0.2" data-anim="pop">0 min</b></div>
+      <div class="item"><span>trailers vistos</span><b data-in="@uma+0.4" data-anim="pop">0</b></div>
+    </div>
+    <div class="abs" style="top:1110px;left:0;right:0;text-align:center">
+      <span class="carimbo" style="font-size:96px" data-in="@recorde" data-anim="carimbo" data-som="carimbo">recorde pessoal</span>
+    </div>
+    <div class="abs emoji-m" style="top:1330px;left:0;right:0;text-align:center" data-in="@pessoal" data-anim="pop" data-loop="flutua">🏆</div>
+    <div class="confete" data-in="@recorde" data-anim="fade">
+      <i style="left:170px;top:1600px;background:var(--brasa);rotate:20deg"></i>
+      <i style="left:230px;top:1500px;background:var(--animado);rotate:-30deg"></i>
+      <i style="left:860px;top:1620px;background:var(--animado);rotate:40deg"></i>
+      <i style="left:940px;top:1480px;background:var(--brasa);rotate:-15deg"></i>
+      <i style="left:90px;top:1380px;background:var(--papel);rotate:60deg"></i>
+      <i style="left:990px;top:1340px;background:var(--papel);rotate:-50deg"></i>
+    </div>
+  </section>
+
+  <!-- 8. CTA -->
+  <section class="cena centro" data-in="@manda">
+    <div class="emoji" data-anim="pop" data-loop="flutua">🫂</div>
+    <div class="esp-m"></div>
+    <div class="titulo" data-anim="sobe">manda pra <span class="brasa">ela</span>.</div>
+    <div class="esp-m"></div>
+    <div class="botao" data-in="@precisa" data-anim="pop" data-som="ding">manda pra quem precisa</div>
+    <div class="arroba-final">@seriecerta</div>
+  </section>
+</body>
