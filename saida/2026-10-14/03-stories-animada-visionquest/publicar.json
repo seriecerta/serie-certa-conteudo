@@ -1,0 +1,20 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-stories",
+      "plataforma": "instagram",
+      "tipo": "STORIES",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg"
+      ],
+      "legenda": "",
+      "series": [
+        "VisionQuest"
+      ],
+      "quando": "2026-10-14T18:30:00-03:00"
+    }
+  ]
+}

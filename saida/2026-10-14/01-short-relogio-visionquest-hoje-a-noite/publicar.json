@@ -1,0 +1,30 @@
+{
+  "publicacoes": [
+    {
+      "id": "yt-short",
+      "plataforma": "youtube",
+      "tipo": "short",
+      "arquivos": [
+        "video.mp4"
+      ],
+      "titulo": "Pra amiga que até hoje fala de WandaVision",
+      "descricao": "Pra amiga que até hoje fala de WandaVision.\n\nVisionQuest está no Disney+: os dois primeiros episódios saem juntos e hoje à noite já dá pra ver. Se você nunca viu nada da Marvel, não é essa.\n\nManda pra quem precisa.\n\nA MIA indica a série certa pro seu humor: https://seriecerta.online/?utm_source=youtube&utm_medium=organico&utm_campaign=2026-10-14-short-relogio-visionquest-hoje-a-noite\n\n#shorts #seriecerta #visionquest #wandavision #oqueassistir",
+      "tags": [
+        "series",
+        "dica de serie",
+        "o que assistir",
+        "visionquest",
+        "wandavision",
+        "disney plus",
+        "marvel",
+        "serie certa",
+        "mia",
+        "shorts"
+      ],
+      "series": [
+        "VisionQuest"
+      ],
+      "quando": "2026-10-14T12:00:00-03:00"
+    }
+  ]
+}

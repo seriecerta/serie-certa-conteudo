@@ -1,0 +1,38 @@
+{
+  "publicacoes": [
+    {
+      "id": "yt-lista",
+      "plataforma": "youtube",
+      "tipo": "longo",
+      "arquivos": [
+        "video-16x9.mp4"
+      ],
+      "thumbnail": "thumb/quadros/01.jpg",
+      "titulo": "Acabou Habeas Corpus? 5 séries sobre justiça pra ver na Netflix",
+      "descricao": "Acabou Habeas Corpus e ficou órfã de tribunal? A MIA separou 5 séries sobre justiça, advogados e erro judicial, todas na Netflix. Sem spoiler.\n\n00:00 Acabou Habeas Corpus?\n00:28 nº 5 — Uma Advogada Extraordinária\n00:57 nº 4 — Better Call Saul\n01:21 nº 3 — O Poder e a Lei\n01:49 nº 2 — Inacreditável\n02:14 nº 1 — Olhos que Condenam\n02:38 Fecho\n\nOnde assistir:\nUma Advogada Extraordinária: Netflix\nBetter Call Saul: Netflix\nO Poder e a Lei: Netflix\nInacreditável: Netflix\nOlhos que Condenam: Netflix\n\nSalva esse vídeo pra hoje à noite. A série certa pro seu humor: https://seriecerta.online/?utm_source=youtube&utm_medium=organico&utm_campaign=2026-10-14-lista-da-mia-acabou-habeas-corpus",
+      "tags": [
+        "habeas corpus",
+        "séries jurídicas",
+        "o que assistir netflix",
+        "séries de tribunal",
+        "marjorie estiano",
+        "olhos que condenam",
+        "o poder e a lei",
+        "uma advogada extraordinária",
+        "better call saul",
+        "inacreditável",
+        "séries",
+        "o que assistir"
+      ],
+      "series": [
+        "Extraordinary Attorney Woo",
+        "Better Call Saul",
+        "The Lincoln Lawyer",
+        "Unbelievable",
+        "When They See Us",
+        "Habeas Corpus"
+      ],
+      "quando": "2026-10-14T13:30:00-03:00"
+    }
+  ]
+}
