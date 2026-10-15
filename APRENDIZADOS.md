@@ -4,6 +4,20 @@ Fricções reais que custaram tempo e podem voltar. Leia antes de mexer em scrip
 Regras de como registrar: seção "Fechamento de sessão" do `CLAUDE.md`.
 Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais recente no topo.
 
+## Narração e motor
+
+### 2026-10-15 — Créditos da ElevenLabs acabam no meio do pacote
+- **Sintoma:** `Erro ElevenLabs 401 ... "code":"quota_exceeded","message":"This request exceeds your quota of 38518. You have 29 credits remaining, while 664 credits are required"`. Em 14/10 caiu o Reels das 19h; em 15/10 caíram a Lista da MIA, o Reels das 18h30 e o Short das 19h.
+- **Causa:** a cota mensal da conta (38.518 créditos) acabou. Na grade diária, cerca de 3 mil caracteres de narração por dia (1 crédito por caractere) estouram a cota antes do fim do ciclo.
+- **Como evitar:** a pauta ordena as peças de vídeo por prioridade. Narre uma pasta por vez, nessa ordem (`python scripts/narrar.py saida/<data>/<pasta>`), e pare no primeiro `quota_exceeded`, sem repetir. Carrossel e Stories não gastam crédito e saem de qualquer jeito. A solução de verdade é o Bruno ampliar o plano ou recarregar.
+- **Onde mexer:** plano da conta ElevenLabs; prioridade na `00-pauta.md`.
+
+### 2026-10-15 — `.esp-s/.esp-m/.esp-g` empilham os elementos da cena
+- **Sintoma:** texto e emoji sobrepostos na prévia da cena.
+- **Causa:** `.esp-*` são blocos espaçadores de altura fixa, não margens. Usados como classe em texto ou emoji, achatam o elemento.
+- **Como evitar:** use `.esp-*` só como `<div>` vazio entre elementos, ou dê `gap` à seção.
+- **Onde mexer:** `motor/COMPONENTES.md` (linha "Estrutura") e `cena.html`.
+
 ## Painel e ferramentas
 
 ### 2026-10-13 — Texto de rotina só muda de dentro da própria sessão

@@ -1,0 +1,12 @@
+{
+  "aprovadas": [
+    "01-carrossel-quinta-de-estreia-por-humor",
+    "02-stories-quinta-de-estreia",
+    "04-short-reels-relogio-a-diplomata-voltou"
+  ],
+  "bloqueadas": {
+    "03-lista-da-mia-terror-de-cidade-pequena": "sem narração, vídeo e publicar.json: créditos ElevenLabs esgotados (29 restantes; a Lista pedia 664). Slot das 12h00 não cumprido.",
+    "05-reels-selvagens-do-sofa-ep03-quinta-de-estreia": "sem narração, vídeo e publicar.json: créditos ElevenLabs esgotados. Slot do Reels das 18h30 não cumprido.",
+    "06-short-tradutor-o-que-a-mia-entende": "sem narração, vídeo e publicar.json: créditos ElevenLabs esgotados. Slot do Short das 19h00 não cumprido."
+  }
+}

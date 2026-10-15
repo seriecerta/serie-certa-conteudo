@@ -1,0 +1,25 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-carrossel",
+      "plataforma": "instagram",
+      "tipo": "CAROUSEL",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg",
+        "quadros/05.jpg",
+        "quadros/06.jpg",
+        "quadros/07.jpg"
+      ],
+      "legenda": "Quinta de estreia. Qual é o seu humor hoje?\n\nExausta: The Paper, 2ª temporada (HBO Max).\nTensa: A Diplomata, 4ª temporada (Netflix).\nCom vontade de medo: Carrie, a Estranha (Prime Video).\n\nSalva pra hoje à noite. 🌙\n\n#seriecerta #oqueassistir #lancamentosdasemana #dicadeserie",
+      "series": [
+        "The Paper (2025)",
+        "The Diplomat (2023)",
+        "Carrie (2026)"
+      ],
+      "quando": "2026-10-15T10:00:00-03:00"
+    }
+  ]
+}

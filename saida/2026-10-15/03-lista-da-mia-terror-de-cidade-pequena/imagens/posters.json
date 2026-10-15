@@ -1,0 +1,34 @@
+{
+ "below.jpg": {
+  "pedido": "Below",
+  "encontrado": "Below",
+  "estreia": "2026-10-08",
+  "tvmaze_id": 93115,
+  "pagina": "https://www.tvmaze.com/shows/93115/below",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1612494.jpg"
+ },
+ "stranger-things.jpg": {
+  "pedido": "Stranger Things",
+  "encontrado": "Stranger Things",
+  "estreia": "2016-07-15",
+  "tvmaze_id": 2993,
+  "pagina": "https://www.tvmaze.com/shows/2993/stranger-things",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/595/1489169.jpg"
+ },
+ "it-welcome-to-derry.jpg": {
+  "pedido": "IT: Welcome to Derry",
+  "encontrado": "IT: Welcome to Derry",
+  "estreia": "2025-10-26",
+  "tvmaze_id": 61324,
+  "pagina": "https://www.tvmaze.com/shows/61324/it-welcome-to-derry",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/594/1485959.jpg"
+ },
+ "carrie.jpg": {
+  "pedido": "Carrie (2026)",
+  "encontrado": "Carrie",
+  "estreia": "2026-10-07",
+  "tvmaze_id": 45562,
+  "pagina": "https://www.tvmaze.com/shows/45562/carrie",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611660.jpg"
+ }
+}

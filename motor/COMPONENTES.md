@@ -42,7 +42,7 @@ No `<body>`:
 - `class="preto"` — fundo preto (cenas de vinheta, ex.: "A natureza é cruel.").
 
 ## Componentes (classes)
-**Estrutura:** `.cena` (tela; `.centro` centraliza; `.topo-livre` começa abaixo do cabeçalho) · `.abs` · `.linha` · `.col` · `.esp-s/.esp-m/.esp-g`
+**Estrutura:** `.cena` (tela; `.centro` centraliza; `.topo-livre` começa abaixo do cabeçalho) · `.abs` · `.linha` · `.col` · `.esp-s/.esp-m/.esp-g` (espaçadores: use como `<div>` vazio, nunca como classe em texto/emoji)
 **Texto:** `.titulo` · `.titulo-g` · `.frase` · `.frase-p` · `.apoio` · `.rotulo` · `.rotulo-p` · `.serif` (Instrument itálico) · `.caixa` (caixa-alta) · `.b`/`.brasa` · `.m` (cor do humor via `--mood`) · `.cinza`
 **Emoji:** `.emoji` (200px) · `.emoji-m` · `.emoji-p` (dentro do texto)
 **Cabeçalho de série:** `<div class="topo"><div class="serie">Selvagens do sofá <span class="ep">· ep. 01</span></div><div class="arroba">@seriecerta</div></div>`

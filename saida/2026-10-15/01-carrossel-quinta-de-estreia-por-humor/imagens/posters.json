@@ -1,0 +1,26 @@
+{
+ "the-paper.jpg": {
+  "pedido": "The Paper (2025)",
+  "encontrado": "The Paper",
+  "estreia": "2025-09-04",
+  "tvmaze_id": 84611,
+  "pagina": "https://www.tvmaze.com/shows/84611/the-paper",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/636/1591367.jpg"
+ },
+ "the-diplomat.jpg": {
+  "pedido": "The Diplomat (2023)",
+  "encontrado": "The Diplomat",
+  "estreia": "2023-04-20",
+  "tvmaze_id": 60213,
+  "pagina": "https://www.tvmaze.com/shows/60213/the-diplomat",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604939.jpg"
+ },
+ "carrie.jpg": {
+  "pedido": "Carrie (2026)",
+  "encontrado": "Carrie",
+  "estreia": "2026-10-07",
+  "tvmaze_id": 45562,
+  "pagina": "https://www.tvmaze.com/shows/45562/carrie",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611660.jpg"
+ }
+}

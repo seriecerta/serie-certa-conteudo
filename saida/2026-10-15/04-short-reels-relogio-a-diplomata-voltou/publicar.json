@@ -1,0 +1,44 @@
+{
+  "publicacoes": [
+    {
+      "id": "yt-short",
+      "plataforma": "youtube",
+      "tipo": "short",
+      "arquivos": [
+        "video.mp4"
+      ],
+      "titulo": "A Diplomata voltou: 8 episódios de uma vez",
+      "descricao": "Pra amiga que tá contando os dias pra A Diplomata voltar.\n\nA 4ª temporada está na Netflix, com os 8 episódios de uma vez. Se você nunca viu as anteriores, começa pela primeira.\n\nManda pra quem precisa.\n\nA MIA indica a série certa pro seu humor: https://seriecerta.online/?utm_source=youtube&utm_medium=organico&utm_campaign=2026-10-15-short-relogio-a-diplomata-voltou\n\n#shorts #seriecerta #adiplomata #thediplomat #oqueassistir",
+      "tags": [
+        "series",
+        "dica de serie",
+        "o que assistir",
+        "a diplomata",
+        "the diplomat",
+        "netflix",
+        "keri russell",
+        "serie certa",
+        "mia",
+        "shorts"
+      ],
+      "series": [
+        "The Diplomat (2023)"
+      ],
+      "quando": "2026-10-15T13:30:00-03:00"
+    },
+    {
+      "id": "ig-reel",
+      "plataforma": "instagram",
+      "tipo": "REELS",
+      "arquivos": [
+        "video.mp4"
+      ],
+      "capa": "capa.jpg",
+      "legenda": "Pra amiga que tá contando os dias pra A Diplomata voltar.\n\nA 4ª temporada está na Netflix, com os 8 episódios de uma vez. Quem nunca viu, começa pela primeira.\n\nManda pra quem precisa.\n\n#seriecerta #adiplomata #oqueassistir #netflix #dicadeserie",
+      "series": [
+        "The Diplomat (2023)"
+      ],
+      "quando": "2026-10-15T13:30:00-03:00"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+<body style="--mood:var(--estressado)" data-capa="14.6" data-duracao="24.2">
+<style>
+  .pilha { display: grid; justify-items: center; }
+  .pilha > * { grid-area: 1 / 1; }
+  .abaixo { padding-top: 340px; padding-bottom: 270px; justify-content: center; gap: 44px; }
+  /* pôster: rodapé (selo do streaming) fica fora do quadro */
+  .capa.corta img { object-position: top; }
+  .capa.g { width: 500px; height: 640px; }
+  .capa.p { width: 400px; height: 513px; border-radius: 28px; }
+  .temps { display: flex; gap: 30px; }
+  .temps .t { font-size: 64px; padding: 18px 40px; border-radius: 26px; background: #1E2D27; border: 4px solid #3B5048; color: #95A598; }
+  .temps .t.on { background: var(--brasa); border-color: var(--brasa); color: var(--ink); }
+  .selo { font-size: 40px; color: #95A598; }
+  .selo b { color: var(--brasa); }
+</style>
+
+  <!-- relógio: 13:30 parado até o "adeus, sono", aí dispara para a madrugada -->
+  <div class="relogio" data-in="0" data-out="@Manda">
+    <div class="pilha">
+      <div class="dia" data-in="0" data-out="@Adeus+0.5" data-anim="nada">quinta-feira</div>
+      <div class="dia" data-in="@Adeus+0.5" data-anim="fade" style="color:var(--brasa)">madrugada de sexta</div>
+    </div>
+    <div class="pilha">
+      <div class="hora" data-in="0" data-anim="nada" data-hora="13:30>23:59" data-anima-em="@Adeus" data-dur="0.5" data-out="@Adeus+0.5" data-som="virada">13:30</div>
+      <div class="hora alerta" data-in="@Adeus+0.5" data-anim="pop" data-som="tick" data-loop="pisca">03:00</div>
+    </div>
+  </div>
+
+  <!-- 1. gancho (texto já no 1º quadro) -->
+  <section class="cena centro abaixo" data-in="0" data-out="@Quinta">
+    <div class="titulo caixa" data-anim="nada">pra amiga que tá<br>contando os dias</div>
+    <div class="titulo-g caixa" data-in="@Diplomata-0.2" data-anim="carimbo" data-som="whoosh">pra <span class="brasa">a diplomata</span><br>voltar</div>
+    <div class="emoji" data-in="0" data-anim="nada" data-loop="pulsa">🗓️</div>
+    <div class="chip escuro" data-in="@dias" data-anim="sobe">dias contados: <span class="brasa">✓✓✓✓✓</span></div>
+  </section>
+
+  <!-- 2. hora do almoço: eu já sei -->
+  <section class="cena centro abaixo" data-in="@Quinta" data-out="@A#2">
+    <div class="frase cinza" data-anim="fade">eu, na hora do almoço:</div>
+    <div class="titulo" data-in="@e" data-anim="sobe">eu</div>
+    <div data-in="@ja" data-anim="carimbo" data-som="carimbo"><span class="carimbo" style="font-size:130px;rotate:-4deg">já sei</span></div>
+    <div class="titulo" data-in="@vou" data-anim="sobe">o que vou ver<br><span class="brasa">hoje à noite.</span></div>
+    <div class="emoji" data-in="@noite" data-anim="pop" data-loop="flutua">😎</div>
+  </section>
+
+  <!-- 3. voltou -->
+  <section class="cena centro abaixo" data-in="@A#2" data-out="@Quarta">
+    <div class="capa corta g" data-anim="esquerda" data-som="virada"><img src="imagens/the-diplomat.jpg"></div>
+    <div style="margin-top:-130px;position:relative;z-index:2" data-in="@voltou" data-anim="carimbo" data-som="carimbo"><span class="carimbo" style="font-size:120px;rotate:-5deg">voltou.</span></div>
+    <div class="selo" data-in="@Netflix" data-anim="sobe">onde assistir: <b>Netflix</b></div>
+  </section>
+
+  <!-- 4. 4ª temporada, 8 episódios de uma vez (capa) -->
+  <section class="cena centro abaixo" data-in="@Quarta" data-out="@Adeus">
+    <div class="linha" style="gap:50px;align-items:center">
+      <div class="capa corta p" data-anim="nada"><img src="imagens/the-diplomat.jpg"></div>
+      <div class="col" style="align-items:flex-start;gap:20px">
+        <div class="chip" data-in="@Quarta" data-anim="pop" data-som="pop">4ª temporada</div>
+        <div class="rotulo cinza" data-in="@Oito" data-anim="fade" style="font-size:38px">episódios:</div>
+        <div class="numero brasa" data-in="@Oito" data-anim="pop" data-conta="0>8" data-dur="0.5" data-som="tick" style="font-size:260px">0</div>
+      </div>
+    </div>
+    <div data-in="@De" data-anim="carimbo" data-som="carimbo" style="margin-top:40px"><span class="carimbo" style="font-size:120px;rotate:-3deg">de uma vez.</span></div>
+  </section>
+
+  <!-- 5. adeus, sono -->
+  <section class="cena centro abaixo" data-in="@Adeus" data-out="@Pra#3+0.45">
+    <div class="titulo-g" data-anim="sobe" style="font-size:150px">adeus,</div>
+    <div class="titulo-g brasa caixa" data-in="@sono" data-anim="carimbo" data-som="carimbo" style="font-size:170px;rotate:-3deg">sono.</div>
+    <div class="pilha">
+      <div class="emoji" data-in="@Adeus+0.1" data-anim="pop" data-loop="treme">🙈</div>
+    </div>
+  </section>
+
+  <!-- 6. pra quem não é -->
+  <section class="cena centro abaixo" data-in="@Pra#3+0.45" data-out="@Manda">
+    <div class="chip escuro" data-anim="pop" data-som="pop" style="font-size:44px">PRA QUEM NÃO É:</div>
+    <div class="titulo" data-in="@Quem#2" data-anim="sobe">quem nunca viu<br>as outras</div>
+    <div class="emoji-m" data-in="@Quem#2" data-anim="pop" style="font-size:150px">🤚</div>
+    <div class="temps" data-in="@outras" data-anim="sobe">
+      <span class="pilha"><span class="t">T1</span><span class="t on" data-in="@primeira" data-anim="carimbo" data-som="pop">T1</span></span>
+      <span class="t">T2</span><span class="t">T3</span>
+    </div>
+    <div class="titulo" data-in="@Comeca" data-anim="sobe">começa pela <span class="brasa">1ª</span></div>
+  </section>
+
+  <!-- 7. CTA -->
+  <section class="cena centro" data-in="@Manda" style="gap:50px">
+    <div class="emoji" data-anim="pop" data-loop="flutua">🫂</div>
+    <div class="titulo" data-anim="sobe">manda pra amiga<br>que <span class="brasa">contou os dias.</span></div>
+    <div class="botao" data-in="@precisa" data-anim="pop" data-som="ding">manda pra quem precisa</div>
+    <div class="arroba-final" data-in="@precisa+0.2" data-anim="fade">@seriecerta</div>
+  </section>
+</body>
