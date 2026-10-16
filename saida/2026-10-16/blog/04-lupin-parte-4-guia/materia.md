@@ -1,6 +1,6 @@
-Faz três anos que você viu a última parte de Lupin. Você lembra que adorou. Lembra do Omar Sy sorrindo no meio de um plano impossível. O resto virou névoa: quem sabia do quê, quem ajudou quem, por que aquele golpe deu certo.
+Faz três anos que você viu a última parte de Lupin. Você lembra que adorou. Lembra do Omar Sy sorrindo no meio de um plano impossível. O resto virou névoa: quem sabia do quê, quem ajudou quem, por que aquele golpe deu certo. E a **Lupin parte 4** já tem data.
 
-E agora a **Lupin parte 4** tem data. Chega na Netflix na sexta, 23 de outubro, com 8 episódios de uma vez. Dá tempo de rever tudo antes. E dá pra fazer isso sem virar a madrugada.
+Chega na Netflix na sexta, 23 de outubro, com 8 episódios de uma vez. Dá tempo de rever tudo antes. E dá pra fazer isso sem virar a madrugada.
 
 Neste guia você encontra a ordem certa, quantos episódios tem cada parte, quanto tempo leva a maratona e um plano de uma semana para chegar no dia 23 em dia. Tudo sem spoiler: aqui não tem reviravolta, final de parte nem destino de personagem.
 

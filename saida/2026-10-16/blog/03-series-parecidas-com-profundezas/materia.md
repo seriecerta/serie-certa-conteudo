@@ -1,6 +1,6 @@
-Você terminou *Profundezas* e ficou com aquela sensação estranha de olhar para a água e desconfiar dela. A casa está quieta, o celular está na mão e o catálogo parece raso demais depois de seis episódios de neblina, maré e cidade pequena guardando segredo.
+Você terminou *Profundezas* e ficou com aquela sensação estranha de olhar para a água e desconfiar dela. A casa está quieta, o celular está na mão e o catálogo parece raso demais depois de seis episódios de neblina, maré e cidade pequena guardando segredo. Agora você quer **séries parecidas com Profundezas**.
 
-A gente conhece esse vazio. Por isso esta lista reúne **séries parecidas com Profundezas**: histórias de mistério e terror em que o lugar pesa tanto quanto os personagens, a ameaça demora a mostrar a cara e a comunidade precisa se segurar junta. Para cada uma, você encontra onde assistir no Brasil, quantas temporadas tem, por que combina e, com honestidade, pra quem não é.
+A gente conhece esse vazio. Por isso esta lista reúne histórias de mistério e terror em que o lugar pesa tanto quanto os personagens, a ameaça demora a mostrar a cara e a comunidade precisa se segurar junta. Para cada uma, você encontra onde assistir no Brasil, quantas temporadas tem, por que combina e, com honestidade, pra quem não é.
 
 Spoiler zero, prometido. Nada do final de *Profundezas* e nada das reviravoltas das outras.
 
@@ -10,7 +10,7 @@ Spoiler zero, prometido. Nada do final de *Profundezas* e nada das reviravoltas 
 
 *Profundezas* (*Below*) é uma minissérie da Netflix que chegou ao catálogo em 8 de outubro, com os 6 episódios de uma vez. Os capítulos têm entre 37 e 47 minutos, então dá para ver tudo em pouco mais de quatro horas. Josh Hartnett vive um pescador teimoso de uma vila no litoral de Terra Nova, no Canadá, e o resto é premissa: algo vem do mar e começa a assustar a cidade. Desde a estreia, ela está entre as séries mais vistas da Netflix.
 
-O que prende não é só o susto. É o clima de lugar isolado, o luto que fica no ar, a sensação de que todo mundo ali sabe alguma coisa. As seis séries abaixo foram escolhidas por isso: cada uma entrega uma parte dessa mesma sensação.
+O que prende não é só o susto. É o clima de lugar isolado, o luto que fica no ar, a sensação de que todo mundo ali sabe alguma coisa. As cinco séries abaixo foram escolhidas por isso: cada uma entrega uma parte dessa mesma sensação.
 
 ## Mistério no Mar
 
@@ -54,20 +54,6 @@ Se em *Profundezas* você gostou da sensação de que o passado da cidade não e
 
 **Pra quem não é:** quem vê série mexendo no celular. *Dark* exige atenção total. Perdeu um detalhe, perdeu o fio.
 
-## 1899
-
-![Pôster de 1899](imagens/1899.jpg "1899 · Netflix")
-
-- **Onde assistir:** Netflix
-- **Temporadas:** 1, com 8 episódios (cancelada, sem continuação)
-- **Duração média:** cerca de 55 minutos por episódio
-
-Dos mesmos criadores de *Dark*, *1899* se passa num navio a vapor cheio de imigrantes europeus atravessando o Atlântico rumo a Nova York. No meio da viagem, eles cruzam com outro navio, que estava desaparecido havia meses. A partir daí, nada mais faz sentido.
-
-Combina com *Profundezas* pelo oceano como cenário de medo: o mar aberto, a sensação de não ter para onde fugir, a névoa. O elenco fala vários idiomas, e vale assistir no áudio original com legenda, porque isso faz parte da história.
-
-**Pra quem não é:** quem odeia final em aberto. A Netflix cancelou a série depois da 1ª temporada, e muitas perguntas ficaram sem resposta. Vá sabendo disso.
-
 ## A Maldição da Residência Hill
 
 ![Pôster de A Maldição da Residência Hill](imagens/a-maldicao-da-residencia-hill.jpg "A Maldição da Residência Hill · Netflix")
@@ -96,7 +82,7 @@ Combina com *Profundezas* pela natureza hostil e pelo grupo que precisa se mante
 
 **Pra quem não é:** quem não aguenta violência gráfica. A série é bem mais pesada que *Profundezas* em alguns momentos.
 
-## Por onde começar
+## Séries parecidas com Profundezas: por onde começar
 
 Se você quer manter o mar por perto, vá de *Mistério no Mar*. Se o que pegou foi a cidade pequena com segredo, *Dark* ou *Origem*. Se a parte que mais mexeu com você foi a família e o luto, *A Maldição da Residência Hill*. E se você tem tempo até novembro, *Yellowjackets* é maratona com prazo.
 

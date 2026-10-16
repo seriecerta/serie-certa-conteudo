@@ -4,7 +4,7 @@
 Uso:
   python blog/publicar_blog.py --vencidos                  # hoje e ontem (a rotina de hora em hora chama)
   python blog/publicar_blog.py --data 2026-10-16           # um dia específico
-  python blog/publicar_blog.py --vencidos --simular        # valida e mostra o que faria, sem publicar
+  python blog/publicar_blog.py --vencidos --simular        # valida o que está no disco, sem baixar da nuvem nem publicar
   python blog/publicar_blog.py --verificar <pasta>         # checa uma matéria (redator e revisor usam)
   python blog/publicar_blog.py --listar [--dias 60]        # matérias no ar (pauta, repetição e links internos)
 
@@ -598,7 +598,8 @@ def main():
     sys.dont_write_bytecode = True
     import nuvem
     na_nuvem = nuvem.em_nuvem()
-    if na_nuvem:
+    # Simulação valida o que está no disco: baixar da nuvem sobrescreveria revisao.json/pauta locais recém-editados.
+    if na_nuvem and not simular:
         for d in datas:
             nuvem.baixar_pacote(d)
     try:

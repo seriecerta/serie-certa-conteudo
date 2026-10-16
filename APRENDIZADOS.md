@@ -67,6 +67,7 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Causa:** na nuvem, o `publicar.py` (mesmo com `--simular`) chama `nuvem.baixar_pacote()` antes de validar, e o download sobrescreve os arquivos locais.
 - **Como evitar:** depois de qualquer correção, rode `python scripts/nuvem.py subir-pacote <data>` **antes** de simular ou publicar.
 - **Onde mexer:** `scripts/publicar.py` (`main`) e `scripts/nuvem.py`.
+- **Blog (2026-10-16):** o mesmo aconteceu na revisão do blog (o `revisao.json` recém-escrito e a pauta foram substituídos pela cópia antiga da nuvem). O `blog/publicar_blog.py --simular` agora **não** baixa da nuvem e valida o disco. O `scripts/publicar.py --simular` continua baixando: rode `subir-pacote` antes.
 - **Vale também para o painel:** `python painel/painel.py` na nuvem baixa os `.md`/`.json` de todos os dias e sobrescreve os locais. Antes de commitar depois de rodar o painel, confira `git status` e não suba arquivos de `saida/` que você não editou (`git checkout -- <arquivo>`).
 
 ### 2026-10-13 — Pacote gerado antes da trava do pôster é recusado

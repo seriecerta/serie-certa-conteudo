@@ -1,8 +1,8 @@
-Sabe aquela tensão boa de série política, em que você jura que é só mais um episódio e, quando vê, já passou da meia-noite? *A Diplomata* voltou nesta quinta, 15 de outubro, com a 4ª temporada inteira de uma vez na Netflix. São oito episódios. Pra muita gente, isso cabe em um fim de semana.
+Sabe aquela tensão boa de série política, em que você jura que é só mais um episódio e, quando vê, já passou da meia-noite? *A Diplomata* voltou nesta quinta, 15 de outubro, com a 4ª temporada inteira de uma vez na Netflix. São oito episódios. Pra muita gente, isso cabe em um fim de semana. Depois, vem a busca por **séries parecidas com A Diplomata**.
 
-E aí vem a pergunta de domingo à noite: o que eu vejo agora? Se você está procurando **séries parecidas com A Diplomata**, esta lista é pra você. São cinco thrillers políticos e de espionagem que entregam a mesma sensação: gente poderosa decidindo coisas enormes em salas fechadas, segredo que pesa e aquela vontade de dar play no próximo.
+E aí vem a pergunta de domingo à noite: o que eu vejo agora? Esta lista é pra você. São cinco thrillers políticos e de espionagem que entregam a mesma sensação: gente poderosa decidindo coisas enormes em salas fechadas, segredo que pesa e aquela vontade de dar play no próximo.
 
-A ordem segue a Lista da MIA do dia, em contagem regressiva, do nº 4 ao nº 1. No fim tem um bônus pra quem ainda tiver fôlego. Cada série vem com onde assistir no Brasil, quantas temporadas tem, por que combina e, com toda a honestidade, pra quem ela não é. Spoiler, nenhum. Nem de *A Diplomata*, nem das outras.
+A lista vem em contagem regressiva, do nº 4 ao nº 1. No fim tem um bônus pra quem ainda tiver fôlego. Cada série vem com onde assistir no Brasil, quantas temporadas tem, por que combina e, com toda a honestidade, pra quem ela não é. Spoiler, nenhum. Nem de *A Diplomata*, nem das outras.
 
 ![Pôster de A Diplomata](imagens/the-diplomat.jpg "A Diplomata · Netflix")
 
@@ -77,11 +77,11 @@ Ela fica no nº 1 por um motivo bem prático. Seis episódios cabem num fim de s
 
 **Por que combina:** Michael Fassbender vive um agente da CIA que volta a Londres depois de anos infiltrado, e Jeffrey Wright e Richard Gere estão no elenco. A série é inspirada na francesa *Le Bureau des Légendes* e mostra a espionagem como trabalho de escritório: reunião, análise, decisão que pesa. É a mais parecida com o clima de sala fechada de *A Diplomata*.
 
-Ela entra como bônus porque não estava no vídeo do dia, mas ia ser injusto deixar de fora. Quem gosta de política sem explosão costuma gostar dela.
+Ela entra como bônus porque é a mais lenta da lista, mas ia ser injusto deixar de fora. Quem gosta de política sem explosão costuma gostar dela.
 
 **Pra quem não é:** quem espera ritmo de ação. Aqui o suspense está no que não é dito.
 
-## Como escolher a sua
+## Séries parecidas com A Diplomata: como escolher a sua
 
 Se você quer a mesma atriz, vai de *The Americans*. Se quer algo que termina até domingo, *Dia Zero*. Se quer rir no meio da tensão, *Slow Horses*. Se quer adrenalina, *O Agente Noturno*. E se o que você mais curtiu foram as salas de reunião, *A Agência*.
 

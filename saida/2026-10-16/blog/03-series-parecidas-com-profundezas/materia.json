@@ -1,38 +1,106 @@
 {
-  "titulo": "Acabou Profundezas? 6 séries parecidas com a mesma sensação de mistério",
+  "titulo": "Acabou Profundezas? 5 séries parecidas com a mesma sensação de mistério",
   "slug": "series-parecidas-com-profundezas",
-  "subtitulo": "Mar gelado, cidade pequena com segredo e ameaça que demora a mostrar a cara: seis séries para quem terminou a minissérie da Netflix e ficou querendo mais.",
-  "resumo": "Terminou Profundezas e o catálogo pareceu raso? Separamos 6 séries parecidas, de Mistério no Mar a Yellowjackets, com onde assistir no Brasil, temporadas, duração, por que combinam e pra quem não são. Sem spoiler.",
+  "subtitulo": "Mar gelado, cidade pequena com segredo e ameaça que demora a mostrar a cara: cinco séries para quem terminou a minissérie da Netflix e ficou querendo mais.",
+  "resumo": "Terminou Profundezas e o catálogo pareceu raso? Separamos 5 séries parecidas, de Mistério no Mar a Yellowjackets, com onde assistir no Brasil, temporadas, duração, por que combinam e pra quem não são. Sem spoiler.",
   "categoria": "series",
-  "tags": ["Profundezas", "Terror", "Mistério", "Acabou X?", "Netflix"],
+  "tags": [
+    "Profundezas",
+    "Terror",
+    "Mistério",
+    "Acabou X?",
+    "Netflix"
+  ],
   "humor": "curioso",
-  "seo_titulo": "Séries parecidas com Profundezas: 6 para ver agora",
-  "meta_descricao": "Séries parecidas com Profundezas: 6 mistérios com mar, cidade pequena e segredo, com onde assistir no Brasil, temporadas e pra quem não é. Sem spoiler.",
+  "seo_titulo": "Séries parecidas com Profundezas: 5 para ver agora",
+  "meta_descricao": "Séries parecidas com Profundezas: 5 mistérios com mar, cidade pequena e segredo, com onde assistir no Brasil, temporadas e pra quem não é. Sem spoiler.",
   "palavra_chave": "séries parecidas com Profundezas",
-  "capa_alt": "Pôsteres de 1899, Profundezas e Dark em leque sobre fundo verde-noite, com o texto 'acabou Profundezas? vê essas'.",
-  "series": ["Profundezas", "Mistério no Mar", "Origem", "Dark", "1899", "A Maldição da Residência Hill", "Yellowjackets"],
+  "capa_alt": "Pôsteres de A Maldição da Residência Hill, Profundezas e Dark em leque sobre fundo verde-noite, com o texto 'acabou Profundezas? vê essas'.",
+  "series": [
+    "Profundezas",
+    "Mistério no Mar",
+    "Origem",
+    "Dark",
+    "A Maldição da Residência Hill",
+    "Yellowjackets"
+  ],
   "fontes": [
-    {"titulo": "Einerd — Profundezas chega ao topo mundial da Netflix", "url": "https://www.einerd.com/profundezas-below-serie-terror-netflix/"},
-    {"titulo": "GameOverDrive — Profundezas: episódios, duração e onde assistir", "url": "https://gameoverdrive.com.br/profundezas-episodios-duracao/"},
-    {"titulo": "Omelete — crítica de Profundezas", "url": "https://www.omelete.com.br/series-tv/criticas/profundezas-boa-serie-netflix-critica"},
-    {"titulo": "TVmaze — Below (Profundezas)", "url": "https://www.tvmaze.com/shows/93115/below"},
-    {"titulo": "JustWatch Brasil — Mistério no Mar, temporada 2", "url": "https://www.justwatch.com/br/serie/the-rig/temporada-2"},
-    {"titulo": "Olhar Digital — Prime Video, lançamentos de 30/12/2024 a 05/01/2025", "url": "https://olhardigital.com.br/2024/12/30/cinema-e-streaming/amazon-prime-video-lancamentos-da-semana-30-de-dezembro-a-5-de-janeiro/"},
-    {"titulo": "TVmaze — The Rig", "url": "https://www.tvmaze.com/shows/51726/the-rig"},
-    {"titulo": "Viva — 4ª temporada de From chega ao Brasil (Globoplay)", "url": "https://viva.com.br/cultura-e-lazer/quarta-temporada-de-from-chega-ao-brasil-em-7-de-maio-veja-onde-assistir.html"},
-    {"titulo": "GameOverDrive — From (Origem): onde assistir", "url": "https://gameoverdrive.com.br/from-origem-serie-onde-assistir/"},
-    {"titulo": "TVmaze — FROM", "url": "https://www.tvmaze.com/shows/54723/from"},
-    {"titulo": "AdoroCinema — Dark", "url": "https://www.adorocinema.com/series/serie-20328/"},
-    {"titulo": "TVmaze — Dark", "url": "https://www.tvmaze.com/shows/17861/dark"},
-    {"titulo": "AdoroCinema — 1899 vai ter 2ª temporada?", "url": "https://www.adorocinema.com/noticias/series/noticia-1000003391/"},
-    {"titulo": "AdoroCinema — 1899: áudio original na Netflix", "url": "https://www.adorocinema.com/noticias/series/noticia-1000003699/"},
-    {"titulo": "TVmaze — 1899", "url": "https://www.tvmaze.com/shows/39749/1899"},
-    {"titulo": "AdoroCinema — A Maldição da Residência Hill", "url": "https://www.adorocinema.com/series/serie-21978/"},
-    {"titulo": "AdoroCinema — Apenas 10 episódios na Netflix (Residência Hill)", "url": "https://www.adorocinema.com/noticias/series/noticia-1000188794/"},
-    {"titulo": "JustWatch Brasil — Yellowjackets, temporada 3", "url": "https://www.justwatch.com/br/serie/yellowjackets/temporada-3"},
-    {"titulo": "Omelete — Yellowjackets: 4ª e última temporada, data no Paramount+", "url": "https://www.omelete.com.br/series-tv/yellowjackets-4a-ultima-temporada-data-paramount-plus-teaser"},
-    {"titulo": "Omelete — Yellowjackets: primeiro trailer da temporada final", "url": "https://www.omelete.com.br/series-tv/yellowjackets-paramount-plus-4a-temporada-primeiro-trailer-final"},
-    {"titulo": "TVmaze — Yellowjackets", "url": "https://www.tvmaze.com/shows/36672/yellowjackets"}
+    {
+      "titulo": "Einerd — Profundezas chega ao topo mundial da Netflix",
+      "url": "https://www.einerd.com/profundezas-below-serie-terror-netflix/"
+    },
+    {
+      "titulo": "GameOverDrive — Profundezas: episódios, duração e onde assistir",
+      "url": "https://gameoverdrive.com.br/profundezas-episodios-duracao/"
+    },
+    {
+      "titulo": "Omelete — crítica de Profundezas",
+      "url": "https://www.omelete.com.br/series-tv/criticas/profundezas-boa-serie-netflix-critica"
+    },
+    {
+      "titulo": "TVmaze — Below (Profundezas)",
+      "url": "https://www.tvmaze.com/shows/93115/below"
+    },
+    {
+      "titulo": "JustWatch Brasil — Mistério no Mar, temporada 2",
+      "url": "https://www.justwatch.com/br/serie/the-rig/temporada-2"
+    },
+    {
+      "titulo": "Olhar Digital — Prime Video, lançamentos de 30/12/2024 a 05/01/2025",
+      "url": "https://olhardigital.com.br/2024/12/30/cinema-e-streaming/amazon-prime-video-lancamentos-da-semana-30-de-dezembro-a-5-de-janeiro/"
+    },
+    {
+      "titulo": "TVmaze — The Rig",
+      "url": "https://www.tvmaze.com/shows/51726/the-rig"
+    },
+    {
+      "titulo": "Viva — 4ª temporada de From chega ao Brasil (Globoplay)",
+      "url": "https://viva.com.br/cultura-e-lazer/quarta-temporada-de-from-chega-ao-brasil-em-7-de-maio-veja-onde-assistir.html"
+    },
+    {
+      "titulo": "GameOverDrive — From (Origem): onde assistir",
+      "url": "https://gameoverdrive.com.br/from-origem-serie-onde-assistir/"
+    },
+    {
+      "titulo": "TVmaze — FROM",
+      "url": "https://www.tvmaze.com/shows/54723/from"
+    },
+    {
+      "titulo": "AdoroCinema — Dark",
+      "url": "https://www.adorocinema.com/series/serie-20328/"
+    },
+    {
+      "titulo": "TVmaze — Dark",
+      "url": "https://www.tvmaze.com/shows/17861/dark"
+    },
+    {
+      "titulo": "Correio Braziliense — 5 séries viciantes para maratonar em abril (Dark na Netflix)",
+      "url": "https://www.correiobraziliense.com.br/revista-do-correio/2026/04/7393518-5-series-viciantes-para-maratonar-em-abril.html"
+    },
+    {
+      "titulo": "AdoroCinema — A Maldição da Residência Hill",
+      "url": "https://www.adorocinema.com/series/serie-21978/"
+    },
+    {
+      "titulo": "AdoroCinema — Apenas 10 episódios na Netflix (Residência Hill)",
+      "url": "https://www.adorocinema.com/noticias/series/noticia-1000188794/"
+    },
+    {
+      "titulo": "JustWatch Brasil — Yellowjackets, temporada 3",
+      "url": "https://www.justwatch.com/br/serie/yellowjackets/temporada-3"
+    },
+    {
+      "titulo": "Omelete — Yellowjackets: 4ª e última temporada, data no Paramount+",
+      "url": "https://www.omelete.com.br/series-tv/yellowjackets-4a-ultima-temporada-data-paramount-plus-teaser"
+    },
+    {
+      "titulo": "Omelete — Yellowjackets: primeiro trailer da temporada final",
+      "url": "https://www.omelete.com.br/series-tv/yellowjackets-paramount-plus-4a-temporada-primeiro-trailer-final"
+    },
+    {
+      "titulo": "TVmaze — Yellowjackets",
+      "url": "https://www.tvmaze.com/shows/36672/yellowjackets"
+    }
   ],
   "quando": "2026-10-16T19:00:00-03:00",
   "destaque": true

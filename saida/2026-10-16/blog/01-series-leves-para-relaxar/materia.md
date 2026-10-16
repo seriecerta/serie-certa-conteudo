@@ -1,12 +1,12 @@
-A semana acabou. A cabeça, não. Você deita no sofá, abre o streaming e percebe que não tem energia pra drama pesado, nem pra suspense que pede atenção, nem pra série nova com vinte personagens pra decorar. Você quer uma coisa só: desligar.
+A semana acabou. A cabeça, não. Você deita no sofá, abre o streaming e percebe que não tem energia pra drama pesado, nem pra suspense que pede atenção, nem pra série nova com vinte personagens pra decorar. Você quer uma coisa só: desligar. É hora das **séries leves para relaxar**.
 
-É pra esse momento que existem as **séries leves para relaxar**. Não são séries bobas. São histórias que acolhem, fazem rir sem esforço e deixam você terminar o episódio um pouco mais leve do que começou. Conflito existe, mas não aperta o peito. E, no fim, quase sempre dá tudo certo.
+Não são séries bobas. São histórias que acolhem, fazem rir sem esforço e deixam você terminar o episódio um pouco mais leve do que começou. Conflito existe, mas não aperta o peito. E, no fim, quase sempre dá tudo certo.
 
 Aqui vão seis indicações pra depois de uma semana pesada, com onde assistir no Brasil, quantas temporadas cada uma tem, por que combina com esse cansaço e, com toda a honestidade, pra quem não é.
 
 [[leia: como-escolher-serie-pelo-humor]]
 
-## Como escolher uma série leve pra relaxar hoje
+## Como escolher entre séries leves para relaxar hoje
 
 Antes da lista, um critério simples. Quando o estresse está alto, três coisas ajudam: personagens que você gosta logo de cara, episódios que funcionam mesmo se você se distrair um pouco e um tom que não te deixa ansiosa pelo próximo capítulo. Comédia com coração costuma ganhar de suspense. Série já fechada ou com várias temporadas prontas ganha de série que acabou de estrear.
 
