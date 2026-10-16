@@ -5,6 +5,7 @@ saida/**/*.mp4
 saida/**/*.jpg
 saida/**/*.png
 saida/**/estado-publicacao.json
+saida/**/estado-blog.json
 saida/**/publicacao.log.md
 saida/**/PAUSAR
 assets/posters/
