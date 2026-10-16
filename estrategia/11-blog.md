@@ -37,7 +37,7 @@ A meta dos 90 dias continua sendo **audiência** (`05-go-to-market.md`). No blog
 - **Nunca:** spoiler (nem dentro de caixa de spoiler), trecho de diálogo/roteiro, letra de música, cena descrita quadro a quadro, nota/estrela, pirataria ou "onde assistir de graça" ilegal, fofoca de elenco (anti-ICP).
 
 ## Medição
-- PostHog (eventos do blog: `article_view`, `article_scroll_90`, `platform_cta_click`) e Search Console (quando verificado).
+- Painel (`/painel`, seção "Blog") e relatório semanal (seção "## Blog"): leituras por matéria da tabela `blog_visualizacoes` do banco do blog, leitura até 90% e cliques no app do PostHog. Search Console quando for verificado.
 - Na revisão semanal, a métrica principal do blog é **visualizações em D+7** (busca demora a indexar; D+1 só mostra o efeito do dia).
 
 ## Changelog

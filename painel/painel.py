@@ -19,6 +19,9 @@ De onde vem cada número:
   - Instagram (conta, por dia): cliques no link da bio (website_clicks), visitas ao perfil, alcance, seguidores.
   - YouTube (todos os vídeos do canal, inclusive agendados): views, curtidas, comentários e inscritos.
   - Cliques nos links com UTM: PostHog (opcional; POSTHOG_API_KEY + POSTHOG_PROJECT_ID no .env).
+  - Blog: matérias de saida/<data>/blog/ (materia.json, estado-blog.json) + todas as matérias no ar no banco do blog
+    (blog_materias) com as leituras por dia (blog_visualizacoes, mesmo Supabase das redes, sem chave nova).
+    Leitura até 90% e cliques no app vêm do PostHog (article_scroll_90, platform_cta_click), se configurado.
 Na nuvem, baixa do Supabase os textos de todos os dias e guarda as métricas em pacotes-redes/painel/metricas.json.
 """
 import argparse
@@ -140,7 +143,9 @@ def ler_publicados() -> list:
 # ---------------------------------------------------------------- inventário
 FORMATO = {("instagram", "REELS"): "Reels", ("instagram", "CAROUSEL"): "Carrossel",
            ("instagram", "STORIES"): "Stories", ("instagram", "IMAGE"): "Feed",
-           ("youtube", "short"): "Short", ("youtube", "longo"): "Vídeo longo", ("tiktok", "video"): "TikTok"}
+           ("youtube", "short"): "Short", ("youtube", "longo"): "Vídeo longo", ("tiktok", "video"): "TikTok",
+           ("blog", "materia"): "Matéria"}
+SLOT_BLOG = {"09": "Pelo humor", "11": "Streaming da semana", "14": "Acabou X?", "17": "Guia", "20": "Lista da MIA em texto"}
 
 
 def status_de(estado, aprovada, bloqueada, pausado, quando):
@@ -178,7 +183,8 @@ def inventario() -> dict:
         aprovadas = set(revisao.get("aprovadas", []))
         bloqueadas = revisao.get("bloqueadas", {}) or {}
         pausado = (pasta_dia / "PAUSAR").exists()
-        for pasta in sorted(p for p in pasta_dia.iterdir() if p.is_dir()):
+        pubs += inventario_blog(pasta_dia, revisao, pausado)
+        for pasta in sorted(p for p in pasta_dia.iterdir() if p.is_dir() and p.name != "blog"):
             plano = ler_json(pasta / "publicar.json", {})
             estado = ler_json(pasta / "estado-publicacao.json", {})
             info = pautas.get((data, pasta.name), {})
@@ -246,6 +252,42 @@ def inventario() -> dict:
                 "funil": info.get("funil", ""), "cta": info.get("cta", ""), "recorrente": info.get("recorrente", ""),
             })
     return {"publicacoes": pubs, "rascunhos": rascunhos, "ideias": ideias}
+
+
+def inventario_blog(pasta_dia: pathlib.Path, revisao: dict, pausado: bool) -> list:
+    """Matérias do blog do dia (saida/<data>/blog/<nn>-<slug>/), com o status do blog/publicar_blog.py."""
+    pasta_blog = pasta_dia / "blog"
+    if not pasta_blog.is_dir():
+        return []
+    aprovadas = set(revisao.get("blog_aprovadas", []))
+    bloqueadas = revisao.get("bloqueadas", {}) or {}
+    data, saida = pasta_dia.name, []
+    for pasta in sorted(p for p in pasta_blog.iterdir() if p.is_dir()):
+        meta = ler_json(pasta / "materia.json", {})
+        if not meta.get("titulo"):
+            continue
+        estado = ler_json(pasta / "estado-blog.json", {})
+        try:
+            q = dt.datetime.fromisoformat(meta["quando"])
+            q = q if q.tzinfo else q.replace(tzinfo=TZ)
+        except (KeyError, ValueError):
+            q = dt.datetime.fromisoformat(f"{data}T00:00:00-03:00")
+        slug = meta.get("slug") or re.sub(r"^\d\d-", "", pasta.name)
+        chave_bloq = f"blog/{pasta.name}"
+        st = status_de(estado, pasta.name in aprovadas, chave_bloq in bloqueadas, pausado, q)
+        motivo = bloqueadas.get(chave_bloq, "") or estado.get("erro", "") or "; ".join(estado.get("erros", []))
+        saida.append({
+            "chave": f"{data}/blog/{pasta.name}", "data": data, "peca": f"blog/{pasta.name}", "mae": "",
+            "titulo": meta["titulo"], "plataforma": "blog", "formato": "Matéria",
+            "quando": q.isoformat(), "status": st, "motivo": str(motivo)[:300],
+            "links": [estado["link"]] if estado.get("link") else [], "ids": [slug],
+            "pilar": "", "pilar_n": 0, "humor": meta.get("humor", ""), "job": "", "funil": "Descoberta",
+            "cta": "Chamada para o app", "recorrente": SLOT_BLOG.get(f"{q:%H}", ""), "categoria": meta.get("categoria", ""),
+            "series": "; ".join(dict.fromkeys(re.sub(r"\s*\(\d{4}\)$", "", n) for n in meta.get("series") or [])),
+            "campanha": f"{data}-{slug}", "assinatura": slug, "experimento": exp_rotulo(meta.get("experimento")),
+            "met": None,
+        })
+    return saida
 
 
 # ---------------------------------------------------------------- métricas
@@ -418,6 +460,72 @@ def coletar_posthog(dias):
             for a, b, c, d, n, u in r.json().get("results", [])]
 
 
+def coletar_blog(dias, antigo: dict) -> dict:
+    """Todas as matérias no ar (banco do blog) com leituras totais, por dia e em D+7 (dias 0 a 6 desde a publicação)."""
+    url = os.environ.get("SUPABASE_URL", "").rstrip("/")
+    if not url:
+        raise RuntimeError("SUPABASE_URL não definido")
+    cab = nuvem.cabecalhos()
+
+    def ler(tabela, **params):
+        linhas, inicio = [], 0
+        while True:  # PostgREST devolve no máximo 1000 linhas por pedido
+            r = requests.get(f"{url}/rest/v1/{tabela}", headers={**cab, "Range": f"{inicio}-{inicio + 999}"},
+                             params=params, timeout=60)
+            if not r.ok:
+                raise RuntimeError(f"blog {tabela} {r.status_code}: {r.text[:200]}")
+            lote = r.json()
+            linhas += lote
+            if len(lote) < 1000:
+                return linhas
+            inicio += 1000
+
+    materias = ler("blog_materias", select="id,slug,titulo,publicado_em,status,capa_url,blog_categorias(slug,nome)",
+                   status="in.(publicado,agendado)", order="publicado_em.desc")
+    por_id = {m["id"]: m for m in materias}
+    vistas = ler("blog_visualizacoes", select="materia_id,dia,views", dia=f"gte.{(AGORA - dt.timedelta(days=dias)).date()}")
+    out = {}
+    for m in materias:
+        if not m.get("publicado_em"):
+            continue
+        anterior = antigo.get(m["slug"], {})
+        cat = m.get("blog_categorias") or {}
+        out[m["slug"]] = {**anterior, "titulo": m["titulo"], "timestamp": m["publicado_em"], "status": m["status"],
+                          "link": f"https://seriecerta.online/blog/{m['slug']}", "categoria": cat.get("nome", ""),
+                          "dias": dict(anterior.get("dias", {}))}
+    for v in vistas:
+        m = por_id.get(v["materia_id"])
+        if m and m["slug"] in out:
+            out[m["slug"]]["dias"][v["dia"]] = v["views"]
+    for md in out.values():
+        pub = quando_api(md["timestamp"]).astimezone(TZ).date()
+        md["views"] = sum(md["dias"].values())
+        if AGORA.date() >= pub + dt.timedelta(days=7):  # D+7 fechado: dias 0 a 6
+            md["views_d7"] = sum(n for d, n in md["dias"].items() if dt.date.fromisoformat(d) < pub + dt.timedelta(days=7))
+    return out
+
+
+def coletar_posthog_blog(dias):
+    """Leitura até 90% e cliques no app por matéria (eventos do blog no PostHog)."""
+    chave, projeto = os.environ.get("POSTHOG_API_KEY"), os.environ.get("POSTHOG_PROJECT_ID")
+    if not projeto:
+        raise RuntimeError("POSTHOG_PROJECT_ID não definido (opcional)")
+    host = os.environ.get("POSTHOG_HOST", "https://us.posthog.com").rstrip("/")
+    cab = {"Authorization": f"Bearer {chave}"} if chave else {}
+    sql = f"""SELECT if(event = 'article_scroll_90', properties.slug, replaceOne(properties.origem, 'materia:', '')), event, count()
+              FROM events WHERE timestamp > now() - INTERVAL {int(dias)} DAY AND (event = 'article_scroll_90'
+                OR (event = 'platform_cta_click' AND startsWith(properties.origem, 'materia:')))
+              GROUP BY 1, 2"""
+    r = requests.post(f"{host}/api/projects/{projeto}/query/", headers=cab,
+                      json={"query": {"kind": "HogQLQuery", "query": sql}}, timeout=120)
+    if not r.ok:
+        raise RuntimeError(f"PostHog {r.status_code}: {r.text[:200]}")
+    out = {}
+    for slug, evento, n in r.json().get("results", []):
+        out.setdefault(slug or "", {})["leituras_90" if evento == "article_scroll_90" else "cliques_app"] = n
+    return out
+
+
 def fotografar(md: dict) -> dict:
     """Guarda a foto do dia dos números (com a idade do post em horas), para comparar posts na mesma idade."""
     if not md.get("timestamp"):
@@ -469,6 +577,17 @@ def coletar(dias):
     except Exception as e:
         erros["posthog"] = str(e)[:300]
 
+    try:
+        m["blog_materias"] = coletar_blog(max(dias, 90), m.get("blog_materias") or {})
+        try:
+            for slug, nums in coletar_posthog_blog(max(dias, 90)).items():
+                if slug in m["blog_materias"]:
+                    m["blog_materias"][slug] |= nums
+        except Exception as e:
+            erros["posthog_blog"] = str(e)[:300]
+    except Exception as e:
+        erros["blog"] = str(e)[:300]
+
     m.pop("posts", None)  # formato antigo (por publicação); agora tudo é por id de mídia
     m["coletado_em"] = AGORA.isoformat()
     m["erros"] = erros
@@ -512,8 +631,18 @@ def juntar(inv, m):
     primeira linha da legenda/título e pelo horário (até 6 h de diferença; Stories até 2 h)."""
     ig = m.get("ig_midias", {})
     yt = m.get("yt_videos", {})
+    blog = m.get("blog_materias", {})
     usados = set()
     for p in inv["publicacoes"]:
+        if p["plataforma"] == "blog":
+            md = blog.get(p["ids"][0]) if p["ids"] else None
+            if md:
+                usados.add(p["ids"][0])
+                p |= met_blog(md)
+                p["links"] = p["links"] or [md["link"]]
+                if p["status"] in ("sem-registro", "fila", "erro", "invalido", "pausado"):
+                    p["status"] = "publicado"  # está no ar (publicada pelo painel ou numa rodada sem estado)
+            continue
         if p["plataforma"] not in ("instagram", "youtube"):
             continue
         fonte = ig if p["plataforma"] == "instagram" else yt
@@ -559,6 +688,18 @@ def juntar(inv, m):
     for i, md in yt.items():
         if i not in usados:
             grupos[f"yt/{i}"] = ("youtube", [(i, md)])
+    for slug, md in blog.items():
+        if slug in usados:
+            continue
+        q = quando_api(md["timestamp"]).astimezone(TZ)
+        inv["publicacoes"].append({
+            "chave": f"blog/{slug}", "data": str(q.date()), "peca": "", "mae": "", "titulo": md["titulo"][:140],
+            "plataforma": "blog", "formato": "Matéria", "quando": q.isoformat(),
+            "status": "agendado" if q > AGORA else "publicado", "motivo": "", "links": [md["link"]], "ids": [slug],
+            "externa": True, "pilar": "", "pilar_n": 0, "humor": "", "job": "", "funil": "", "cta": "",
+            "recorrente": "", "categoria": md.get("categoria", ""), "series": "", "campanha": "", "assinatura": slug,
+            "experimento": "", **met_blog(md),
+        })
     for chave, (plat, itens) in grupos.items():
         itens.sort(key=lambda x: x[1]["timestamp"])
         i0, md0 = itens[0]
@@ -583,6 +724,13 @@ def juntar(inv, m):
             "campanha": "", "assinatura": "", "experimento": "",
         })
     return inv
+
+
+def met_blog(md: dict) -> dict:
+    """Números de uma matéria no formato das outras publicações (met = atual, met_d7 = dias 0 a 6)."""
+    met = {k: md[k] for k in ("views", "leituras_90", "cliques_app") if isinstance(md.get(k), (int, float))}
+    return {"met": met or None, "met_d7": {"views": md["views_d7"]} if "views_d7" in md else None,
+            "publicado_em": quando_api(md["timestamp"]).isoformat()}
 
 
 # ---------------------------------------------------------------- nuvem

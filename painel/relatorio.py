@@ -10,6 +10,7 @@ Só leitura nas redes. Usa painel/metricas.json (na nuvem, baixado do Supabase) 
 Base de comparação: os números do post em D+1 (primeira foto diária com 12 h ou mais de vida = coleta das 9h da manhã seguinte), para
 não comparar um post de 3 dias com um de 3 horas. Quando o post ainda não tem D+1, usa o número atual
 e marca com *.
+Blog: compara em D+7 (leituras dos dias 0 a 6 desde a publicação), porque a busca demora a trazer leitor.
 """
 import argparse
 import datetime as dt
@@ -25,6 +26,7 @@ RAIZ = painel.RAIZ
 REDE = {"instagram": "Instagram", "youtube": "YouTube", "tiktok": "TikTok"}
 SLOT_RE = re.compile(r"^\|\s*(\d{1,2})h(\d{2})\s*\|\s*(Instagram|YouTube)\s*·\s*([^|(]+?)\s*(?:\(|\|)")
 FORMATO_SLOT = {"Lista da MIA": "Vídeo longo"}
+BLOG_INICIO = dt.date(2026, 10, 16)  # 1º dia do blog na rotina (08-cronograma.md)
 
 
 def grade():
@@ -132,6 +134,8 @@ def relatorio(inicio: str, fim: str, m: dict) -> str:
             f"- Visitas ao site com UTM: {sum(c['cliques'] for c in utm)} "
             f"({', '.join(f'{o}: {n}' for o, n in sorted(agrupar_soma(utm).items()))})", ""]
 
+    out += secao_blog(inv, a, b, dias)
+
     # comparações
     out += ["## Desempenho por dimensão", ""]
     hora = lambda p: dt.datetime.fromisoformat(p.get("publicado_em") or p["quando"]).strftime("%Hh")
@@ -172,6 +176,41 @@ def relatorio(inicio: str, fim: str, m: dict) -> str:
                                f"({'—' if dif is None else f'{dif * 100:+.0f}%'}) → {sinal}")
             out.append("")
     return "\n".join(out) + "\n"
+
+
+def secao_blog(inv, a, b, dias) -> list:
+    """Matérias do blog no período: aderência à grade do blog, desempenho por slot e ranking (D+7)."""
+    todas = [p for p in inv["publicacoes"] if p["plataforma"] == "blog"
+             and a <= dt.datetime.fromisoformat(p.get("publicado_em") or p["quando"]) <= b]
+    pub = [p for p in todas if p["status"] == "publicado"]
+    leit = lambda p: ((p.get("met_d7") or {}).get("views"), bool(p.get("met_d7"))) if p.get("met_d7") else ((p.get("met") or {}).get("views"), False)
+    out = ["## Blog", "", f"{len(pub)} matérias no ar no período ({sum(1 for p in pub if p.get('externa'))} fora dos pacotes). "
+           "Leituras em D+7 (* = matéria ainda sem 7 dias; mostra o total atual).", ""]
+    out += ["| Horário | Slot | Dias cumpridos | Faltou em |", "|---|---|---|---|"]
+    for h, slot in painel.SLOT_BLOG.items():
+        faltas, validos = [], 0
+        for i in range(dias):
+            d = a.date() + dt.timedelta(days=i)
+            if d < BLOG_INICIO:
+                continue
+            validos += 1
+            alvo = dt.datetime.fromisoformat(f"{d}T{h}:00:00-03:00")
+            if not any(not p.get("externa") and abs(dt.datetime.fromisoformat(p["quando"]) - alvo) <= dt.timedelta(hours=3) for p in pub):
+                faltas.append(f"{d:%d/%m}")
+        out.append(f"| {h}h00 | {slot} | {validos - len(faltas)}/{validos} | {', '.join(faltas) or '—'} |")
+    out += ["", "| Slot | n | Leituras D+7 (med.) | Leu até 90% (med.) | Cliques no app (soma) |", "|---|---|---|---|---|"]
+    for slot, ps in sorted(agrupar(pub, lambda p: p.get("recorrente") or ("fora do pacote" if p.get("externa") else "avulso")).items()):
+        out.append(f"| {slot} | {len(ps)} | {fmt(mediana([leit(p)[0] for p in ps]))} | "
+                   f"{fmt(mediana([(p.get('met') or {}).get('leituras_90') for p in ps]))} | "
+                   f"{fmt(sum((p.get('met') or {}).get('cliques_app') or 0 for p in ps))} |")
+    rank = sorted(pub, key=lambda p: leit(p)[0] or 0, reverse=True)
+    out += ["", "### Top 5 do blog", "", "| Data | Slot | Matéria | Leituras | Leu até 90% | Cliques no app |", "|---|---|---|---|---|---|"]
+    out += [f"| {p['data'][5:]} | {p.get('recorrente') or '—'} | {p['titulo'][:60]} | {fmt(leit(p)[0])}{'' if leit(p)[1] else '*'} | "
+            f"{fmt((p.get('met') or {}).get('leituras_90'))} | {fmt((p.get('met') or {}).get('cliques_app'))} |" for p in rank[:5]]
+    problemas = [p for p in todas if p["status"] in ("bloqueado", "invalido", "erro", "sem-registro")]
+    out += ["", f"Matérias com problema no período: {len(problemas)}."]
+    out += [f"- {p['data']} {p['peca']}: {p['status']} {p.get('motivo', '')[:120]}" for p in problemas]
+    return out + [""]
 
 
 def agrupar_soma(utm):

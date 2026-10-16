@@ -8,7 +8,7 @@
   --bg: #0b1814; --surface: #11221d; --surface-2: #172d26; --line: #23403a;
   --fg: #f3ecdf; --fg-2: #bcc5bb; --muted: #86958d;
   --brasa: #ff5a36; --brasa-ink: #1a0b06;
-  --s-ig: #3987e5; --s-yt: #d95926; --s-tt: #199e70;
+  --s-ig: #3987e5; --s-yt: #d95926; --s-tt: #199e70; --s-blog: #b07ce8;
   --ok: #0ca30c; --warn: #fab219; --serious: #ec835a; --crit: #e0524f; --info: #8fa8ff;
   --f-body: 'InterPainel', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-num: 'InterPainel', ui-monospace, 'SFMono-Regular', Menlo, monospace;
@@ -19,7 +19,7 @@
   --bg: #efebe1; --surface: #faf8f3; --surface-2: #f1ede3; --line: #d9d3c4;
   --fg: #10231d; --fg-2: #3d4f48; --muted: #66756e;
   --brasa: #d9431f; --brasa-ink: #ffffff;
-  --s-ig: #2a78d6; --s-yt: #eb6834; --s-tt: #1baf7a;
+  --s-ig: #2a78d6; --s-yt: #eb6834; --s-tt: #1baf7a; --s-blog: #8a4fd0;
   --crit: #d03b3b; --info: #4256c9;
 } }
 :root[data-theme="light"] {
@@ -27,7 +27,7 @@
   --bg: #efebe1; --surface: #faf8f3; --surface-2: #f1ede3; --line: #d9d3c4;
   --fg: #10231d; --fg-2: #3d4f48; --muted: #66756e;
   --brasa: #d9431f; --brasa-ink: #ffffff;
-  --s-ig: #2a78d6; --s-yt: #eb6834; --s-tt: #1baf7a;
+  --s-ig: #2a78d6; --s-yt: #eb6834; --s-tt: #1baf7a; --s-blog: #8a4fd0;
   --crit: #d03b3b; --info: #4256c9;
 }
 * { box-sizing: border-box; }
@@ -154,7 +154,7 @@ footer code { background: var(--surface); padding: 1px 5px; border-radius: 4px; 
       <button type="button" data-v="90">90 dias</button>
       <button type="button" data-v="0">Tudo</button>
     </div>
-    <label for="fRede">Rede <select id="fRede"><option value="">Todas</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option></select></label>
+    <label for="fRede">Rede <select id="fRede"><option value="">Todas</option><option value="instagram">Instagram</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="blog">Blog</option></select></label>
     <label for="fFormato">Formato <select id="fFormato"><option value="">Todos</option></select></label>
     <label for="fOrigem">Origem <select id="fOrigem"><option value="">Tudo da conta</option><option value="pacote">Só pacotes</option><option value="fora">Fora dos pacotes</option></select></label>
     <label for="fPilar">Pilar <select id="fPilar"><option value="">Todos</option></select></label>
@@ -191,6 +191,12 @@ footer code { background: var(--surface); padding: 1px 5px; border-radius: 4px; 
     <section class="quadro c12" aria-labelledby="hDesd">
       <header><h2 id="hDesd">Desdobramentos</h2><span class="muted" id="desdResumo"></span></header>
       <div class="desd" id="desd"></div>
+    </section>
+
+    <section class="quadro c12" aria-labelledby="hBlog">
+      <header><h2 id="hBlog">Blog</h2><span class="muted" id="blogResumo"></span></header>
+      <div id="blogVazio"></div>
+      <div class="tabela"><table id="tBlog"></table></div>
     </section>
 
     <section class="quadro c12" aria-labelledby="hEng">
@@ -237,8 +243,8 @@ const hora = (iso) => new Date(iso).toLocaleString('pt-BR', { timeZone: 'America
 const isoDia = (d) => d.toLocaleDateString('sv-SE', { timeZone: 'America/Sao_Paulo' });
 const AGORA = new Date();
 
-const REDES = { instagram: { nome: 'Instagram', cor: 'var(--s-ig)' }, youtube: { nome: 'YouTube', cor: 'var(--s-yt)' }, tiktok: { nome: 'TikTok', cor: 'var(--s-tt)' } };
-const ORDEM_REDES = ['instagram', 'youtube', 'tiktok'];
+const REDES = { instagram: { nome: 'Instagram', cor: 'var(--s-ig)' }, youtube: { nome: 'YouTube', cor: 'var(--s-yt)' }, tiktok: { nome: 'TikTok', cor: 'var(--s-tt)' }, blog: { nome: 'Blog', cor: 'var(--s-blog)' } };
+const ORDEM_REDES = ['instagram', 'youtube', 'tiktok', 'blog'];
 const IC = {
   ok: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="currentColor"/><path d="M3.3 6.2l1.8 1.8 3.6-3.8" stroke="var(--surface)" stroke-width="1.6" fill="none"/></svg>',
   relogio: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M6 3.2V6l2 1.2" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>',
@@ -370,7 +376,7 @@ function cabecalho() {
     return `<span class="fonte ${cls}" title="${esc(t)}"><i></i>${nome}</span>`;
   };
   $('#fontes').innerHTML = `<span class="fonte ok" title="Pautas, revisões e estado das publicações"><i></i>Pacotes (${new Set(D.publicacoes.map((p) => p.data)).size} dias)</span>`
-    + fonte('Instagram', 'instagram', Object.keys(M.conta_ig || {}).length) + fonte('YouTube', 'youtube', true) + fonte('PostHog', 'posthog', (M.cliques_utm || []).length);
+    + fonte('Instagram', 'instagram', Object.keys(M.conta_ig || {}).length) + fonte('YouTube', 'youtube', true) + fonte('PostHog', 'posthog', (M.cliques_utm || []).length) + fonte('Blog', 'blog', Object.keys(M.blog_materias || {}).length);
 }
 
 function opcoesFiltros() {
@@ -387,7 +393,8 @@ function soma(lista, campo) { let s = 0, tem = false; lista.forEach((p) => { con
 
 function kpis(sel) {
   const [a, b] = janela();
-  const publicados = sel.filter((p) => p.status === 'publicado');
+  const publicados = sel.filter((p) => p.status === 'publicado' && p.plataforma !== 'blog');
+  const blogPub = sel.filter((p) => p.status === 'publicado' && p.plataforma === 'blog');
   const fila = PUBS.filter(passa).filter((p) => ['fila', 'agendado', 'revisao', 'producao'].includes(p.status)).length + D.rascunhos.filter(passa).length;
   const contaDias = Object.entries(M.conta_ig || {}).filter(([d]) => { const x = new Date(d + 'T12:00:00-03:00'); return x >= a && x <= b; });
   const somaConta = (k) => { const v = contaDias.map(([, o]) => o[k]).filter((n) => typeof n === 'number'); return v.length ? v.reduce((s, n) => s + n, 0) : null; };
@@ -402,7 +409,7 @@ function kpis(sel) {
   const sinal = (n) => n == null ? 'sem histórico ainda' : `${n >= 0 ? '+' : ''}${fmt(n)} no período`;
   const periodo = F.dias ? `últimos ${F.dias} dias` : 'desde o início';
   const k = [
-    ['Publicadas', publicados.length, `${periodo} · ${sel.filter((p) => p.status === 'manual').length} no TikTok (manual)`, true],
+    ['Publicadas', publicados.length + blogPub.length, `${periodo} · ${blogPub.length} no blog · ${sel.filter((p) => p.status === 'manual').length} no TikTok (manual)`, true],
     ['No backlog', fila, `${D.ideias.length} ideias guardadas`],
     ['Views', views, 'Instagram + YouTube'],
     ['Alcance', alcance, 'contas alcançadas no Instagram'],
@@ -412,6 +419,7 @@ function kpis(sel) {
     ['Visitas ao perfil', somaConta('profile_views'), 'Instagram, no período'],
     ['Cliques na bio', somaConta('website_clicks'), 'link da bio do Instagram'],
     ['Cliques nos links', cliquesUtm, 'visitas com UTM (PostHog)'],
+    ['Leituras do blog', soma(blogPub, 'views'), `${blogPub.length} matérias publicadas no período`],
     ['Seguidores IG', segAtual('instagram'), sinal(segDelta('instagram'))],
     ['Inscritos YT', segAtual('youtube'), sinal(segDelta('youtube'))],
   ];
@@ -496,9 +504,34 @@ const COLS = [
   ['eng', 'Engaj.', (p) => pct(p._eng), true], ['cliques', 'Cliques UTM', null, true],
   ['experimento', 'Teste A/B', (p) => esc(p.experimento || '—')],
 ];
+const COLS_BLOG = [
+  ['quando', 'Data', (p) => `<span class="num">${dia(p.quando)}</span>`], ['titulo', 'Matéria', null], ['recorrente', 'Slot', (p) => esc(p.recorrente || '—')],
+  ['categoria', 'Categoria', (p) => esc(p.categoria || '—')], ['status', 'Status', (p) => stHTML(p.status)],
+  ['views', 'Leituras', null, true], ['views_d7', 'Leituras D+7', null, true], ['leituras_90', 'Leu até 90%', null, true], ['cliques_app', 'Cliques no app', null, true],
+];
+let ordemBlog = { k: 'quando', dir: -1 };
+function blogTabela(sel) {
+  const lista = sel.filter((p) => p.plataforma === 'blog');
+  const val = (p, k) => k === 'views_d7' ? p.met_d7?.views : ['quando', 'titulo', 'recorrente', 'categoria', 'status'].includes(k) ? p[k] : p.met?.[k];
+  lista.sort((a, b) => { const x = val(a, ordemBlog.k), y = val(b, ordemBlog.k); if (x == null) return 1; if (y == null) return -1; return (x > y ? 1 : x < y ? -1 : 0) * ordemBlog.dir; });
+  const t = $('#tBlog');
+  t.innerHTML = `<thead><tr>${COLS_BLOG.map(([k, n, , num]) => `<th class="${num ? 'n' : ''}" aria-sort="${ordemBlog.k === k ? (ordemBlog.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-k="${k}">${n}${ordemBlog.k === k ? (ordemBlog.dir > 0 ? ' ↑' : ' ↓') : ''}</button></th>`).join('')}</tr></thead>
+    <tbody>${lista.map((p) => `<tr>${COLS_BLOG.map(([k, , f, num]) => k === 'titulo'
+      ? `<td class="titulo">${p.links?.[0] ? `<a href="${esc(p.links[0])}" target="_blank" rel="noopener">${esc(p.titulo)}</a>` : esc(p.titulo)}<div class="muted" style="font-size:12px">${esc(p.peca || 'fora do pacote')}${p.motivo ? ' · ' + esc(p.motivo.slice(0, 120)) : ''}</div></td>`
+      : `<td class="${num ? 'n' : ''}">${f ? f(p) : fmt(val(p, k))}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${COLS_BLOG.length}" class="muted">Nenhuma matéria no período.</td></tr>`}</tbody>`;
+  t.querySelectorAll('th button').forEach((b) => b.addEventListener('click', () => { ordemBlog = { k: b.dataset.k, dir: ordemBlog.k === b.dataset.k ? -ordemBlog.dir : -1 }; blogTabela(sel); }));
+  const no = lista.filter((p) => p.status === 'publicado').length;
+  const leit = lista.reduce((s, p) => s + (p.met?.views || 0), 0);
+  $('#blogResumo').textContent = lista.length ? `${lista.length} matérias · ${no} no ar · ${fmt(leit)} leituras` : '';
+  const erros = M.erros || {};
+  $('#blogVazio').innerHTML = erros.blog ? `<div class="vazio"><div>O banco do blog não respondeu: ${esc(erros.blog)}</div></div>`
+    : !M.blog_materias ? '<div class="vazio"><div>Leituras do blog ainda não coletadas. Rode:</div><div><code>python painel/painel.py --metricas</code></div></div>'
+    : erros.posthog_blog ? `<div class="muted" style="font-size:12px;margin-bottom:8px">"Leu até 90%" e "Cliques no app" vêm do PostHog, que não respondeu: ${esc(erros.posthog_blog)}</div>` : '';
+}
+
 let ordem = { k: 'quando', dir: -1 };
 function engajamento(sel) {
-  const linhasT = sel.filter((p) => p.plataforma !== 'tiktok' && !['fila', 'revisao', 'producao'].includes(p.status)).map((p) => {
+  const linhasT = sel.filter((p) => !['tiktok', 'blog'].includes(p.plataforma) && !['fila', 'revisao', 'producao'].includes(p.status)).map((p) => {
     const m = p.met || {}; const r = m.reach;
     const inter = ['likes', 'comments', 'shares', 'saved'].reduce((s, k) => s + (m[k] || 0), 0);
     return { ...p, _eng: r ? inter / r : null, _cl: cliquesPorCampanha[p.campanha] ?? null };
@@ -545,7 +578,7 @@ function cliques() {
 function render() {
   salvar();
   const sel = PUBS.filter(passa).filter(noPeriodo);
-  kpis(sel); backlog(); ritmo(sel); mix(sel); desdobramentos(sel); engajamento(sel); cliques();
+  kpis(sel); backlog(); ritmo(sel); mix(sel); desdobramentos(sel); blogTabela(sel); engajamento(sel); cliques();
 }
 
 cabecalho(); opcoesFiltros();
