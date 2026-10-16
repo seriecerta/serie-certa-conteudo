@@ -46,6 +46,7 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Causa:** o prompt de uma rotina presa a uma sessão fixa (`persistent_session_id`) só pode ser editado por essa sessão. Nome, horário e liga/desliga podem ser mudados de qualquer sessão.
 - **Como evitar:** escreva o prompt das rotinas como "siga o skill X" e ponha os passos no `SKILL.md`, que muda por commit. Para mudar o texto da rotina, peça na sessão dela (ex.: "Série Certa · painel (métricas)").
 - **Onde mexer:** `.claude/skills/<skill>/SKILL.md`.
+- **Exemplo (2026-10-16):** as rotinas de publicação traziam o comando no próprio texto (`rode python scripts/publicar.py --vencidos` e "publique só pelo scripts/publicar.py"). Por isso, na 1ª tarde do blog, a matéria das 17h não saiu pela rotina das 17h01, mesmo com a skill `/publicar` já atualizada. Ao criar publicador ou rede nova, confira o texto das rotinas com `list_triggers` e peça a mudança na sessão de cada uma (`send_message` para o `persistent_session_id` dela).
 
 ### 2026-10-13 — Script novo não pode ir para `scripts/`
 - **Sintoma:** `Write` em `scripts/painel.py` falhou com "File is in a directory that is denied by your permission settings".
