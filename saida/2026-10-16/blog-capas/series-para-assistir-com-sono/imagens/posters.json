@@ -1,0 +1,26 @@
+{
+ "the-office.jpg": {
+  "pedido": "The Office (2005)",
+  "encontrado": "The Office",
+  "estreia": "2005-03-24",
+  "tvmaze_id": 526,
+  "pagina": "https://www.tvmaze.com/shows/526/the-office",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204342.jpg"
+ },
+ "brooklyn-nine-nine.jpg": {
+  "pedido": "Brooklyn Nine-Nine",
+  "encontrado": "Brooklyn Nine-Nine",
+  "estreia": "2013-09-17",
+  "tvmaze_id": 49,
+  "pagina": "https://www.tvmaze.com/shows/49/brooklyn-nine-nine",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/402/1007484.jpg"
+ },
+ "parks-and-recreation.jpg": {
+  "pedido": "Parks and Recreation",
+  "encontrado": "Parks and Recreation",
+  "estreia": "2009-04-09",
+  "tvmaze_id": 174,
+  "pagina": "https://www.tvmaze.com/shows/174/parks-and-recreation",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204341.jpg"
+ }
+}
