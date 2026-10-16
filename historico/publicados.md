@@ -16,3 +16,8 @@ data | formato | humor | séries | gancho
 2026-10-15 | Short + Reels (Relógio) | órfã de série / ansiosa | A Diplomata | Pra amiga que tá contando os dias pra A Diplomata voltar
 2026-10-16 | Carrossel | fim de semana / maratona curta | A Leste do Éden; O Gambito da Rainha; Mare of Easttown; Chernobyl | Minisséries pra terminar no fim de semana
 2026-10-16 | Stories | fim de semana / maratona curta | A Leste do Éden; O Gambito da Rainha; Mare of Easttown | Minisséries pro fim de semana (carrossel em 9:16)
+2026-10-16 | blog-humor (17h) | estressado | Ted Lasso; Falando a Real; Only Murders in the Building; Heartstopper; Emily em Paris; Hacks | 6 séries leves para relaxar depois de uma semana pesada
+2026-10-16 | blog-streaming (18h) | — | Armadilha; VisionQuest; A Diplomata; Tulsa King; Crystal Lake; Largados e Pelados Brasil | Estreias da semana nos streamings (12 a 18/10)
+2026-10-16 | blog-acabou-x (19h) | curioso | Profundezas; Mistério no Mar; Origem; Dark; A Maldição da Residência Hill; Yellowjackets | Acabou Profundezas? 5 séries parecidas
+2026-10-16 | blog-guia (20h) | animado | Lupin | Lupin parte 4: guia sem spoiler para rever as partes 1–3
+2026-10-16 | blog-lista (21h) | estressado | A Diplomata; O Agente Noturno; The Americans; Slow Horses; Dia Zero; A Agência | Séries parecidas com A Diplomata: 5 thrillers políticos

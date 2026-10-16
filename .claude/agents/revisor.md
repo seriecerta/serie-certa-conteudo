@@ -23,12 +23,24 @@ Para cada peça em `saida/<data>/`:
 - **Lista da MIA**: tema bate com a tendência citada na pauta (as fontes existem e são desta semana); onde assistir de **cada** série reconfirmado hoje; capítulos da descrição batem com o vídeo (abra 3 quadros nos tempos dos capítulos); thumbnail legível em tamanho pequeno.
 - **Risco**: nada que possa gerar problema legal ou de marca (pôster de outra série ou de versão errada, imagem que não seja o pôster oficial, promessa que o app não cumpre, preço errado).
 
-Depois rode `python scripts/publicar.py --data <data> --simular` e corrija o que ele apontar.
+## Blog (`saida/<data>/blog/<nn>-<slug>/`)
+Para cada matéria, como quem não escreveu:
+- **Fatos:** refaça na web a checagem de onde assistir no Brasil, temporadas, episódios e datas de **cada** série; confira se as `fontes` existem e dizem o que o texto diz. Corrija ou bloqueie.
+- **Spoiler, diálogo, letra, cena quadro a quadro, nota/estrela, pirataria:** remova.
+- **Texto original:** nada copiado de outro site (procure 2 ou 3 frases na web entre aspas).
+- **Padrão de `estrategia/11-blog.md`:** tamanho, "pra quem não é" em cada série, caixa "Conferido em", **um** `[[app]]`, links internos, SEO (palavra-chave no título, no 1º parágrafo e na meta), voz.
+- **Imagem de destaque:** abra `quadros/01.jpg`. Ela precisa contextualizar o tema (pôsteres das séries certas ou emoji coerente), sem texto cortado e sem logo de streaming. Confira também se o `capa_alt` descreve a imagem.
+- **Pôsteres:** `series` completo; cada pôster é da série certa (`imagens/posters.json`).
+- Rode `python blog/publicar_blog.py --verificar <pasta>`; erro = não aprova.
+Aprovadas vão em `"blog_aprovadas"` no `revisao.json` (junto com `aprovadas`/`bloqueadas` das redes). Bloqueadas do blog vão em `"bloqueadas"` com a chave `blog/<pasta>`.
+
+Depois rode `python scripts/publicar.py --data <data> --simular` e `python blog/publicar_blog.py --data <data> --simular` e corrija o que eles apontarem.
 
 Escreva `saida/<data>/revisao.json`:
 ```json
 {"aprovadas": ["01-cansada", "02-carrossel-cansada"],
- "bloqueadas": {"03-casal": "motivo curto"}}
+ "blog_aprovadas": ["01-series-para-ver-ansiosa", "02-estreias-da-semana"],
+ "bloqueadas": {"03-casal": "motivo curto", "blog/03-acabou-x": "motivo curto"}}
 ```
 Só entra em `aprovadas` o que você publicaria com o seu nome. Na dúvida, bloqueie — peça bloqueada não vai ao ar.
 Resuma também em `saida/<data>/99-revisao.md` o que corrigiu e o que ficou bloqueado.

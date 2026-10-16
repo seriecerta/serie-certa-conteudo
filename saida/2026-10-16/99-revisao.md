@@ -41,3 +41,23 @@ WebFetch e curl caíram em DNS/proxy para justwatch.com, netflix.com, adorocinem
 
 ## Peças de vídeo (03, 04, 05): bloqueadas
 Sem narração: a ElevenLabs recusou a primeira fala (`quota_exceeded`, 29 créditos restantes, 34 necessários). Nenhum `.mp3` foi gerado. Roteiros, narrações (.txt) e pôsteres ficam prontos para quando houver recarga. Slots não cumpridos hoje: Lista 12h00, Short+Reels 13h30, Reels 18h30, Short 19h00 (inclui o vídeo do casal da sexta).
+
+## Blog
+Revisão das 5 matérias de `blog/` (16/10). JustWatch, Netflix e AdoroCinema não abriram (proxy/DNS), então tudo foi conferido por WebSearch hoje. O `--verificar` passou nas 5, sem erro.
+
+### Aprovadas (5)
+- **01 · séries leves para relaxar (17h00).** Ted Lasso T4 (05/08 a 07/10, 10 episódios), Shrinking T3 (11 episódios, 28/01 a 08/04), Only Murders no Disney+ (5 temporadas; a 6ª chega em 08/12 e não foi citada), Heartstopper (3 temporadas + filme de 17/07 na Netflix), Emily em Paris (5 temporadas; a 6ª ainda não estreou, sai em 24/12) e Hacks no HBO Max (5ª e última temporada abr–mai/2026): tudo confirmado. Correção: a palavra-chave entrou no 1º parágrafo e num `##`.
+- **02 · estreias da semana (18h00).** Armadilha (Netflix 13/10, 6 episódios, livro de Melanie Raabe), VisionQuest (Disney+ 13/10 às 22h de Brasília, 2 episódios, 8 no total; a matéria não cita a data do final porque as fontes divergem), A Diplomata T4 (Netflix 15/10, 8 episódios), Tulsa King T4 (Paramount+ 16/10, semanal), Crystal Lake (Universal+ 16/10, 8 de uma vez; Peacock nos EUA em 15/10) e Largados e Pelados Brasil T4 (HBO Max/Discovery 18/10, 7 episódios, 2 na estreia): tudo confirmado. Correção: entrou uma fonte com o calendário de VisionQuest.
+- **03 · parecidas com Profundezas (19h00).** **Tirei 1899**: não achei nenhuma fonte de 2025 ou 2026 que confirme a série na Netflix BR (só matérias de 2022–2023). Ficam 5 indicações (Mistério no Mar/Prime, Origem/Globoplay T4 completa, Dark/Netflix, Residência Hill/Netflix, Yellowjackets/Paramount+ com a T4 em 20/11 no plano premium). Mudaram junto: título, SEO, resumo, meta e "seis" → "cinco". Saíram o pôster e a fonte de 1899. **Capa refeita**: o leque agora é Residência Hill + Profundezas + Dark. Testei Mistério no Mar e descartei, porque o pôster traz o logo do Prime Video e "New season". O `capa_alt` foi atualizado. Entrou uma fonte de abr/2026 para Dark na Netflix. A palavra-chave foi para o 1º parágrafo e para um `##`.
+- **04 · guia Lupin parte 4 (20h00).** A estreia em 23/10, com 8 episódios de uma vez, e as partes 1–3 na Netflix BR estão confirmadas (Einerd e página da Netflix BR indexada com 3 partes). A página da Netflix BR entrou nas fontes. A capa usa o pôster oficial da parte 4, que traz "Only on Netflix" impresso: entra assim mesmo, pela regra nova do `11-blog.md`. A palavra-chave foi para o 1º parágrafo.
+- **05 · parecidas com A Diplomata (21h00).** The Americans no Disney+ BR, 6 temporadas e 75 episódios (JustWatch BR e AdoroCinema); Agente Noturno T3 em 19/02/2026; Slow Horses T6 semanal até 21/10; Dia Zero; A Agência T2 em 21/06/2026 com 10 episódios: tudo confirmado. Correção: o texto falava em "Lista da MIA do dia" e "vídeo do dia", mas a Lista de hoje foi bloqueada. Tirei as duas menções. A palavra-chave foi para o 1º parágrafo e para um `##`.
+
+### Também conferido
+- Spoiler, diálogo, letra, nota e pirataria: nada. As premissas (pai de Profundezas, filho de Pam em Crystal Lake) são as da sinopse oficial.
+- Texto original: busquei uma frase de cada matéria entre aspas e não achei cópia.
+- Pôsteres: todos batem com a série certa no `posters.json`. Alguns pôsteres oficiais trazem logo impresso (Crystal Lake/Peacock, VisionQuest/Disney+, A Agência/Paramount+, Shrinking e Ted Lasso/Apple TV). Fora a capa da 04, nenhum deles está nas capas; no corpo, entram como manda a regra.
+- A Diplomata aparece na 02 (uma das 6 estreias) e é o tema da 05 (a Lista da MIA em texto pode repetir o tema da Lista). Aceito.
+- Os horários (17h a 21h) seguem a exceção de hoje registrada na pauta.
+
+### Pendente
+- As pastas `blog/` **não estão no pacote da nuvem**. Antes das 17h00, rode `python scripts/nuvem.py subir-pacote 2026-10-16`. Sem isso, a rotina na nuvem não vê as matérias nem o `blog_aprovadas`.

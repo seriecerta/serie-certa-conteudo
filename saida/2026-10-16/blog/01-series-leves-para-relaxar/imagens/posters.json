@@ -1,0 +1,50 @@
+{
+ "ted-lasso.jpg": {
+  "pedido": "Ted Lasso (2020)",
+  "encontrado": "Ted Lasso",
+  "estreia": "2020-08-14",
+  "tvmaze_id": 44458,
+  "pagina": "https://www.tvmaze.com/shows/44458/ted-lasso",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/634/1585930.jpg"
+ },
+ "shrinking.jpg": {
+  "pedido": "Shrinking (2023)",
+  "encontrado": "Shrinking",
+  "estreia": "2023-01-27",
+  "tvmaze_id": 58323,
+  "pagina": "https://www.tvmaze.com/shows/58323/shrinking",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/610/1527402.jpg"
+ },
+ "only-murders-in-the-building.jpg": {
+  "pedido": "Only Murders in the Building (2021)",
+  "encontrado": "Only Murders in the Building",
+  "estreia": "2021-08-31",
+  "tvmaze_id": 48830,
+  "pagina": "https://www.tvmaze.com/shows/48830/only-murders-in-the-building",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/586/1466415.jpg"
+ },
+ "heartstopper.jpg": {
+  "pedido": "Heartstopper (2022)",
+  "encontrado": "Heartstopper",
+  "estreia": "2022-04-22",
+  "tvmaze_id": 53269,
+  "pagina": "https://www.tvmaze.com/shows/53269/heartstopper",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/632/1580747.jpg"
+ },
+ "emily-in-paris.jpg": {
+  "pedido": "Emily in Paris (2020)",
+  "encontrado": "Emily in Paris",
+  "estreia": "2020-10-02",
+  "tvmaze_id": 41632,
+  "pagina": "https://www.tvmaze.com/shows/41632/emily-in-paris",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/604/1510920.jpg"
+ },
+ "hacks.jpg": {
+  "pedido": "Hacks (2021)",
+  "encontrado": "Hacks",
+  "estreia": "2021-05-13",
+  "tvmaze_id": 54914,
+  "pagina": "https://www.tvmaze.com/shows/54914/hacks",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/621/1552621.jpg"
+ }
+}

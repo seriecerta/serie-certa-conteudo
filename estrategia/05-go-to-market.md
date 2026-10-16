@@ -36,12 +36,14 @@
 ## Canais
 - **Instagram @seriecerta**: por dia, 2 Reels (13h30 e 18h30), 1 carrossel (10h) e 1 sequência de Stories (10h, o carrossel em 9:16 + CTA).
 - **YouTube**: por dia, a Lista da MIA (16:9, 12h) e 2 Shorts (13h30 e 19h). O vídeo longo semanal saiu da grade em 14/10.
+- **Blog (seriecerta.online/blog)**: 5 matérias por dia (09h, 11h, 14h, 17h, 20h), busca orgânica + chamada para o app. Regras em `11-blog.md`.
 - **TikTok**: reaproveita Reels/Shorts (mesmo arquivo, legenda adaptada).
 - **Parcerias**: só collab orgânica/permuta com pequenos criadores do nicho (fora do escopo deste agente; ele só sugere pautas de collab).
 
 ## Links e rastreio
 - Link na bio e descrição: `https://seriecerta.online/?utm_source=<canal>&utm_medium=organico&utm_campaign=<AAAA-MM-DD>-<peça>`
 - Stories de humor: `https://seriecerta.online/descobrir?humor=<humor>&utm_source=instagram&utm_medium=stories`
+- Blog: `https://seriecerta.online/descobrir?humor=<humor>&utm_source=blog&utm_medium=organico&utm_campaign=<AAAA-MM-DD>-<slug>` (o bloco `[[app]]` do CMS já leva ao app com o humor)
 
 ## Ritual de aprendizado
 Toda quarta à noite (a 1ª em 21/10), a rotina `/revisao-semanal` gera o relatório da semana com os números coletados automaticamente (`painel/relatorio.py`), fecha e abre testes A/B e propõe melhorias. As regras estão em `10-experimentos.md`. O `historico/metricas.md` manual deixou de ser necessário.
@@ -49,6 +51,7 @@ Toda quarta à noite (a 1ª em 21/10), a rotina `/revisao-semanal` gera o relat�
 - Para medir a meta de audiência, o template de métricas precisa ganhar a coluna **seguidores ganhos** (sugestão para o Bruno; o agente não edita `historico/`).
 
 ## Changelog
+- 2026-10-16 — Canal blog incluído (5 matérias/dia) com UTM próprio — por quê: decisão do Bruno.
 - 2026-10-13 — Ritual de aprendizado passa a ser a revisão semanal automática com testes A/B (`10-experimentos.md`), no lugar da leitura manual de `historico/metricas.md` às segundas — por quê: pedido do Bruno de melhoria contínua.
 - 2026-10-13 — Canais atualizados para a grade diária do `08-cronograma.md` (2 Reels, carrossel e Stories por dia no Instagram; Lista da MIA e 2 Shorts por dia no YouTube; sem vídeo longo semanal) — por quê: decisão do Bruno, válida a partir de 14/10.
 - 2026-10-09 — Objetivo dos 90 dias trocado de "cadastros + primeiros pagantes" para **audiência (seguidores/alcance)**; orçamento zero explicitado (parcerias só collab/permuta orgânica); criada tabela de métricas-guia de Descoberta com alvos `[definir com o Bruno]`; funil ganhou coluna de peso, CTAs mantidos; nota de que a grade não muda sem dado — por quê: respostas do Bruno na revisão `/estrategia` e SOM mostrando que o gargalo é alcance.

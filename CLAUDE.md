@@ -16,6 +16,7 @@ A estratégia vive em `estrategia/`. Nada é criado fora dela.
 - @estrategia/08-cronograma.md — grade diária e horários
 - @estrategia/10-experimentos.md — ciclo de melhoria contínua: período de base, revisão semanal, testes A/B e o que os agentes mudam sozinhos
 - @estrategia/09-identidade-visual-e-formatos.md — o visual e os formatos que já estão no ar (Relógio, Tradutor, Selvagens do Sofá, Qual é você?)
+- @estrategia/11-blog.md — blog seriecerta.online/blog: 5 matérias por dia, grade, padrão de matéria e SEO
 
 Vídeos, carrosséis e Stories são feitos **só pelo motor** (`motor/` + `scripts/renderizar.py`), no padrão visual dos posts.
 Guia de componentes: `motor/COMPONENTES.md`; exemplos fiéis aos posts: `motor/exemplos/`.
@@ -49,19 +50,21 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 4. Spoiler zero. Se o gancho depender de spoiler, troque o gancho.
 5. Português do Brasil, coloquial, sem "você sabia que...?" e sem emoji em excesso (máx. 2 por legenda).
 6. Todo conteúdo tem **um** CTA, alinhado ao estágio do funil definido em `05-go-to-market.md`.
-7. Publicação é automática, mas **só pelo `scripts/publicar.py`** e **só do que o revisor aprovou** em `revisao.json`. Nunca publique por outro caminho, nunca edite os scripts para contornar as travas, nunca apague um `PAUSAR`.
+7. Publicação é automática, mas **só pelo `scripts/publicar.py`** (redes) **e pelo `blog/publicar_blog.py`** (blog), e **só do que o revisor aprovou** em `revisao.json` (`aprovadas` / `blog_aprovadas`). Nunca publique por outro caminho, nunca edite os scripts para contornar as travas, nunca apague um `PAUSAR`.
 8. Na dúvida sobre um fato, um direito de imagem ou o tom, bloqueie a peça. Um dia com menos post é melhor que um post errado no ar.
 
 ## Agentes do time (`.claude/agents/`)
 - `estrategista` — mantém os arquivos de `estrategia/` e decide a pauta do dia
 - `roteirista` — escreve roteiros e narrações na voz da MIA
 - `desdobrador` — transforma a peça-mãe em Reels, Shorts, carrossel, Stories e legendas
-- `revisor` — checa fatos, spoiler, voz, CTA e checklist antes de fechar o pacote
+- `redator-blog` — escreve as matérias do blog (texto, SEO, pôsteres e imagem de destaque no motor)
+- `revisor` — checa fatos, spoiler, voz, CTA e checklist antes de fechar o pacote (redes e blog)
 
 ## Skills
 - `/pacote-diario` — roda o fluxo completo do dia, até agendar o YouTube (tarefa agendada da manhã)
 - Formato diário **Lista da MIA** (YouTube 12h00): ver `estrategia/07-pilares-e-formatos.md`
-- `/publicar` — publica no Instagram o que chegou no horário (tarefa agendada de hora em hora)
+- `/blog-editorial` — as 5 matérias diárias do blog (o `/pacote-diario` chama); formato em `blog/README.md`
+- `/publicar` — publica no Instagram e no blog o que chegou no horário (tarefa agendada de hora em hora)
 - `/estrategia` — cria ou revisa TAM/SAM/SOM, ICP, JTBD, posicionamento, proposta de valor e GTM
 - `/revisao-semanal` — relatório da semana, testes A/B e propostas de melhoria (rotina de quarta, 18h17; a 1ª em 21/10)
 - `/painel` — gera `painel/index.html`: backlog, publicados, redes, formatos, desdobramentos, engajamento e cliques (só leitura)

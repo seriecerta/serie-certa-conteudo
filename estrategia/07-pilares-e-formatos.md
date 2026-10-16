@@ -46,9 +46,14 @@ Vale até ~jan/2027 (ver `05-go-to-market.md`).
 - A API publica sem stickers: enquete, link e caixinha viram texto na arte ("toca no link da bio", "responde no direct").
 - Entregar: texto de cada tela + sticker (enquete, link, caixa) + link com UTM.
 
+### Matéria do blog (seriecerta.online/blog)
+- 5 por dia, 900–1.600 palavras, imagem de destaque 1920×1080 do motor (`motor/exemplos/blog-capa-16x9.html`). Pilares 1 e 2 na maioria; o slot 17h (guia) atende "Ansiedade" e "Atração".
+- Padrão completo, grade e SEO: `11-blog.md`. Formato dos arquivos: `blog/README.md`.
+
 ### Feed estático
 - Só para anúncio de produto/novidade. Texto curto + legenda.
 
 ## Changelog
+- 2026-10-16 — Formato "Matéria do blog" adicionado — por quê: blog na rotina diária (decisão do Bruno).
 - 2026-10-13 — Lista da MIA passa para 12h00; Stories viram o carrossel do dia em 9:16 às 10h00; vídeo longo semanal sai da grade — por quê: nova grade diária do Bruno (`08-cronograma.md`), válida a partir de 14/10.
 - 2026-10-09 — Adicionada seção "Ênfase dos 90 dias": Reels/Shorts/casal com CTA de Descoberta em todos os pilares, gancho pensado para envio e retenção; percentuais dos pilares e especificações de formato mantidos — por quê: meta dos 90 dias virou audiência (seguidores/alcance); sem métricas, não há base para mexer nos pesos.

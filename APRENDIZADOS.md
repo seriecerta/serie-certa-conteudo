@@ -4,6 +4,21 @@ Fricções reais que custaram tempo e podem voltar. Leia antes de mexer em scrip
 Regras de como registrar: seção "Fechamento de sessão" do `CLAUDE.md`.
 Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais recente no topo.
 
+## Blog
+
+### 2026-10-16 — Publicar no blog sem a senha do painel
+- **Sintoma:** o pedido veio com login e senha do `/dashboard/blog`. Este repositório é **público** no GitHub, então qualquer senha ou token gravado aqui vaza.
+- **Causa:** o CMS autentica pela sessão do Supabase Auth, mas o blog grava nas tabelas `blog_*` do **mesmo** Supabase que as redes já usam (`idbwkhutuomakeptnyia`).
+- **Como resolver:** o `blog/publicar_blog.py` grava direto nas tabelas com a `SUPABASE_SERVICE_ROLE_KEY` que já está no ambiente, sobe as imagens no bucket público `blog` e repete as regras do CMS (`lib/blog/salvar.ts` e `conteudo.ts` do repositório `seriecerta/serie-certa`). Nunca grave senha no repositório nem em `saida/`.
+- **Efeito colateral:** gravando pelo banco, o `revalidatePath` do CMS não roda. A home e a matéria aparecem pelo ISR em até 5 min e o sitemap em até 1 h. Se precisar na hora, abra e salve a matéria no painel.
+- **Onde mexer:** `blog/publicar_blog.py` (protegido em `.claude/settings.json`, como `scripts/`). Se o CMS mudar o formato dos blocos, atualize `ler_materia()`/`normalizar()`.
+
+### 2026-10-16 — Redatores não conseguem abrir o JustWatch nem a Netflix
+- **Sintoma:** WebFetch com `ENOTFOUND`/403 do proxy em `justwatch.com`, `netflix.com`, `omelete.com.br` e outros. Toda checagem de "onde assistir" ficou só no resumo da busca, e o revisor teve de cortar séries que não confirmou.
+- **Causa:** a rede do ambiente de nuvem é "Custom" e libera só os domínios de `nuvem/dominios-permitidos.txt`.
+- **Como resolver:** o Bruno precisa acrescentar no ambiente `serie-certa` (Network access → Allowed domains) as linhas novas de `nuvem/dominios-permitidos.txt` (JustWatch e Netflix). Até lá, série sem confirmação em 2 fontes recentes fica fora da matéria.
+- **Onde mexer:** configuração do ambiente em claude.ai/code; `nuvem/dominios-permitidos.txt`.
+
 ## Narração e motor
 
 ### 2026-10-15 — Créditos da ElevenLabs acabam no meio do pacote
@@ -52,6 +67,7 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Causa:** na nuvem, o `publicar.py` (mesmo com `--simular`) chama `nuvem.baixar_pacote()` antes de validar, e o download sobrescreve os arquivos locais.
 - **Como evitar:** depois de qualquer correção, rode `python scripts/nuvem.py subir-pacote <data>` **antes** de simular ou publicar.
 - **Onde mexer:** `scripts/publicar.py` (`main`) e `scripts/nuvem.py`.
+- **Blog (2026-10-16):** o mesmo aconteceu na revisão do blog (o `revisao.json` recém-escrito e a pauta foram substituídos pela cópia antiga da nuvem). O `blog/publicar_blog.py --simular` agora **não** baixa da nuvem e valida o disco. O `scripts/publicar.py --simular` continua baixando: rode `subir-pacote` antes.
 - **Vale também para o painel:** `python painel/painel.py` na nuvem baixa os `.md`/`.json` de todos os dias e sobrescreve os locais. Antes de commitar depois de rodar o painel, confira `git status` e não suba arquivos de `saida/` que você não editou (`git checkout -- <arquivo>`).
 
 ### 2026-10-13 — Pacote gerado antes da trava do pôster é recusado

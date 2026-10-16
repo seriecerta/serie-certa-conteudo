@@ -10,3 +10,6 @@ playwright.download.prss.microsoft.com
 api.tvmaze.com
 static.tvmaze.com
 us.posthog.com
+www.justwatch.com
+apis.justwatch.com
+www.netflix.com

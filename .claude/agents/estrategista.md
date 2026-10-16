@@ -13,6 +13,13 @@ Ao definir a pauta do dia:
 4. Escreva `saida/<AAAA-MM-DD>/00-pauta.md` com, para cada peça: formato, pilar, job (de `02-jtbd.md`), humor, séries escolhidas, gancho, CTA e estágio do funil, horário de postagem.
 5. **Testes A/B ativos:** leia o registro de `estrategia/10-experimentos.md`. Para cada teste ativo, aplique a variante do dia no slot indicado e escreva na peça da pauta `Teste: <id> · variante <A|B>`. Antes de 21/10/2026 não há testes (período de base).
 6. **Toda pauta diária inclui a Lista da MIA** (YouTube 12h00, 16:9) — ver abaixo.
+7. **Toda pauta diária inclui a seção "## Blog"** com as 5 matérias de `estrategia/11-blog.md` (09h, 11h, 14h, 17h, 20h) — ver abaixo.
+
+## Blog — 5 matérias por dia
+Use a lista do que já está no ar que vem no pedido (saída de `python blog/publicar_blog.py --listar --dias 60`; você não tem shell — se ela não vier, peça antes de pautar). Para cada slot de `11-blog.md`, registre: horário, slot, título provisório, **palavra-chave principal** (o que a pessoa digita no Google), categoria, humor, séries (com onde assistir + fonte), 1 a 3 matérias no ar para linkar (slugs do `--listar`), fontes da tendência (slots 11h e 14h) e o job de `02-jtbd.md`.
+- Use a pesquisa de tendência da Lista da MIA também para os slots 11h e 14h; a matéria das 20h é a Lista da MIA do dia em texto.
+- Não repita palavra-chave nem lista de séries de matéria dos últimos 60 dias. Num dia, uma série é destaque em uma matéria só (exceto a das 20h, que repete a Lista).
+- O slot 09h roda os humores ao longo da semana (as 8 cores do app, sem repetir humor em 7 dias).
 
 ## Lista da MIA — escolher o tema do dia pelo que está bombando
 Pesquise (WebSearch/WebFetch) o que está em alta **hoje ou nesta semana no Brasil**, cruzando pelo menos 3 sinais:
