@@ -8,7 +8,8 @@ Todo dia de manhã o Claude Code cria a pauta, os roteiros, a narração com a v
 ```
 06:40  tarefa "pacote-diario"  →  pauta → roteiro → MP3 (MIA) → vídeo → cards → revisão
                                   → YouTube: sobe e agenda (publishAt nativo do YouTube)
-de hora em hora  tarefa "publicar"  →  Instagram: publica o que chegou no horário
+                                  → blog: 5 matérias com imagem de destaque (09h, 11h, 14h, 17h, 20h)
+de hora em hora  tarefa "publicar"  →  Instagram e blog: publica o que chegou no horário
 ```
 Travas de segurança (todas em `scripts/publicar.py`):
 - Só vai ao ar o que o `revisor` colocou em `saida/<data>/revisao.json` → `aprovadas`.
@@ -28,6 +29,7 @@ scripts/narrar.py              ElevenLabs (MIA, Ela, Ele)
 motor/                         sistema visual dos posts (CSS, motor de tempo, efeitos, exemplos)
 scripts/renderizar.py          cena.html → vídeo 9:16/16:9 e carrossel/Stories em JPEG
 scripts/publicar.py            Instagram + YouTube
+blog/publicar_blog.py          blog seriecerta.online/blog (formato em blog/README.md)
 scripts/configurar_instagram.py / autorizar_youtube.py   configuração única das contas
 .credenciais/                  tokens (fora do Git)
 historico/                     publicados e métricas

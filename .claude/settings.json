@@ -30,13 +30,18 @@
       "Bash(python painel/painel.py:*)",
       "Bash(python3 painel/painel.py:*)",
       "Bash(python painel/relatorio.py:*)",
-      "Bash(python3 painel/relatorio.py:*)"
+      "Bash(python3 painel/relatorio.py:*)",
+      "Bash(python blog/publicar_blog.py:*)",
+      "Bash(python3 blog/publicar_blog.py:*)",
+      "Bash(python3 -B blog/publicar_blog.py:*)"
     ],
     "deny": [
       "Read(.env)",
       "Read(.credenciais/**)",
       "Edit(scripts/**)",
-      "Write(scripts/**)"
+      "Write(scripts/**)",
+      "Edit(blog/publicar_blog.py)",
+      "Write(blog/publicar_blog.py)"
     ]
   }
 }

@@ -26,6 +26,7 @@ A revisão roda na quarta à noite: a coleta das 9h de quarta já traz o D+1 dos
 | Lista da MIA | views em D+1 | curtidas, comentários, cliques UTM |
 | Carrossel | salvos ÷ alcance | envios, alcance |
 | Stories | alcance da 1ª tela | respostas, visitas ao perfil, cliques no link da bio |
+| Matéria do blog | visualizações em D+7 (`article_view`, PostHog) | leitura até 90%, cliques no app (`platform_cta_click`) |
 
 ## Regras dos testes A/B
 1. **Uma variável por teste.** Exemplos: horário de um slot, tipo de gancho (pergunta × afirmação × "pra amiga que..."), duração, formato recorrente, texto do CTA (dentro do mesmo estágio do funil), capa, primeira tela do carrossel, título do Short.
@@ -59,5 +60,6 @@ A revisão roda na quarta à noite: a coleta das 9h de quarta já traz o D+1 dos
 | — | — | — | — | — | — | — | — | — |
 
 ## Changelog
+- 2026-10-16 — Métrica do blog (views D+7) incluída. Ainda não é coletada pelo `painel/relatorio.py`, então até lá ela é lida no PostHog — por quê: blog entrou na rotina.
 - 2026-10-13 — Coleta diária passa de 17h47 para 9h00 e o D+1 passa a ser a foto da manhã seguinte (12 h ou mais de vida) — por quê: Bruno quer o painel atualizado de manhã.
 - 2026-10-13 — Arquivo criado: ciclo de 7 dias de base (14–20/10) + revisão semanal às quartas com testes A/B, métrica em D+1 e limites do que os agentes mudam sozinhos — por quê: pedido do Bruno de melhoria contínua com testes A/B depois da primeira semana da grade diária.

@@ -4,6 +4,15 @@ Fricções reais que custaram tempo e podem voltar. Leia antes de mexer em scrip
 Regras de como registrar: seção "Fechamento de sessão" do `CLAUDE.md`.
 Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais recente no topo.
 
+## Blog
+
+### 2026-10-16 — Publicar no blog sem a senha do painel
+- **Sintoma:** o pedido veio com login e senha do `/dashboard/blog`. Este repositório é **público** no GitHub, então qualquer senha ou token gravado aqui vaza.
+- **Causa:** o CMS autentica pela sessão do Supabase Auth, mas o blog grava nas tabelas `blog_*` do **mesmo** Supabase que as redes já usam (`idbwkhutuomakeptnyia`).
+- **Como resolver:** o `blog/publicar_blog.py` grava direto nas tabelas com a `SUPABASE_SERVICE_ROLE_KEY` que já está no ambiente, sobe as imagens no bucket público `blog` e repete as regras do CMS (`lib/blog/salvar.ts` e `conteudo.ts` do repositório `seriecerta/serie-certa`). Nunca grave senha no repositório nem em `saida/`.
+- **Efeito colateral:** gravando pelo banco, o `revalidatePath` do CMS não roda. A home e a matéria aparecem pelo ISR em até 5 min e o sitemap em até 1 h. Se precisar na hora, abra e salve a matéria no painel.
+- **Onde mexer:** `blog/publicar_blog.py` (protegido em `.claude/settings.json`, como `scripts/`). Se o CMS mudar o formato dos blocos, atualize `ler_materia()`/`normalizar()`.
+
 ## Narração e motor
 
 ### 2026-10-15 — Créditos da ElevenLabs acabam no meio do pacote
