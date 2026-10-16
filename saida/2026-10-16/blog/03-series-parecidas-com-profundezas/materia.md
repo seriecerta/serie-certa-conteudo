@@ -14,7 +14,7 @@ O que prende não é só o susto. É o clima de lugar isolado, o luto que fica n
 
 ## Mistério no Mar
 
-![Pôster de Mistério no Mar](imagens/the-rig.jpg "Mistério no Mar · Prime Video")
+![Pôster de Mistério no Mar](imagens/misterio-no-mar.jpg "Mistério no Mar · Prime Video")
 
 - **Onde assistir:** Prime Video
 - **Temporadas:** 2, com 6 episódios cada (a 2ª chegou em janeiro de 2025)
@@ -28,7 +28,7 @@ Se o que você gostou em *Profundezas* foi o mar como ameaça, comece por aqui. 
 
 ## Origem
 
-![Pôster de Origem](imagens/from.jpg "Origem · Globoplay")
+![Pôster de Origem](imagens/origem.jpg "Origem · Globoplay")
 
 - **Onde assistir:** Globoplay
 - **Temporadas:** 4, com 10 episódios cada (40 no total), e a série segue em andamento
@@ -70,7 +70,7 @@ Combina com *Profundezas* pelo oceano como cenário de medo: o mar aberto, a sen
 
 ## A Maldição da Residência Hill
 
-![Pôster de A Maldição da Residência Hill](imagens/the-haunting-of-hill-house.jpg "A Maldição da Residência Hill · Netflix")
+![Pôster de A Maldição da Residência Hill](imagens/a-maldicao-da-residencia-hill.jpg "A Maldição da Residência Hill · Netflix")
 
 - **Onde assistir:** Netflix
 - **Temporadas:** 1, com 10 episódios (história fechada)

@@ -1,0 +1,39 @@
+<!--
+  Imagem de destaque das matérias do blog (seriecerta.online/blog) — 1920×1080.
+  Renderize com: python scripts/renderizar.py saida/<data>/blog/<nn>-<slug> --imagens --formato 16x9  → quadros/01.jpg
+  Duas variações (use UMA section.quadro por matéria):
+   A) matéria que indica séries → leque com os pôsteres oficiais (imagens/<slug>.jpg, de scripts/posters.py) + chamada curta
+   B) guia/matéria sem série indicada → emoji grande + chamada, na cor do humor/assunto
+  Regras: chamada de 3 a 7 palavras (não é o título inteiro), sem logo de streaming, cor do --mood = humor ou categoria.
+  Mantenha o texto à esquerda: o blog recorta a capa em 16:9 nos cards e em ~1.9:1 no compartilhamento.
+-->
+<style>
+  .bc { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 60px; width: 1680px; }
+  .bc .chapeu { font-size: 34px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--mood); margin-bottom: 26px; }
+  .bc .txt { font-size: 112px; font-weight: 900; line-height: .96; letter-spacing: -.035em; text-transform: uppercase; }
+  .bc .txt em { font-style: normal; color: var(--mood); }
+  .bc .marca { margin-top: 40px; font-size: 30px; font-weight: 900; letter-spacing: .08em; opacity: .7; }
+  .leque { position: relative; width: 820px; height: 820px; }
+  .leque .capa { position: absolute; width: 400px; height: 600px; top: 110px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  .leque .capa:nth-child(1) { left: 0;   transform: rotate(-9deg); }
+  .leque .capa:nth-child(2) { left: 210px; top: 70px; transform: rotate(-1deg); z-index: 2; }
+  .leque .capa:nth-child(3) { left: 420px; transform: rotate(8deg); z-index: 3; }
+  .leque.um .capa { left: 190px; top: 80px; width: 440px; height: 660px; transform: rotate(-3deg); }
+  .bc .emoji { font-size: 380px; width: 560px; text-align: center; }
+</style>
+<body class="paisagem" style="--mood:var(--curioso)">
+ <section class="quadro cena centro">
+  <div class="bc">
+   <div>
+    <div class="chapeu">séries · acabou x?</div>
+    <div class="txt">acabou <em>profundezas?</em> vê essas</div>
+    <div class="marca">SERIECERTA.ONLINE/BLOG</div>
+   </div>
+   <div class="leque">
+    <div class="capa"><img src="imagens/1899.jpg"></div>
+    <div class="capa"><img src="imagens/profundezas.jpg"></div>
+    <div class="capa"><img src="imagens/dark.jpg"></div>
+   </div>
+  </div>
+ </section>
+</body>
