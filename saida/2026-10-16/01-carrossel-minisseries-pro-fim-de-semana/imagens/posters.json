@@ -1,0 +1,34 @@
+{
+ "east-of-eden.jpg": {
+  "pedido": "East of Eden (2026)",
+  "encontrado": "East of Eden",
+  "estreia": "2026-10-01",
+  "tvmaze_id": 79399,
+  "pagina": "https://www.tvmaze.com/shows/79399/east-of-eden",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/643/1609556.jpg"
+ },
+ "the-queen-s-gambit.jpg": {
+  "pedido": "The Queen's Gambit",
+  "encontrado": "The Queen's Gambit",
+  "estreia": "2020-10-23",
+  "tvmaze_id": 41428,
+  "pagina": "https://www.tvmaze.com/shows/41428/the-queens-gambit",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/510/1275203.jpg"
+ },
+ "mare-of-easttown.jpg": {
+  "pedido": "Mare of Easttown",
+  "encontrado": "Mare of Easttown",
+  "estreia": "2021-04-18",
+  "tvmaze_id": 40546,
+  "pagina": "https://www.tvmaze.com/shows/40546/mare-of-easttown",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/301/753981.jpg"
+ },
+ "chernobyl.jpg": {
+  "pedido": "Chernobyl",
+  "encontrado": "Chernobyl",
+  "estreia": "2019-05-06",
+  "tvmaze_id": 30770,
+  "pagina": "https://www.tvmaze.com/shows/30770/chernobyl",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/193/482599.jpg"
+ }
+}

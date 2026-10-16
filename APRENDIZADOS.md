@@ -7,7 +7,7 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 ## Narração e motor
 
 ### 2026-10-15 — Créditos da ElevenLabs acabam no meio do pacote
-- **Sintoma:** `Erro ElevenLabs 401 ... "code":"quota_exceeded","message":"This request exceeds your quota of 38518. You have 29 credits remaining, while 664 credits are required"`. Em 14/10 caiu o Reels das 19h; em 15/10 caíram a Lista da MIA, o Reels das 18h30 e o Short das 19h.
+- **Sintoma:** `Erro ElevenLabs 401 ... "code":"quota_exceeded","message":"This request exceeds your quota of 38518. You have 29 credits remaining, while 664 credits are required"`. Em 14/10 caiu o Reels das 19h; em 15/10 caíram a Lista da MIA, o Reels das 18h30 e o Short das 19h; em 16/10 nenhum vídeo saiu (29 créditos, nem a 1ª fala de 34 passou). A cota não reinicia sozinha no meio do ciclo: até a recarga, a pauta deve prever só carrossel + Stories e deixar os roteiros de vídeo prontos.
 - **Causa:** a cota mensal da conta (38.518 créditos) acabou. Na grade diária, cerca de 3 mil caracteres de narração por dia (1 crédito por caractere) estouram a cota antes do fim do ciclo.
 - **Como evitar:** a pauta ordena as peças de vídeo por prioridade. Narre uma pasta por vez, nessa ordem (`python scripts/narrar.py saida/<data>/<pasta>`), e pare no primeiro `quota_exceeded`, sem repetir. Carrossel e Stories não gastam crédito e saem de qualquer jeito. A solução de verdade é o Bruno ampliar o plano ou recarregar.
 - **Onde mexer:** plano da conta ElevenLabs; prioridade na `00-pauta.md`.

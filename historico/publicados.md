@@ -14,3 +14,5 @@ data | formato | humor | séries | gancho
 2026-10-15 | Carrossel | estreias da quinta por humor | The Paper; A Diplomata; Carrie, a Estranha | Quinta de estreia: uma série pro seu humor
 2026-10-15 | Stories | estreias da quinta por humor | The Paper; A Diplomata; Carrie, a Estranha | Quinta de estreia (carrossel em 9:16)
 2026-10-15 | Short + Reels (Relógio) | órfã de série / ansiosa | A Diplomata | Pra amiga que tá contando os dias pra A Diplomata voltar
+2026-10-16 | Carrossel | fim de semana / maratona curta | A Leste do Éden; O Gambito da Rainha; Mare of Easttown; Chernobyl | Minisséries pra terminar no fim de semana
+2026-10-16 | Stories | fim de semana / maratona curta | A Leste do Éden; O Gambito da Rainha; Mare of Easttown | Minisséries pro fim de semana (carrossel em 9:16)

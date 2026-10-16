@@ -1,0 +1,24 @@
+{
+  "peca_mae": "01-carrossel-minisseries-pro-fim-de-semana",
+  "publicacoes": [
+    {
+      "id": "ig-stories",
+      "plataforma": "instagram",
+      "tipo": "STORIES",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg",
+        "quadros/05.jpg"
+      ],
+      "legenda": "",
+      "series": [
+        "East of Eden (2026)",
+        "Mare of Easttown",
+        "The Queen's Gambit"
+      ],
+      "quando": "2026-10-16T10:00:00-03:00"
+    }
+  ]
+}

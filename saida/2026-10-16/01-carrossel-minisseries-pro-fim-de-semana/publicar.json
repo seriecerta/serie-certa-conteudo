@@ -1,0 +1,26 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-carrossel",
+      "plataforma": "instagram",
+      "tipo": "CAROUSEL",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg",
+        "quadros/05.jpg",
+        "quadros/06.jpg",
+        "quadros/07.jpg"
+      ],
+      "legenda": "Sexta. Começa hoje, termina domingo.\n\nA Leste do Éden (Netflix) · O Gambito da Rainha (Netflix) · Mare of Easttown (HBO Max) · Chernobyl (HBO Max)\n\nSalva pra hoje à noite. 🛋️\n\n#seriecerta #oqueassistir #minisserie #dicadeserie",
+      "series": [
+        "East of Eden (2026)",
+        "The Queen's Gambit",
+        "Mare of Easttown",
+        "Chernobyl"
+      ],
+      "quando": "2026-10-16T10:00:00-03:00"
+    }
+  ]
+}

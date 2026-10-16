@@ -1,0 +1,11 @@
+{
+  "aprovadas": [
+    "01-carrossel-minisseries-pro-fim-de-semana",
+    "02-stories-minisseries-pro-fim-de-semana"
+  ],
+  "bloqueadas": {
+    "03-lista-da-mia-a-diplomata-thrillers-politicos": "sem narração, vídeo e publicar.json: créditos ElevenLabs esgotados (29 restantes; a 1ª fala pedia 34). Roteiro pronto para quando houver recarga.",
+    "04-short-reels-qual-sexta-e-voce": "sem narração, vídeo e publicar.json: créditos ElevenLabs esgotados (29 restantes; a 1ª fala pedia 34). Roteiro pronto para quando houver recarga.",
+    "05-reels-short-casal-sexta-escolhe-voce": "sem narração, vídeo e publicar.json: créditos ElevenLabs esgotados (29 restantes; a 1ª fala pedia 34). Roteiro pronto para quando houver recarga."
+  }
+}
