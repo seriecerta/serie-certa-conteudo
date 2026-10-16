@@ -76,6 +76,7 @@ Gostou? Edite o ambiente e troque para `PUBLICACAO_AUTOMATICA=true`.
 |---|---|---|---|---|
 | `pacote-diario-serie-certa` | serie-certa-conteudo | serie-certa | Daily, **6:37** | `Rode /pacote-diario para hoje. Ao final, faça commit e push direto na main.` |
 | `publicar-serie-certa` | serie-certa-conteudo | serie-certa | **Hourly** | `Rode /publicar. Não faça commit.` |
+| `Série Certa · publicar blog` | serie-certa-conteudo | serie-certa | de hora em hora, 9h03–22h03 | `python blog/publicar_blog.py --vencidos` (criada em 16/10; as rotinas de publicação das redes não rodam o blog) |
 
 Em **Connectors** de cada rotina, **remova todos**: o kit não precisa deles, e assim a rotina não tem acesso ao que não deve.
 
