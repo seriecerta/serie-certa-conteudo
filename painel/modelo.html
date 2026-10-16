@@ -32,7 +32,7 @@
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--fg); font: 400 14px/1.45 var(--f-body); margin: 0; }
-.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px; display: grid; gap: 18px; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 h1, h2, h3 { margin: 0; text-wrap: balance; }
 h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; }
 h1 b { color: var(--brasa); }
@@ -56,6 +56,8 @@ header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: 
 .seg button + button { border-left: 1px solid var(--line); }
 .seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); font-weight: 700; }
 .filtros label { font-size: 12px; color: var(--muted); display: inline-flex; gap: 8px; align-items: center; }
+.filtros label { max-width: 100%; min-width: 0; }
+.filtros select { min-width: 0; max-width: 240px; text-overflow: ellipsis; }
 select { font: inherit; font-size: 13px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; }
 
 .kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }

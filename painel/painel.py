@@ -75,6 +75,9 @@ def legivel(slug: str) -> str:
 CAMPOS = {"formato": "formato", "pilar": "pilar", "pilar / job": "pilar", "job": "job", "humor": "humor",
           "cta / funil": "cta", "horário": "horario", "horários": "horario"}
 FUNIS = ("Descoberta", "Consideração", "Conversão", "Retenção")
+PILARES = {1: "Série pro seu humor", 2: "Órfã de série", 3: "Dilema do casal", 4: "MIA acertou? / prova",
+           5: "Bastidor do produto"}  # estrategia/07-pilares-e-formatos.md
+CAMPO_RE = re.compile(r"\*\*([^:*]+):?\*\*:?\s*(.*)")
 
 
 def ler_pauta(pasta_dia: pathlib.Path) -> dict:
@@ -105,23 +108,31 @@ def ler_pauta(pasta_dia: pathlib.Path) -> dict:
         if atual is None:
             continue
         atual["texto"] += linha + "\n"
-        m = re.match(r"- \*\*([^:*]+):?\*\*:?\s*(.*)", linha)
-        if not m:
+        if not linha.startswith("- **"):
             continue
-        chave, valor = m.group(1).strip().lower(), m.group(2).strip()
-        if chave.startswith("gancho"):
-            g = re.search(r'"([^"]+)"', valor)
-            atual.setdefault("gancho", g.group(1) if g else valor)
-        elif chave in CAMPOS:
-            atual[CAMPOS[chave]] = valor
+        # vários campos na mesma linha: "- **Pilar:** 1 · **Job:** principal · **Humor:** vários."
+        for parte in re.split(r"\s+·\s+(?=\*\*)", linha[2:]):
+            m = CAMPO_RE.match(parte)
+            if not m:
+                continue
+            chave, valor = m.group(1).strip().lower(), m.group(2).strip()
+            if chave.startswith("gancho"):
+                g = re.search(r'"([^"]+)"', valor)
+                atual.setdefault("gancho", g.group(1) if g else valor)
+            elif chave in CAMPOS:
+                atual[CAMPOS[chave]] = valor
     for dia in pecas.values():
         for p in dia.values():
             m = re.search(r"Formato recorrente:\s*(.+?)\.?\*\*", p.get("formato", ""))
             rec = re.sub(r"\s*(·\s*Ep.*|\(.*)$", "", m.group(1)).strip() if m else ""
             p["recorrente"] = rec
             p["funil"] = next((f for f in FUNIS if f in p.get("cta", "")), "")
-            pil = re.match(r"(\d)\.\s*([^,(/]+)", p.get("pilar", ""))
-            p["pilar_n"], p["pilar"] = (int(pil.group(1)), pil.group(2).strip()) if pil else (0, p.get("pilar", ""))
+            pil = re.match(r"(\d)\b\.?\s*([^,(/·]*)", p.get("pilar", ""))
+            if pil and int(pil.group(1)) in PILARES:
+                p["pilar_n"] = int(pil.group(1))
+                p["pilar"] = pil.group(2).strip().rstrip(".") or PILARES[p["pilar_n"]]
+            else:
+                p["pilar_n"], p["pilar"] = 0, p.get("pilar", "")
             p["humor"] = re.sub(r"\s*\(.*", "", p.get("humor", "")).strip()
             cta = re.search(r'"([^"]+)"', p.get("cta", ""))
             p["cta"] = cta.group(1) if cta else ""
