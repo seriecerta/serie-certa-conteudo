@@ -9,7 +9,7 @@ Regras editoriais e grade: `estrategia/11-blog.md`. Formato do pacote: `blog/REA
 Como o site e o CMS funcionam (rotas, blocos, categorias, SEO, analytics): `referencia-cms.md`, nesta pasta.
 
 ## Passos
-1. **Pauta do blog.** Se `saida/<data>/00-pauta.md` ainda não tem a seção "## Blog", chame o subagente `estrategista` para completá-la: as 5 matérias da grade (09h, 11h, 14h, 17h, 20h), cada uma com tema, palavra-chave principal, categoria, humor, séries, matérias internas para linkar, fontes da tendência e horário. Antes, rode `python blog/publicar_blog.py --listar --dias 60` para evitar repetir tema ou palavra-chave.
+1. **Pauta do blog.** Se `saida/<data>/00-pauta.md` ainda não tem a seção "## Blog", rode `python blog/publicar_blog.py --listar --dias 60` e chame o subagente `estrategista` **colando essa saída no pedido** (ele não tem shell) para completá-la: as 5 matérias da grade (09h, 11h, 14h, 17h, 20h), cada uma com tema, palavra-chave principal, categoria, humor, séries, matérias internas para linkar, fontes da tendência e horário.
 2. **Redação.** Subagente `redator-blog`, um por matéria (podem rodar em paralelo), cada um na pasta `saida/<data>/blog/<nn>-<slug>/`. Cada um termina com `python blog/publicar_blog.py --verificar <pasta>` sem erro.
 3. **Revisão.** Subagente `revisor`, que confere as matérias do blog junto com o resto do pacote e escreve as aprovadas em `"blog_aprovadas"` do `saida/<data>/revisao.json`. **Mantenha** `aprovadas` e `bloqueadas` das redes. Se o `revisao.json` já existir, acrescente a chave em vez de reescrever o arquivo.
 4. **Histórico.** Uma linha por matéria aprovada em `historico/publicados.md`: `data | blog-<slot> | humor | séries | título`.
