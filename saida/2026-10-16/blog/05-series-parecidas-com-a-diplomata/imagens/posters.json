@@ -1,0 +1,50 @@
+{
+ "the-diplomat.jpg": {
+  "pedido": "The Diplomat",
+  "encontrado": "The Diplomat",
+  "estreia": "2023-04-20",
+  "tvmaze_id": 60213,
+  "pagina": "https://www.tvmaze.com/shows/60213/the-diplomat",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/646/1615567.jpg"
+ },
+ "the-night-agent.jpg": {
+  "pedido": "The Night Agent (2023)",
+  "encontrado": "The Night Agent",
+  "estreia": "2023-03-23",
+  "tvmaze_id": 56512,
+  "pagina": "https://www.tvmaze.com/shows/56512/the-night-agent",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/614/1536331.jpg"
+ },
+ "the-americans.jpg": {
+  "pedido": "The Americans (2013)",
+  "encontrado": "The Americans",
+  "estreia": "2013-01-30",
+  "tvmaze_id": 157,
+  "pagina": "https://www.tvmaze.com/shows/157/the-americans",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/146/366911.jpg"
+ },
+ "slow-horses.jpg": {
+  "pedido": "Slow Horses (2022)",
+  "encontrado": "Slow Horses",
+  "estreia": "2022-04-01",
+  "tvmaze_id": 45039,
+  "pagina": "https://www.tvmaze.com/shows/45039/slow-horses",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604425.jpg"
+ },
+ "zero-day.jpg": {
+  "pedido": "Zero Day (2025)",
+  "encontrado": "Zero Day",
+  "estreia": "2025-02-20",
+  "tvmaze_id": 65491,
+  "pagina": "https://www.tvmaze.com/shows/65491/zero-day",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/557/1394491.jpg"
+ },
+ "the-agency.jpg": {
+  "pedido": "The Agency (2024)",
+  "encontrado": "The Agency",
+  "estreia": "2024-11-29",
+  "tvmaze_id": 66840,
+  "pagina": "https://www.tvmaze.com/shows/66840/the-agency",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/629/1573992.jpg"
+ }
+}

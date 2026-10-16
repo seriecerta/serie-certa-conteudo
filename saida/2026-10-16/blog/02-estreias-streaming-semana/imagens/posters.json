@@ -1,0 +1,50 @@
+{
+ "die-falle.jpg": {
+  "pedido": "Die Falle (2026)",
+  "encontrado": "Die Falle",
+  "estreia": "2026-10-13",
+  "tvmaze_id": 82377,
+  "pagina": "https://www.tvmaze.com/shows/82377/die-falle",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/645/1614890.jpg"
+ },
+ "visionquest.jpg": {
+  "pedido": "VisionQuest (2026)",
+  "encontrado": "VisionQuest",
+  "estreia": "2026-10-13",
+  "tvmaze_id": 64950,
+  "pagina": "https://www.tvmaze.com/shows/64950/visionquest",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/636/1592334.jpg"
+ },
+ "the-diplomat.jpg": {
+  "pedido": "The Diplomat (2023)",
+  "encontrado": "The Diplomat",
+  "estreia": "2023-04-20",
+  "tvmaze_id": 60213,
+  "pagina": "https://www.tvmaze.com/shows/60213/the-diplomat",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/646/1615567.jpg"
+ },
+ "tulsa-king.jpg": {
+  "pedido": "Tulsa King (2022)",
+  "encontrado": "Tulsa King",
+  "estreia": "2022-11-13",
+  "tvmaze_id": 59344,
+  "pagina": "https://www.tvmaze.com/shows/59344/tulsa-king",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/646/1615902.jpg"
+ },
+ "crystal-lake.jpg": {
+  "pedido": "Crystal Lake (2026)",
+  "encontrado": "Crystal Lake",
+  "estreia": "2026-10-15",
+  "tvmaze_id": 64960,
+  "pagina": "https://www.tvmaze.com/shows/64960/crystal-lake",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/643/1609653.jpg"
+ },
+ "largados-e-pelados-brasil.jpg": {
+  "pedido": "Largados e Pelados Brasil",
+  "encontrado": "Largados e Pelados Brasil",
+  "estreia": "2021-11-09",
+  "tvmaze_id": 59298,
+  "pagina": "https://www.tvmaze.com/shows/59298/largados-e-pelados-brasil",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/380/950535.jpg"
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "profundezas.jpg": {
+  "pedido": "Profundezas",
+  "encontrado": "Below",
+  "estreia": "2026-10-08",
+  "tvmaze_id": 93115,
+  "pagina": "https://www.tvmaze.com/shows/93115/below",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1612494.jpg"
+ },
+ "the-rig.jpg": {
+  "pedido": "The Rig (2023)",
+  "encontrado": "The Rig",
+  "estreia": "2023-01-06",
+  "tvmaze_id": 51726,
+  "pagina": "https://www.tvmaze.com/shows/51726/the-rig",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/549/1374448.jpg"
+ },
+ "from.jpg": {
+  "pedido": "From (2022)",
+  "encontrado": "FROM",
+  "estreia": "2022-02-20",
+  "tvmaze_id": 54723,
+  "pagina": "https://www.tvmaze.com/shows/54723/from",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/621/1554646.jpg"
+ },
+ "1899.jpg": {
+  "pedido": "1899 (2022)",
+  "encontrado": "1899",
+  "estreia": "2022-11-17",
+  "tvmaze_id": 39749,
+  "pagina": "https://www.tvmaze.com/shows/39749/1899",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/422/1055108.jpg"
+ },
+ "the-haunting-of-hill-house.jpg": {
+  "pedido": "The Haunting of Hill House (2018)",
+  "encontrado": "The Haunting of Hill House",
+  "estreia": "2018-10-12",
+  "tvmaze_id": 29191,
+  "pagina": "https://www.tvmaze.com/shows/29191/the-haunting-of-hill-house",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246083.jpg"
+ },
+ "dark.jpg": {
+  "pedido": "Dark (2017)",
+  "encontrado": "Dark",
+  "estreia": "2017-12-01",
+  "tvmaze_id": 17861,
+  "pagina": "https://www.tvmaze.com/shows/17861/dark",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/504/1262352.jpg"
+ },
+ "yellowjackets.jpg": {
+  "pedido": "Yellowjackets (2021)",
+  "encontrado": "Yellowjackets",
+  "estreia": "2021-11-14",
+  "tvmaze_id": 36672,
+  "pagina": "https://www.tvmaze.com/shows/36672/yellowjackets",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/554/1387457.jpg"
+ },
+ "misterio-no-mar.jpg": {
+  "pedido": "Mistério no Mar",
+  "encontrado": "The Rig",
+  "estreia": "2023-01-06",
+  "tvmaze_id": 51726,
+  "pagina": "https://www.tvmaze.com/shows/51726/the-rig",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/549/1374448.jpg"
+ }
+}
