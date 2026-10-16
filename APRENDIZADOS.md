@@ -35,6 +35,12 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 
 ## Painel e ferramentas
 
+### 2026-10-16 — Painel com rolagem lateral no celular
+- **Sintoma:** em 390 px o painel inteiro ficava com 510 px de largura e rolava para o lado.
+- **Causa:** duas coisas juntas. (1) O `ler_pauta()` lia linhas com vários campos (`- **Pilar:** 1 · **Job:** principal · **Humor:** vários.`) como um campo só, e o filtro "Pilar" ganhava uma opção enorme. (2) A grade `.wrap` não tinha `grid-template-columns: minmax(0, 1fr)`, então o conteúdo mais largo esticava a coluna. Um `max-width` em `%` no `<select>` não adianta: no cálculo de largura mínima o Chrome ignora o percentual.
+- **Como evitar:** a pauta pode continuar com vários campos por linha (o painel separa no ` · **`). Em layout novo do painel, grade com `minmax(0, 1fr)` e limites em px. Para conferir: abra `painel/index.html` em 320–430 px e compare `document.documentElement.scrollWidth` com a largura da tela.
+- **Onde mexer:** `painel/painel.py` (`ler_pauta`), `painel/modelo.html` (CSS de `.wrap` e `.filtros`).
+
 ### 2026-10-13 — Texto de rotina só muda de dentro da própria sessão
 - **Sintoma:** `update_trigger: a routine's instructions (its prompt) can be changed only from the conversation or thread the routine posts into`.
 - **Causa:** o prompt de uma rotina presa a uma sessão fixa (`persistent_session_id`) só pode ser editado por essa sessão. Nome, horário e liga/desliga podem ser mudados de qualquer sessão.
