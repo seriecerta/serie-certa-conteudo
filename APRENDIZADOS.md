@@ -13,6 +13,12 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Efeito colateral:** gravando pelo banco, o `revalidatePath` do CMS não roda. A home e a matéria aparecem pelo ISR em até 5 min e o sitemap em até 1 h. Se precisar na hora, abra e salve a matéria no painel.
 - **Onde mexer:** `blog/publicar_blog.py` (protegido em `.claude/settings.json`, como `scripts/`). Se o CMS mudar o formato dos blocos, atualize `ler_materia()`/`normalizar()`.
 
+### 2026-10-16 — Redatores não conseguem abrir o JustWatch nem a Netflix
+- **Sintoma:** WebFetch com `ENOTFOUND`/403 do proxy em `justwatch.com`, `netflix.com`, `omelete.com.br` e outros. Toda checagem de "onde assistir" ficou só no resumo da busca, e o revisor teve de cortar séries que não confirmou.
+- **Causa:** a rede do ambiente de nuvem é "Custom" e libera só os domínios de `nuvem/dominios-permitidos.txt`.
+- **Como resolver:** o Bruno precisa acrescentar no ambiente `serie-certa` (Network access → Allowed domains) as linhas novas de `nuvem/dominios-permitidos.txt` (JustWatch e Netflix). Até lá, série sem confirmação em 2 fontes recentes fica fora da matéria.
+- **Onde mexer:** configuração do ambiente em claude.ai/code; `nuvem/dominios-permitidos.txt`.
+
 ## Narração e motor
 
 ### 2026-10-15 — Créditos da ElevenLabs acabam no meio do pacote
