@@ -1,0 +1,50 @@
+{
+ "after-life.jpg": {
+  "pedido": "After Life (2019)",
+  "encontrado": "After Life",
+  "estreia": "2019-03-08",
+  "tvmaze_id": 36673,
+  "pagina": "https://www.tvmaze.com/shows/36673/after-life",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/631/1578895.jpg"
+ },
+ "dead-to-me.jpg": {
+  "pedido": "Dead to Me (2019)",
+  "encontrado": "Dead to Me",
+  "estreia": "2019-05-03",
+  "tvmaze_id": 35846,
+  "pagina": "https://www.tvmaze.com/shows/35846/dead-to-me",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/429/1072654.jpg"
+ },
+ "fleabag.jpg": {
+  "pedido": "Fleabag (2016)",
+  "encontrado": "Fleabag",
+  "estreia": "2016-07-21",
+  "tvmaze_id": 16149,
+  "pagina": "https://www.tvmaze.com/shows/16149/fleabag",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/192/482341.jpg"
+ },
+ "never-have-i-ever.jpg": {
+  "pedido": "Never Have I Ever (2020)",
+  "encontrado": "Never Have I Ever",
+  "estreia": "2020-04-27",
+  "tvmaze_id": 44592,
+  "pagina": "https://www.tvmaze.com/shows/44592/never-have-i-ever",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/461/1152604.jpg"
+ },
+ "atypical.jpg": {
+  "pedido": "Atypical (2017)",
+  "encontrado": "Atypical",
+  "estreia": "2017-08-11",
+  "tvmaze_id": 22127,
+  "pagina": "https://www.tvmaze.com/shows/22127/atypical",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/339/849013.jpg"
+ },
+ "crash-landing-on-you.jpg": {
+  "pedido": "Crash Landing on You (2019)",
+  "encontrado": "Crash Landing on You",
+  "estreia": "2019-12-14",
+  "tvmaze_id": 42756,
+  "pagina": "https://www.tvmaze.com/shows/42756/crash-landing-on-you",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/235/588087.jpg"
+ }
+}

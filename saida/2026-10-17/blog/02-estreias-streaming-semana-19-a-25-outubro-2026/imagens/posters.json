@@ -1,0 +1,34 @@
+{
+ "cyberpunk-edgerunners.jpg": {
+  "pedido": "Cyberpunk: Edgerunners (2022)",
+  "encontrado": "Cyberpunk: Edgerunners",
+  "estreia": "2022-09-13",
+  "tvmaze_id": 48945,
+  "pagina": "https://www.tvmaze.com/shows/48945/cyberpunk-edgerunners",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246519.jpg"
+ },
+ "the-terminal-list.jpg": {
+  "pedido": "The Terminal List (2022)",
+  "encontrado": "The Terminal List",
+  "estreia": "2022-07-01",
+  "tvmaze_id": 47856,
+  "pagina": "https://www.tvmaze.com/shows/47856/the-terminal-list",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604302.jpg"
+ },
+ "nobody-wants-this.jpg": {
+  "pedido": "Nobody Wants This (2024)",
+  "encontrado": "Nobody Wants This",
+  "estreia": "2024-09-26",
+  "tvmaze_id": 77060,
+  "pagina": "https://www.tvmaze.com/shows/77060/nobody-wants-this",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/646/1615448.jpg"
+ },
+ "lupin.jpg": {
+  "pedido": "Lupin (2021)",
+  "encontrado": "Lupin",
+  "estreia": "2021-01-08",
+  "tvmaze_id": 50701,
+  "pagina": "https://www.tvmaze.com/shows/50701/lupin",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/603/1507749.jpg"
+ }
+}

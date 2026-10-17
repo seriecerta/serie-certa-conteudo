@@ -1,0 +1,50 @@
+{
+ "a-leste-do-eden.jpg": {
+  "pedido": "A Leste do Éden",
+  "encontrado": "East of Eden",
+  "estreia": "2026-10-01",
+  "tvmaze_id": 79399,
+  "pagina": "https://www.tvmaze.com/shows/79399/east-of-eden",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/643/1609556.jpg"
+ },
+ "ripley.jpg": {
+  "pedido": "Ripley",
+  "encontrado": "Ripley",
+  "estreia": "2024-04-04",
+  "tvmaze_id": 44042,
+  "pagina": "https://www.tvmaze.com/shows/44042/ripley",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/500/1252264.jpg"
+ },
+ "pachinko.jpg": {
+  "pedido": "Pachinko",
+  "encontrado": "Pachinko",
+  "estreia": "2022-03-25",
+  "tvmaze_id": 41375,
+  "pagina": "https://www.tvmaze.com/shows/41375/pachinko",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/532/1330795.jpg"
+ },
+ "peaky-blinders.jpg": {
+  "pedido": "Peaky Blinders",
+  "encontrado": "Peaky Blinders",
+  "estreia": "2013-09-12",
+  "tvmaze_id": 269,
+  "pagina": "https://www.tvmaze.com/shows/269/peaky-blinders",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/48/122213.jpg"
+ },
+ "objetos-cortantes.jpg": {
+  "pedido": "Objetos Cortantes",
+  "encontrado": "Sharp Objects",
+  "estreia": "2018-07-08",
+  "tvmaze_id": 15112,
+  "pagina": "https://www.tvmaze.com/shows/15112/sharp-objects",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/156/391025.jpg"
+ },
+ "succession.jpg": {
+  "pedido": "Succession",
+  "encontrado": "Succession",
+  "estreia": "2018-06-03",
+  "tvmaze_id": 23470,
+  "pagina": "https://www.tvmaze.com/shows/23470/succession",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/453/1134275.jpg"
+ }
+}

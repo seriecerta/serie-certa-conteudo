@@ -21,3 +21,10 @@ data | formato | humor | séries | gancho
 2026-10-16 | blog-acabou-x (19h) | curioso | Profundezas; Mistério no Mar; Origem; Dark; A Maldição da Residência Hill; Yellowjackets | Acabou Profundezas? 5 séries parecidas
 2026-10-16 | blog-guia (20h) | animado | Lupin | Lupin parte 4: guia sem spoiler para rever as partes 1–3
 2026-10-16 | blog-lista (21h) | estressado | A Diplomata; O Agente Noturno; The Americans; Slow Horses; Dia Zero; A Agência | Séries parecidas com A Diplomata: 5 thrillers políticos
+2026-10-17 | Carrossel | órfã de série | A Leste do Éden; Ripley; Pachinko; Peaky Blinders | Acabou A Leste do Éden?
+2026-10-17 | Stories | órfã de série | A Leste do Éden; Ripley; Pachinko; Peaky Blinders | Acabou A Leste do Éden? (carrossel em 9:16)
+2026-10-17 | blog-09h | triste | After Life; Disque Amiga para Matar; Fleabag; Eu Nunca...; Atypical; Pousando no Amor | Séries para quando você está triste
+2026-10-17 | blog-11h | animado | Cyberpunk: Mercenários; A Lista Terminal; Ninguém Quer; Lupin | Estreias da semana nos streamings (19 a 25/10)
+2026-10-17 | blog-14h | curioso | A Leste do Éden; Ripley; Pachinko; Objetos Cortantes; Peaky Blinders; Succession | Acabou A Leste do Éden? 5 séries parecidas para não ficar órfã
+2026-10-17 | blog-17h | estressado | Slow Horses | Slow Horses: temporadas e por onde começar
+2026-10-17 | blog-20h | curioso | Carrie, a Estranha; O Clube da Meia-Noite; A Maldição da Mansão Bly; A Queda da Casa de Usher; Missa da Meia-Noite; A Maldição da Residência Hill | Séries de Mike Flanagan

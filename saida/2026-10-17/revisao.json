@@ -1,0 +1,18 @@
+{
+  "aprovadas": [
+    "01-carrossel-acabou-a-leste-do-eden",
+    "02-stories-acabou-a-leste-do-eden"
+  ],
+  "bloqueadas": {
+    "03-lista-da-mia-mike-flanagan": "sem narração/vídeo/publicar.json: ElevenLabs recusou a 1ª fala (quota_exceeded, 29 créditos, 34 necessários); roteiro pronto para quando houver recarga",
+    "04-short-reels-selvagens-ep03-sabado": "sem narração/vídeo/publicar.json: ElevenLabs recusou a 1ª fala (quota_exceeded, 29 créditos, 34 necessários); roteiro pronto para quando houver recarga",
+    "05-reels-short-casal-sabado-escolhe-voce": "sem narração/vídeo/publicar.json: ElevenLabs recusou a 1ª fala (quota_exceeded, 29 créditos, 34 necessários); roteiro pronto para quando houver recarga"
+  },
+  "blog_aprovadas": [
+    "01-series-para-quando-voce-esta-triste",
+    "02-estreias-streaming-semana-19-a-25-outubro-2026",
+    "03-series-parecidas-com-a-leste-do-eden",
+    "04-slow-horses-temporadas-guia",
+    "05-series-de-mike-flanagan"
+  ]
+}

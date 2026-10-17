@@ -1,0 +1,50 @@
+{
+ "carrie.jpg": {
+  "pedido": "Carrie (2026)",
+  "encontrado": "Carrie",
+  "estreia": "2026-10-07",
+  "tvmaze_id": 45562,
+  "pagina": "https://www.tvmaze.com/shows/45562/carrie",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611660.jpg"
+ },
+ "the-midnight-club.jpg": {
+  "pedido": "The Midnight Club",
+  "encontrado": "The Midnight Club",
+  "estreia": "2022-10-07",
+  "tvmaze_id": 47855,
+  "pagina": "https://www.tvmaze.com/shows/47855/the-midnight-club",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/412/1030153.jpg"
+ },
+ "the-haunting-of-bly-manor.jpg": {
+  "pedido": "The Haunting of Bly Manor",
+  "encontrado": "The Haunting of Bly Manor",
+  "estreia": "2020-10-09",
+  "tvmaze_id": 49673,
+  "pagina": "https://www.tvmaze.com/shows/49673/the-haunting-of-bly-manor",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/269/674004.jpg"
+ },
+ "the-fall-of-the-house-of-usher.jpg": {
+  "pedido": "The Fall of the House of Usher",
+  "encontrado": "The Fall of the House of Usher",
+  "estreia": "2023-10-12",
+  "tvmaze_id": 58166,
+  "pagina": "https://www.tvmaze.com/shows/58166/the-fall-of-the-house-of-usher",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/476/1191759.jpg"
+ },
+ "midnight-mass.jpg": {
+  "pedido": "Midnight Mass",
+  "encontrado": "Midnight Mass",
+  "estreia": "2021-09-24",
+  "tvmaze_id": 42840,
+  "pagina": "https://www.tvmaze.com/shows/42840/midnight-mass",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/354/885283.jpg"
+ },
+ "the-haunting-of-hill-house.jpg": {
+  "pedido": "The Haunting of Hill House",
+  "encontrado": "The Haunting of Hill House",
+  "estreia": "2018-10-12",
+  "tvmaze_id": 29191,
+  "pagina": "https://www.tvmaze.com/shows/29191/the-haunting-of-hill-house",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246083.jpg"
+ }
+}
