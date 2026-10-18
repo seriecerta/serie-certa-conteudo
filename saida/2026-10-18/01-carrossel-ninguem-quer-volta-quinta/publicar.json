@@ -1,0 +1,26 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-carrossel",
+      "plataforma": "instagram",
+      "tipo": "CAROUSEL",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg",
+        "quadros/05.jpg",
+        "quadros/06.jpg",
+        "quadros/07.jpg"
+      ],
+      "legenda": "Ninguém Quer volta quinta. E até lá? 🫶\n\nLove (Netflix) · Modern Love (Prime Video) · Master of None (Netflix)\n\nSalva pra ver até quinta.\n\n#seriecerta #oqueassistir #ninguemquer #comediaromantica",
+      "series": [
+        "Nobody Wants This",
+        "Love (2016)",
+        "Modern Love",
+        "Master of None"
+      ],
+      "quando": "2026-10-18T10:00:00-03:00"
+    }
+  ]
+}

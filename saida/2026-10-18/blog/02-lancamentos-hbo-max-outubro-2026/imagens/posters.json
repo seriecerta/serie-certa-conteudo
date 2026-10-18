@@ -1,0 +1,50 @@
+{
+ "war.jpg": {
+  "pedido": "War (2026)",
+  "encontrado": "War",
+  "estreia": "2026-10-01",
+  "tvmaze_id": 86587,
+  "pagina": "https://www.tvmaze.com/shows/86587/war",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/645/1614048.jpg"
+ },
+ "zmora.jpg": {
+  "pedido": "Zmora (2026)",
+  "encontrado": "Zmora",
+  "estreia": "2026-10-02",
+  "tvmaze_id": 94797,
+  "pagina": "https://www.tvmaze.com/shows/94797/zmora",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/643/1609602.jpg"
+ },
+ "get-jiro.jpg": {
+  "pedido": "Get Jiro (2026)",
+  "encontrado": "Get Jiro",
+  "estreia": "2026-10-03",
+  "tvmaze_id": 77795,
+  "pagina": "https://www.tvmaze.com/shows/77795/get-jiro",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611782.jpg"
+ },
+ "lanterns.jpg": {
+  "pedido": "Lanterns (2026)",
+  "encontrado": "Lanterns",
+  "estreia": "2026-08-16",
+  "tvmaze_id": 44776,
+  "pagina": "https://www.tvmaze.com/shows/44776/lanterns",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/637/1592971.jpg"
+ },
+ "the-paper.jpg": {
+  "pedido": "The Paper (2025)",
+  "encontrado": "The Paper",
+  "estreia": "2025-09-04",
+  "tvmaze_id": 84611,
+  "pagina": "https://www.tvmaze.com/shows/84611/the-paper",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/636/1591367.jpg"
+ },
+ "largados-e-pelados-brasil.jpg": {
+  "pedido": "Largados e Pelados Brasil",
+  "encontrado": "Largados e Pelados Brasil",
+  "estreia": "2021-11-09",
+  "tvmaze_id": 59298,
+  "pagina": "https://www.tvmaze.com/shows/59298/largados-e-pelados-brasil",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/380/950535.jpg"
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "em-casa-com-os-gil.jpg": {
+  "pedido": "Em Casa com os Gil",
+  "encontrado": "Em Casa com os Gil",
+  "estreia": "2022-06-24",
+  "tvmaze_id": 62712,
+  "pagina": "https://www.tvmaze.com/shows/62712/em-casa-com-os-gil",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/413/1034771.jpg"
+ },
+ "so-se-for-por-amor.jpg": {
+  "pedido": "Só Se For Por Amor",
+  "encontrado": "Só Se For Por Amor",
+  "estreia": "2022-09-21",
+  "tvmaze_id": 64203,
+  "pagina": "https://www.tvmaze.com/shows/64203/so-se-for-por-amor",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/422/1056876.jpg"
+ },
+ "rensga-hits.jpg": {
+  "pedido": "Rensga Hits!",
+  "encontrado": "Rensga Hits!",
+  "estreia": "2022-08-03",
+  "tvmaze_id": 63380,
+  "pagina": "https://www.tvmaze.com/shows/63380/rensga-hits",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/417/1044984.jpg"
+ },
+ "as-aventuras-de-jose-durval.jpg": {
+  "pedido": "As Aventuras de José & Durval",
+  "encontrado": "As Aventuras de José e Durval",
+  "estreia": "2023-08-18",
+  "tvmaze_id": 68455,
+  "pagina": "https://www.tvmaze.com/shows/68455/as-aventuras-de-jose-e-durval",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/479/1197611.jpg"
+ },
+ "anitta-made-in-honorio.jpg": {
+  "pedido": "Anitta: Made in Honório",
+  "encontrado": "Anitta: Made in Honório",
+  "estreia": "2020-12-16",
+  "tvmaze_id": 51928,
+  "pagina": "https://www.tvmaze.com/shows/51928/anitta-made-in-honorio",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/289/723053.jpg"
+ }
+}

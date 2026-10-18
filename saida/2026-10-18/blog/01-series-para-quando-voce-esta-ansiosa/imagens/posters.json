@@ -1,0 +1,58 @@
+{
+ "queer-eye.jpg": {
+  "pedido": "Queer Eye (2018)",
+  "encontrado": "Queer Eye",
+  "estreia": "2018-02-07",
+  "tvmaze_id": 25268,
+  "pagina": "https://www.tvmaze.com/shows/25268/queer-eye",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/609/1524361.jpg"
+ },
+ "gilmore-girls.jpg": {
+  "pedido": "Gilmore Girls (2000)",
+  "encontrado": "Gilmore Girls",
+  "estreia": "2000-10-05",
+  "tvmaze_id": 525,
+  "pagina": "https://www.tvmaze.com/shows/525/gilmore-girls",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/4/11308.jpg"
+ },
+ "brooklyn-nine-nine.jpg": {
+  "pedido": "Brooklyn Nine-Nine (2013)",
+  "encontrado": "Brooklyn Nine-Nine",
+  "estreia": "2013-09-17",
+  "tvmaze_id": 49,
+  "pagina": "https://www.tvmaze.com/shows/49/brooklyn-nine-nine",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/402/1007484.jpg"
+ },
+ "monk.jpg": {
+  "pedido": "Monk (2002)",
+  "encontrado": "Monk",
+  "estreia": "2002-07-12",
+  "tvmaze_id": 543,
+  "pagina": "https://www.tvmaze.com/shows/543/monk",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/4/11451.jpg"
+ },
+ "nailed-it.jpg": {
+  "pedido": "Nailed It! (2018)",
+  "encontrado": "Nailed It!",
+  "estreia": "2018-03-09",
+  "tvmaze_id": 35093,
+  "pagina": "https://www.tvmaze.com/shows/35093/nailed-it",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/357/892948.jpg"
+ },
+ "grace-and-frankie.jpg": {
+  "pedido": "Grace and Frankie (2015)",
+  "encontrado": "Grace and Frankie",
+  "estreia": "2015-05-08",
+  "tvmaze_id": 1595,
+  "pagina": "https://www.tvmaze.com/shows/1595/grace-and-frankie",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/403/1007533.jpg"
+ },
+ "somebody-feed-phil.jpg": {
+  "pedido": "Somebody Feed Phil (2018)",
+  "encontrado": "Somebody Feed Phil",
+  "estreia": "2018-01-12",
+  "tvmaze_id": 34213,
+  "pagina": "https://www.tvmaze.com/shows/34213/somebody-feed-phil",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/141/354573.jpg"
+ }
+}

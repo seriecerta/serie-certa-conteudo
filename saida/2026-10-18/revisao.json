@@ -1,0 +1,18 @@
+{
+  "aprovadas": [
+    "01-carrossel-ninguem-quer-volta-quinta",
+    "02-stories-ninguem-quer-volta-quinta"
+  ],
+  "blog_aprovadas": [
+    "01-series-para-quando-voce-esta-ansiosa",
+    "02-lancamentos-hbo-max-outubro-2026",
+    "03-series-parecidas-com-crystal-lake",
+    "04-ninguem-quer-3-temporada-guia",
+    "05-series-sobre-sertanejo"
+  ],
+  "bloqueadas": {
+    "03-lista-da-mia-series-sertanejas": "não produzida: ElevenLabs sem créditos (29 restantes; teste de hoje pedia 179, quota_exceeded)",
+    "04-short-reels-tradutor-o-que-a-mia-entende": "não produzida: ElevenLabs sem créditos (29 restantes; teste de hoje pedia 179, quota_exceeded)",
+    "05-reels-short-relogio-domingo-a-noite": "não produzida: ElevenLabs sem créditos (29 restantes; teste de hoje pedia 179, quota_exceeded)"
+  }
+}

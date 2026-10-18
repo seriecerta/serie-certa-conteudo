@@ -1,0 +1,60 @@
+{
+ "crystal-lake.jpg": {
+  "pedido": "Crystal Lake",
+  "encontrado": "Crystal Lake",
+  "estreia": "2026-10-15",
+  "tvmaze_id": 64960,
+  "pagina": "https://www.tvmaze.com/shows/64960/crystal-lake",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/643/1609653.jpg"
+ },
+ "american-horror-story.jpg": {
+  "pedido": "American Horror Story",
+  "encontrado": "American Horror Story",
+  "estreia": "2011-10-05",
+  "tvmaze_id": 30,
+  "pagina": "https://www.tvmaze.com/shows/30/american-horror-story",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/211/529821.jpg",
+  "temporada": "9 — 1984 (pôster oficial da temporada no TVmaze; trocado pelo revisor em 18/10)"
+ },
+ "scream-queens.jpg": {
+  "pedido": "Scream Queens",
+  "encontrado": "Scream Queens",
+  "estreia": "2015-09-22",
+  "tvmaze_id": 1862,
+  "pagina": "https://www.tvmaze.com/shows/1862/scream-queens",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/85/213832.jpg"
+ },
+ "chucky.jpg": {
+  "pedido": "Chucky",
+  "encontrado": "Chucky",
+  "estreia": "2021-10-12",
+  "tvmaze_id": 45790,
+  "pagina": "https://www.tvmaze.com/shows/45790/chucky",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/479/1198808.jpg"
+ },
+ "yellowjackets.jpg": {
+  "pedido": "Yellowjackets",
+  "encontrado": "Yellowjackets",
+  "estreia": "2021-11-14",
+  "tvmaze_id": 36672,
+  "pagina": "https://www.tvmaze.com/shows/36672/yellowjackets",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/554/1387457.jpg"
+ },
+ "slasher.jpg": {
+  "pedido": "Slasher",
+  "encontrado": "Slasher",
+  "estreia": "2016-03-04",
+  "tvmaze_id": 7019,
+  "pagina": "https://www.tvmaze.com/shows/7019/slasher",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/137/342603.jpg",
+  "temporada": "2 — Guilty Party / Os Culpados (pôster oficial da temporada no TVmaze; trocado pelo revisor em 18/10)"
+ },
+ "eu-sei-o-que-voces-fizeram-no-verao-passado.jpg": {
+  "pedido": "Eu Sei o que Vocês Fizeram no Verão Passado",
+  "encontrado": "I Know What You Did Last Summer",
+  "estreia": "2021-10-15",
+  "tvmaze_id": 43175,
+  "pagina": "https://www.tvmaze.com/shows/43175/i-know-what-you-did-last-summer",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/357/893898.jpg"
+ }
+}

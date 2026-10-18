@@ -28,3 +28,10 @@ data | formato | humor | séries | gancho
 2026-10-17 | blog-14h | curioso | A Leste do Éden; Ripley; Pachinko; Objetos Cortantes; Peaky Blinders; Succession | Acabou A Leste do Éden? 5 séries parecidas para não ficar órfã
 2026-10-17 | blog-17h | estressado | Slow Horses | Slow Horses: temporadas e por onde começar
 2026-10-17 | blog-20h | curioso | Carrie, a Estranha; O Clube da Meia-Noite; A Maldição da Mansão Bly; A Queda da Casa de Usher; Missa da Meia-Noite; A Maldição da Residência Hill | Séries de Mike Flanagan
+2026-10-18 | Carrossel | romântico / órfã de série | Ninguém Quer; Love; Modern Love; Master of None | Ninguém Quer volta quinta: 3 séries pra esperar
+2026-10-18 | Stories | romântico / órfã de série | Ninguém Quer; Love; Modern Love; Master of None | Ninguém Quer volta quinta (carrossel em 9:16)
+2026-10-18 | blog-09h | ansioso | Queer Eye; Gilmore Girls; Brooklyn Nine-Nine; Monk; Mandou Bem; Grace e Frankie; Somebody Feed Phil | 7 séries para quando você está ansiosa
+2026-10-18 | blog-11h | animado | Guerra; The Torment; Get Jiro; Lanternas; The Paper; Largados e Pelados Brasil | Lançamentos HBO Max outubro 2026
+2026-10-18 | blog-14h | curioso | Crystal Lake; American Horror Story: 1984; Slasher; Chucky; Yellowjackets; Scream Queens; Eu Sei o que Vocês Fizeram no Verão Passado | Acabou Crystal Lake? 6 séries de terror slasher
+2026-10-18 | blog-17h | romântico | Ninguém Quer | Ninguém Quer 3ª temporada: quando estreia, onde ver e como rever
+2026-10-18 | blog-20h | romântico | Anitta: Made in Honório; Em Casa com os Gil; Só Se For Por Amor; Rensga Hits!; As Aventuras de José & Durval | Séries sobre sertanejo
