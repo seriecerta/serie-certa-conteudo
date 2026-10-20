@@ -64,7 +64,7 @@ Gere áudio sempre com `python scripts/narrar.py` (modelo eleven_v3, que aceita 
 - `/pacote-diario` — roda o fluxo completo do dia, até agendar o YouTube (tarefa agendada da manhã)
 - Formato diário **Lista da MIA** (YouTube 12h00): ver `estrategia/07-pilares-e-formatos.md`
 - `/blog-editorial` — as 5 matérias diárias do blog (o `/pacote-diario` chama); formato em `blog/README.md`
-- `/publicar` — publica no Instagram e no blog o que chegou no horário (tarefa agendada de hora em hora)
+- `/publicar` — publica no Instagram, no YouTube e no blog o que chegou no horário. A fila roda **sem o Claude**, pelo GitHub Actions (`.github/workflows/publicar.yml`, de hora em hora das 9h02 às 22h02 + 13h32 e 18h32); a skill serve para status, pausa e rodada manual
 - `/estrategia` — cria ou revisa TAM/SAM/SOM, ICP, JTBD, posicionamento, proposta de valor e GTM
 - `/revisao-semanal` — relatório da semana, testes A/B e propostas de melhoria (rotina de quarta, 18h17; a 1ª em 21/10)
 - `/painel` — gera `painel/index.html`: backlog, publicados, redes, formatos, desdobramentos, engajamento e cliques (só leitura)

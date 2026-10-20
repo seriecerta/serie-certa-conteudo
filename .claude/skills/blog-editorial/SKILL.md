@@ -14,9 +14,9 @@ Como o site e o CMS funcionam (rotas, blocos, categorias, SEO, analytics): `refe
 3. **Revisão.** Subagente `revisor`, que confere as matérias do blog junto com o resto do pacote e escreve as aprovadas em `"blog_aprovadas"` do `saida/<data>/revisao.json`. **Mantenha** `aprovadas` e `bloqueadas` das redes. Se o `revisao.json` já existir, acrescente a chave em vez de reescrever o arquivo.
 4. **Histórico.** Uma linha por matéria aprovada em `historico/publicados.md`: `data | blog-<slot> | humor | séries | título`.
 5. **Simulação.** `python blog/publicar_blog.py --data <data> --simular` não pode acusar erro nas aprovadas.
-6. **Guardar.** Na nuvem: `python scripts/nuvem.py subir-pacote <data>`, que leva também as imagens do blog para a rotina de hora em hora. Depois faça commit dos `.md`/`.json` de `saida/<data>/blog/`.
+6. **Guardar.** Na nuvem: `python scripts/nuvem.py subir-pacote <data>`, que leva também as imagens do blog para a publicação de hora em hora (GitHub Actions). Depois faça commit dos `.md`/`.json` de `saida/<data>/blog/`.
 
-A publicação é feita só pelo `python blog/publicar_blog.py --vencidos`, chamado de hora em hora pelo `/publicar`. Matéria cujo horário já passou sai na rodada seguinte.
+A publicação é feita só pelo `python blog/publicar_blog.py --vencidos`, chamado de hora em hora pelo GitHub Actions `publicar` (`.github/workflows/publicar.yml`). Matéria cujo horário já passou sai na rodada seguinte.
 
 ## Se algo falhar
 - `--verificar` acusa "sem pôster oficial": rode `scripts/posters.py` na pasta da matéria e use a imagem no texto.

@@ -1,0 +1,5 @@
+# Só o que scripts/publicar.py e blog/publicar_blog.py importam (sem numpy, scipy nem playwright).
+requests
+google-api-python-client
+google-auth
+google-auth-oauthlib

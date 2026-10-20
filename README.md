@@ -9,7 +9,7 @@ Todo dia de manhã o Claude Code cria a pauta, os roteiros, a narração com a v
 06:40  tarefa "pacote-diario"  →  pauta → roteiro → MP3 (MIA) → vídeo → cards → revisão
                                   → YouTube: sobe e agenda (publishAt nativo do YouTube)
                                   → blog: 5 matérias com imagem de destaque (09h, 11h, 14h, 17h, 20h)
-de hora em hora  tarefa "publicar"  →  Instagram e blog: publica o que chegou no horário
+de hora em hora  GitHub Actions "publicar" (sem Claude, zero token)  →  Instagram, YouTube e blog: publica o que chegou no horário
 ```
 Travas de segurança (todas em `scripts/publicar.py`):
 - Só vai ao ar o que o `revisor` colocou em `saida/<data>/revisao.json` → `aprovadas`.
