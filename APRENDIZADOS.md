@@ -24,11 +24,9 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 
 ## Rotina e agentes
 
-### 2026-10-20 — Limite semanal de uso derruba o pacote no meio
-- **Sintoma:** os subagentes de 19/10 pararam com `API error: You've hit your weekly limit · resets Oct 20, 7pm (UTC)` (429 `rate_limit`). Nenhum `revisao.json` foi escrito e nada de 19/10 saiu; a rotina de 20/10 só rodou às 18h BRT.
-- **Causa:** cada pacote dispara de 6 a 9 subagentes pesados (pauta, redatores, desdobrador, 2 rodadas de revisor), e a semana acumulou o limite da conta.
-- **Como evitar:** sem crédito na ElevenLabs, não escreva roteiro de vídeo (vai ficar parado). Junte matérias por redator (2 por agente) e use 1 rodada de revisor quando der. Se o limite cair no meio, as peças das 10h ficam para outro dia; rascunhos de blog podem ser terminados no dia seguinte (copie a pasta, troque as datas, revise de novo).
-- **Onde mexer:** pauta do `estrategista` e a orquestração do `/pacote-diario`.
+### 2026-10-20 — Pacote leve quando o limite de uso está perto
+- Causa e correção da rotina: ver "Limite semanal de uso derruba todas as rotinas" (seção Painel e ferramentas).
+- **No pacote:** sem crédito na ElevenLabs, não escreva roteiro de vídeo. Junte 2 matérias por redator e faça 1 rodada de revisor quando der. Se o limite cair no meio, os rascunhos de blog podem ser terminados no dia seguinte: copie a pasta, troque as datas e revise de novo (foi o que salvou 3 matérias de 19/10 em 20/10).
 
 ### 2026-10-20 — Dia da semana errado ao lado da data
 - **Sintoma:** o revisor pegou duas vezes o dia trocado em texto pronto: "quarta, 22/10" (era quinta, em 18/10) e "quinta, 23/10" (era sexta, em 20/10).
