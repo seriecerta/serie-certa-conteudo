@@ -1,0 +1,58 @@
+{
+ "carrie.jpg": {
+  "pedido": "Carrie",
+  "encontrado": "Carrie",
+  "estreia": "2026-10-07",
+  "tvmaze_id": 45562,
+  "pagina": "https://www.tvmaze.com/shows/45562/carrie",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611660.jpg"
+ },
+ "stranger-things.jpg": {
+  "pedido": "Stranger Things",
+  "encontrado": "Stranger Things",
+  "estreia": "2016-07-15",
+  "tvmaze_id": 2993,
+  "pagina": "https://www.tvmaze.com/shows/2993/stranger-things",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/595/1489169.jpg"
+ },
+ "i-am-not-okay-with-this.jpg": {
+  "pedido": "I Am Not Okay With This",
+  "encontrado": "I Am Not Okay With This",
+  "estreia": "2020-02-26",
+  "tvmaze_id": 40020,
+  "pagina": "https://www.tvmaze.com/shows/40020/i-am-not-okay-with-this",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/240/601959.jpg"
+ },
+ "wandinha.jpg": {
+  "pedido": "Wandinha",
+  "encontrado": "Wednesday",
+  "estreia": "2022-11-23",
+  "tvmaze_id": 53647,
+  "pagina": "https://www.tvmaze.com/shows/53647/wednesday",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/586/1466410.jpg"
+ },
+ "o-mundo-sombrio-de-sabrina.jpg": {
+  "pedido": "O Mundo Sombrio de Sabrina",
+  "encontrado": "Chilling Adventures of Sabrina",
+  "estreia": "2018-10-26",
+  "tvmaze_id": 32649,
+  "pagina": "https://www.tvmaze.com/shows/32649/chilling-adventures-of-sabrina",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/291/728576.jpg"
+ },
+ "locke-key.jpg": {
+  "pedido": "Locke & Key",
+  "encontrado": "Locke & Key",
+  "estreia": "2020-02-07",
+  "tvmaze_id": 37883,
+  "pagina": "https://www.tvmaze.com/shows/37883/locke-key",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/417/1043511.jpg"
+ },
+ "cruel-summer.jpg": {
+  "pedido": "Cruel Summer",
+  "encontrado": "Cruel Summer",
+  "estreia": "2021-04-20",
+  "tvmaze_id": 44036,
+  "pagina": "https://www.tvmaze.com/shows/44036/cruel-summer",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/463/1159155.jpg"
+ }
+}

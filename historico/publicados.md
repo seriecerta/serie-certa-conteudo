@@ -35,3 +35,6 @@ data | formato | humor | séries | gancho
 2026-10-18 | blog-14h | curioso | Crystal Lake; American Horror Story: 1984; Slasher; Chucky; Yellowjackets; Scream Queens; Eu Sei o que Vocês Fizeram no Verão Passado | Acabou Crystal Lake? 6 séries de terror slasher
 2026-10-18 | blog-17h | romântico | Ninguém Quer | Ninguém Quer 3ª temporada: quando estreia, onde ver e como rever
 2026-10-18 | blog-20h | romântico | Anitta: Made in Honório; Em Casa com os Gil; Só Se For Por Amor; Rensga Hits!; As Aventuras de José & Durval | Séries sobre sertanejo
+2026-10-20 | blog-09h | feliz | Abbott Elementary; Schitt's Creek; Parks and Recreation; Superstore; A Grande Família; Modern Family; Todo Mundo Odeia o Chris | 7 séries para ficar de bom humor
+2026-10-20 | blog-17h | animado | A Lista Terminal; A Lista Terminal: Dark Wolf | A Lista Terminal 2ª temporada: quando estreia, ordem e tempo de maratona
+2026-10-20 | blog-20h | curioso | Criminal; Sequestro; Guerra; Lupin | Séries de George Kay, o criador de Lupin

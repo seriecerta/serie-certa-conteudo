@@ -1,0 +1,58 @@
+{
+ "abbott-elementary.jpg": {
+  "pedido": "Abbott Elementary (2021)",
+  "encontrado": "Abbott Elementary",
+  "estreia": "2021-12-07",
+  "tvmaze_id": 55350,
+  "pagina": "https://www.tvmaze.com/shows/55350/abbott-elementary",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/644/1611887.jpg"
+ },
+ "everybody-hates-chris.jpg": {
+  "pedido": "Everybody Hates Chris (2005)",
+  "encontrado": "Everybody Hates Chris",
+  "estreia": "2005-09-22",
+  "tvmaze_id": 692,
+  "pagina": "https://www.tvmaze.com/shows/692/everybody-hates-chris",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/5/14969.jpg"
+ },
+ "schitt-s-creek.jpg": {
+  "pedido": "Schitt's Creek (2015)",
+  "encontrado": "Schitt's Creek",
+  "estreia": "2015-01-13",
+  "tvmaze_id": 1775,
+  "pagina": "https://www.tvmaze.com/shows/1775/schitts-creek",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/279/697623.jpg"
+ },
+ "modern-family.jpg": {
+  "pedido": "Modern Family (2009)",
+  "encontrado": "Modern Family",
+  "estreia": "2009-09-23",
+  "tvmaze_id": 80,
+  "pagina": "https://www.tvmaze.com/shows/80/modern-family",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/359/898320.jpg"
+ },
+ "superstore.jpg": {
+  "pedido": "Superstore (2015)",
+  "encontrado": "Superstore",
+  "estreia": "2015-11-30",
+  "tvmaze_id": 1864,
+  "pagina": "https://www.tvmaze.com/shows/1864/superstore",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/402/1007462.jpg"
+ },
+ "a-grande-familia.jpg": {
+  "pedido": "A Grande Família (2001)",
+  "encontrado": "A Grande Família",
+  "estreia": "2001-03-29",
+  "tvmaze_id": 71145,
+  "pagina": "https://www.tvmaze.com/shows/71145/a-grande-familia",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/476/1191394.jpg"
+ },
+ "parks-and-recreation.jpg": {
+  "pedido": "Parks and Recreation (2009)",
+  "encontrado": "Parks and Recreation",
+  "estreia": "2009-04-09",
+  "tvmaze_id": 174,
+  "pagina": "https://www.tvmaze.com/shows/174/parks-and-recreation",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/481/1204341.jpg"
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "a-lista-terminal.jpg": {
+  "pedido": "A Lista Terminal",
+  "encontrado": "The Terminal List",
+  "estreia": "2022-07-01",
+  "tvmaze_id": 47856,
+  "pagina": "https://www.tvmaze.com/shows/47856/the-terminal-list",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/641/1604302.jpg"
+ },
+ "a-lista-terminal-dark-wolf.jpg": {
+  "pedido": "A Lista Terminal: Dark Wolf",
+  "encontrado": "The Terminal List: Dark Wolf",
+  "estreia": "2025-08-27",
+  "tvmaze_id": 74127,
+  "pagina": "https://www.tvmaze.com/shows/74127/the-terminal-list-dark-wolf",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/590/1475632.jpg"
+ }
+}

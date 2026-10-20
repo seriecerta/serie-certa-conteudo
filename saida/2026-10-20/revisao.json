@@ -1,0 +1,15 @@
+{
+  "aprovadas": [],
+  "blog_aprovadas": [
+    "01-series-para-ficar-de-bom-humor",
+    "04-a-lista-terminal-2-temporada-guia",
+    "05-series-de-george-kay"
+  ],
+  "bloqueadas": {
+    "slot-10h-carrossel-stories": "não produzido: horário passou (pacote rodou às ~18h10)",
+    "slot-12h-lista-da-mia": "não produzido: ElevenLabs sem crédito (quota_exceeded)",
+    "slot-13h30-short-reels": "não produzido: ElevenLabs sem crédito",
+    "slot-18h30-reels": "não produzido: ElevenLabs sem crédito",
+    "slot-19h-short": "não produzido: ElevenLabs sem crédito"
+  }
+}

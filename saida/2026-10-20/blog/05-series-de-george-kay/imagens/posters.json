@@ -1,0 +1,34 @@
+{
+ "lupin.jpg": {
+  "pedido": "Lupin (2021)",
+  "encontrado": "Lupin",
+  "estreia": "2021-01-08",
+  "tvmaze_id": 50701,
+  "pagina": "https://www.tvmaze.com/shows/50701/lupin",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/603/1507749.jpg"
+ },
+ "war.jpg": {
+  "pedido": "War (2026)",
+  "encontrado": "War",
+  "estreia": "2026-10-01",
+  "tvmaze_id": 86587,
+  "pagina": "https://www.tvmaze.com/shows/86587/war",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/645/1614048.jpg"
+ },
+ "hijack.jpg": {
+  "pedido": "Hijack (2023)",
+  "encontrado": "Hijack",
+  "estreia": "2023-06-28",
+  "tvmaze_id": 61739,
+  "pagina": "https://www.tvmaze.com/shows/61739/hijack",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/608/1521070.jpg"
+ },
+ "criminal-uk.jpg": {
+  "pedido": "Criminal: UK (2019)",
+  "encontrado": "Criminal: UK",
+  "estreia": "2019-09-20",
+  "tvmaze_id": 39893,
+  "pagina": "https://www.tvmaze.com/shows/39893/criminal-uk",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/271/678006.jpg"
+ }
+}

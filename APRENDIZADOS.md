@@ -22,10 +22,24 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Agentes em paralelo (2026-10-18):** o scratchpad é o mesmo para todos os subagentes da sessão; dois redatores gravaram `jw/jw.py` no mesmo caminho e um sobrescreveu o do outro. Cada agente usa uma subpasta própria (ex.: `scratchpad/<pasta-da-peça>/`).
 - **Netflix BR por curl (2026-10-17):** `https://www.netflix.com/br/title/<id>` responde com user-agent de Googlebot (título no `<h1>`, ano, nº de episódios); com user-agent de navegador cai em `/unsupportedbrowser`. O `<id>` sai de `standardWebURL` nas ofertas da API do JustWatch.
 
+## Rotina e agentes
+
+### 2026-10-20 — Limite semanal de uso derruba o pacote no meio
+- **Sintoma:** os subagentes de 19/10 pararam com `API error: You've hit your weekly limit · resets Oct 20, 7pm (UTC)` (429 `rate_limit`). Nenhum `revisao.json` foi escrito e nada de 19/10 saiu; a rotina de 20/10 só rodou às 18h BRT.
+- **Causa:** cada pacote dispara de 6 a 9 subagentes pesados (pauta, redatores, desdobrador, 2 rodadas de revisor), e a semana acumulou o limite da conta.
+- **Como evitar:** sem crédito na ElevenLabs, não escreva roteiro de vídeo (vai ficar parado). Junte matérias por redator (2 por agente) e use 1 rodada de revisor quando der. Se o limite cair no meio, as peças das 10h ficam para outro dia; rascunhos de blog podem ser terminados no dia seguinte (copie a pasta, troque as datas, revise de novo).
+- **Onde mexer:** pauta do `estrategista` e a orquestração do `/pacote-diario`.
+
+### 2026-10-20 — Dia da semana errado ao lado da data
+- **Sintoma:** o revisor pegou duas vezes o dia trocado em texto pronto: "quarta, 22/10" (era quinta, em 18/10) e "quinta, 23/10" (era sexta, em 20/10).
+- **Causa:** o redator escreve o dia da semana de cabeça.
+- **Como evitar:** antes de escrever "quarta, DD/MM", confira com `TZ=America/Sao_Paulo date -d 2026-MM-DD +%A`. O revisor confere todo par dia/data.
+- **Onde mexer:** `.claude/agents/redator-blog.md`, `roteirista.md` e `revisor.md` (sugestão: acrescentar a checagem).
+
 ## Narração e motor
 
 ### 2026-10-15 — Créditos da ElevenLabs acabam no meio do pacote
-- **Sintoma:** `Erro ElevenLabs 401 ... "code":"quota_exceeded","message":"This request exceeds your quota of 38518. You have 29 credits remaining, while 664 credits are required"`. Em 14/10 caiu o Reels das 19h; em 15/10 caíram a Lista da MIA, o Reels das 18h30 e o Short das 19h; de 16/10 a 18/10 nenhum vídeo saiu (29 créditos, nem a 1ª fala de 34 passou). A cota não reinicia sozinha no meio do ciclo: até a recarga, a pauta deve prever só carrossel + Stories e deixar os roteiros de vídeo prontos.
+- **Sintoma:** `Erro ElevenLabs 401 ... "code":"quota_exceeded","message":"This request exceeds your quota of 38518. You have 29 credits remaining, while 664 credits are required"`. Em 14/10 caiu o Reels das 19h; em 15/10 caíram a Lista da MIA, o Reels das 18h30 e o Short das 19h; de 16/10 a 20/10 nenhum vídeo saiu (29 créditos, nem a 1ª fala de 34 passou). A cota não reinicia sozinha no meio do ciclo: até a recarga, a pauta deve prever só carrossel + Stories e deixar os roteiros de vídeo prontos.
 - **Causa:** a cota mensal da conta (38.518 créditos) acabou. Na grade diária, cerca de 3 mil caracteres de narração por dia (1 crédito por caractere) estouram a cota antes do fim do ciclo.
 - **Como evitar:** a pauta ordena as peças de vídeo por prioridade. Narre uma pasta por vez, nessa ordem (`python scripts/narrar.py saida/<data>/<pasta>`), e pare no primeiro `quota_exceeded`, sem repetir. Carrossel e Stories não gastam crédito e saem de qualquer jeito. A solução de verdade é o Bruno ampliar o plano ou recarregar.
 - **Onde mexer:** plano da conta ElevenLabs; prioridade na `00-pauta.md`.

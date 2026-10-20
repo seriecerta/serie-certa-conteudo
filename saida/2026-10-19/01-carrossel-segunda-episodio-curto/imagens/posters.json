@@ -1,0 +1,34 @@
+{
+ "derry-girls.jpg": {
+  "pedido": "Derry Girls",
+  "encontrado": "Derry Girls",
+  "estreia": "2018-01-04",
+  "tvmaze_id": 33320,
+  "pagina": "https://www.tvmaze.com/shows/33320/derry-girls",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/402/1007479.jpg"
+ },
+ "what-we-do-in-the-shadows.jpg": {
+  "pedido": "What We Do in the Shadows",
+  "encontrado": "What We Do in the Shadows",
+  "estreia": "2019-03-27",
+  "tvmaze_id": 34522,
+  "pagina": "https://www.tvmaze.com/shows/34522/what-we-do-in-the-shadows",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/535/1337833.jpg"
+ },
+ "shrinking.jpg": {
+  "pedido": "Shrinking",
+  "encontrado": "Shrinking",
+  "estreia": "2023-01-27",
+  "tvmaze_id": 58323,
+  "pagina": "https://www.tvmaze.com/shows/58323/shrinking",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/610/1527402.jpg"
+ },
+ "unbreakable-kimmy-schmidt.jpg": {
+  "pedido": "Unbreakable Kimmy Schmidt",
+  "encontrado": "Unbreakable Kimmy Schmidt",
+  "estreia": "2015-03-06",
+  "tvmaze_id": 1368,
+  "pagina": "https://www.tvmaze.com/shows/1368/unbreakable-kimmy-schmidt",
+  "imagem": "https://static.tvmaze.com/uploads/images/original_untouched/182/456853.jpg"
+ }
+}

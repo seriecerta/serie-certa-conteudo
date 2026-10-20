@@ -1,0 +1,26 @@
+{
+  "publicacoes": [
+    {
+      "id": "ig-carrossel",
+      "plataforma": "instagram",
+      "tipo": "CAROUSEL",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg",
+        "quadros/05.jpg",
+        "quadros/06.jpg",
+        "quadros/07.jpg"
+      ],
+      "legenda": "Segunda à noite, sem energia pra série de uma hora. 😮‍💨\n\nDerry Girls (Netflix) · What We Do in the Shadows (Disney+) · Unbreakable Kimmy Schmidt (Netflix) · Shrinking (Apple TV)\n\nSalva pra segunda à noite.\n\n#seriecerta #oqueassistir #seriescurtas #segundafeira",
+      "series": [
+        "Derry Girls",
+        "What We Do in the Shadows",
+        "Unbreakable Kimmy Schmidt",
+        "Shrinking"
+      ],
+      "quando": "2026-10-19T10:00:00-03:00"
+    }
+  ]
+}

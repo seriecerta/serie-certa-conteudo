@@ -1,0 +1,24 @@
+{
+  "peca_mae": "01-carrossel-segunda-episodio-curto",
+  "publicacoes": [
+    {
+      "id": "ig-stories",
+      "plataforma": "instagram",
+      "tipo": "STORIES",
+      "arquivos": [
+        "quadros/01.jpg",
+        "quadros/02.jpg",
+        "quadros/03.jpg",
+        "quadros/04.jpg",
+        "quadros/05.jpg"
+      ],
+      "legenda": "",
+      "series": [
+        "Derry Girls",
+        "Unbreakable Kimmy Schmidt",
+        "Shrinking"
+      ],
+      "quando": "2026-10-19T10:00:00-03:00"
+    }
+  ]
+}

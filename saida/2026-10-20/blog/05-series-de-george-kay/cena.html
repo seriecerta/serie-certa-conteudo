@@ -1,0 +1,33 @@
+<!--
+  Imagem de destaque — blog. Renderize com: python scripts/renderizar.py saida/2026-10-20/blog/05-series-de-george-kay --imagens --formato 16x9
+-->
+<style>
+  .bc { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 60px; width: 1680px; }
+  .bc .chapeu { font-size: 34px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--mood); margin-bottom: 26px; }
+  .bc .txt { font-size: 112px; font-weight: 900; line-height: .96; letter-spacing: -.035em; text-transform: uppercase; }
+  .bc .txt em { font-style: normal; color: var(--mood); }
+  .bc .marca { margin-top: 40px; font-size: 30px; font-weight: 900; letter-spacing: .08em; opacity: .7; }
+  .leque { position: relative; width: 820px; height: 820px; }
+  .leque .capa { position: absolute; width: 400px; height: 600px; top: 110px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  .leque .capa:nth-child(1) { left: 0;   transform: rotate(-9deg); }
+  .leque .capa:nth-child(2) { left: 210px; top: 70px; transform: rotate(-1deg); z-index: 2; }
+  .leque .capa:nth-child(3) { left: 420px; transform: rotate(8deg); z-index: 3; }
+  .leque.um .capa { left: 190px; top: 80px; width: 440px; height: 660px; transform: rotate(-3deg); }
+  .bc .emoji { font-size: 380px; width: 560px; text-align: center; }
+</style>
+<body class="paisagem" style="--mood:var(--curioso)">
+ <section class="quadro cena centro">
+  <div class="bc">
+   <div>
+    <div class="chapeu">lista da mia · antes da parte 4</div>
+    <div class="txt">séries do <em>criador de lupin</em></div>
+    <div class="marca">SERIECERTA.ONLINE/BLOG</div>
+   </div>
+   <div class="leque">
+    <div class="capa"><img src="imagens/hijack.jpg"></div>
+    <div class="capa"><img src="imagens/lupin.jpg"></div>
+    <div class="capa"><img src="imagens/war.jpg"></div>
+   </div>
+  </div>
+ </section>
+</body>
