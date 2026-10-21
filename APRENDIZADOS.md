@@ -50,6 +50,12 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 
 ## Painel e ferramentas
 
+### 2026-10-21 — Coleta do YouTube cai com `invalid_grant`
+- **Sintoma:** `painel/relatorio.py --metricas` imprime `! youtube: ('invalid_grant: Token has been expired or revoked.' ...)` e segue sem erro fatal. O relatório sai normal, mas os números do YouTube ficam velhos ou somem. Só dá para ver em `painel/metricas.json` → `erros`.
+- **Causa:** o refresh token OAuth do YouTube expirou ou foi revogado. Um app OAuth em modo "Testing" no Google Cloud tem refresh tokens que expiram em 7 dias. Essa é a causa provável; não foi confirmada.
+- **Como resolver:** o Bruno reautoriza o YouTube e salva o token novo nas credenciais da nuvem. Para o token não expirar mais, o app OAuth tem que passar para "In production". Até lá, Short e Lista da MIA não entram em teste A/B.
+- **Onde mexer:** credenciais da nuvem (`scripts/nuvem.py`); na revisão semanal, olhe sempre `metricas.json` → `erros` antes de analisar.
+
 ### 2026-10-16 — Painel com rolagem lateral no celular
 - **Sintoma:** em 390 px o painel inteiro ficava com 510 px de largura e rolava para o lado.
 - **Causa:** duas coisas juntas. (1) O `ler_pauta()` lia linhas com vários campos (`- **Pilar:** 1 · **Job:** principal · **Humor:** vários.`) como um campo só, e o filtro "Pilar" ganhava uma opção enorme. (2) A grade `.wrap` não tinha `grid-template-columns: minmax(0, 1fr)`, então o conteúdo mais largo esticava a coluna. Um `max-width` em `%` no `<select>` não adianta: no cálculo de largura mínima o Chrome ignora o percentual.
