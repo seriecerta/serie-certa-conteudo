@@ -62,6 +62,13 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 - **Como evitar:** a pauta pode continuar com vários campos por linha (o painel separa no ` · **`). Em layout novo do painel, grade com `minmax(0, 1fr)` e limites em px. Para conferir: abra `painel/index.html` em 320–430 px e compare `document.documentElement.scrollWidth` com a largura da tela.
 - **Onde mexer:** `painel/painel.py` (`ler_pauta`), `painel/modelo.html` (CSS de `.wrap` e `.filtros`).
 
+### 2026-10-20 — Publicação de hora em hora gastava o limite do plano
+- **Sintoma:** cerca de 40 disparos do Claude por dia só para publicar (fila das redes 24×, blog 14×, "e meia" 2×), cada um em sessão fixa cujo contexto só cresce. Quando o limite semanal estourou, a publicação parou junto com o pacote.
+- **Causa:** a publicação não precisa de IA (são dois scripts), mas rodava como rotina do Claude.
+- **Como resolver:** a fila foi para o GitHub Actions (`.github/workflows/publicar.yml`), com os mesmos scripts e travas, `MODO_NUVEM=true` (o `scripts/nuvem.py` já fazia o vaivém com o Supabase) e `concurrency` para nunca rodar duas rodadas juntas. Precisa do secret `SUPABASE_SERVICE_ROLE_KEY` e da variável `PUBLICACAO_AUTOMATICA=true` no repositório; sem o secret, a rodada só avisa e não faz nada. **As rotinas antigas de publicação do Claude têm de ficar desativadas** (`trig_01RC5pZDBD46SswM7L3DV5NR`, `trig_01PgH2sJUioakWU956rs2kst`, `trig_018DFpzwQd2frgntQF8CzRUm`): duas filas ao mesmo tempo podem postar em dobro.
+- **Ainda roda publicar.py fora do Actions:** a rotina da manhã (passo 9 do `/pacote-diario`). Raro, mas se ela terminar perto de uma rodada :02, as duas podem se cruzar.
+- **Onde mexer:** `.github/workflows/publicar.yml` (horários em UTC, São Paulo = UTC−3); guia em `nuvem/LEIA-ME-NUVEM.md` → Passo 6.
+
 ### 2026-10-20 — Limite semanal de uso derruba todas as rotinas (pacote de 19 e 20/10 não saiu)
 - **Sintoma:** `saida/2026-10-19` e `2026-10-20` não existiam e `publicar_blog.py` mostrava `pacote 2026-10-19: 0 arquivos`. Na sessão da rotina da manhã, o erro era `You've hit your weekly limit · resets Oct 20, 7pm (UTC)` (HTTP 429). Visto com `get_session` e `list_events` na `persistent_session_id` da rotina. O `list_triggers` mostra `last_run SUCCEEDED` mesmo assim, porque só registra que o disparo foi entregue.
 - **Causa:** o limite semanal da conta. A rotina da manhã reaproveitava sempre a mesma sessão, que chegou a mais de 400 mil tokens de contexto (cerca de US$ 79 acumulados). Cada disparo relia todo esse histórico. Quando o limite é atingido, todas as rotinas param; as de hora em hora acumulam e chegam juntas depois.

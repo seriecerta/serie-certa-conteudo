@@ -26,7 +26,7 @@ Por dia: 1 carrossel + 1 sequência de Stories + 1 Lista da MIA + 2 Shorts + 2 R
 | 17h00 | Guia | Guias (ou Cultura pop) |
 | 20h00 | Lista da MIA em texto (com o vídeo) | O que assistir (ou a do tema) |
 
-Regras e padrão das matérias: `11-blog.md`. Publicação: `blog/publicar_blog.py`, chamado pela rotina de hora em hora (sai no minuto :01). Matéria aprovada depois do horário sai na rodada seguinte.
+Regras e padrão das matérias: `11-blog.md`. Publicação: `blog/publicar_blog.py`, chamado pelo GitHub Actions `publicar` de hora em hora (sai por volta do minuto :02). Matéria aprovada depois do horário sai na rodada seguinte.
 
 ## Como o `estrategista` escolhe peça e pilar
 - **Pilares:** distribua as peças da semana perto dos pesos de `07-pilares-e-formatos.md` (40 / 20 / 15 / 15 / 10). Num dia, não repita o mesmo pilar nos dois Reels nem nos dois Shorts.
@@ -49,9 +49,10 @@ Regras e padrão das matérias: `11-blog.md`. Publicação: `blog/publicar_blog.
 
 ## Publicação
 - YouTube: sobe e agenda na hora exata (publishAt do YouTube).
-- Instagram: a rotina de publicação roda de hora em hora no minuto :01 e também às 13h31 e 18h31, para os horários "e meia" não atrasarem 30 min.
+- Instagram e blog: o GitHub Actions `publicar` (`.github/workflows/publicar.yml`, sem Claude) roda de hora em hora das 9h02 às 22h02 e também às 13h32 e 18h32, para os horários "e meia" não atrasarem 30 min. O GitHub pode atrasar uma rodada agendada em alguns minutos.
 
 ## Changelog
+- 2026-10-20 — Publicação de hora em hora sai das rotinas do Claude e vai para o GitHub Actions (mesmos scripts e travas, sem gastar o limite do plano); minuto :01 → :02 — por quê: o limite semanal derrubou as rotinas em 19 e 20/10.
 - 2026-10-16 — Blog entra na grade diária: 5 matérias (09h, 11h, 14h, 17h, 20h) — por quê: decisão do Bruno.
 - 2026-10-13 — Período de base de 14 a 20/10 com grade fixa e, depois, revisão semanal com testes A/B (`10-experimentos.md`) — por quê: pedido do Bruno.
 - 2026-10-13 — Grade semanal (horários diferentes por dia, vídeo longo de quinta às 19h) trocada por **grade diária única**: carrossel + Stories 10h, Lista da MIA 12h, Short + Reels 13h30, Reels 18h30, Short 19h. O vídeo longo semanal sai da grade (a Lista da MIA diária ocupa o espaço de vídeo 16:9). Pilares continuam escolhidos pelo agente com os pesos de `07` — por quê: decisão do Bruno, válida a partir de 14/10.

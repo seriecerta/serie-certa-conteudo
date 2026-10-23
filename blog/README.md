@@ -65,7 +65,7 @@ Abra `quadros/01.jpg` e confira.
 python blog/publicar_blog.py --listar --dias 60        # o que já está no ar (repetição e links internos)
 python blog/publicar_blog.py --verificar <pasta>       # checa uma matéria antes do revisor
 python blog/publicar_blog.py --data <data> --simular   # o que sairia
-python blog/publicar_blog.py --vencidos                # publica o que chegou no horário (rotina de hora em hora)
+python blog/publicar_blog.py --vencidos                # publica o que chegou no horário (GitHub Actions de hora em hora)
 ```
 Aprovação: o revisor lista as pastas em `"blog_aprovadas"` do `saida/<data>/revisao.json`.
 O publicador grava direto nas tabelas `blog_*` do Supabase com a chave de serviço e sobe as imagens no bucket público `blog` (`materias/<slug>/`). Não usa login nem senha do painel.

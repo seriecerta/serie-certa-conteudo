@@ -21,7 +21,7 @@ A meta dos 90 dias continua sendo **audiência** (`05-go-to-market.md`). No blog
 | 17h00 | **Guia** | Guias (ou Cultura pop) | Guia sem spoiler: "vale a pena?", tempo de maratona, ordem para assistir, por onde começar uma franquia, quem é o elenco/criador em alta. |
 | 20h00 | **Lista da MIA em texto** | O que assistir (ou a categoria do tema) | A Lista da MIA do dia em texto, com o vídeo do YouTube embutido (`[[video]]`) quando ele estiver no ar. Se a Lista do dia foi bloqueada, a matéria sai assim mesmo, sem vídeo. |
 
-- As matérias são feitas na rotina da manhã. Matéria aprovada depois do horário sai na próxima rodada da rotina de hora em hora (blog não perde horário).
+- As matérias são feitas na rotina da manhã. Matéria aprovada depois do horário sai na próxima rodada de hora em hora do GitHub Actions `publicar` (blog não perde horário).
 - Num dia, não repita a mesma série como destaque em duas matérias. A matéria das 20h pode repetir as séries da Lista da MIA (é o mesmo tema em outro formato).
 - Repetição: nenhuma matéria com a mesma palavra-chave principal ou a mesma lista de séries de uma matéria dos últimos **60 dias** (`python blog/publicar_blog.py --listar --dias 60`).
 

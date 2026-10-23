@@ -71,16 +71,27 @@ Confira o resumo final. Os vídeos ficam no Supabase (**Storage → `pacotes-red
 
 Gostou? Edite o ambiente e troque para `PUBLICACAO_AUTOMATICA=true`.
 
-## Passo 6 — As duas rotinas (claude.ai/code/routines → New routine)
-| Nome | Repositório | Ambiente | Agenda | Instrução |
-|---|---|---|---|---|
-| `pacote-diario-serie-certa` | serie-certa-conteudo | serie-certa | Daily, **6:37** | `Rode /pacote-diario para hoje. Ao final, faça commit e push direto na main.` |
-| `publicar-serie-certa` | serie-certa-conteudo | serie-certa | **Hourly** | `Rode /publicar. Não faça commit.` |
-| `Série Certa · publicar blog` | serie-certa-conteudo | serie-certa | de hora em hora, 9h03–22h03 | `python blog/publicar_blog.py --vencidos` (criada em 16/10; as rotinas de publicação das redes não rodam o blog) |
+## Passo 6 — Rotinas: só o que precisa de IA fica no Claude
+A publicação não precisa de IA: é rodar dois scripts no horário. Por isso ela roda no **GitHub Actions** (`.github/workflows/publicar.yml`), que é grátis e **não gasta o limite do plano** do Claude. No Claude ficam só as rotinas que criam ou analisam conteúdo.
 
-Em **Connectors** de cada rotina, **remova todos**: o kit não precisa deles, e assim a rotina não tem acesso ao que não deve.
+| Rotina | Onde roda | Agenda |
+|---|---|---|
+| Pacote diário (`/pacote-diario`) | Claude, sessão nova a cada dia | 6h41 |
+| Painel (métricas) | Claude | 9h |
+| Revisão semanal | Claude | quarta, 18h17 |
+| **Publicar** (Instagram, YouTube e blog) | **GitHub Actions, sem Claude** | de hora em hora das 9h02 às 22h02 + 13h32 e 18h32 |
 
-Para gastar menos uso com a rotina horária, deixe-a só no horário de postagem. Numa sessão do Claude Code no terminal (ou peça para alguém com o CLI), rode `/schedule update` e troque para o cron `7 10-21 * * *` (de hora em hora, das 10h07 às 21h07). Se não quiser mexer nisso, o **Hourly** também funciona.
+### Ligar o GitHub Actions (uma vez, ~3 min)
+1. O arquivo `.github/workflows/publicar.yml` precisa estar na branch **main** (o GitHub só roda agendamentos da main).
+2. No GitHub: **Settings → Secrets and variables → Actions**.
+   - Aba **Secrets** → **New repository secret**: nome `SUPABASE_SERVICE_ROLE_KEY`, valor = a service role key do Supabase. (Secret fica cifrado; não aparece nos logs nem para quem vê o repositório.)
+   - Aba **Variables** → **New repository variable**: nome `PUBLICACAO_AUTOMATICA`, valor `true`.
+3. Teste: aba **Actions** → `publicar` → **Run workflow**, deixando "Só simular" marcado. O resumo mostra o que sairia.
+4. Deu certo? **Desative as rotinas antigas de publicação** em claude.ai/code/routines ("Série Certa · publicar (fila do dia)", "publicar (horários e meia)" e "publicar blog"). Elas e o Actions juntos podem postar em dobro.
+
+Para pausar tudo: troque a variável `PUBLICACAO_AUTOMATICA` para `false` (só simula), ou use o `PAUSAR` do dia como antes.
+
+Em **Connectors** de cada rotina do Claude, **remova todos**: o kit não precisa deles, e assim a rotina não tem acesso ao que não deve.
 
 ## No dia a dia
 - **Ver o que saiu**: `pacotes-redes/<data>/…/publicacao.log.md` no Supabase, ou pergunte numa sessão: "o que foi publicado hoje?"
@@ -91,4 +102,6 @@ Para gastar menos uso com a rotina horária, deixe-a só no horário de postagem
 
 ## Limites deste modo
 - Arquivos acima do limite de upload do seu projeto Supabase (50 MB no plano gratuito) não são guardados no pacote. Isso só afeta o vídeo longo, que já sobe direto para o YouTube na rotina da manhã.
-- Rotinas são *research preview* na Anthropic: o comportamento pode mudar. As execuções contam no seu limite de uso do plano.
+- Rotinas são *research preview* na Anthropic: o comportamento pode mudar. As execuções contam no seu limite de uso do plano (por isso a publicação foi para o GitHub Actions).
+- O GitHub desliga agendamentos de repositório **público** depois de 60 dias sem nenhum commit. O commit diário do pacote evita isso; se a fila parar, reative em Actions → `publicar` → **Enable workflow**.
+- Rodadas agendadas do GitHub podem atrasar alguns minutos (às vezes mais em horário de pico). O Instagram só descarta um post depois de 4 h de atraso.
