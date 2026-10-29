@@ -135,6 +135,7 @@ def relatorio(inicio: str, fim: str, m: dict) -> str:
             f"({', '.join(f'{o}: {n}' for o, n in sorted(agrupar_soma(utm).items()))})", ""]
 
     out += secao_blog(inv, a, b, dias)
+    out += secao_geo(m, inicio, fim)
 
     # comparações
     out += ["## Desempenho por dimensão", ""]
@@ -176,6 +177,30 @@ def relatorio(inicio: str, fim: str, m: dict) -> str:
                                f"({'—' if dif is None else f'{dif * 100:+.0f}%'}) → {sinal}")
             out.append("")
     return "\n".join(out) + "\n"
+
+
+def secao_geo(m, inicio, fim) -> list:
+    """Visitas vindas de assistentes de IA no período e na semana anterior (estrategia/12-geo.md)."""
+    ini = dt.date.fromisoformat(inicio)
+    dias = (dt.date.fromisoformat(fim) - ini).days + 1
+    antes = (str(ini - dt.timedelta(days=dias)), str(ini - dt.timedelta(days=1)))
+    vis = m.get("visitas_ia") or []
+    agora = [v for v in vis if inicio <= v["dia"] <= fim]
+    prev = [v for v in vis if antes[0] <= v["dia"] <= antes[1]]
+    out = ["## GEO (visitas vindas de IA)", ""]
+    if "posthog_ia" in (m.get("erros") or {}):
+        return out + [f"PostHog não respondeu: {m['erros']['posthog_ia'][:200]}", ""]
+    out.append(f"- Visitas: {sum(v['visitas'] for v in agora)} no período × {sum(v['visitas'] for v in prev)} no período anterior "
+               f"(meta da estratégia: tendência de alta).")
+    for o, n in sorted(agrupar_soma([{"origem": v["origem"], "cliques": v["visitas"]} for v in agora]).items(), key=lambda x: -x[1]):
+        out.append(f"- {o}: {n}")
+    paginas = {}
+    for v in agora:
+        paginas[v["pagina"]] = paginas.get(v["pagina"], 0) + v["visitas"]
+    if paginas:
+        out += ["", "| Página | Visitas |", "|---|---|"] + [f"| {p} | {n} |" for p, n in sorted(paginas.items(), key=lambda x: -x[1])[:10]]
+    out += ["", "Presença nas respostas das IAs (teste manual mensal): `historico/geo-presenca.md`."]
+    return out + [""]
 
 
 def secao_blog(inv, a, b, dias) -> list:

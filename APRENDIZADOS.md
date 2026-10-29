@@ -24,6 +24,12 @@ Formato: **sintoma → causa → como resolver/evitar → onde mexer**. Mais rec
 
 ## Rotina e agentes
 
+### 2026-10-29 — Ferramenta nova de `blog/` sem regra de permissão
+- **Sintoma:** ao criar o `blog/verificar_geo.py`, a edição do `.claude/settings.json` para liberar o comando foi bloqueada pelo modo automático: `Permission ... denied ... [Self-Modification]`.
+- **Causa:** o modo automático não deixa o agente mudar as próprias permissões. Isso é de propósito.
+- **Como resolver:** o Bruno acrescenta em `.claude/settings.json` → `permissions.allow` as linhas `"Bash(python blog/verificar_geo.py:*)"` e `"Bash(python3 -B blog/verificar_geo.py:*)"`. Sem elas, o comando roda só quando o modo automático aprova na hora. Não tente liberar por outro caminho.
+- **Onde mexer:** `.claude/settings.json`.
+
 ### 2026-10-20 — Pacote leve quando o limite de uso está perto
 - Causa e correção da rotina: ver "Limite semanal de uso derruba todas as rotinas" (seção Painel e ferramentas).
 - **No pacote:** sem crédito na ElevenLabs, não escreva roteiro de vídeo. Junte 2 matérias por redator e faça 1 rodada de revisor quando der. Se o limite cair no meio, os rascunhos de blog podem ser terminados no dia seguinte: copie a pasta, troque as datas e revise de novo (foi o que salvou 3 matérias de 19/10 em 20/10).

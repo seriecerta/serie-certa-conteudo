@@ -516,6 +516,32 @@ def coletar_blog(dias, antigo: dict) -> dict:
     return out
 
 
+ORIGENS_IA = {"chatgpt.com": "ChatGPT", "chat.openai.com": "ChatGPT", "perplexity.ai": "Perplexity",
+              "www.perplexity.ai": "Perplexity", "gemini.google.com": "Gemini", "copilot.microsoft.com": "Copilot",
+              "claude.ai": "Claude"}  # estrategia/12-geo.md → Medição
+
+
+def coletar_posthog_ia(dias):
+    """Visitas ao site vindas de assistentes de IA (referência ou utm_source), por dia, origem e página."""
+    chave, projeto = os.environ.get("POSTHOG_API_KEY"), os.environ.get("POSTHOG_PROJECT_ID")
+    if not projeto:
+        raise RuntimeError("POSTHOG_PROJECT_ID não definido (opcional)")
+    host = os.environ.get("POSTHOG_HOST", "https://us.posthog.com").rstrip("/")
+    cab = {"Authorization": f"Bearer {chave}"} if chave else {}
+    dominios = ", ".join(f"'{d}'" for d in ORIGENS_IA)
+    sql = f"""SELECT toDate(timestamp), if(properties.$referring_domain IN ({dominios}), properties.$referring_domain,
+                     properties.utm_source), properties.$pathname, count(), count(DISTINCT person_id)
+              FROM events WHERE event = '$pageview' AND timestamp > now() - INTERVAL {int(dias)} DAY
+                AND (properties.$referring_domain IN ({dominios}) OR properties.utm_source IN ({dominios}))
+              GROUP BY 1, 2, 3 ORDER BY 1"""
+    r = requests.post(f"{host}/api/projects/{projeto}/query/", headers=cab,
+                      json={"query": {"kind": "HogQLQuery", "query": sql}}, timeout=120)
+    if not r.ok:
+        raise RuntimeError(f"PostHog {r.status_code}: {r.text[:200]}")
+    return [{"dia": str(d), "origem": ORIGENS_IA.get(o or "", o or "?"), "pagina": c or "/", "visitas": n, "pessoas": u}
+            for d, o, c, n, u in r.json().get("results", [])]
+
+
 def coletar_posthog_blog(dias):
     """Leitura até 90% e cliques no app por matéria (eventos do blog no PostHog)."""
     chave, projeto = os.environ.get("POSTHOG_API_KEY"), os.environ.get("POSTHOG_PROJECT_ID")
@@ -598,6 +624,11 @@ def coletar(dias):
             erros["posthog_blog"] = str(e)[:300]
     except Exception as e:
         erros["blog"] = str(e)[:300]
+
+    try:
+        m["visitas_ia"] = coletar_posthog_ia(max(dias, 90))
+    except Exception as e:
+        erros["posthog_ia"] = str(e)[:300]
 
     m.pop("posts", None)  # formato antigo (por publicação); agora tudo é por id de mídia
     m["coletado_em"] = AGORA.isoformat()

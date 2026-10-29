@@ -20,6 +20,10 @@ Use a lista do que já está no ar que vem no pedido (saída de `python blog/pub
 - Use a pesquisa de tendência da Lista da MIA também para os slots 11h e 14h; a matéria das 20h é a Lista da MIA do dia em texto.
 - Não repita palavra-chave nem lista de séries de matéria dos últimos 60 dias. Num dia, uma série é destaque em uma matéria só (exceto a das 20h, que repete a Lista).
 - O slot 09h roda os humores ao longo da semana (as 8 cores do app, sem repetir humor em 7 dias).
+- **GEO (`estrategia/12-geo.md`):** cada matéria tem uma **pergunta-alvo** em linguagem natural, do jeito que a pessoa pergunta a uma IA.
+  - Pelo menos 2 das 5 vêm do banco de perguntas de `12-geo.md`.
+  - Nenhuma repete pergunta-alvo dos últimos 60 dias.
+  - Enquanto houver página de entidade da lista de `12-geo.md` sem publicar, o slot 17h (Guia) publica a próxima.
 
 ## Lista da MIA — escolher o tema do dia pelo que está bombando
 Pesquise (WebSearch/WebFetch) o que está em alta **hoje ou nesta semana no Brasil**, cruzando pelo menos 3 sinais:

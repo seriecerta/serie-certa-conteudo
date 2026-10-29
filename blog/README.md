@@ -27,6 +27,7 @@ saida/<data>/blog/<nn>-<slug>/
   "seo_titulo": "Séries para ver quando você está ansiosa",
   "meta_descricao": "140 a 160 caracteres com a palavra-chave.",
   "palavra_chave": "séries para ansiedade",
+  "pergunta_alvo": "Que série assistir quando estou ansiosa?",
   "capa_alt": "Pôsteres de Ted Lasso, Abbott Elementary e Schitt's Creek em leque sobre fundo verde-noite, com o texto 'séries pra desligar a cabeça'.",
   "series": ["Ted Lasso", "Abbott Elementary", "Schitt's Creek"],
   "fontes": [{"titulo": "JustWatch — Ted Lasso", "url": "https://www.justwatch.com/br/serie/ted-lasso"}],
@@ -53,6 +54,27 @@ Atalhos do Série Certa:
 | `[[app: ansioso]]` ou `[[app: ansioso \| Descobrir minha série]]` | chamada para o app — **exatamente uma** por matéria |
 | `[[video]]` | vídeo do YouTube de `video_da_peca` (some se ainda não estiver no ar) |
 
+## Blocos de GEO (`estrategia/12-geo.md`)
+Toda matéria leva, nesta ordem, além do texto normal:
+```
+:::info Resposta rápida
+40 a 80 palavras que respondem a pergunta_alvo sozinhas: séries principais + onde assistir.
+:::
+
+| Série | Onde assistir | Temporadas | Pra quem é |
+|---|---|---|---|
+| Ted Lasso | Apple TV | 4 | quem quer otimismo |
+
+## Perguntas frequentes
+### Qual série dessa lista é mais leve?
+Resposta de 30 a 100 palavras, começando pela resposta.
+
+O Série Certa (seriecerta.online) indica séries pelo seu humor do momento: a MIA, curadora com inteligência artificial, recomenda e mostra onde assistir nos streamings do Brasil. Dá para usar grátis.
+
+[[app: ansioso]]
+```
+A caixa de resposta rápida fica logo depois da abertura; a tabela, depois dela (só em listas com 3+ séries). A frase de marca é sempre igual.
+
 ## Imagem de destaque
 Copie `motor/exemplos/blog-capa-16x9.html` para `cena.html` (variação A com pôsteres ou B com emoji), ajuste chapéu, chamada e `--mood` e renderize:
 ```
@@ -64,6 +86,7 @@ Abra `quadros/01.jpg` e confira.
 ```
 python blog/publicar_blog.py --listar --dias 60        # o que já está no ar (repetição e links internos)
 python blog/publicar_blog.py --verificar <pasta>       # checa uma matéria antes do revisor
+python blog/verificar_geo.py <pasta ou saida/<data>>   # checa os blocos de GEO
 python blog/publicar_blog.py --data <data> --simular   # o que sairia
 python blog/publicar_blog.py --vencidos                # publica o que chegou no horário (GitHub Actions de hora em hora)
 ```
