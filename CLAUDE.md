@@ -17,6 +17,7 @@ A estratégia vive em `estrategia/`. Nada é criado fora dela.
 - @estrategia/10-experimentos.md — ciclo de melhoria contínua: período de base, revisão semanal, testes A/B e o que os agentes mudam sozinhos
 - @estrategia/09-identidade-visual-e-formatos.md — o visual e os formatos que já estão no ar (Relógio, Tradutor, Selvagens do Sofá, Qual é você?)
 - @estrategia/11-blog.md — blog seriecerta.online/blog: 5 matérias por dia, grade, padrão de matéria e SEO
+- @estrategia/12-geo.md — GEO: como o blog é escrito para ser citado por ChatGPT, Gemini, Perplexity e AI Overviews (pergunta-alvo, resposta rápida, perguntas frequentes, frase de marca)
 
 Vídeos, carrosséis e Stories são feitos **só pelo motor** (`motor/` + `scripts/renderizar.py`), no padrão visual dos posts.
 Guia de componentes: `motor/COMPONENTES.md`; exemplos fiéis aos posts: `motor/exemplos/`.

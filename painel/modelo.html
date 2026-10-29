@@ -402,6 +402,7 @@ function kpis(sel) {
   const somaConta = (k) => { const v = contaDias.map(([, o]) => o[k]).filter((n) => typeof n === 'number'); return v.length ? v.reduce((s, n) => s + n, 0) : null; };
   const utm = (M.cliques_utm || []).filter((c) => { const x = new Date(c.dia + 'T12:00:00-03:00'); return x >= a && x <= b && (!F.rede || c.origem === F.rede); });
   const cliquesUtm = utm.length ? utm.reduce((s, c) => s + c.cliques, 0) : null;
+  const visitasIa = (M.visitas_ia || []).filter((v) => { const x = new Date(v.dia + 'T12:00:00-03:00'); return x >= a && x <= b; });
   const seg = Object.entries(M.seguidores || {}).sort();
   const segAtual = (k) => { const v = seg.filter(([, o]) => o[k] != null); return v.length ? v[v.length - 1][1][k] : null; };
   const segDelta = (k) => { const v = seg.filter(([d, o]) => o[k] != null && new Date(d + 'T12:00:00-03:00') >= a); return v.length > 1 ? v[v.length - 1][1][k] - v[0][1][k] : null; };
@@ -422,6 +423,7 @@ function kpis(sel) {
     ['Cliques na bio', somaConta('website_clicks'), 'link da bio do Instagram'],
     ['Cliques nos links', cliquesUtm, 'visitas com UTM (PostHog)'],
     ['Leituras do blog', soma(blogPub, 'views'), `${blogPub.length} matérias publicadas no período`],
+    ['Visitas vindas de IA', visitasIa.length ? visitasIa.reduce((s, v) => s + v.visitas, 0) : null, visitasIa.length ? [...new Set(visitasIa.map((v) => v.origem))].join(' · ') : 'ChatGPT, Perplexity, Gemini… (GEO)'],
     ['Seguidores IG', segAtual('instagram'), sinal(segDelta('instagram'))],
     ['Inscritos YT', segAtual('youtube'), sinal(segDelta('youtube'))],
   ];

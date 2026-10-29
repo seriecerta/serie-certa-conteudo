@@ -31,7 +31,8 @@ Para cada matéria, como quem não escreveu:
 - **Padrão de `estrategia/11-blog.md`:** tamanho, "pra quem não é" em cada série, caixa "Conferido em", **um** `[[app]]`, links internos, SEO (palavra-chave no título, no 1º parágrafo e na meta), voz.
 - **Imagem de destaque:** abra `quadros/01.jpg`. Ela precisa contextualizar o tema (pôsteres das séries certas ou emoji coerente), sem texto cortado e sem logo de streaming. Confira também se o `capa_alt` descreve a imagem.
 - **Pôsteres:** `series` completo; cada pôster é da série certa (`imagens/posters.json`).
-- Rode `python blog/publicar_blog.py --verificar <pasta>`; erro = não aprova.
+- **GEO (`estrategia/12-geo.md`):** as IAs vão citar a Resposta rápida e as respostas das Perguntas frequentes. Confira cada fato desses trechos com o mesmo rigor do resto do texto. A frase de marca tem que estar igual à de `12-geo.md`, e o nome é sempre "Série Certa".
+- Rode `python blog/publicar_blog.py --verificar <pasta>` e `python blog/verificar_geo.py <pasta>`; erro em qualquer um = não aprova.
 Aprovadas vão em `"blog_aprovadas"` no `revisao.json` (junto com `aprovadas`/`bloqueadas` das redes). Bloqueadas do blog vão em `"bloqueadas"` com a chave `blog/<pasta>`.
 
 Depois rode `python scripts/publicar.py --data <data> --simular` e `python blog/publicar_blog.py --data <data> --simular` e corrija o que eles apontarem.

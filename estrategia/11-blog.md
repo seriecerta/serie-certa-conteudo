@@ -27,7 +27,8 @@ A meta dos 90 dias continua sendo **audiência** (`05-go-to-market.md`). No blog
 
 ## Padrão de cada matéria
 - **Tamanho:** 900–1.600 palavras (o publicador recusa menos de 600). Lista: 5 a 10 séries.
-- **Estrutura:** abertura de 2–3 parágrafos que começa pelo sentimento/situação (como a MIA) e diz o que a pessoa vai encontrar → `##` a cada 150–300 palavras → fecho curto → **um** `[[app: <humor>]]`.
+- **Estrutura:** abertura de 2–3 parágrafos que começa pelo sentimento/situação (como a MIA) e diz o que a pessoa vai encontrar → **Resposta rápida** → tabela-resumo (listas com 3+ séries) → `##` a cada 150–300 palavras → `## Perguntas frequentes` → fecho curto com a **frase de marca** → **um** `[[app: <humor>]]`.
+- **GEO (para ser citado pelas IAs):** toda matéria segue `12-geo.md`: `pergunta_alvo` no `materia.json`, caixa `:::info Resposta rápida` (40–80 palavras), tabela-resumo, 3 a 5 perguntas frequentes, no mínimo 3 fontes com link e a frase de marca igual em todas. Conferência: `python blog/verificar_geo.py <pasta>`.
 - **Cada série indicada:** `## Nome da série` + pôster oficial (`![Pôster de …](imagens/…)`) + onde assistir no Brasil + temporadas/episódios/duração + por que combina + **pra quem não é**. Conferido na web no dia, com a fonte em `fontes`.
 - **Caixa de data:** toda matéria com disponibilidade traz `:::info Conferido em DD/MM/AAAA` explicando que catálogo muda.
 - **Links internos:** 1 a 3 `[[leia: slug]]` de matérias que já estão no ar. Links para o app com UTM: `https://seriecerta.online/descobrir?humor=<humor>&utm_source=blog&utm_medium=organico&utm_campaign=<AAAA-MM-DD>-<slug>`.
@@ -41,4 +42,5 @@ A meta dos 90 dias continua sendo **audiência** (`05-go-to-market.md`). No blog
 - Na revisão semanal, a métrica principal do blog é **visualizações em D+7** (busca demora a indexar; D+1 só mostra o efeito do dia).
 
 ## Changelog
+- 2026-10-29 — Padrão de matéria ganha os blocos de GEO (`12-geo.md`): pergunta-alvo, resposta rápida, tabela-resumo, perguntas frequentes, frase de marca; conferidos pelo `blog/verificar_geo.py` — por quê: pedido do Bruno de estratégia forte de GEO para a visibilidade da marca.
 - 2026-10-16 — Arquivo criado: blog na rotina diária com 5 matérias (09h, 11h, 14h, 17h, 20h), padrão de matéria, imagem de destaque no motor e trava de pôster oficial — por quê: pedido do Bruno.
